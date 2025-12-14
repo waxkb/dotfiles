@@ -39,7 +39,7 @@ input {
 layout {
     // Hypr: gaps_in = 5, gaps_out = 10
     // Niri has a single gaps value; use something in-between.
-    gaps 20
+    gaps 15
 
     // No direct equivalent of Hypr’s dwindle/master layouts.
     // Niri uses its own scrollable-tiling model.
@@ -66,6 +66,7 @@ layout {
         // Hypr: shadow.enabled = false
         // Keep Niri shadows off for a similar flat look.
         // on
+        off
         softness 30
         spread 5
         offset x=0 y=5
@@ -203,4 +204,13 @@ window-rule {
     clip-to-geometry true
 }
 
+window-rule{
+  match is-active=true
+  opacity 0.95
+}
+
+window-rule{
+  match is-active=false
+  opacity 0.85
+}
 prefer-no-csd
