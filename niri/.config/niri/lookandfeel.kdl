@@ -9,7 +9,6 @@ layout {
     // Approximate “rounded corners + border + active/inactive colors”
     focus-ring {
         // Similar to “active border” accent color.
-        off
         active-color "#33ccff"
         inactive-color "#595959"
         width 2
@@ -18,6 +17,7 @@ layout {
     border {
         // Hypr: border_size = 2, rounded corners, low-opacity shadows.
         // Here: keep border subtle and off by default, because focus-ring is on.
+        off
         width 2
         active-color "#33ccff"
         inactive-color "#595959"

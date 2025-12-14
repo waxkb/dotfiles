@@ -1,3 +1,4 @@
 include "autostart.kdl"
 include "binds.kdl"
 include "lookandfeel.kdl"
+include "input.kdl"
