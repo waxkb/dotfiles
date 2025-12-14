@@ -20,22 +20,22 @@
         {
             "type": "os",
             "key": " ",
-            "keyColor": "#ffb596"  // = color3
+            "keyColor": "#bac3ff"  // = color3
         },
         {
             "type": "wm",
             "key": " ",
-            "keyColor": "#ffb596"
+            "keyColor": "#bac3ff"
         },
         {
             "type": "terminal",
             "key": " ",
-            "keyColor": "#ffb596"
+            "keyColor": "#bac3ff"
         },
         {
             "type": "shell",
             "key": " ",
-            "keyColor": "#ffb596"
+            "keyColor": "#bac3ff"
         },
         "break",
         "colors",
