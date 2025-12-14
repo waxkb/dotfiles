@@ -1,0 +1,6 @@
+spawn-at-startup "systemctl --user start hyprpolkitagent"
+spawn-at-startup "waybar"
+spawn-at-startup "swww-daemon"
+spawn-at-startup "swww restore"
+spawn-at-startup "hyprsunset"
+spawn-at-startup "clipse -listen"

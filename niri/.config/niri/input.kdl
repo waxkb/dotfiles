@@ -3,7 +3,7 @@ input {
         xkb {
             layout "us"
         }
-        repeat-delay 300
+        repeat-delay 301
         repeat-rate 45
         numlock
     }
