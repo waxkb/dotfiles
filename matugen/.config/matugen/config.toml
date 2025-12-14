@@ -80,6 +80,10 @@ input_path = './templates/zen-logo-mocha.svg'
 output_path = '~/.zen/u2exuqh8.Default (release)/chrome/zen-mocha.svg'
 
 [templates.spicetify]
-pre_hook = 'spicetify watch -s &'
+#pre_hook = 'spicetify watch -s &'
 input_path = './templates/spicetify-colors.ini'
 output_path = '~/.config/spicetify/Themes/text/color.ini'
+
+[templates.niri]
+input_path = './templates/colors.kdl'
+output_path = '~/dotfiles/niri/.config/niri/colors.kdl'
