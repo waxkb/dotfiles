@@ -1,0 +1,15 @@
+# Material You colors
+
+background-color=#1a110e
+border-color=#ffb596
+# Per-mode settings
+
+[mode=do-not-disturb]
+invisible=1
+on-notify=none
+
+[mode=silent]
+on-notify=none
+
+[urgency=high]
+border-color=#ffb4ab

@@ -1,0 +1,85 @@
+[config.wallpaper]
+command = "swww"
+arguments = ["img", "--transition-type", "center"]
+set = true
+
+[templates.waybar]
+input_path = './templates/colors.css'
+output_path = '~/.config/waybar/colors.css'
+post_hook = 'pkill -SIGUSR2 waybar'
+
+[templates.hyprland]
+input_path = './templates/hyprland-colors.conf'
+output_path = '~/.config/hypr/colors.conf'
+
+[templates.hyprlock]
+input_path = './templates/hyprland-colors.conf'
+output_path = '~/.config/hypr/colors.conf'
+
+[templates.kitty]
+input_path = './templates/kitty-colors.conf'
+output_path = '~/.config/kitty/themes/your-theme.conf'
+post_hook = 'kitty +kitten themes --reload-in=all your-theme'
+
+[templates.rofi]
+input_path = './templates/rofi-colors.rasi'
+output_path = '~/.config/rofi/colors.rasi'
+
+[templates.mako]
+input_path = './templates/mako'
+output_path = '~/.config/mako/mako-colors'
+post_hook = 'makoctl reload'
+
+[templates.btop]
+input_path = './templates/btop.theme'
+output_path = '~/.config/btop/themes/matugen.theme'
+post_hook = 'killall -SIGUSR2 btop'
+
+[templates.yazi]
+input_path = './templates/yazi-theme.toml'
+output_path = '~/.config/yazi/theme.toml'
+post_hook = 'killall -SIGUSR2 yazi'
+
+[templates.vesktop]
+input_path = './templates/midnight-discord.css'
+output_path = '~/.config/vesktop/themes/midnight.theme.css'
+
+[templates.pywalfox]
+input_path = './templates/pywalfox-colors.json'
+output_path = '~/.cache/wal/colors.json'
+post_hook = 'pywalfox update'
+
+[templates.cava]
+input_path = '~/.config/matugen/templates/cava-colors.ini'
+output_path = '~/.config/cava/themes/your-theme'
+post_hook = 'pkill -USR2 cava'
+
+[templates.nvim]
+input_path = './templates/nvim-colors.lua'
+output_path = '~/.config/nvim/generated.lua'
+post_hook = 'pkill -SIGUSR1 nvim'
+
+[templates.clipse]
+input_path = './templates/clipse-theme.json'
+output_path = '~/.config/clipse/custom_theme.json'
+
+[templates.ff]
+input_path = './templates/ff-colors.jsonc'
+output_path = '~/.config/fastfetch/config.jsonc'
+
+[templates.zen]
+input_path = './templates/userChrome.css'
+output_path = '~/.zen/u2exuqh8.Default (release)/chrome/userChrome.css'
+
+[templates.zen1]
+input_path = './templates/userContent.css'
+output_path = '~/.zen/u2exuqh8.Default (release)/chrome/userContent.css'
+
+[templates.zen2]
+input_path = './templates/zen-logo-mocha.svg'
+output_path = '~/.zen/u2exuqh8.Default (release)/chrome/zen-mocha.svg'
+
+[templates.spicetify]
+pre_hook = 'spicetify watch -s &'
+input_path = './templates/spicetify-colors.ini'
+output_path = '~/.config/spicetify/Themes/text/color.ini'

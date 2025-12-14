@@ -1,0 +1,25 @@
+# Caches
+**/Cache/
+**/GPUCache/
+**/Code Cache/
+
+# Electron / app junk
+**/blob_storage/
+**/IndexedDB/
+**/Local Storage/
+**/Service Worker/
+**/Session Storage/
+
+# Native binaries
+*.node
+*.so
+*.dll
+*.dylib
+
+# Versioned app directories
+**/0.0.*/
+**/Crashpad/
+
+# OS junk
+.DS_Store
+Thumbs.db

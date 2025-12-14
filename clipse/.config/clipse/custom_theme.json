@@ -1,0 +1,37 @@
+{
+    "useCustomTheme": true,
+
+    "TitleFore": "#e3e1e9",
+    "TitleBack": "#121318",
+    "TitleInfo": "#bac3ff",
+
+    "NormalTitle": "#e3e1e9",
+    "DimmedTitle": "#c6c5d0",
+    "SelectedTitle": "#bac3ff",
+
+    "NormalDesc": "#c6c5d0",
+    "DimmedDesc": "#c6c5d0",
+    "SelectedDesc": "#bac3ff",
+
+    "StatusMsg": "#434659",
+    "PinIndicatorColor": "#5d3c55",
+
+    "SelectedBorder": "#bac3ff",
+    "SelectedDescBorder": "#bac3ff",
+
+    "FilteredMatch": "#e3e1e9",
+    "FilterPrompt": "#434659",
+    "FilterInfo": "#bac3ff",
+    "FilterText": "#e3e1e9",
+    "FilterCursor": "#5d3c55",
+
+    "HelpKey": "#90909a",
+    "HelpDesc": "#c6c5d0",
+
+    "PageActiveDot": "#bac3ff",
+    "PageInactiveDot": "#c6c5d0",
+    "DividerDot": "#bac3ff",
+
+    "PreviewedText": "#e3e1e9",
+    "PreviewBorder": "#bac3ff"
+}
