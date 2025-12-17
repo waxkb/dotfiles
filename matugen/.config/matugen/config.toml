@@ -4,32 +4,32 @@
 #arguments = ["img", "--transition-type", "center"]
 #set = false
 
-[templates.waybar]
-input_path = "/home/max/.config/matugen/templates/colors.css"
-output_path = "/home/max/.config/waybar/colors.css"
-post_hook = "pkill -SIGUSR2 waybar"
+#[templates.waybar]
+#input_path = "/home/max/.config/matugen/templates/colors.css"
+#output_path = "/home/max/.config/waybar/colors.css"
+#post_hook = "pkill -SIGUSR2 waybar"
 
 [templates.hyprland]
 input_path = "/home/max/.config/matugen/templates/hyprland-colors.conf"
 output_path = "/home/max/.config/hypr/colors.conf"
 
-[templates.hyprlock]
-input_path = "/home/max/.config/matugen/templates/hyprland-colors.conf"
-output_path = "/home/max/.config/hypr/colors.conf"
+#[templates.hyprlock]
+#input_path = "/home/max/.config/matugen/templates/hyprland-colors.conf"
+#output_path = "/home/max/.config/hypr/colors.conf"
 
 [templates.kitty]
 input_path = "/home/max/.config/matugen/templates/kitty-colors.conf"
 output_path = "/home/max/.config/kitty/themes/your-theme.conf"
 post_hook = "kitty +kitten themes --reload-in=all your-theme"
 
-[templates.rofi]
-input_path = "/home/max/.config/matugen/templates/rofi-colors.rasi"
-output_path = "/home/max/.config/rofi/colors.rasi"
+#[templates.rofi]
+#input_path = "/home/max/.config/matugen/templates/rofi-colors.rasi"
+#output_path = "/home/max/.config/rofi/colors.rasi"
 
-[templates.mako]
-input_path = "/home/max/.config/matugen/templates/mako"
-output_path = "/home/max/.config/mako/mako-colors"
-post_hook = "makoctl reload"
+#[templates.mako]
+#input_path = "/home/max/.config/matugen/templates/mako"
+#output_path = "/home/max/.config/mako/mako-colors"
+#post_hook = "makoctl reload"
 
 [templates.btop]
 input_path = "/home/max/.config/matugen/templates/btop.theme"
