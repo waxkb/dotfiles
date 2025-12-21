@@ -1,11 +1,11 @@
 binds {
     // Application launchers
-    Mod+B { spawn "zen-browser"; }
+    Mod+B { spawn "zen"; }
     Mod+Shift+B { spawn "kitty" "btop"; }
     Mod+C { spawn "kitty" "--class" "clipse" "-e" "clipse"; }
     Mod+E { spawn "kitty" "sudo" "yazi"; }
     Mod+F { spawn "kitty" "-e" "zsh" "-i" "-c" "fastfetch; exec zsh"; }
-    Mod+M { spawn "spotify-launcher"; }
+    Mod+M { spawn "spotify"; }
     Mod+N { spawn "kitty" "nvim"; }
     Mod+O { spawn "hyprlock" "-q" "--immediate-render" "--no-fade-in"; }
     Mod+Shift+O { spawn "kitty" "obs"; }

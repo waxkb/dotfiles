@@ -2,7 +2,7 @@
 # export PATH=$HOME/bin:$HOME/.local/bin:/usr/local/bin:$PATH
 
 # Path to your Oh My Zsh installation.
-export ZSH="$HOME/.oh-my-zsh"
+#export ZSH="$HOME/.oh-my-zsh"
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time Oh My Zsh is loaded, in which case,
@@ -70,9 +70,9 @@ export ZSH="$HOME/.oh-my-zsh"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git)
+#plugins=(git)
 
-source $ZSH/oh-my-zsh.sh
+#source $ZSH/oh-my-zsh.sh
 
 # User configuration
 
@@ -136,7 +136,7 @@ rm() {
 }
 export PATH="$PATH:/home/max/.local/bin"
 export PATH="$PATH:/usr/bin"
-eval "$(oh-my-posh init zsh --config '~/Downloads/atomicBit.omp.json')"
+eval "$(oh-my-posh init zsh --config '~/atomicBit.omp.json')"
 
 export PATH=$PATH:/home/max/.spicetify
 eval "$(ssh-agent -s)"  >/dev/null
@@ -144,3 +144,6 @@ ssh-add -l >/dev/null 2>&1 || ssh-add ~/.ssh/id_ed25519 >/dev/null 2>&1
 mkcd () {
   mkdir -p "$1" && cd "$1"
 }
+
+alias ff='fastfetch'
+alias cf='clear; fastfetch'
