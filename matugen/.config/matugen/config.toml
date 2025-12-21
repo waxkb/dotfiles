@@ -3,17 +3,11 @@
 #arguments = ["img", "--transition-type", "center"]
 #set = false
 
-#[templates.waybar]
-#input_path = "/home/max/.config/matugen/templates/colors.css"
-#output_path = "/home/max/.config/waybar/colors.css"
-#post_hook = "pkill -SIGUSR2 waybar"
-
-
 [config]
 
-[templates.hyprland]
-input_path = "/home/max/.config/matugen/templates/hyprland-colors.conf"
-output_path = "/home/max/.config/hypr/colors.conf"
+#[templates.hyprland]
+#input_path = "/home/max/.config/matugen/templates/hyprland-colors.conf"
+#output_path = "/home/max/.config/hypr/colors.conf"
 
 #[templates.hyprlock]
 #input_path = "/home/max/.config/matugen/templates/hyprland-colors.conf"
@@ -23,10 +17,6 @@ output_path = "/home/max/.config/hypr/colors.conf"
 input_path = "/home/max/.config/matugen/templates/kitty-colors.conf"
 output_path = "/home/max/.config/kitty/themes/your-theme.conf"
 post_hook = "kitty +kitten themes --reload-in=all your-theme"
-
-#[templates.rofi]
-#input_path = "/home/max/.config/matugen/templates/rofi-colors.rasi"
-#output_path = "/home/max/.config/rofi/colors.rasi"
 
 #[templates.mako]
 #input_path = "/home/max/.config/matugen/templates/mako"
@@ -47,10 +37,10 @@ post_hook = "killall -SIGUSR2 yazi"
 input_path = "/home/max/.config/matugen/templates/midnight-discord.css"
 output_path = "/home/max/.config/vesktop/themes/midnight.theme.css"
 
-[templates.pywalfox]
-input_path = "/home/max/.config/matugen/templates/pywalfox-colors.json"
-output_path = "/home/max/.cache/wal/colors.json"
-post_hook = "pywalfox update"
+#[templates.pywalfox]
+#input_path = "/home/max/.config/matugen/templates/pywalfox-colors.json"
+#output_path = "/home/max/.cache/wal/colors.json"
+#post_hook = "pywalfox update"
 
 [templates.cava]
 input_path = "/home/max/.config/matugen/templates/cava-colors.ini"
@@ -72,15 +62,15 @@ output_path = "/home/max/.config/clipse/custom_theme.json"
 
 [templates.zen]
 input_path = "/home/max/.config/matugen/templates/userChrome.css"
-output_path = "/home/max/.zen/u2exuqh8.Default (release)/chrome/userChrome.css"
+output_path = "/home/max/.zen/davnng42.Default (release)/chrome/userChrome.css"
 
 [templates.zen1]
 input_path = "/home/max/.config/matugen/templates/userContent.css"
-output_path = "/home/max/.zen/u2exuqh8.Default (release)/chrome/userContent.css"
+output_path = "/home/max/.zen/davnng42.Default (release)/chrome/userContent.css"
 
 [templates.zen2]
 input_path = "/home/max/.config/matugen/templates/zen-logo-mocha.svg"
-output_path = "/home/max/.zen/u2exuqh8.Default (release)/chrome/zen-mocha.svg"
+output_path = "/home/max/.zen/davnng42.Default (release)/chrome/zen-mocha.svg"
 
 [templates.spicetify]
 #pre_hook = "spicetify watch -s &"

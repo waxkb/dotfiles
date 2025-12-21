@@ -1,22 +1,12 @@
 layout {
-    // Hypr: gaps_in = 5, gaps_out = 10
-    // Niri has a single gaps value; use something in-between.
-    gaps 15
-
-    // No direct equivalent of Hypr’s dwindle/master layouts.
-    // Niri uses its own scrollable-tiling model.
-
-    // Approximate “rounded corners + border + active/inactive colors”
+    gaps 1
     focus-ring {
-        // Similar to “active border” accent color.
         active-color "#33ccff"
         inactive-color "#595959"
         width 2
     }
 
     border {
-        // Hypr: border_size = 2, rounded corners, low-opacity shadows.
-        // Here: keep border subtle and off by default, because focus-ring is on.
         off
         width 2
         active-color "#33ccff"
@@ -25,9 +15,6 @@ layout {
     }
 
     shadow {
-        // Hypr: shadow.enabled = false
-        // Keep Niri shadows off for a similar flat look.
-        // on
         off
         softness 30
         spread 5
@@ -35,28 +22,17 @@ layout {
         color "#0007"
     }
 
-    // Hypr: rounding = 8, active_opacity ~0.95, inactive_opacity ~0.85.
-    // Niri handles opacity and rounded geometry differently (via rules / CSD),
-    // so there is no direct global toggle here.
+    center-focused-column "never"
+
+    preset-column-widths {
+      proportion 0.33333
+      proportion 0.5
+      proportion 0.66667
+      proportion 1.0
+    }
 }
 
 animations {
-    // off
-    // slowdown 1.0
 }
 
-window-rule {
-    geometry-corner-radius 7
-    clip-to-geometry true
-}
-
-window-rule{
-  match is-active=true
-  opacity 0.95
-}
-
-window-rule{
-  match is-active=false
-  opacity 0.85
-}
 prefer-no-csd

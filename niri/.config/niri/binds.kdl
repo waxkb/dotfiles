@@ -1,44 +1,43 @@
 binds {
-    // Application launchers
     Mod+B { spawn "zen"; }
     Mod+Shift+B { spawn "kitty" "btop"; }
-    Mod+C { spawn "kitty" "--class" "clipse" "-e" "clipse"; }
+    Mod+D { close-window; }
+    Mod+Shift+D { quit; }
     Mod+E { spawn "kitty" "sudo" "yazi"; }
     Mod+F { spawn "kitty" "-e" "zsh" "-i" "-c" "fastfetch; exec zsh"; }
     Mod+M { spawn "spotify"; }
     Mod+N { spawn "kitty" "nvim"; }
-    Mod+O { spawn "hyprlock" "-q" "--immediate-render" "--no-fade-in"; }
+    Mod+Shift+N { spawn-sh "dms ipc call night toggle"; }
+    Mod+O { spawn-sh "dms ipc call lock lock"; }
     Mod+Shift+O { spawn "kitty" "obs"; }
     Mod+P { spawn "hyprpicker"; }
+    Mod+R { switch-preset-column-width; }
+    Mod+Shift+R { switch-preset-window-height; }
+    Mod+Ctrl+R { reset-window-height; }
+    Mod+S { spawn-sh "dms kill; sleep 1; systemctl --user start dms"; }
     Mod+Shift+S { spawn "hyprshot" "-o" "$HOME/screenshots" "-z" "-m" "region"; }
-    Mod+S { spawn-sh "killall hyprsunset; hyprsunset"; }
-    Mod+V { spawn "vesktop"; }
-    Mod+Shift+v { toggle-overview; }
-    Mod+W { spawn-sh "killall waybar; waybar"; }
-    Mod+Shift+W { spawn "waypaper"; }
-    Mod+X { spawn "$HOME/.config/niri/power-menu.zsh"; }
-    Mod+Y { spawn "$HOME/.config/niri/mpv-url"; }
-    Mod+Return { spawn "kitty"; }
-    Mod+Space { spawn "rofi" "-show" "run"; }
-
-    // Window management
-    Mod+D { close-window; }
-    Mod+Shift+D { quit; }
     Mod+T { toggle-window-floating; }
+    Mod+V { toggle-overview; }
+    Mod+Shift+V { spawn "vesktop"; }
+    Mod+Shift+W { spawn "waypaper"; }
+    Mod+Return { spawn "kitty"; }
+    Mod+Space { spawn-sh "dms ipc call spotlight open"; }
+    Mod+End { spawn-sh "dms ipc call mpris playPause"; }
+    Mod+Home { spawn-sh "dms ipc call mpris next"; }
+    Mod+Delete { spawn-sh "dms ipc call mpris previous"; }
 
-    // Focus movement (vim-style)
     Mod+H { focus-column-left; }
     Mod+L { focus-column-right; }
     Mod+K { focus-workspace-up; }
     Mod+J { focus-workspace-down; }
+    Mod+Prior { focus-column-first; }
+    Mod+Next { focus-column-last; }
 
-    // Move windows / columns
     Mod+Shift+H { move-column-left; }
     Mod+Shift+L { move-column-right; }
-    Mod+Shift+K { move-workspace-up; }
-    Mod+Shift+J { move-workspace-down; }
+    Mod+Shift+K { move-window-up; }
+    Mod+Shift+J { move-window-down; }
 
-    // Workspaces (by index)
     Mod+1 { focus-workspace 1; }
     Mod+2 { focus-workspace 2; }
     Mod+3 { focus-workspace 3; }
@@ -48,7 +47,6 @@ binds {
     Mod+7 { focus-workspace 7; }
     Mod+8 { focus-workspace 8; }
     Mod+9 { focus-workspace 9; }
-    Mod+0 { focus-workspace 10; }
 
     Mod+Shift+1 { move-column-to-workspace 1; }
     Mod+Shift+2 { move-column-to-workspace 2; }
@@ -59,21 +57,9 @@ binds {
     Mod+Shift+7 { move-column-to-workspace 7; }
     Mod+Shift+8 { move-column-to-workspace 8; }
     Mod+Shift+9 { move-column-to-workspace 9; }
-    Mod+Shift+0 { move-column-to-workspace 10; }
 
-    // Media keys – volume
-    XF86AudioRaiseVolume { spawn-sh "wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+ -l 1.0"; }
-    XF86AudioLowerVolume { spawn-sh "wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-"; }
-    XF86AudioMute        { spawn-sh "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"; }
-    XF86AudioMicMute     { spawn-sh "wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle"; }
-
-    // Media keys – playback
-    XF86AudioNext  { spawn-sh "playerctl next"; }
-    XF86AudioPlay  { spawn-sh "playerctl play-pause"; }
-    XF86AudioPause { spawn-sh "playerctl play-pause"; }
-    XF86AudioPrev  { spawn-sh "playerctl previous"; }
-
-    // Brightness
-    XF86MonBrightnessUp   { spawn "brightnessctl" "--class=backlight" "set" "+10%"; }
-    XF86MonBrightnessDown { spawn "brightnessctl" "--class=backlight" "set" "10%-"; }
+    Mod+Minus { set-column-width "-10%"; }
+    Mod+Equal { set-column-width "+10%"; }
+    Mod+Shift+Minus { set-window-height "-10%"; }
+    Mod+Shift+Equal { set-window-height "+10%"; }
 }

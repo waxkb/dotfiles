@@ -7,7 +7,7 @@
   "popupTransparency": 1,
   "dockTransparency": 1,
   "widgetBackgroundColor": "sth",
-  "widgetColorMode": "colorful",
+  "widgetColorMode": "default",
   "cornerRadius": 12,
   "use24HourClock": false,
   "showSeconds": false,
@@ -131,7 +131,7 @@
   "launcherLogoBrightness": 0.5,
   "launcherLogoContrast": 1,
   "launcherLogoSizeOffset": 0,
-  "fontFamily": "Inter Variable",
+  "fontFamily": "JetBrainsMonoNL NFM",
   "monoFontFamily": "JetBrainsMono NFM",
   "fontWeight": 400,
   "fontScale": 1,
@@ -236,9 +236,7 @@
       "name": "Main Bar",
       "enabled": true,
       "position": 0,
-      "screenPreferences": [
-        "all"
-      ],
+      "screenPreferences": [],
       "showOnLastDisplay": false,
       "leftWidgets": [
         {
