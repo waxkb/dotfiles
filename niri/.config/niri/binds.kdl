@@ -7,26 +7,25 @@ binds {
     //Mod+F { spawn "kitty" "-e" "zsh" "-i" "-c" "fastfetch; exec zsh"; }
     Mod+M { spawn "spotify"; }
     Mod+N { spawn "kitty" "nvim"; }
-    Mod+Shift+N { spawn-sh "dms ipc call night toggle"; }
-    Mod+O { spawn-sh "dms ipc call lock lock"; }
+    //Mod+Shift+N { spawn-sh "dms ipc call night toggle"; }
+    //Mod+O { spawn-sh "dms ipc call lock lock"; }
     Mod+Shift+O { spawn "kitty" "obs"; }
     Mod+P { spawn "hyprpicker"; }
     Mod+R { switch-preset-column-width; }
     Mod+Shift+R { switch-preset-window-height; }
     Mod+Ctrl+R { reset-window-height; }
-    Mod+S { spawn-sh "dms kill; sleep 1; systemctl --user start dms"; }
-    //Mod+Shift+S { spawn "hyprshot" "-o" "$HOME/screenshots" "-z" "-m" "region"; }
     Mod+Shift+S { screenshot; }
     Mod+T { toggle-window-floating; }
     Mod+V { toggle-overview; }
     Mod+Shift+V { spawn "vesktop"; }
+    Mod+W { spawn-sh "vicinae vicinae://extensions/sovereign/awww-switcher/wpgrid"; }
     Mod+Shift+W { spawn "waypaper"; }
     Mod+Return { spawn "kitty"; }
-    Mod+Space { spawn-sh "dms ipc call spotlight open"; }
-    Mod+End { spawn-sh "dms ipc call mpris playPause"; }
-    Mod+Home { spawn-sh "dms ipc call mpris next"; }
-    Mod+Delete { spawn-sh "dms ipc call mpris previous"; }
+    Mod+End { spawn-sh "playerctl play-pause"; }
+    Mod+Home { spawn-sh "playerctl next"; }
+    Mod+Delete { spawn-sh "playerctl previous"; }
     Mod+Shift+Slash { show-hotkey-overlay; }
+    Mod+Space { spawn "vicinae" "toggle"; }
 
     Mod+H { focus-column-left; }
     Mod+L { focus-column-right; }

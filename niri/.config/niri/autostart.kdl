@@ -1,2 +1,7 @@
 spawn-at-startup "activate-linux"
 spawn-at-startup "zen"
+spawn-sh-at-startup "systemctl --user start hyprpolkitagent"
+spawn-sh-at-startup "clipse -listen"
+spawn-at-startup "swww-daemon"
+spawn-sh-at-startup "swww restore"
+spawn-sh-at-startup "vicinae server"

@@ -1,23 +1,17 @@
+@import "./.config/waypaper/colors.css";
+
 /* Dark translucent background */
 window {
-    background-color: rgba(20, 20, 20, 1);
+    background-color: @background;
 }
 
 /* Default button appearance */
 button {
     background-image: none;
-    background-color: rgba(40, 40, 40, 0.9);
+    background-color: @background;
     color: #e0e0e0;
     border-radius: 4px;
-    border: 1px solid rgba(255, 255, 255, 0.08);
-    box-shadow: none;
-}
-
-/* Hover effect — slightly lighter */
-button:hover {
-    background-color: rgba(60, 60, 60, 0.9);
-    border-color: rgba(255, 255, 255, 0.12);
-    background-image: none;
+    border: 1px solid rgba(255, 255, 255, 0.00);
     box-shadow: none;
 }
 
@@ -31,8 +25,8 @@ button:hover > image {
 /* Highlighted button (e.g., selected wallpaper) */
 .highlighted-button {
     background-image: none;
-    background-color: rgba(100, 100, 100, 0.35);
-    border-color: rgba(255, 255, 255, 0.25);
+    background-color: rgba(100, 100, 100, 0);
+    border-color: @primary;
     box-shadow: none;
 }
 

@@ -1,27 +1,27 @@
 #[config.wallpaper]
-#command = ""
+#command = "swww"
 #arguments = ["img", "--transition-type", "center"]
 #set = false
 
 [config]
 
-#[templates.hyprland]
-#input_path = "/home/max/.config/matugen/templates/hyprland-colors.conf"
-#output_path = "/home/max/.config/hypr/colors.conf"
-
 #[templates.hyprlock]
 #input_path = "/home/max/.config/matugen/templates/hyprland-colors.conf"
 #output_path = "/home/max/.config/hypr/colors.conf"
+
+[templates.waypaper]
+input_path = "./templates/colors.css"
+output_path = "~/.config/waypaper/colors.css"
 
 [templates.kitty]
 input_path = "/home/max/.config/matugen/templates/kitty-colors.conf"
 output_path = "/home/max/.config/kitty/themes/your-theme.conf"
 post_hook = "kitty +kitten themes --reload-in=all your-theme"
 
-#[templates.mako]
-#input_path = "/home/max/.config/matugen/templates/mako"
-#output_path = "/home/max/.config/mako/mako-colors"
-#post_hook = "makoctl reload"
+[templates.mako]
+input_path = "/home/max/.config/matugen/templates/mako"
+output_path = "/home/max/.config/mako/mako-colors"
+post_hook = "makoctl reload"
 
 [templates.btop]
 input_path = "/home/max/.config/matugen/templates/btop.theme"
@@ -37,11 +37,6 @@ post_hook = "killall -SIGUSR2 yazi"
 input_path = "/home/max/.config/matugen/templates/midnight-discord.css"
 output_path = "/home/max/.config/vesktop/themes/midnight.theme.css"
 
-#[templates.pywalfox]
-#input_path = "/home/max/.config/matugen/templates/pywalfox-colors.json"
-#output_path = "/home/max/.cache/wal/colors.json"
-#post_hook = "pywalfox update"
-
 [templates.cava]
 input_path = "/home/max/.config/matugen/templates/cava-colors.ini"
 output_path = "/home/max/.config/cava/themes/your-theme"
@@ -55,10 +50,6 @@ post_hook = "pkill -SIGUSR1 nvim"
 [templates.clipse]
 input_path = "/home/max/.config/matugen/templates/clipse-theme.json"
 output_path = "/home/max/.config/clipse/custom_theme.json"
-
-#[templates.ff]
-#input_path = "/home/max/.config/matugen/templates/ff-colors.jsonc"
-#output_path = "/home/max/.config/fastfetch/config.jsonc"
 
 [templates.zen]
 input_path = "/home/max/.config/matugen/templates/userChrome.css"
@@ -80,3 +71,8 @@ output_path = "/home/max/.config/spicetify/Themes/text/color.ini"
 [templates.niri]
 input_path = "/home/max/.config/matugen/templates/colors.kdl"
 output_path = "/home/max/dotfiles/niri/.config/niri/colors.kdl"
+
+[templates.vicinae]
+input_path = "./templates/vicinae.toml"
+output_path = "~/.local/share/vicinae/themes/matugen.toml"
+post_hook = "vicinae theme set matugen"
