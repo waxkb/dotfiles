@@ -1,3 +1,2 @@
 spawn-at-startup "activate-linux"
 spawn-at-startup "zen"
-spawn-at-startup "kitty"
