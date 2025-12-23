@@ -5,3 +5,6 @@ spawn-sh-at-startup "clipse -listen"
 spawn-at-startup "swww-daemon"
 spawn-sh-at-startup "swww restore"
 spawn-sh-at-startup "vicinae server"
+hotkey-overlay {
+  skip-at-startup
+}

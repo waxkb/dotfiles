@@ -20,7 +20,7 @@ post_hook = "kitty +kitten themes --reload-in=all your-theme"
 
 [templates.mako]
 input_path = "/home/max/.config/matugen/templates/mako"
-output_path = "/home/max/.config/mako/mako-colors"
+output_path = "/home/max/.config/mako/config"
 post_hook = "makoctl reload"
 
 [templates.btop]
