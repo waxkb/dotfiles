@@ -105,6 +105,14 @@ export EDITOR='nvim'
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
+function y() {
+	local tmp="$(mktemp -t "yazi-cwd.XXXXXX")" cwd
+	yazi "$@" --cwd-file="$tmp"
+	IFS= read -r -d '' cwd < "$tmp"
+	[ -n "$cwd" ] && [ "$cwd" != "$PWD" ] && builtin cd -- "$cwd"
+	rm -f -- "$tmp"
+}
+
 
 # Set up fzf key bindings and fuzzy completion
 source <(fzf --zsh)
@@ -134,6 +142,10 @@ rm() {
     command rm "$@"
   fi
 }
+
+eval "$(ssh-agent -s)"
+ssh-add ~/.ssh/id_ed25519
+
 export PATH="$PATH:/home/max/.local/bin"
 export PATH="$PATH:/usr/bin"
 eval "$(oh-my-posh init zsh --config '~/atomicBit.omp.json')"
