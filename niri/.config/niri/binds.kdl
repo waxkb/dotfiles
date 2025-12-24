@@ -3,7 +3,7 @@ binds {
     Mod+Shift+B { spawn "kitty" "btop"; }
     Mod+D { close-window; }
     Mod+Shift+D { quit; }
-    Mod+E { spawn "kitty" "sudo" "yazi"; }
+    Mod+E { spawn "kitty" "yazi"; }
     //Mod+F { spawn "kitty" "-e" "zsh" "-i" "-c" "fastfetch; exec zsh"; }
     Mod+M { spawn "spotify"; }
     Mod+N { spawn "kitty" "nvim"; }

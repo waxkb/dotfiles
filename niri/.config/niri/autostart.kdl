@@ -11,3 +11,20 @@ spawn-sh-at-startup "vicinae server"
 hotkey-overlay {
   skip-at-startup
 }
+
+window-rule {
+  match at-startup=true app-id="zen-beta"
+  open-on-workspace "1"
+}
+
+window-rule {
+  match at-startup=true app-id="spotify"
+  open-on-workspace "2"
+  open-maximized true
+}
+
+window-rule {
+  match at-startup=true app-id="vesktop"
+  open-on-workspace "3"
+  open-maximized true
+}
