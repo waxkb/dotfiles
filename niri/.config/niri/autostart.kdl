@@ -1,6 +1,6 @@
 spawn-at-startup "zen"
 spawn-at-startup "spotify"
-spawn-at-startup "vesktop"
+//spawn-at-startup "vesktop"
 spawn-sh-at-startup "sleep 0.75; niri msg action focus-workspace 1"
 spawn-at-startup "activate-linux"
 spawn-sh-at-startup "systemctl --user start hyprpolkitagent"

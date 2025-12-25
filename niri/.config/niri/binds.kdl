@@ -4,9 +4,8 @@ binds {
     Mod+D { close-window; }
     Mod+Shift+D { quit; }
     Mod+E { spawn "kitty" "yazi"; }
-    //Mod+F { spawn "kitty" "-e" "zsh" "-i" "-c" "fastfetch; exec zsh"; }
     Mod+M { spawn "spotify"; }
-    Mod+N { spawn "kitty" "nvim"; }
+    Mod+Shift+M { spawn-sh "notify-send \"$(playerctl metadata --format \"{{ title }} - {{ artist }}\")\""; }
     //Mod+Shift+N { spawn-sh "dms ipc call night toggle"; }
     //Mod+O { spawn-sh "dms ipc call lock lock"; }
     Mod+Shift+O { spawn "kitty" "obs"; }

@@ -18,3 +18,9 @@ require("base16-colorscheme").setup({
 	base0E = "{{colors.secondary_container.default.hex}}",
 	base0F = "{{colors.error_container.default.hex}}",
 })
+
+require('lualine').setup({
+  options = {
+    theme = "base16",
+  }
+})

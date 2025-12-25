@@ -31,7 +31,9 @@ layout {
     }
 }
 
-animations {
-}
-
 prefer-no-csd
+
+window-rule {
+    geometry-corner-radius 7
+    clip-to-geometry true
+}
