@@ -1,7 +1,7 @@
 layout {
     // Hypr: gaps_in = 5, gaps_out = 10
     // Niri has a single gaps value; use something in-between.
-    gaps 15
+    gaps 14
 
     // No direct equivalent of Hypr’s dwindle/master layouts.
     // Niri uses its own scrollable-tiling model.
@@ -10,7 +10,7 @@ layout {
     focus-ring {
         // Similar to “active border” accent color.
         off
-        active-color "#e1b7f5"
+        active-color "#bac3ff"
         inactive-color "#ffffff"
         width 2
     }
@@ -20,8 +20,8 @@ layout {
         // Here: keep border subtle and off by default, because focus-ring is on.
         on
         width 2
-        active-color "#e1b7f5"
-        inactive-color "#161217"
+        active-color "#bac3ff"
+        inactive-color "#121318"
         urgent-color "#ffb4ab"
     }
 
