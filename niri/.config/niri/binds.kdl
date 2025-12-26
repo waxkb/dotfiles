@@ -7,8 +7,7 @@ binds {
     Mod+M { spawn "spotify"; }
     Mod+Shift+M { spawn-sh "notify-send \"$(playerctl metadata --format \"{{ title }} - {{ artist }}\")\""; }
     //Mod+Shift+N { spawn-sh "dms ipc call night toggle"; }
-    //Mod+O { spawn-sh "dms ipc call lock lock"; }
-    Mod+Shift+O { spawn "kitty" "obs"; }
+    Mod+O { spawn "hyprlock"; }
     Mod+P { spawn "hyprpicker"; }
     Mod+R { switch-preset-column-width; }
     Mod+Shift+R { switch-preset-window-height; }

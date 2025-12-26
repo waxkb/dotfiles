@@ -1,6 +1,4 @@
 spawn-at-startup "zen"
-spawn-at-startup "spotify"
-//spawn-at-startup "vesktop"
 spawn-sh-at-startup "sleep 0.75; niri msg action focus-workspace 1"
 spawn-at-startup "activate-linux"
 spawn-sh-at-startup "systemctl --user start hyprpolkitagent"
@@ -12,7 +10,7 @@ hotkey-overlay {
   skip-at-startup
 }
 
-window-rule {
+/*window-rule {
   match at-startup=true app-id="zen-beta"
   open-on-workspace "1"
 }
@@ -27,4 +25,4 @@ window-rule {
   match at-startup=true app-id="vesktop"
   open-on-workspace "3"
   open-maximized true
-}
+}*/
