@@ -39,7 +39,6 @@ mkcd () {
 
 eval "$(starship init zsh)"
 
-alias acp='git add . && git commit -m "e" && git push origin main'
-alias sacp='git status && git add . && git commit -m "e" && git push origin main'
+alias sacp='gita ll && gita super add . && gita super commit -m "e" && gita push'
 alias ff='fastfetch'
 alias cf='clear; fastfetch'
