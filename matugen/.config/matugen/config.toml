@@ -5,10 +5,6 @@
 
 [config]
 
-#[templates.hyprlock]
-#input_path = "/home/max/.config/matugen/templates/hyprland-colors.conf"
-#output_path = "/home/max/.config/hypr/colors.conf"
-
 [templates.kitty]
 input_path = "/home/max/.config/matugen/templates/kitty-colors.conf"
 output_path = "/home/max/.config/kitty/themes/your-theme.conf"
@@ -59,11 +55,6 @@ output_path = "/home/max/.zen/davnng42.Default (release)/chrome/userContent.css"
 input_path = "/home/max/.config/matugen/templates/zen-logo-mocha.svg"
 output_path = "/home/max/.zen/davnng42.Default (release)/chrome/zen-mocha.svg"
 
-[templates.spicetify]
-#pre_hook = "spicetify watch -s &"
-input_path = "/home/max/.config/matugen/templates/spicetify-colors.ini"
-output_path = "/home/max/.config/spicetify/Themes/text/color.ini"
-
 [templates.niri]
 input_path = "/home/max/.config/matugen/templates/colors.kdl"
 output_path = "/home/max/dotfiles/niri/.config/niri/colors.kdl"
@@ -72,3 +63,8 @@ output_path = "/home/max/dotfiles/niri/.config/niri/colors.kdl"
 input_path = "./templates/vicinae.toml"
 output_path = "~/.local/share/vicinae/themes/matugen.toml"
 post_hook = "vicinae theme set matugen"
+
+[templates.waybar]
+input_path = './templates/colors.css'
+output_path = '/home/max/.config/waybar/colors.css'
+post_hook = 'pkill -SIGUSR2 waybar'

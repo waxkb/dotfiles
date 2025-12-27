@@ -6,6 +6,7 @@ binds {
     Mod+E { spawn "kitty" "yazi"; }
     Mod+M { spawn "spotify"; }
     Mod+Shift+M { spawn-sh "notify-send \"$(playerctl metadata --format \"{{ title }} - {{ artist }}\")\""; }
+    Mod+N { spawn-sh "vicinae vicinae://extensions/knoopx/nix/packages"; }
     //Mod+Shift+N { spawn-sh "dms ipc call night toggle"; }
     Mod+O { spawn "hyprlock"; }
     Mod+P { spawn "hyprpicker"; }
@@ -18,7 +19,7 @@ binds {
     Mod+V { toggle-overview; }
     Mod+Shift+V { spawn "vesktop"; }
     Mod+W { spawn-sh "vicinae vicinae://extensions/sovereign/awww-switcher/wpgrid"; }
-    Mod+Shift+W { spawn "waypaper"; }
+    Mod+Shift+W { spawn-sh "pkill waybar; waybar"; }
     Mod+Return { spawn "kitty"; }
     Mod+End { spawn-sh "playerctl play-pause"; }
     Mod+Home { spawn-sh "playerctl next"; }
