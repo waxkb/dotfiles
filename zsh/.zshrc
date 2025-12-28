@@ -27,6 +27,7 @@ rm() {
 
 export PATH="$PATH:/home/max/.local/bin"
 export PATH="$PATH:/usr/bin"
+export PATH="$PATH/home/max/.cargo/bin"
 
 export PATH=$PATH:/home/max/.spicetify
 export MPD_HOST="/home/max/.mpd/socket"

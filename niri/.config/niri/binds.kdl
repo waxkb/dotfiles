@@ -47,15 +47,11 @@ binds {
 
     Mod+BracketLeft  { consume-or-expel-window-left; }
     Mod+BracketRight { consume-or-expel-window-right; }
-
-    // Consume one window from the right to the bottom of the focused column.
     Mod+Comma  { consume-window-into-column; }
-    // Expel the bottom window from the focused column to the right.
     Mod+Period { expel-window-from-column; }
 
     Mod+F { maximize-column; }
     Mod+Shift+F { expand-column-to-available-width; }
-
     Mod+C { center-column; }
     Mod+Shift+C { center-visible-columns; }
 
