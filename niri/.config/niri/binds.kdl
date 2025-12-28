@@ -21,9 +21,9 @@ binds {
     Mod+W { spawn-sh "vicinae vicinae://extensions/sovereign/awww-switcher/wpgrid"; }
     Mod+Shift+W { spawn "~/start-waybar.sh"; }
     Mod+Return { spawn "kitty"; }
-    Mod+End { spawn-sh "rmpc remote keybind p"; }
-    Mod+Home { spawn-sh "rmpc remote keybind \">\""; }
-    Mod+Delete { spawn-sh "rmpc remote keybind \">\""; }
+    Mod+End { spawn-sh "playerctl play-pause"; }
+    Mod+Home { spawn-sh "playerctl next"; }
+    Mod+Delete { spawn-sh "playerctl previous"; }
     Mod+Shift+Slash { show-hotkey-overlay; }
     Mod+Space { spawn "vicinae" "toggle"; }
 
