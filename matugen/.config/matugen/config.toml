@@ -68,3 +68,7 @@ post_hook = "vicinae theme set matugen"
 input_path = './templates/colors.css'
 output_path = '/home/max/.config/waybar/colors.css'
 post_hook = 'pkill -SIGUSR2 waybar'
+
+[templates.rmpc]
+input_path = './templates/rmpc-theme.ron'
+output_path = '/home/max/.config/rmpc/themes/matugen.ron'

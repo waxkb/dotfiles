@@ -12,7 +12,7 @@ function y() {
 source <(fzf --zsh)
 rm() {
   if [[ "$*" == *"-rf"* || "$*" == *"-fr"* ]]; then
-    echo "⚠️  You are about to run: rm -rf $*"
+    echo "⚠️  You are about to run: rm $*"
     read "reply1?Are you absolutely sure? (yes/no) "
     [[ "$reply1" == "yes" ]] || { echo "Aborted."; return 1; }
     read "reply2?Really proceed? This is irreversible. (yes/no) "
@@ -29,6 +29,7 @@ export PATH="$PATH:/home/max/.local/bin"
 export PATH="$PATH:/usr/bin"
 
 export PATH=$PATH:/home/max/.spicetify
+export MPD_HOST="/home/max/.mpd/socket"
 
 eval "$(ssh-agent -s)"  >/dev/null
 ssh-add -l >/dev/null 2>&1 || ssh-add ~/.ssh/id_ed25519 >/dev/null 2>&1

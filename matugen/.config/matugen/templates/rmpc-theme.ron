@@ -1,0 +1,217 @@
+#![enable(implicit_some)]
+#![enable(unwrap_newtypes)]
+#![enable(unwrap_variant_newtypes)]
+(
+    show_song_table_header: false,
+    draw_borders: true,
+    browser_column_widths: [20, 38, 42],
+    background_color: "{{colors.background.default.hex}}",
+    modal_backdrop: true,
+    text_color: "#d8dee9",
+    header_background_color: "{{colors.background.default.hex}}",
+    modal_background_color: "{{colors.background.default.hex}}",
+    preview_label_style: (fg: "#b48ead"),
+    preview_metadata_group_style: (fg: "{{colors.primary.default.hex}}"),
+    song_table_album_separator: None,
+    tab_bar: (
+        enabled: true,
+        active_style: (fg: "{{colors.background.default.hex}}", bg: "{{colors.primary.default.hex}}", modifiers: "Bold"),
+        inactive_style: (fg: "#d8dee9", bg: "{{colors.background.default.hex}}"),
+    ),
+    highlighted_item_style: (fg: "#a3be8c", modifiers: "Bold"),
+    current_item_style: (fg: "{{colors.background.default.hex}}", bg: "{{colors.primary.default.hex}}", modifiers: "Bold"),
+    borders_style: (fg: "{{colors.primary.default.hex}}", modifiers: "Bold"),
+    highlight_border_style: (fg: "{{colors.primary.default.hex}}"),
+    symbols: (song: "󰝚 ", dir: " ", playlist: "󰲸 ", marker: "* ", ellipsis: "...",
+        song_style: (fg: "{{colors.primary.default.hex}}"), dir_style: (fg: "{{colors.primary.default.hex}}")
+    ),
+    progress_bar: (
+        symbols: ["", "█", "", "█", "" ],
+        track_style: (fg: "#3b4252", bg: "{{colors.background.default.hex}}"),
+        elapsed_style: (fg: "{{colors.primary.default.hex}}", bg: "{{colors.background.default.hex}}"),
+        thumb_style: (fg: "{{colors.primary.default.hex}}", bg: "#3b4252"),
+    ),
+    scrollbar: (
+        symbols: ["┋", "█", "󰄿", "󰄼"],
+        track_style: (fg: "{{colors.primary.default.hex}}"),
+        ends_style: (fg: "{{colors.primary.default.hex}}"),
+        thumb_style: (fg: "{{colors.primary.default.hex}}"),
+    ),
+    song_table_format: [
+        (
+        prop: (kind: Transform(Replace(content: (kind: Sticker("rating")), replacements: [
+            (match:  "0", replace: (kind: Group([(kind: Text("󰎡"))]))),
+            (match:  "1", replace: (kind: Group([(kind: Text("󰎤"),style: (fg: "{{colors.primary.default.hex}}"))]))),
+            (match:  "2", replace: (kind: Group([(kind: Text("󰎧"),style: (fg: "{{colors.primary.default.hex}}"))]))),
+            (match:  "3", replace: (kind: Group([(kind: Text("󰎪"),style: (fg: "{{colors.primary.default.hex}}"))]))),
+            (match:  "4", replace: (kind: Group([(kind: Text("󰎭"),style: (fg: "{{colors.primary.default.hex}}"))]))),
+            (match:  "5", replace: (kind: Group([(kind: Text("󰎱"),style: (fg: "{{colors.primary.default.hex}}"))]))),
+            (match:  "6", replace: (kind: Group([(kind: Text("󰎳"),style: (fg: "{{colors.primary.default.hex}}"))]))),
+            (match:  "7", replace: (kind: Group([(kind: Text("󰎶"),style: (fg: "{{colors.primary.default.hex}}"))]))),
+            (match:  "8", replace: (kind: Group([(kind: Text("󰎹"),style: (fg: "{{colors.primary.default.hex}}"))]))),
+            (match:  "9", replace: (kind: Group([(kind: Text("󰎼"),style: (fg: "{{colors.primary.default.hex}}"))]))),
+            (match: "10", replace: (kind: Group([(kind: Text("󰽽"),style: (fg: "{{colors.primary.default.hex}}"))]))),
+        ])), default: (kind: Text(""), style: (fg: "#5e81ac"))),
+        width: "3",
+        label: "Rating",
+        alignment: Left,
+        ),
+        (
+            prop: (kind: Property(Artist), style: (fg: "{{colors.primary.default.hex}}"),
+                default: (kind: Text("Unknown Artist"), style: (fg: "#b48ead"))),
+            width: "21%"
+        ),
+        (
+            prop: (kind: Property(Title), style: (fg: "#88c0d0"),
+                default: (kind: Property(Filename), style: (fg: "#d8dee9"))),
+            width: "45%"
+        ),
+        (
+            prop: (kind: Property(Album), style: (fg: "{{colors.primary.default.hex}}"),
+                default: (kind: Text("Unknown Album"), style: (fg: "#b48ead"))),
+            width: "34%"
+        ),
+        (
+            prop: (kind: Property(Duration), style: (fg: "#88c0d0"),
+                default: (kind: Text("-"))),
+            width: "5%", alignment: Right
+        ),
+    ],
+    layout: Split(
+        direction: Vertical, panes: [
+            (size: "3", pane: Pane(Tabs)),
+            (size: "4", borders: "ALL", pane: Component("custom-header")),
+            (size: "100%", borders: "NONE", pane: Pane(TabContent)),
+            (size: "3", borders: "TOP | BOTTOM", pane: Pane(ProgressBar)),
+        ]),
+    header: (rows: []),
+    browser_song_format: [
+        (kind: Group([
+                    (kind: Property(Track)),
+                    (kind: Text(" ")),
+                ])),
+        (kind: Group([
+                    (kind: Property(Artist)),
+                    (kind: Text(" - ")),
+                    (kind: Property(Title)),
+                ]), default: (kind: Property(Filename)))
+    ],
+    level_styles: (
+        info:  (fg: "#a3be8c", bg: "{{colors.background.default.hex}}"),
+        warn:  (fg: "#ebcb8b", bg: "{{colors.background.default.hex}}"),
+        error: (fg: "#bf616a", bg: "{{colors.background.default.hex}}"),
+        debug: (fg: "#d08770", bg: "{{colors.background.default.hex}}"),
+        trace: (fg: "#b48ead", bg: "{{colors.background.default.hex}}"),
+    ),
+    components: {
+        "custom_song_table_header": Split(borders: "ALL", direction: Horizontal, panes: [
+                (size: "5", pane: Pane(Property(content: [
+                                (kind: Text(" 󰩳"), style: (fg: "{{colors.primary.default.hex}}")),
+                            ], align: Left))
+                ),
+                (size: "21%", pane: Pane(Property(content: [
+                                (kind: Text("Artist "), style: (fg: "#d8dee9")),
+                                (kind: Text(""), style: (fg: "{{colors.primary.default.hex}}"))
+                            ], align: Left))
+                ),
+                (size: "39%", pane: Pane(Property(content: [
+                                (kind: Text("Title "), style: (fg: "#d8dee9")),
+                                (kind: Text(""), style: (fg: "{{colors.primary.default.hex}}"))
+                            ], align: Left))
+                ),
+                (size: "33%", pane: Pane(Property(content: [
+                                (kind: Text("Album "), style: (fg: "#d8dee9")),
+                                (kind: Text("󰀥"), style: (fg: "{{colors.primary.default.hex}}"))
+                            ], align: Left))
+                ),
+                (size: "7%", pane: Pane(Property(content: [
+                                (kind: Text("Length "), style: (fg: "#d8dee9")),
+                                (kind: Text(" "), style: (fg: "{{colors.primary.default.hex}}"))
+                            ], align: Right))
+                ),
+                (size: "1", pane: Pane(Property(content: [
+                                (kind: Text(" "), style: (fg: "{{colors.primary.default.hex}}")),
+                            ], align: Left))
+                ),
+            ]),
+        "custom-header": Split(direction: Horizontal, panes: [
+                (size: "33%", pane: Split(direction: Vertical, panes: [
+                            (size: "100%", pane: Pane(Property(content: [
+                                            (kind: Text(""), style: (fg: "{{colors.primary.default.hex}}", modifiers: "Bold")),
+                                            (kind: Property(Status(StateV2(playing_label: "  ", paused_label: "  ", stopped_label: "  "))),style: (fg: "#d8dee9")),
+                                            (kind: Text(" "), style: (fg: "{{colors.primary.default.hex}}", modifiers: "Bold")),
+                                            (kind: Property(Widget(ScanStatus)), style: (fg: "#d8dee9", modifiers: "Bold"))
+                                        ], align: Left))
+                            ),
+                            (size: "100%", pane: Pane(Property(content: [
+                                            (kind: Text("[ "),style: (fg: "{{colors.primary.default.hex}}", modifiers: "Bold")),
+                                            (kind: Property(Status(Elapsed)),style: (fg: "#d8dee9")),
+                                            (kind: Text(" / "),style: (fg: "{{colors.primary.default.hex}}", modifiers: "Bold")),
+                                            (kind: Property(Status(Duration)),style: (fg: "#d8dee9")),
+                                            (kind: Text(" | "),style: (fg: "{{colors.primary.default.hex}}", modifiers: "Bold")),
+                                            (kind: Property(Status(Bitrate)),default: (kind: Text(" ")),style: (fg: "#d8dee9")),
+                                            (kind: Text(" kbps"),style: (fg: "{{colors.primary.default.hex}}")),
+                                            (kind: Text(" ]"),style: (fg: "{{colors.primary.default.hex}}", modifiers: "Bold"))
+                                        ], align: Left))
+                            ),
+                        ])
+                ),
+                (size: "34%", pane: Split(direction: Vertical, panes: [
+                            (size: "100%", pane: Pane(Property(content: [
+                                            (kind: Property(Song(Title)), style: (fg: "#d8dee9",modifiers: "Bold"),
+                                                default: (kind: Property(Song(Filename)), style: (fg: "#d8dee9",modifiers: "Bold")))
+                                        ], align: Center))
+                            ),
+                            (size: "100%", pane: Pane(Property(content: [
+                                            (kind: Property(Song(Artist)), style: (fg: "#88c0d0"),
+                                                default: (kind: Text("Unknown Artist"), style: (fg: "#88c0d0"))),
+                                            (kind: Text(" - "), style: (fg: "#d8dee9")),
+                                            (kind: Property(Song(Album)),style: (fg: "{{colors.primary.default.hex}}" ),
+                                                default: (kind: Text("Unknown Album"), style: (fg: "{{colors.primary.default.hex}}")))
+                                        ], align: Center))
+                            ),
+                        ])
+                ),
+                (size: "33%", pane: Split(direction: Vertical, panes: [
+                            (size: "100%", pane: Pane(Property(content: [
+                                            (kind: Text(" 󱡬"), style: (fg: "{{colors.primary.default.hex}}", modifiers: "Bold")),
+                                            (kind: Property(Status(Volume)), style: (fg: "#d8dee9")),
+                                            (kind: Text("% "), style: (fg: "{{colors.primary.default.hex}}", modifiers: "Bold"))
+                                        ], align: Right))
+                            ),
+                            (size: "100%", pane: Pane(Property(content: [
+                                            (kind: Text("[ "),style: (fg: "{{colors.primary.default.hex}}", modifiers: "Bold")),
+                                            (kind: Property(Status(QueueLength())),style: (fg: "#d8dee9")),
+                                            (kind: Text(" 󰴍 | "),style: (fg: "{{colors.primary.default.hex}}", modifiers: "Bold")),
+                                            (kind: Property(Status(QueueTimeTotal(separator: " "))),style: (fg: "#d8dee9")),
+                                            (kind: Text(" 󱎫 | "),style: (fg: "{{colors.primary.default.hex}}", modifiers: "Bold")),
+                                            (kind: Property(Status(RepeatV2(on_label: "", off_label: "",
+                                                            on_style: (fg: "#d8dee9", modifiers: "Bold"), off_style: (fg: "#4c566a", modifiers: "Bold"))))),
+                                            (kind: Text(" | "),style: (fg: "{{colors.primary.default.hex}}", modifiers: "Bold")),
+                                            (kind: Property(Status(RandomV2(on_label: "", off_label: "",
+                                                            on_style: (fg: "#d8dee9", modifiers: "Bold"), off_style: (fg: "#4c566a", modifiers: "Bold"))))),
+                                            (kind: Text(" | "),style: (fg: "{{colors.primary.default.hex}}", modifiers: "Bold")),
+                                            (kind: Property(Status(ConsumeV2(on_label: "󰮯", off_label: "󰮯", oneshot_label: "󰮯󰇊",
+                                                            on_style: (fg: "#d8dee9", modifiers: "Bold"), off_style: (fg: "#4c566a", modifiers: "Bold"))))),
+                                            (kind: Text(" | "),style: (fg: "{{colors.primary.default.hex}}", modifiers: "Bold")),
+                                            (kind: Property(Status(SingleV2(on_label: "󰎤", off_label: "󰎦", oneshot_label: "󰇊", off_oneshot_label: "󱅊",
+                                                            on_style: (fg: "#d8dee9", modifiers: "Bold"), off_style: (fg: "#4c566a", modifiers: "Bold"))))),
+                                            (kind: Text(" ]"),style: (fg: "{{colors.primary.default.hex}}", modifiers: "Bold")),
+                                        ], align: Right))
+                            ),
+                        ])
+                ),
+            ])
+    },
+    cava: (
+        bar_symbols: ['▁', '▂', '▃', '▄', '▅', '▆', '▇', '█'],
+        bar_width: 1, bar_spacing: 1,
+        bg_color: "{{colors.background.default.hex}}",
+        bar_color: Gradient({
+                0:   "#5e81ac",
+                33:  "{{colors.primary.default.hex}}",
+                67:  "#88c0d0",
+                100: "#8fbcbb",
+            })
+    ),
+)
