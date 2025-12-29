@@ -10,7 +10,7 @@ layout {
     focus-ring {
         // Similar to “active border” accent color.
         off
-        active-color "#b2c5ff"
+        active-color "#ffb2b7"
         inactive-color "#ffffff"
         width 2
     }
@@ -20,8 +20,8 @@ layout {
         // Here: keep border subtle and off by default, because focus-ring is on.
         on
         width 2
-        active-color "#b2c5ff"
-        inactive-color "#121318"
+        active-color "#ffb2b7"
+        inactive-color "#1a1112"
         urgent-color "#ffb4ab"
     }
 

@@ -18,12 +18,12 @@ post_hook = "makoctl reload"
 [templates.btop]
 input_path = "/home/max/.config/matugen/templates/btop.theme"
 output_path = "/home/max/.config/btop/themes/matugen.theme"
-post_hook = "killall -SIGUSR2 btop"
+post_hook = "pkill -SIGUSR2 btop"
 
 [templates.yazi]
 input_path = "/home/max/.config/matugen/templates/yazi-theme.toml"
 output_path = "/home/max/.config/yazi/theme.toml"
-post_hook = "killall -SIGUSR2 yazi"
+post_hook = "pkill -SIGUSR2 yazi"
 
 [templates.vesktop]
 input_path = "/home/max/.config/matugen/templates/midnight-discord.css"
@@ -69,6 +69,10 @@ input_path = './templates/colors.css'
 output_path = '/home/max/.config/waybar/colors.css'
 post_hook = 'pkill -SIGUSR2 waybar'
 
-[templates.rmpc]
-input_path = './templates/rmpc-theme.ron'
-output_path = '/home/max/.config/rmpc/themes/matugen.ron'
+[templates.swaync]
+input_path = './templates/colors.css'
+output_path = '/home/max/.config/swaync/colors.css'
+
+[templates.wlogout]
+input_path = './templates/colors.css'
+output_path = '/home/max/.config/wlogout/colors.css'

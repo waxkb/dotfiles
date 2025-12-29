@@ -7,9 +7,11 @@ binds {
     Mod+M { spawn "spotify"; }
     Mod+Shift+M { spawn-sh "notify-send \"$(playerctl metadata --format \"{{ title }} - {{ artist }}\")\""; }
     Mod+N { spawn-sh "vicinae vicinae://extensions/knoopx/nix/packages"; }
+    Mod+Shift+N { spawn-sh "swaync-client -t"; }
     //Mod+Shift+N { spawn-sh "dms ipc call night toggle"; }
     Mod+O { spawn "hyprlock"; }
     Mod+P { spawn "hyprpicker"; }
+    Mod+Shift+P { spawn-sh "wlogout -l .config/wlogout/layout_1 -C .config/wlogout/style_1.css"; }
     Mod+R { switch-preset-column-width; }
     Mod+Shift+R { switch-preset-window-height; }
     Mod+Ctrl+R { reset-window-height; }
@@ -19,7 +21,7 @@ binds {
     Mod+V { toggle-overview; }
     Mod+Shift+V { spawn "vesktop"; }
     Mod+W { spawn-sh "vicinae vicinae://extensions/sovereign/awww-switcher/wpgrid"; }
-    Mod+Shift+W { spawn "~/start-waybar.sh"; }
+    Mod+Shift+W { spawn-sh "~/start-waybar.sh; swaync-client -R -rs"; }
     Mod+Return { spawn "kitty"; }
     Mod+End { spawn-sh "playerctl play-pause"; }
     Mod+Home { spawn-sh "playerctl next"; }
