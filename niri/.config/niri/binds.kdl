@@ -1,33 +1,47 @@
 binds {
-    Mod+B { spawn "zen"; }
-    Mod+Shift+B { spawn "kitty" "btop"; }
-    Mod+D { close-window; }
-    Mod+Shift+D { quit; }
-    Mod+E { spawn "kitty" "yazi"; }
-    Mod+M { spawn "spotify"; }
-    Mod+Shift+M { spawn-sh "notify-send \"$(playerctl metadata --format \"{{ title }} - {{ artist }}\")\""; }
-    Mod+N { spawn-sh "vicinae vicinae://extensions/knoopx/nix/packages"; }
-    Mod+Shift+N { spawn-sh "swaync-client -t"; }
-    //Mod+Shift+N { spawn-sh "dms ipc call night toggle"; }
-    Mod+O { spawn "hyprlock"; }
-    Mod+P { spawn "hyprpicker"; }
-    Mod+Shift+P { spawn-sh "wlogout -l .config/wlogout/layout_1 -C .config/wlogout/style_1.css"; }
-    Mod+R { switch-preset-column-width; }
-    Mod+Shift+R { switch-preset-window-height; }
-    Mod+Ctrl+R { reset-window-height; }
-    Mod+S { spawn-sh "gammastep -O 3000"; }
-    Mod+Shift+S { screenshot; }
-    Mod+T { toggle-window-floating; }
-    Mod+V { toggle-overview; }
-    Mod+Shift+V { spawn "vesktop"; }
-    Mod+W { spawn-sh "vicinae vicinae://extensions/sovereign/awww-switcher/wpgrid"; }
-    Mod+Shift+W { spawn-sh "~/start-waybar.sh; swaync-client -R -rs"; }
-    Mod+Return { spawn "kitty"; }
-    Mod+End { spawn-sh "playerctl play-pause"; }
-    Mod+Home { spawn-sh "playerctl next"; }
-    Mod+Delete { spawn-sh "playerctl previous"; }
-    Mod+Shift+Slash { show-hotkey-overlay; }
-    Mod+Space { spawn "vicinae" "toggle"; }
+    Mod+B hotkey-overlay-title="Open Zen Browser" { spawn "zen"; }
+    Mod+Shift+B hotkey-overlay-title="Open System Monitor (btop)" { spawn "kitty" "btop"; }
+    Mod+D hotkey-overlay-title="Close Focused Window" { close-window; }
+    Mod+Shift+D hotkey-overlay-title="Quit Niri Session" { quit; }
+    Mod+E hotkey-overlay-title="Open File Manager (Yazi)" { spawn "kitty" "yazi"; }
+    Mod+M hotkey-overlay-title="Open Spotify" { spawn "spotify"; }
+    Mod+Shift+M hotkey-overlay-title="Show Current Track Notification" {
+        spawn-sh "notify-send \"$(playerctl metadata --format \"{{ title }} - {{ artist }}\")\"";
+    }
+    Mod+N hotkey-overlay-title="Open Nix Packages Browser" {
+        spawn-sh "vicinae vicinae://extensions/knoopx/nix/packages";
+    }
+    Mod+Shift+N hotkey-overlay-title="Toggle Notification Center" {
+        spawn-sh "swaync-client -t";
+    }
+    // Mod+Shift+N hotkey-overlay-title="Toggle Night Mode" { spawn-sh "dms ipc call night toggle"; }
+    Mod+O hotkey-overlay-title="Lock Screen" { spawn "hyprlock"; }
+    Mod+P hotkey-overlay-title="Pick Color from Screen" { spawn "hyprpicker"; }
+    Mod+Shift+P hotkey-overlay-title="Open Logout Menu" {
+        spawn-sh "wlogout -l .config/wlogout/layout_1 -C .config/wlogout/style_1.css";
+    }
+    Mod+R hotkey-overlay-title="Switch Column Width Preset" { switch-preset-column-width; }
+    Mod+Shift+R hotkey-overlay-title="Switch Window Height Preset" { switch-preset-window-height; }
+    Mod+Ctrl+R hotkey-overlay-title="Reset Window Height" { reset-window-height; }
+    Mod+S hotkey-overlay-title="Enable Night Light (Warm Display)" {
+        spawn-sh "gammastep -O 3000";
+    }
+    Mod+Shift+S hotkey-overlay-title="Take Screenshot" { screenshot; }
+    Mod+T hotkey-overlay-title="Toggle Floating Window" { toggle-window-floating; }
+    Mod+V hotkey-overlay-title="Toggle Window Overview" { toggle-overview; }
+    Mod+Shift+V hotkey-overlay-title="Open Vesktop (Discord)" { spawn "vesktop"; }
+    Mod+W hotkey-overlay-title="Open Wallpaper Grid" {
+        spawn-sh "vicinae vicinae://extensions/sovereign/awww-switcher/wpgrid";
+    }
+    Mod+Shift+W hotkey-overlay-title="Restart Waybar & Notifications" {
+        spawn-sh "~/start-waybar.sh; swaync-client -R -rs";
+    }
+    Mod+Return hotkey-overlay-title="Open Terminal (Kitty)" { spawn "kitty"; }
+    Mod+End hotkey-overlay-title="Play / Pause Media" { spawn-sh "playerctl play-pause"; }
+    Mod+Home hotkey-overlay-title="Next Media Track" { spawn-sh "playerctl next"; }
+    Mod+Delete hotkey-overlay-title="Previous Media Track" { spawn-sh "playerctl previous"; }
+    Mod+Shift+Slash hotkey-overlay-title="Show Hotkey Overlay" { show-hotkey-overlay; }
+    Mod+Space hotkey-overlay-title="Toggle App Launcher" { spawn "vicinae" "toggle"; }
 
     Mod+H { focus-column-left; }
     Mod+L { focus-column-right; }

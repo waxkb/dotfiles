@@ -1,17 +1,17 @@
-spawn-sh-at-startup "~/start-waybar.sh"
-spawn-sh-at-startup "swaync"
-spawn-at-startup "zen"
-spawn-sh-at-startup "sleep 0.75; niri msg action focus-workspace 1"
-spawn-at-startup "activate-linux"
-spawn-sh-at-startup "systemctl --user start hyprpolkitagent"
-spawn-sh-at-startup "clipse -listen"
+//spawn-sh-at-startup "~/start-waybar.sh"
+//spawn-sh-at-startup "swaync"
+//spawn-sh-at-startup "clipse -listen"
 spawn-at-startup "swww-daemon"
-spawn-sh-at-startup "swww restore"
+//spawn-sh-at-startup "swww restore"
+//spawn-sh-at-startup "systemctl --user start hyprpolkitagent"
+spawn-at-startup "zen"
+spawn-at-startup "activate-linux"
 spawn-sh-at-startup "vicinae server"
 hotkey-overlay {
   skip-at-startup
 }
 
+//spawn-sh-at-startup "sleep 0.75; niri msg action focus-workspace 1"
 /*window-rule {
   match at-startup=true app-id="zen-beta"
   open-on-workspace "1"

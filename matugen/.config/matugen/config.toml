@@ -10,10 +10,10 @@ input_path = "/home/max/.config/matugen/templates/kitty-colors.conf"
 output_path = "/home/max/.config/kitty/themes/your-theme.conf"
 post_hook = "kitty +kitten themes --reload-in=all your-theme"
 
-[templates.mako]
-input_path = "/home/max/.config/matugen/templates/mako"
-output_path = "/home/max/.config/mako/config"
-post_hook = "makoctl reload"
+#[templates.mako]
+#input_path = "/home/max/.config/matugen/templates/mako"
+#output_path = "/home/max/.config/mako/config"
+#post_hook = "makoctl reload"
 
 [templates.btop]
 input_path = "/home/max/.config/matugen/templates/btop.theme"
@@ -39,9 +39,9 @@ input_path = "/home/max/.config/matugen/templates/nvim-colors.lua"
 output_path = "/home/max/.config/nvim/generated.lua"
 post_hook = "pkill -SIGUSR1 nvim"
 
-[templates.clipse]
-input_path = "/home/max/.config/matugen/templates/clipse-theme.json"
-output_path = "/home/max/.config/clipse/custom_theme.json"
+#[templates.clipse]
+#input_path = "/home/max/.config/matugen/templates/clipse-theme.json"
+#output_path = "/home/max/.config/clipse/custom_theme.json"
 
 [templates.zen]
 input_path = "/home/max/.config/matugen/templates/userChrome.css"
@@ -60,19 +60,19 @@ input_path = "/home/max/.config/matugen/templates/colors.kdl"
 output_path = "/home/max/dotfiles/niri/.config/niri/colors.kdl"
 
 [templates.vicinae]
-input_path = "./templates/vicinae.toml"
+input_path = "/home/max/.config/matugen/templates/vicinae.toml"
 output_path = "~/.local/share/vicinae/themes/matugen.toml"
 post_hook = "vicinae theme set matugen"
 
-[templates.waybar]
-input_path = './templates/colors.css'
-output_path = '/home/max/.config/waybar/colors.css'
-post_hook = 'pkill -SIGUSR2 waybar'
+#[templates.waybar]
+#input_path = '/home/max/.config/matugen/templates/colors.css'
+#output_path = '/home/max/.config/waybar/colors.css'
+#post_hook = 'pkill -SIGUSR2 waybar'
 
-[templates.swaync]
-input_path = './templates/colors.css'
-output_path = '/home/max/.config/swaync/colors.css'
+#[templates.swaync]
+#input_path = '/home/max/.config/matugen/templates/colors.css'
+#output_path = '/home/max/.config/swaync/colors.css'
 
-[templates.wlogout]
-input_path = './templates/colors.css'
-output_path = '/home/max/.config/wlogout/colors.css'
+#[templates.wlogout]
+#input_path = '/home/max/.config/matugen/templates/colors.css'
+#output_path = '/home/max/.config/wlogout/colors.css'
