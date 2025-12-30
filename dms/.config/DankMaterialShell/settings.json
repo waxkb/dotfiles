@@ -8,7 +8,7 @@
   "dockTransparency": 1,
   "widgetBackgroundColor": "sth",
   "widgetColorMode": "colorful",
-  "cornerRadius": 12,
+  "cornerRadius": 21,
   "use24HourClock": false,
   "showSeconds": false,
   "useFahrenheit": false,
@@ -37,9 +37,9 @@
   "showControlCenterButton": true,
   "showCapsLockIndicator": true,
   "controlCenterShowNetworkIcon": true,
-  "controlCenterShowBluetoothIcon": true,
-  "controlCenterShowAudioIcon": true,
-  "controlCenterShowVpnIcon": true,
+  "controlCenterShowBluetoothIcon": false,
+  "controlCenterShowAudioIcon": false,
+  "controlCenterShowVpnIcon": false,
   "controlCenterShowBrightnessIcon": false,
   "controlCenterShowMicIcon": false,
   "controlCenterShowBatteryIcon": false,
@@ -107,7 +107,7 @@
   "keyboardLayoutNameCompactMode": false,
   "runningAppsCurrentWorkspace": false,
   "runningAppsGroupByApp": false,
-  "centeringMode": "index",
+  "centeringMode": "geometric",
   "clockDateFormat": "",
   "lockDateFormat": "",
   "mediaSize": 1,
@@ -206,17 +206,15 @@
   "osdCapsLockEnabled": false,
   "osdPowerProfileEnabled": false,
   "osdAudioOutputEnabled": true,
-  "powerActionConfirm": true,
+  "powerActionConfirm": false,
   "powerActionHoldDuration": 0.5,
   "powerMenuActions": [
     "reboot",
     "logout",
     "poweroff",
-    "lock",
-    "suspend",
-    "restart"
+    "lock"
   ],
-  "powerMenuDefaultAction": "logout",
+  "powerMenuDefaultAction": "poweroff",
   "powerMenuGridLayout": false,
   "customPowerActionLock": "",
   "customPowerActionLogout": "",
@@ -259,17 +257,12 @@
       ],
       "rightWidgets": [
         {
-          "id": "controlCenterButton",
-          "enabled": true,
-          "showNetworkIcon": true,
-          "showBluetoothIcon": true,
-          "showAudioIcon": true
+          "id": "memUsage",
+          "enabled": true
         },
         {
-          "id": "memUsage",
-          "enabled": true,
-          "showSwap": false,
-          "minimumWidth": true
+          "id": "controlCenterButton",
+          "enabled": true
         }
       ],
       "spacing": 0,
@@ -280,6 +273,65 @@
       "squareCorners": true,
       "noBackground": false,
       "gothCornersEnabled": true,
+      "gothCornerRadiusOverride": true,
+      "gothCornerRadiusValue": 12,
+      "borderEnabled": false,
+      "borderColor": "primary",
+      "borderOpacity": 1,
+      "borderThickness": 2,
+      "widgetOutlineEnabled": false,
+      "widgetOutlineColor": "surfaceText",
+      "widgetOutlineOpacity": 1,
+      "widgetOutlineThickness": 1,
+      "fontScale": 1,
+      "autoHide": false,
+      "autoHideDelay": 250,
+      "openOnOverview": false,
+      "visible": true,
+      "popupGapsAuto": true,
+      "popupGapsManual": 4,
+      "maximizeDetection": false
+    },
+    {
+      "id": "bar1767051045830",
+      "name": "Bar 2",
+      "enabled": false,
+      "position": 0,
+      "screenPreferences": [
+        "all"
+      ],
+      "showOnLastDisplay": false,
+      "leftWidgets": [
+        {
+          "id": "workspaceSwitcher",
+          "enabled": true
+        }
+      ],
+      "centerWidgets": [
+        {
+          "id": "music",
+          "enabled": true,
+          "mediaSize": 2
+        }
+      ],
+      "rightWidgets": [
+        {
+          "id": "memUsage",
+          "enabled": true
+        },
+        {
+          "id": "controlCenterButton",
+          "enabled": true
+        }
+      ],
+      "spacing": 7,
+      "innerPadding": 4,
+      "bottomGap": -3,
+      "transparency": 1,
+      "widgetTransparency": 0,
+      "squareCorners": false,
+      "noBackground": false,
+      "gothCornersEnabled": false,
       "gothCornerRadiusOverride": true,
       "gothCornerRadiusValue": 20,
       "borderEnabled": false,
@@ -297,6 +349,45 @@
       "visible": true,
       "popupGapsAuto": true,
       "popupGapsManual": 4,
+      "maximizeDetection": false
+    },
+    {
+      "id": "bar1767053183276",
+      "name": "Bar 3",
+      "enabled": false,
+      "position": 1,
+      "screenPreferences": [
+        "all"
+      ],
+      "showOnLastDisplay": false,
+      "leftWidgets": [],
+      "centerWidgets": [],
+      "rightWidgets": [],
+      "spacing": 0,
+      "innerPadding": -8,
+      "bottomGap": 0,
+      "transparency": 1,
+      "widgetTransparency": 0,
+      "squareCorners": true,
+      "noBackground": false,
+      "gothCornersEnabled": true,
+      "gothCornerRadiusOverride": true,
+      "gothCornerRadiusValue": 12,
+      "borderEnabled": false,
+      "borderColor": "primary",
+      "borderOpacity": 1,
+      "borderThickness": 2,
+      "widgetOutlineEnabled": false,
+      "widgetOutlineColor": "surfaceText",
+      "widgetOutlineOpacity": 1,
+      "widgetOutlineThickness": 1,
+      "fontScale": 1,
+      "autoHide": false,
+      "autoHideDelay": 250,
+      "openOnOverview": false,
+      "visible": true,
+      "popupGapsAuto": true,
+      "popupGapsManual": 0,
       "maximizeDetection": false
     }
   ],

@@ -97,3 +97,19 @@
   color: var(--text-0) !important;
   fill: var(--text-0) !important;
 }
+
+
+/* Server profile badge (server icon + name after username) */
+[class*="guildProfileBadge"],
+[class*="serverProfileBadge"],
+[class*="badgeContainer"] [class*="badge"] {
+    background-color: var(--bg-3) !important;
+    color: var(--text-1) !important;
+}
+
+
+/* FINAL OVERRIDE — Vesktop-safe */
+span[class*="badge"],
+div[class*="badge"] {
+    background-color: var(--bg-3) !important;
+}

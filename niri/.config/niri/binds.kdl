@@ -12,19 +12,19 @@ binds {
         spawn-sh "vicinae vicinae://extensions/knoopx/nix/packages";
     }
     Mod+Shift+N hotkey-overlay-title="Toggle Notification Center" {
-        spawn-sh "swaync-client -t";
+        spawn-sh "dms ipc call notifications open; swaync-client -t";
     }
     // Mod+Shift+N hotkey-overlay-title="Toggle Night Mode" { spawn-sh "dms ipc call night toggle"; }
     Mod+O hotkey-overlay-title="Lock Screen" { spawn "hyprlock"; }
     Mod+P hotkey-overlay-title="Pick Color from Screen" { spawn "hyprpicker"; }
     Mod+Shift+P hotkey-overlay-title="Open Logout Menu" {
-        spawn-sh "wlogout -l .config/wlogout/layout_1 -C .config/wlogout/style_1.css";
+        spawn-sh "dms ipc call powermenu toggle";
     }
     Mod+R hotkey-overlay-title="Switch Column Width Preset" { switch-preset-column-width; }
     Mod+Shift+R hotkey-overlay-title="Switch Window Height Preset" { switch-preset-window-height; }
     Mod+Ctrl+R hotkey-overlay-title="Reset Window Height" { reset-window-height; }
-    Mod+S hotkey-overlay-title="Enable Night Light (Warm Display)" {
-        spawn-sh "gammastep -O 3000";
+    Mod+S hotkey-overlay-title="Open DMS settings" {
+        spawn-sh "dms ipc call settings toggle";
     }
     Mod+Shift+S hotkey-overlay-title="Take Screenshot" { screenshot; }
     Mod+T hotkey-overlay-title="Toggle Floating Window" { toggle-window-floating; }
