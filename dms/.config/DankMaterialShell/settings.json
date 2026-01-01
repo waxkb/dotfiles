@@ -13,8 +13,8 @@
   "showSeconds": false,
   "useFahrenheit": false,
   "nightModeEnabled": false,
-  "animationSpeed": 1,
-  "customAnimationDuration": 500,
+  "animationSpeed": 4,
+  "customAnimationDuration": 200,
   "wallpaperFillMode": "Fill",
   "blurredWallpaperLayer": false,
   "blurWallpaperOnOverview": false,
@@ -206,7 +206,7 @@
   "osdCapsLockEnabled": false,
   "osdPowerProfileEnabled": false,
   "osdAudioOutputEnabled": true,
-  "powerActionConfirm": false,
+  "powerActionConfirm": true,
   "powerActionHoldDuration": 0.5,
   "powerMenuActions": [
     "reboot",
@@ -244,6 +244,11 @@
       "showOnLastDisplay": false,
       "leftWidgets": [
         {
+          "id": "spacer",
+          "enabled": true,
+          "size": 5
+        },
+        {
           "id": "workspaceSwitcher",
           "enabled": true
         }
@@ -251,18 +256,19 @@
       "centerWidgets": [
         {
           "id": "music",
-          "enabled": true,
-          "mediaSize": 2
+          "enabled": true
         }
       ],
       "rightWidgets": [
         {
           "id": "memUsage",
-          "enabled": true
+          "enabled": true,
+          "minimumWidth": true
         },
         {
-          "id": "controlCenterButton",
-          "enabled": true
+          "id": "spacer",
+          "enabled": true,
+          "size": 5
         }
       ],
       "spacing": 0,
@@ -272,7 +278,7 @@
       "widgetTransparency": 0,
       "squareCorners": true,
       "noBackground": false,
-      "gothCornersEnabled": true,
+      "gothCornersEnabled": false,
       "gothCornerRadiusOverride": true,
       "gothCornerRadiusValue": 12,
       "borderEnabled": false,
@@ -293,68 +299,9 @@
       "maximizeDetection": false
     },
     {
-      "id": "bar1767051045830",
+      "id": "bar1767304587196",
       "name": "Bar 2",
-      "enabled": false,
-      "position": 0,
-      "screenPreferences": [
-        "all"
-      ],
-      "showOnLastDisplay": false,
-      "leftWidgets": [
-        {
-          "id": "workspaceSwitcher",
-          "enabled": true
-        }
-      ],
-      "centerWidgets": [
-        {
-          "id": "music",
-          "enabled": true,
-          "mediaSize": 2
-        }
-      ],
-      "rightWidgets": [
-        {
-          "id": "memUsage",
-          "enabled": true
-        },
-        {
-          "id": "controlCenterButton",
-          "enabled": true
-        }
-      ],
-      "spacing": 7,
-      "innerPadding": 4,
-      "bottomGap": -3,
-      "transparency": 1,
-      "widgetTransparency": 0,
-      "squareCorners": false,
-      "noBackground": false,
-      "gothCornersEnabled": false,
-      "gothCornerRadiusOverride": true,
-      "gothCornerRadiusValue": 20,
-      "borderEnabled": false,
-      "borderColor": "primary",
-      "borderOpacity": 1,
-      "borderThickness": 2,
-      "widgetOutlineEnabled": false,
-      "widgetOutlineColor": "surfaceText",
-      "widgetOutlineOpacity": 1,
-      "widgetOutlineThickness": 1,
-      "fontScale": 1,
-      "autoHide": false,
-      "autoHideDelay": 250,
-      "openOnOverview": false,
-      "visible": true,
-      "popupGapsAuto": true,
-      "popupGapsManual": 4,
-      "maximizeDetection": false
-    },
-    {
-      "id": "bar1767053183276",
-      "name": "Bar 3",
-      "enabled": false,
+      "enabled": true,
       "position": 1,
       "screenPreferences": [
         "all"
@@ -364,7 +311,7 @@
       "centerWidgets": [],
       "rightWidgets": [],
       "spacing": 0,
-      "innerPadding": -8,
+      "innerPadding": -25,
       "bottomGap": 0,
       "transparency": 1,
       "widgetTransparency": 0,
@@ -387,7 +334,85 @@
       "openOnOverview": false,
       "visible": true,
       "popupGapsAuto": true,
-      "popupGapsManual": 0,
+      "popupGapsManual": 4,
+      "maximizeDetection": false
+    },
+    {
+      "id": "bar1767304653866",
+      "name": "Bar 3",
+      "enabled": true,
+      "position": 2,
+      "screenPreferences": [
+        "all"
+      ],
+      "showOnLastDisplay": false,
+      "leftWidgets": [],
+      "centerWidgets": [],
+      "rightWidgets": [],
+      "spacing": 0,
+      "innerPadding": -25,
+      "bottomGap": 0,
+      "transparency": 1,
+      "widgetTransparency": 0,
+      "squareCorners": true,
+      "noBackground": false,
+      "gothCornersEnabled": true,
+      "gothCornerRadiusOverride": true,
+      "gothCornerRadiusValue": 12,
+      "borderEnabled": false,
+      "borderColor": "primary",
+      "borderOpacity": 1,
+      "borderThickness": 2,
+      "widgetOutlineEnabled": false,
+      "widgetOutlineColor": "surfaceText",
+      "widgetOutlineOpacity": 1,
+      "widgetOutlineThickness": 1,
+      "fontScale": 1,
+      "autoHide": false,
+      "autoHideDelay": 250,
+      "openOnOverview": false,
+      "visible": true,
+      "popupGapsAuto": true,
+      "popupGapsManual": 4,
+      "maximizeDetection": false
+    },
+    {
+      "id": "bar1767304657855",
+      "name": "Bar 4",
+      "enabled": true,
+      "position": 3,
+      "screenPreferences": [
+        "all"
+      ],
+      "showOnLastDisplay": false,
+      "leftWidgets": [],
+      "centerWidgets": [],
+      "rightWidgets": [],
+      "spacing": 0,
+      "innerPadding": -25,
+      "bottomGap": 0,
+      "transparency": 1,
+      "widgetTransparency": 0,
+      "squareCorners": true,
+      "noBackground": false,
+      "gothCornersEnabled": true,
+      "gothCornerRadiusOverride": true,
+      "gothCornerRadiusValue": 12,
+      "borderEnabled": false,
+      "borderColor": "primary",
+      "borderOpacity": 1,
+      "borderThickness": 2,
+      "widgetOutlineEnabled": false,
+      "widgetOutlineColor": "surfaceText",
+      "widgetOutlineOpacity": 1,
+      "widgetOutlineThickness": 1,
+      "fontScale": 1,
+      "autoHide": false,
+      "autoHideDelay": 250,
+      "openOnOverview": false,
+      "visible": true,
+      "popupGapsAuto": true,
+      "popupGapsManual": 4,
       "maximizeDetection": false
     }
   ],

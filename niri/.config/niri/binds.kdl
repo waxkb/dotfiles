@@ -17,9 +17,6 @@ binds {
     // Mod+Shift+N hotkey-overlay-title="Toggle Night Mode" { spawn-sh "dms ipc call night toggle"; }
     Mod+O hotkey-overlay-title="Lock Screen" { spawn "hyprlock"; }
     Mod+P hotkey-overlay-title="Pick Color from Screen" { spawn "hyprpicker"; }
-    Mod+Shift+P hotkey-overlay-title="Open Logout Menu" {
-        spawn-sh "dms ipc call powermenu toggle";
-    }
     Mod+R hotkey-overlay-title="Switch Column Width Preset" { switch-preset-column-width; }
     Mod+Shift+R hotkey-overlay-title="Switch Window Height Preset" { switch-preset-window-height; }
     Mod+Ctrl+R hotkey-overlay-title="Reset Window Height" { reset-window-height; }
@@ -35,6 +32,9 @@ binds {
     }
     Mod+Shift+W hotkey-overlay-title="Restart Waybar & Notifications" {
         spawn-sh "~/start-waybar.sh; swaync-client -R -rs";
+    }
+    Mod+X hotkey-overlay-title="Open Logout Menu" {
+        spawn-sh "dms ipc call powermenu toggle";
     }
     Mod+Return hotkey-overlay-title="Open Terminal (Kitty)" { spawn "kitty"; }
     Mod+End hotkey-overlay-title="Play / Pause Media" { spawn-sh "playerctl play-pause"; }
