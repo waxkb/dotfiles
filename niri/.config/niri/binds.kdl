@@ -6,15 +6,15 @@ binds {
     Mod+E hotkey-overlay-title="Open File Manager (Yazi)" { spawn "kitty" "yazi"; }
     Mod+M hotkey-overlay-title="Open Spotify" { spawn "spotify"; }
     Mod+Shift+M hotkey-overlay-title="Show Current Track Notification" {
-        spawn-sh "notify-send \"$(playerctl metadata --format \"{{ title }} - {{ artist }}\")\"";
+        spawn-sh "dms ipc call dash open media";
     }
     Mod+N hotkey-overlay-title="Open Nix Packages Browser" {
         spawn-sh "vicinae vicinae://extensions/knoopx/nix/packages";
     }
     Mod+Shift+N hotkey-overlay-title="Toggle Notification Center" {
-        spawn-sh "dms ipc call notifications open; swaync-client -t";
+        spawn-sh "dms ipc call notifications open";
     }
-    // Mod+Shift+N hotkey-overlay-title="Toggle Night Mode" { spawn-sh "dms ipc call night toggle"; }
+    //Mod+Shift+N hotkey-overlay-title="Toggle Night Mode" { spawn-sh "dms ipc call night toggle"; }
     Mod+O hotkey-overlay-title="Lock Screen" { spawn "hyprlock"; }
     Mod+P hotkey-overlay-title="Pick Color from Screen" { spawn "hyprpicker"; }
     Mod+R hotkey-overlay-title="Switch Column Width Preset" { switch-preset-column-width; }
@@ -31,7 +31,7 @@ binds {
         spawn-sh "vicinae vicinae://extensions/sovereign/awww-switcher/wpgrid";
     }
     Mod+Shift+W hotkey-overlay-title="Restart Waybar & Notifications" {
-        spawn-sh "~/start-waybar.sh; swaync-client -R -rs";
+        spawn-sh "~/start-waybar.sh";
     }
     Mod+X hotkey-overlay-title="Open Logout Menu" {
         spawn-sh "dms ipc call powermenu toggle";
