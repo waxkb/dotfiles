@@ -1,0 +1,11 @@
+{
+  "dankActions": {
+    "enabled": false
+  },
+  "nixMonitor": {
+    "enabled": false
+  },
+  "dankHooks": {
+    "enabled": true
+  }
+}

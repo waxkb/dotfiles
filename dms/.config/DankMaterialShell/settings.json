@@ -13,8 +13,8 @@
   "showSeconds": false,
   "useFahrenheit": false,
   "nightModeEnabled": false,
-  "animationSpeed": 4,
-  "customAnimationDuration": 200,
+  "animationSpeed": 0,
+  "customAnimationDuration": 0,
   "wallpaperFillMode": "Fill",
   "blurredWallpaperLayer": false,
   "blurWallpaperOnOverview": false,
@@ -95,7 +95,7 @@
   "workspaceScrolling": false,
   "showWorkspaceApps": false,
   "maxWorkspaceIcons": 3,
-  "workspacesPerMonitor": true,
+  "workspacesPerMonitor": false,
   "showOccupiedWorkspacesOnly": false,
   "dwlShowAllTags": false,
   "workspaceNameIcons": {},
@@ -244,11 +244,6 @@
       "showOnLastDisplay": false,
       "leftWidgets": [
         {
-          "id": "spacer",
-          "enabled": true,
-          "size": 5
-        },
-        {
           "id": "workspaceSwitcher",
           "enabled": true
         }
@@ -265,11 +260,6 @@
           "id": "memUsage",
           "enabled": true,
           "minimumWidth": true
-        },
-        {
-          "id": "spacer",
-          "enabled": true,
-          "size": 5
         }
       ],
       "spacing": 0,

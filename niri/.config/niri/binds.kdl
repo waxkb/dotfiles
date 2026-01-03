@@ -6,35 +6,33 @@ binds {
     Mod+E hotkey-overlay-title="Open File Manager (Yazi)" { spawn "kitty" "yazi"; }
     Mod+M hotkey-overlay-title="Open Spotify" { spawn "spotify"; }
     Mod+Shift+M hotkey-overlay-title="Show Current Track Notification" {
-        spawn-sh "dms ipc call dash open media";
+        spawn-sh "dms ipc call dash open media; noctalia-shell ipc call controlCenter toggle";
     }
     Mod+N hotkey-overlay-title="Open Nix Packages Browser" {
         spawn-sh "vicinae vicinae://extensions/knoopx/nix/packages";
     }
     Mod+Shift+N hotkey-overlay-title="Toggle Notification Center" {
-        spawn-sh "dms ipc call notifications open";
+        spawn-sh "dms ipc call notifications open; noctalia-shell ipc call notifications toggleHistory";
     }
     //Mod+Shift+N hotkey-overlay-title="Toggle Night Mode" { spawn-sh "dms ipc call night toggle"; }
     Mod+O hotkey-overlay-title="Lock Screen" { spawn "hyprlock"; }
+    Mod+Shift+O { spawn "obsidian"; }
     Mod+P hotkey-overlay-title="Pick Color from Screen" { spawn "hyprpicker"; }
     Mod+R hotkey-overlay-title="Switch Column Width Preset" { switch-preset-column-width; }
     Mod+Shift+R hotkey-overlay-title="Switch Window Height Preset" { switch-preset-window-height; }
     Mod+Ctrl+R hotkey-overlay-title="Reset Window Height" { reset-window-height; }
     Mod+S hotkey-overlay-title="Open DMS settings" {
-        spawn-sh "dms ipc call settings toggle";
+        spawn-sh "dms ipc call settings toggle; noctalia-shell ipc call settings toggle";
     }
     Mod+Shift+S hotkey-overlay-title="Take Screenshot" { screenshot; }
     Mod+T hotkey-overlay-title="Toggle Floating Window" { toggle-window-floating; }
     Mod+V hotkey-overlay-title="Toggle Window Overview" { toggle-overview; }
     Mod+Shift+V hotkey-overlay-title="Open Vesktop (Discord)" { spawn "vesktop"; }
     Mod+W hotkey-overlay-title="Open Wallpaper Grid" {
-        spawn-sh "vicinae vicinae://extensions/sovereign/awww-switcher/wpgrid";
-    }
-    Mod+Shift+W hotkey-overlay-title="Restart Waybar & Notifications" {
-        spawn-sh "~/start-waybar.sh";
+        spawn-sh "noctalia-shell ipc call wallpaper toggle || vicinae vicinae://extensions/sovereign/awww-switcher/wpgrid";
     }
     Mod+X hotkey-overlay-title="Open Logout Menu" {
-        spawn-sh "dms ipc call powermenu toggle";
+        spawn-sh "dms ipc call powermenu toggle; noctalia-shell ipc call sessionMenu toggle";
     }
     Mod+Return hotkey-overlay-title="Open Terminal (Kitty)" { spawn "kitty"; }
     Mod+End hotkey-overlay-title="Play / Pause Media" { spawn-sh "playerctl play-pause"; }
