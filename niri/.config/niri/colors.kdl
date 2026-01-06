@@ -1,7 +1,7 @@
 layout {
     // Hypr: gaps_in = 5, gaps_out = 10
     // Niri has a single gaps value; use something in-between.
-    gaps 10
+    gaps 5
 
     // No direct equivalent of Hypr’s dwindle/master layouts.
     // Niri uses its own scrollable-tiling model.

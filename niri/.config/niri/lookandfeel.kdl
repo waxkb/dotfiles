@@ -1,6 +1,6 @@
 prefer-no-csd
 
 window-rule {
-    geometry-corner-radius 7
+    geometry-corner-radius 18
     clip-to-geometry true
 }

@@ -29,7 +29,7 @@ binds {
     Mod+V hotkey-overlay-title="Toggle Window Overview" { toggle-overview; }
     Mod+Shift+V hotkey-overlay-title="Open Vesktop (Discord)" { spawn "vesktop"; }
     Mod+W hotkey-overlay-title="Open Wallpaper Grid" {
-        spawn-sh "noctalia-shell ipc call wallpaper toggle || vicinae vicinae://extensions/sovereign/awww-switcher/wpgrid";
+        spawn-sh "dms ipc call dankdash wallpaper || noctalia-shell ipc call wallpaper toggle || vicinae vicinae://extensions/sovereign/awww-switcher/wpgrid";
     }
     Mod+X hotkey-overlay-title="Open Logout Menu" {
         spawn-sh "dms ipc call powermenu toggle; noctalia-shell ipc call sessionMenu toggle";

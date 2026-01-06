@@ -6,6 +6,8 @@
     "enabled": false
   },
   "dankHooks": {
-    "enabled": true
+    "enabled": true,
+    "wallpaperPath": "/home/max/wallscript.sh",
+    "monitorWallpaper": ""
   }
 }
