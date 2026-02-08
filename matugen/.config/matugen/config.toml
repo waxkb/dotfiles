@@ -76,3 +76,7 @@ post_hook = "vicinae theme set matugen"
 #[templates.wlogout]
 #input_path = '/home/max/.config/matugen/templates/colors.css'
 #output_path = '/home/max/.config/wlogout/colors.css'
+
+[templates.rofi]
+input_path = "/home/max/.config/matugen/templates/rofi-colors.rasi"
+output_path = "/home/max/.config/rofi/applets/shared/colors.rasi"

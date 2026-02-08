@@ -6,8 +6,16 @@
     "enabled": false
   },
   "dankHooks": {
-    "enabled": true,
+    "enabled": false,
     "wallpaperPath": "/home/max/wallscript.sh",
     "monitorWallpaper": ""
+  },
+  "dankPomodoroTimer": {
+    "enabled": false,
+    "workDuration": "100",
+    "shortBreakDuration": "10",
+    "longBreakDuration": "15",
+    "autoStartBreaks": true,
+    "autoStartPomodoros": true
   }
 }

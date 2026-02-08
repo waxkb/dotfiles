@@ -16,7 +16,8 @@ binds {
     }
     //Mod+Shift+N hotkey-overlay-title="Toggle Night Mode" { spawn-sh "dms ipc call night toggle"; }
     Mod+O hotkey-overlay-title="Lock Screen" { spawn "hyprlock"; }
-    Mod+Shift+O { spawn "obsidian"; }
+    Mod+Shift+O { spawn "VirtualBox"; }
+    Mod+Ctrl+O { spawn "obs"; }
     Mod+P hotkey-overlay-title="Pick Color from Screen" { spawn "hyprpicker"; }
     Mod+R hotkey-overlay-title="Switch Column Width Preset" { switch-preset-column-width; }
     Mod+Shift+R hotkey-overlay-title="Switch Window Height Preset" { switch-preset-window-height; }
@@ -29,7 +30,7 @@ binds {
     Mod+V hotkey-overlay-title="Toggle Window Overview" { toggle-overview; }
     Mod+Shift+V hotkey-overlay-title="Open Vesktop (Discord)" { spawn "vesktop"; }
     Mod+W hotkey-overlay-title="Open Wallpaper Grid" {
-        spawn-sh "dms ipc call dankdash wallpaper || noctalia-shell ipc call wallpaper toggle || vicinae vicinae://extensions/sovereign/awww-switcher/wpgrid";
+        spawn-sh "~/idk.sh || dms ipc call dankdash wallpaper || noctalia-shell ipc call wallpaper toggle || vicinae vicinae://extensions/sovereign/awww-switcher/wpgrid";
     }
     Mod+X hotkey-overlay-title="Open Logout Menu" {
         spawn-sh "dms ipc call powermenu toggle; noctalia-shell ipc call sessionMenu toggle";
