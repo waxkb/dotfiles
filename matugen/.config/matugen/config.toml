@@ -5,10 +5,10 @@
 
 [config]
 
-[templates.kitty]
-input_path = "/home/max/.config/matugen/templates/kitty-colors.conf"
-output_path = "/home/max/.config/kitty/themes/your-theme.conf"
-post_hook = "kitty +kitten themes --reload-in=all your-theme"
+#[templates.kitty]
+#input_path = "/home/max/.config/matugen/templates/kitty-colors.conf"
+#output_path = "/home/max/.config/kitty/themes/your-theme.conf"
+#post_hook = "kitty +kitten themes --reload-in=all your-theme"
 
 #[templates.mako]
 #input_path = "/home/max/.config/matugen/templates/mako"
@@ -20,24 +20,24 @@ input_path = "/home/max/.config/matugen/templates/btop.theme"
 output_path = "/home/max/.config/btop/themes/matugen.theme"
 post_hook = "pkill -SIGUSR2 btop"
 
-[templates.yazi]
-input_path = "/home/max/.config/matugen/templates/yazi-theme.toml"
-output_path = "/home/max/.config/yazi/theme.toml"
-post_hook = "pkill -SIGUSR2 yazi"
+#[templates.yazi]
+#input_path = "/home/max/.config/matugen/templates/yazi-theme.toml"
+#output_path = "/home/max/.config/yazi/theme.toml"
+#post_hook = "pkill -SIGUSR2 yazi"
 
-[templates.vesktop]
-input_path = "/home/max/.config/matugen/templates/midnight-discord.css"
-output_path = "/home/max/.config/vesktop/themes/midnight.theme.css"
+#[templates.vesktop]
+#input_path = "/home/max/.config/matugen/templates/midnight-discord.css"
+#output_path = "/home/max/.config/vesktop/themes/midnight.theme.css"
 
 [templates.cava]
 input_path = "/home/max/.config/matugen/templates/cava-colors.ini"
 output_path = "/home/max/.config/cava/themes/your-theme"
 post_hook = "pkill -SIGUSR2 cava"
 
-[templates.nvim]
-input_path = "/home/max/.config/matugen/templates/nvim-colors.lua"
-output_path = "/home/max/.config/nvim/generated.lua"
-post_hook = "pkill -SIGUSR1 nvim"
+#[templates.nvim]
+#input_path = "/home/max/.config/matugen/templates/nvim-colors.lua"
+#output_path = "/home/max/.config/nvim/generated.lua"
+#post_hook = "pkill -SIGUSR1 nvim"
 
 #[templates.clipse]
 #input_path = "/home/max/.config/matugen/templates/clipse-theme.json"
@@ -80,3 +80,7 @@ post_hook = "vicinae theme set matugen"
 [templates.rofi]
 input_path = "/home/max/.config/matugen/templates/rofi-colors.rasi"
 output_path = "/home/max/.config/rofi/applets/shared/colors.rasi"
+
+[templates.lualine]
+input_path = "/home/max/.config/matugen/templates/dank-lualine.lua"
+output_path = "/home/max/.config/nvim/lua/plugins/dank-lualine.lua"
