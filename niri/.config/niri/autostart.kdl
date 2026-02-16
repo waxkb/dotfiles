@@ -5,7 +5,7 @@
 //spawn-at-startup "swww-daemon"
 //spawn-sh-at-startup "swww restore"
 //spawn-sh-at-startup "systemctl --user start hyprpolkitagent"
-spawn-at-startup "zen"
+spawn-at-startup "zen-beta"
 spawn-at-startup "activate-linux"
 spawn-sh-at-startup "vicinae server"
 hotkey-overlay {

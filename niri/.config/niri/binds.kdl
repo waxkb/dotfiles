@@ -1,5 +1,5 @@
 binds {
-    Mod+B hotkey-overlay-title="Open Zen Browser" { spawn "zen"; }
+    Mod+B hotkey-overlay-title="Open Zen Browser" { spawn "zen-beta"; }
     Mod+Shift+B hotkey-overlay-title="Open System Monitor (btop)" { spawn "kitty" "btop"; }
     Mod+D hotkey-overlay-title="Close Focused Window" { close-window; }
     Mod+Shift+D hotkey-overlay-title="Quit Niri Session" { quit; }
