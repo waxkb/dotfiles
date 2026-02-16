@@ -50,3 +50,6 @@ alias enoct='systemctl --user enable --now noctalia'
 alias dnoct='systemctl --user disable --now noctalia'
 alias stdms='dnoct && edms'
 alias stnoct='ddms && enoct'
+
+#export KIRI_PATH=$(nix build --no-link --print-out-paths nixpkgs#kdePackages.kirigami)/lib/qt-6/qml
+#export QML2_IMPORT_PATH=$KIRI_PATH
