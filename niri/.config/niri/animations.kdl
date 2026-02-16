@@ -1,0 +1,67 @@
+animations {
+
+    // --- Windows ---
+
+    window-open {
+        duration-ms 250
+        curve "cubic-bezier" 0.19 1.0 0.22 1.0 // cascade
+    }
+
+    window-close {
+        duration-ms 240
+        curve "cubic-bezier" 0.4 0.0 0.4 1.0 // stream
+    }
+
+    window-movement {
+        duration-ms 160
+        curve "cubic-bezier" 0.25 0.1 0.25 1.0 // flow
+    }
+
+    window-resize {
+        duration-ms 160
+        curve "cubic-bezier" 0.25 0.1 0.25 1.0 // flow
+    }
+
+    // --- Workspace switching ---
+
+    workspace-switch {
+        duration-ms 150
+        curve "cubic-bezier" 0.25 0.1 0.25 1.0 // flow
+    }
+
+    // --- Overview / fades (Hyprland fade, fadeIn, fadeSwitch) ---
+
+    overview-open-close {
+        duration-ms 200
+        curve "cubic-bezier" 0.22 0.9 0.36 1.0 // water
+    }
+
+    recent-windows-close {
+        duration-ms 180
+        curve "cubic-bezier" 0.33 0.0 0.2 1.0 // ripple
+    }
+
+    // --- Layer / popup equivalents ---
+
+    config-notification-open-close {
+        duration-ms 150
+        curve "cubic-bezier" 0.05 0.9 0.1 1.05 // overshot
+    }
+
+    exit-confirmation-open-close {
+        duration-ms 130
+        curve "cubic-bezier" 0.3 0.0 0.8 0.15 // md3_accel
+    }
+
+    screenshot-ui-open {
+        duration-ms 200
+        curve "cubic-bezier" 0.22 0.9 0.36 1.0 // water
+    }
+
+    // --- Horizontal movement (view transitions) ---
+
+    horizontal-view-movement {
+        duration-ms 150
+        curve "cubic-bezier" 0.25 0.1 0.25 1.0 // flow
+    }
+}

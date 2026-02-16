@@ -1,0 +1,18 @@
+workspace "1"
+workspace "2"
+workspace "3"
+
+window-rule{
+  match is-active=true
+  opacity 0.95
+}
+
+window-rule{
+  match is-active=false
+  opacity 0.85
+}
+
+
+window-rule {
+    draw-border-with-background false
+}
