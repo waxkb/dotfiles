@@ -2,7 +2,7 @@ return {
   {
     "nvim-lualine/lualine.nvim",
     opts = function(_, opts)
-      --local colors = {
+      local colors = {
       --  bg       = '{ABC{dank16.color0.default.hex}ABC}',
       --  fg       = '{ABC{dank16.color15.default.hexABC}}',
       --  muted    = '{ABC{dank16.color8.default.hex}ABC}',
@@ -11,7 +11,7 @@ return {
       --  visual   = '{ABC{dank16.color13.default.hexABC}}',
       --  insert   = '{ABC{dank16.color10.default.hexABC}}',
       --  replace  = '{ABC{dank16.color9.default.hex}ABC}',
-      --}
+      }
 
       opts.options.theme = {
         normal = {
