@@ -1,0 +1,166 @@
+19:35:49.390: Crash or unclean shutdown detected
+19:35:50.950: [Safe Mode] Normal launch selected, loading third-party plugins is enabled
+19:35:50.950: Platform: Wayland
+19:35:50.950: CPU Name: AMD Ryzen 5 7600X 6-Core Processor
+19:35:50.951: CPU Speed: 3848.238MHz
+19:35:50.951: Physical Cores: 6, Logical Cores: 12
+19:35:50.951: Physical Memory: 31234MB Total, 23838MB Free
+19:35:50.951: Kernel Version: Linux 6.12.64
+19:35:50.951: Distribution: NixOS "26.05"
+19:35:50.951: Desktop Environment: niri (niri)
+19:35:50.951: Session Type: wayland
+19:35:50.953: Current Date/Time: 2026-01-11, 07:35:50 PM
+19:35:50.953: Browser Hardware Acceleration: true
+19:35:50.953: Qt Version: 6.10.1 (runtime), 6.10.1 (compiled)
+19:35:50.953: Portable mode: false
+19:35:50.967: OBS 32.0.1 (linux)
+19:35:50.967: ---------------------------------
+19:35:50.967: ---------------------------------
+19:35:50.967: audio settings reset:
+19:35:50.967: 	samples per sec: 48000
+19:35:50.967: 	speakers:        2
+19:35:50.967: 	max buffering:   960 milliseconds
+19:35:50.967: 	buffering type:  dynamically increasing
+19:35:50.968: ---------------------------------
+19:35:50.968: Initializing OpenGL...
+19:35:50.968: Using EGL/Wayland
+19:35:51.008: Initialized EGL 1.5
+19:35:51.073: Loading up OpenGL on adapter NVIDIA Corporation NVIDIA GeForce RTX 4070/PCIe/SSE2
+19:35:51.073: OpenGL loaded successfully, version 3.3.0 NVIDIA 580.119.02, shading language 3.30 NVIDIA via Cg compiler
+19:35:51.088: ---------------------------------
+19:35:51.088: video settings reset:
+19:35:51.088: 	base resolution:   2560x1440
+19:35:51.088: 	output resolution: 2560x1440
+19:35:51.088: 	downscale filter:  Bicubic
+19:35:51.088: 	fps:               30/1
+19:35:51.088: 	format:            NV12
+19:35:51.088: 	YUV mode:          Rec. 709/Partial
+19:35:51.088: NV12 texture support enabled
+19:35:51.088: P010 texture support not available
+19:35:51.088: Audio monitoring device:
+19:35:51.088: 	name: Default
+19:35:51.088: 	id: default
+19:35:51.118: ---------------------------------
+19:35:51.119: Failed to load 'en-US' text for module: 'decklink-captions.so'
+19:35:51.119: Failed to load 'en-US' text for module: 'decklink-output-ui.so'
+19:35:51.120: A DeckLink iterator could not be created.  The DeckLink drivers may not be installed
+19:35:51.120: Failed to initialize module 'decklink.so'
+19:35:51.200: [pipewire] Available capture sources:
+19:35:51.200: [pipewire]     - Monitor source
+19:35:51.200: [pipewire]     - Window source
+19:35:51.205: v4l2loopback not installed, virtual camera not registered
+19:35:51.206: [obs-browser]: Version 2.26.2
+19:35:51.206: [obs-browser]: CEF Version 127.0.6533.120 (runtime), 127.0.0-6533-fix-stutter-and-osr-extra-info.3042+g176b09c+chromium-127.0.6533.120 (compiled)
+19:35:51.206: [obs-browser]: Blacklisted driver detected, disabling browser source hardware acceleration.
+19:35:51.439: VAAPI: API version 1.22
+19:35:51.489: FFmpeg VAAPI H264 encoding supported
+19:35:51.694: FFmpeg VAAPI AV1 encoding supported
+19:35:51.893: FFmpeg VAAPI HEVC encoding supported
+19:35:52.297: [obs-nvenc] NVENC version: 12.1 (compiled) / 13.0 (driver), CUDA driver version: 13.0, AV1 supported: true
+19:35:52.906: [obs-websocket] [obs_module_load] you can haz websockets (Version: 5.6.3 | RPC Version: 1)
+19:35:52.906: [obs-websocket] [obs_module_load] Qt version (compile-time): 6.10.1 | Qt version (run-time): 6.10.1
+19:35:52.906: [obs-websocket] [obs_module_load] Linked ASIO Version: 103600
+19:35:52.908: [obs-websocket] [obs_module_load] Module loaded.
+19:35:52.911: [vlc-video]: VLC 3.0.23 Vetinari found, VLC video source enabled
+19:35:52.911: ---------------------------------
+19:35:52.911:   Loaded Modules:
+19:35:52.911:     vlc-video.so
+19:35:52.911:     text-freetype2.so
+19:35:52.911:     rtmp-services.so
+19:35:52.911:     obs-x264.so
+19:35:52.911:     obs-websocket.so
+19:35:52.911:     obs-webrtc.so
+19:35:52.911:     obs-vst.so
+19:35:52.911:     obs-transitions.so
+19:35:52.911:     obs-qsv11.so
+19:35:52.911:     obs-outputs.so
+19:35:52.911:     obs-nvenc.so
+19:35:52.911:     obs-libfdk.so
+19:35:52.911:     obs-filters.so
+19:35:52.911:     obs-ffmpeg.so
+19:35:52.911:     obs-browser.so
+19:35:52.911:     linux-v4l2.so
+19:35:52.911:     linux-pulseaudio.so
+19:35:52.911:     linux-pipewire.so
+19:35:52.911:     linux-jack.so
+19:35:52.911:     linux-capture.so
+19:35:52.911:     linux-alsa.so
+19:35:52.911:     image-source.so
+19:35:52.911:     frontend-tools.so
+19:35:52.911:     decklink-output-ui.so
+19:35:52.911:     decklink-captions.so
+19:35:52.911: ---------------------------------
+19:35:52.911: ---------------------------------
+19:35:52.911: Available Encoders:
+19:35:52.911:   Video Encoders:
+19:35:52.911: 	- ffmpeg_svt_av1 (SVT-AV1)
+19:35:52.911: 	- ffmpeg_aom_av1 (AOM AV1)
+19:35:52.911: 	- ffmpeg_vaapi_tex (FFmpeg VAAPI H.264)
+19:35:52.911: 	- av1_ffmpeg_vaapi_tex (FFmpeg VAAPI AV1)
+19:35:52.911: 	- hevc_ffmpeg_vaapi_tex (FFmpeg VAAPI HEVC)
+19:35:52.911: 	- obs_nvenc_h264_tex (NVIDIA NVENC H.264)
+19:35:52.911: 	- obs_nvenc_hevc_tex (NVIDIA NVENC HEVC)
+19:35:52.911: 	- obs_nvenc_av1_tex (NVIDIA NVENC AV1)
+19:35:52.911: 	- obs_x264 (x264)
+19:35:52.911:   Audio Encoders:
+19:35:52.911: 	- ffmpeg_aac (FFmpeg AAC)
+19:35:52.911: 	- ffmpeg_opus (FFmpeg Opus)
+19:35:52.911: 	- ffmpeg_pcm_s16le (FFmpeg PCM (16-bit))
+19:35:52.911: 	- ffmpeg_pcm_s24le (FFmpeg PCM (24-bit))
+19:35:52.911: 	- ffmpeg_pcm_f32le (FFmpeg PCM (32-bit float))
+19:35:52.911: 	- ffmpeg_alac (FFmpeg ALAC (24-bit))
+19:35:52.911: 	- ffmpeg_flac (FFmpeg FLAC (16-bit))
+19:35:52.911: 	- libfdk_aac (libfdk AAC)
+19:35:52.911: ==== Startup complete ===============================================
+19:35:52.931: All scene data cleared
+19:35:52.931: ------------------------------------------------
+19:35:52.932: PipeWire initialized
+19:35:52.935: pulse-input: Server name: 'PulseAudio (on PipeWire 1.4.9) 15.0.0'
+19:35:52.935: pulse-input: Audio format: s16le, 48000 Hz, 2 channels
+19:35:52.935: pulse-input: Started recording from 'alsa_input.usb-Generic_Blue_Microphones_LT_221201102458AD020004_111000-00.analog-stereo' (default)
+19:35:53.549: adding 42 milliseconds of audio buffering, total audio buffering is now 42 milliseconds (source: Audio Input Capture (PulseAudio))
+19:35:53.549: 
+19:35:55.552: pulse-input: Server name: 'PulseAudio (on PipeWire 1.4.9) 15.0.0'
+19:35:55.552: pulse-input: Audio format: s24le, 48000 Hz, 2 channels
+19:35:55.552: pulse-input: Sample format s24le not supported by OBS,using float32le instead for recording
+19:35:55.552: pulse-input: Started recording from 'alsa_output.usb-SteelSeries_Arctis_Nova_7-00.analog-stereo.monitor'
+19:35:55.553: Switched to scene 'Scene'
+19:35:55.553: ------------------------------------------------
+19:35:55.553: Loaded scenes:
+19:35:55.553: - scene 'Scene':
+19:35:55.553:     - source: 'Screen Capture (PipeWire)' (pipewire-screen-capture-source)
+19:35:55.553:     - source: 'Audio Input Capture (PulseAudio)' (pulse_input_capture)
+19:35:55.553:         - filter: 'Noise Suppression' (noise_suppress_filter_v2)
+19:35:55.553:         - filter: 'Compressor' (compressor_filter)
+19:35:55.553:         - filter: 'Limiter' (limiter_filter)
+19:35:55.553:         - filter: 'VST 2.x Plug-in' (vst_filter)
+19:35:55.553:     - source: 'Audio Output Capture (PulseAudio)' (pulse_output_capture)
+19:35:55.553: ------------------------------------------------
+19:35:55.573: [pipewire] Screencast session created
+19:35:55.588: [pipewire] Asking for monitor and window
+19:35:58.835: [pipewire] source selected, setting up screencast
+19:35:58.839: [pipewire] Server version: 1.4.9
+19:35:58.839: [pipewire] Library version: 1.4.9
+19:35:58.839: [pipewire] Header version: 1.4.9
+19:35:58.839: [pipewire] Created stream 0x55c74d1dd550
+19:35:58.839: [pipewire] Stream 0x55c74d1dd550 state: "connecting" (error: none)
+19:35:58.839: [pipewire] Playing stream 0x55c74d1dd550
+19:35:58.840: [pipewire] Stream 0x55c74d1dd550 state: "paused" (error: none)
+19:35:58.870: [pipewire] Negotiated format:
+19:35:58.870: [pipewire]     Format: 8 (Spa:Enum:VideoFormat:BGRx)
+19:35:58.870: [pipewire]     Modifier: 0x0
+19:35:58.870: [pipewire]     Size: 2560x1440
+19:35:58.870: [pipewire]     Framerate: 0/1
+19:35:58.871: [pipewire] Negotiated format:
+19:35:58.871: [pipewire]     Format: 8 (Spa:Enum:VideoFormat:BGRx)
+19:35:58.871: [pipewire]     Modifier: 0x300000000e08014
+19:35:58.871: [pipewire]     Size: 2560x1440
+19:35:58.871: [pipewire]     Framerate: 0/1
+19:35:58.872: [pipewire] Stream 0x55c74d1dd550 state: "streaming" (error: none)
+19:36:02.715: QFSFileEngine::open: No file name specified
+19:36:05.595: User selected new VST plugin: '/home/max/.vst/jsfx.so'
+19:36:05.596: Couldn't get a pointer to plug-in's main()
+19:36:05.596: VST Plug-in: Can't load effect!
+19:36:05.597: Couldn't get a pointer to plug-in's main()
+19:36:05.597: VST Plug-in: Can't load effect!
+19:36:37.767: User selected new VST plugin: '/home/max/.vst/reaxcomp.vst.so'

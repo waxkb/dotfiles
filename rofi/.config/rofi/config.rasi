@@ -1,0 +1,20 @@
+
+configuration {
+    /* Unbind conflicting keys */
+    kb-remove-char-back: "";     // frees Control+h
+    kb-mode-complete: "";        // frees Control+l
+    kb-remove-to-eol: "";        // frees Control+k
+
+
+    kb-remove-char-back: "BackSpace";     // frees Control+h
+
+    /* Navigation with Vim-style keys + arrows */
+    kb-row-left: "Control+h";
+    kb-row-right: "Control+l";
+    kb-row-up: "Up,Control+k";
+    kb-row-down: "Down,Control+j";
+
+    /* Accept/Quit */
+    kb-accept-entry: "Return,Control+m";
+    kb-cancel: "Escape,q";
+}
