@@ -41,7 +41,7 @@ mkcd () {
 
 eval "$(starship init zsh)"
 
-alias syncdots='gita ll && gita super commit -a -m "e" && gita push && gita ll'
+alias syncdots='gita ll && gita super add . && gita super commit -m "e" && gita push && gita ll'
 alias ff='fastfetch'
 alias cf='clear; fastfetch'
 alias edms='systemctl --user enable --now dms'
