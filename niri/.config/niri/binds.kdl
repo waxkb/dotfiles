@@ -48,34 +48,34 @@ binds {
     Mod+Escape allow-inhibiting=false { toggle-keyboard-shortcuts-inhibit; }
     
     // ii Window Switcher (Alt+Tab)
-    Alt+Tab { spawn "qs" "-c" "ii" "ipc" "call" "altSwitcher" "next"; }
-    Alt+Shift+Tab { spawn "qs" "-c" "ii" "ipc" "call" "altSwitcher" "previous"; }
+    Alt+Tab { spawn "qsc" "-c" "ii" "ipc" "call" "altSwitcher" "next"; }
+    Alt+Shift+Tab { spawn "qsc" "-c" "ii" "ipc" "call" "altSwitcher" "previous"; }
     
     // ii Overlay
-    Super+Alt+V { spawn "qs" "-c" "ii" "ipc" "call" "overlay" "toggle"; }
+    Super+Shift+Alt+P { spawn "qsc" "-c" "ii" "ipc" "call" "overlay" "toggle"; }
 
     // ii Overview (daemon)
-    Mod+Alt+Space repeat=false { spawn "qs" "-c" "ii" "ipc" "call" "overview" "toggle"; }
+    Mod+Alt+V repeat=false { spawn "qsc" "-c" "ii" "ipc" "call" "overview" "toggle"; }
     
     // ii Clipboard
-    Mod+Alt+V { spawn "qs" "-c" "ii" "ipc" "call" "clipboard" "toggle"; }
+    Mod+Alt+Shift+V { spawn "qsc" "-c" "ii" "ipc" "call" "clipboard" "toggle"; }
     
     // ii Lock screen
-    Mod+Alt+O allow-when-locked=true { spawn "qs" "-c" "ii" "ipc" "call" "lock" "activate"; }
+    Mod+Alt+O allow-when-locked=true { spawn "qsc" "-c" "ii" "ipc" "call" "lock" "activate"; }
     
     // ii Region tools
-    Mod+Shift+Alt+S { spawn "qs" "-c" "ii" "ipc" "call" "region" "screenshot"; }
+    Mod+Shift+Alt+S { spawn "qsc" "-c" "ii" "ipc" "call" "region" "screenshot"; }
     //Mod+Shift+X { spawn "qs" "-c" "ii" "ipc" "call" "region" "ocr"; }
     //Mod+Shift+A { spawn "qs" "-c" "ii" "ipc" "call" "region" "search"; }
     
     // ii Wallpaper selector
-    Mod+Alt+W { spawn "qs" "-c" "ii" "ipc" "call" "wallpaperSelector" "toggle"; }
+    Mod+Alt+W { spawn "qsc" "-c" "ii" "ipc" "call" "wallpaperSelector" "toggle"; }
     
     // ii Settings
-    Mod+Alt+S { spawn "qs" "-c" "ii" "ipc" "call" "settings" "open"; }
+    Mod+Alt+S { spawn "qsc" "-c" "ii" "ipc" "call" "settings" "open"; }
     
     // ii Cheatsheet
-    Mod+Alt+Slash { spawn "qs" "-c" "ii" "ipc" "call" "cheatsheet" "toggle"; }
+    Mod+Alt+Slash { spawn "qsc" "-c" "ii" "ipc" "call" "cheatsheet" "toggle"; }
 
     Mod+H { focus-column-left; }
     Mod+L { focus-column-right; }

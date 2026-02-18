@@ -7,3 +7,8 @@ include "windows.kdl"
 include "animations.kdl"
 include "dms/binds.kdl"
 //include "dms/layout.kdl"
+
+cursor {
+  xcursor-theme "Bibata-Modern-Ice"
+  //hide-after-inactive-ms 3000
+}
