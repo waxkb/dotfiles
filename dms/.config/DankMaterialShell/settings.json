@@ -9,7 +9,7 @@
   "popupTransparency": 1,
   "dockTransparency": 1,
   "widgetBackgroundColor": "s",
-  "widgetColorMode": "colorful",
+  "widgetColorMode": "default",
   "controlCenterTileColorMode": "primary",
   "buttonColorMode": "primary",
   "cornerRadius": 12,
@@ -129,10 +129,10 @@
   "reverseScrolling": false,
   "dwlShowAllTags": false,
   "workspaceColorMode": "default",
-  "workspaceOccupiedColorMode": "none",
+  "workspaceOccupiedColorMode": "schh",
   "workspaceUnfocusedColorMode": "default",
   "workspaceUrgentColorMode": "default",
-  "workspaceFocusedBorderEnabled": false,
+  "workspaceFocusedBorderEnabled": true,
   "workspaceFocusedBorderColor": "primary",
   "workspaceFocusedBorderThickness": 2,
   "workspaceNameIcons": {},
@@ -422,6 +422,10 @@
           "id": "music",
           "enabled": true,
           "mediaSize": 2
+        },
+        {
+          "id": "dankActions:variant_1771471128049",
+          "enabled": true
         }
       ],
       "rightWidgets": [

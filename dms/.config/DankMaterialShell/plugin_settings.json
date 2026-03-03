@@ -1,6 +1,23 @@
 {
   "dankActions": {
-    "enabled": false
+    "enabled": true,
+    "variants": [
+      {
+        "icon": "TCD",
+        "displayText": "",
+        "displayCommand": "full_path=$(dms ipc call wallpaper get) && filename=$(basename \"$full_path\") && echo \"Wallpaper: ${filename%.*}\"",
+        "clickCommand": "",
+        "middleClickCommand": "",
+        "rightClickCommand": "",
+        "updateInterval": 10,
+        "showIcon": true,
+        "showText": true,
+        "visibilityCommand": "",
+        "visibilityInterval": 0,
+        "id": "variant_1771471128049",
+        "name": "Test Command Display"
+      }
+    ]
   },
   "nixMonitor": {
     "enabled": false

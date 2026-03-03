@@ -1,6 +1,8 @@
 binds {
     Mod+B hotkey-overlay-title="Open Zen Browser" { spawn "zen-beta"; }
     Mod+Shift+B hotkey-overlay-title="Open System Monitor (btop)" { spawn "kitty" "btop"; }
+    Mod+C { spawn "code"; }
+    Mod+Alt+C { center-column; }
     Mod+D hotkey-overlay-title="Close Focused Window" { close-window; }
     Mod+Shift+D hotkey-overlay-title="Quit Niri Session" { quit; }
     Mod+E hotkey-overlay-title="Open File Manager (Yazi)" { spawn "kitty" "yazi"; }
@@ -102,7 +104,7 @@ binds {
 
     Mod+F { maximize-column; }
     Mod+Shift+F { expand-column-to-available-width; }
-    Mod+C { center-column; }
+    //Mod+C { center-column; }
     Mod+Shift+C { center-visible-columns; }
 
     Mod+1 { focus-workspace 1; }
