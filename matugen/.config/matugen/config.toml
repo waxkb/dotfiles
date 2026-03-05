@@ -12,38 +12,19 @@ version_check = false
 #output_path = "/home/max/.config/kitty/themes/your-theme.conf"
 #post_hook = "kitty +kitten themes --reload-in=all your-theme"
 
-#[templates.mako]
-#input_path = "/home/max/.config/matugen/templates/mako"
-#output_path = "/home/max/.config/mako/config"
-#post_hook = "makoctl reload"
-
 [templates.btop]
 input_path = "/home/max/.config/matugen/templates/btop.theme"
 output_path = "/home/max/.config/btop/themes/matugen.theme"
 post_hook = "pkill -SIGUSR2 btop"
 
-#[templates.yazi]
-#input_path = "/home/max/.config/matugen/templates/yazi-theme.toml"
-#output_path = "/home/max/.config/yazi/theme.toml"
-#post_hook = "pkill -SIGUSR2 yazi"
-
 #[templates.vesktop]
 #input_path = "/home/max/.config/matugen/templates/midnight-discord.css"
 #output_path = "/home/max/.config/vesktop/themes/midnight.theme.css"
-
-[templates.cava]
-input_path = "/home/max/.config/matugen/templates/cava-colors.ini"
-output_path = "/home/max/.config/cava/themes/your-theme"
-post_hook = "pkill -SIGUSR2 cava"
 
 #[templates.nvim]
 #input_path = "/home/max/.config/matugen/templates/nvim-colors.lua"
 #output_path = "/home/max/.config/nvim/generated.lua"
 #post_hook = "pkill -SIGUSR1 nvim"
-
-#[templates.clipse]
-#input_path = "/home/max/.config/matugen/templates/clipse-theme.json"
-#output_path = "/home/max/.config/clipse/custom_theme.json"
 
 [templates.zen]
 input_path = "/home/max/.config/matugen/templates/userChrome.css"
@@ -66,19 +47,6 @@ input_path = "/home/max/.config/matugen/templates/vicinae.toml"
 output_path = "~/.local/share/vicinae/themes/matugen.toml"
 post_hook = "vicinae theme set matugen"
 
-#[templates.waybar]
-#input_path = '/home/max/.config/matugen/templates/colors.css'
-#output_path = '/home/max/.config/waybar/colors.css'
-#post_hook = 'pkill -SIGUSR2 waybar'
-
-#[templates.swaync]
-#input_path = '/home/max/.config/matugen/templates/colors.css'
-#output_path = '/home/max/.config/swaync/colors.css'
-
-#[templates.wlogout]
-#input_path = '/home/max/.config/matugen/templates/colors.css'
-#output_path = '/home/max/.config/wlogout/colors.css'
-
 [templates.rofi]
 input_path = "/home/max/.config/matugen/templates/rofi-colors.rasi"
 output_path = "/home/max/.config/rofi/applets/shared/colors.rasi"
@@ -86,35 +54,3 @@ output_path = "/home/max/.config/rofi/applets/shared/colors.rasi"
 [templates.lualine]
 input_path = "/home/max/.config/matugen/templates/dank-lualine.lua"
 output_path = "/home/max/.config/nvim/lua/plugins/dank-lualine.lua"
-
-
-
-# Colors for Quickshell ii
-[templates.m3colors]
-input_path = '~/.config/matugen/templates/colors.json'
-output_path = '~/.local/state/quickshell/user/generated/colors.json'
-
-# Fuzzel launcher theme
-[templates.fuzzel]
-input_path = '~/.config/matugen/templates/fuzzel/fuzzel_theme.ini'
-output_path = '~/.config/fuzzel/fuzzel_theme.ini'
-
-# GTK3 theme
-[templates.gtk3]
-input_path = '~/.config/matugen/templates/gtk-3.0/gtk.css'
-output_path = '~/.config/gtk-3.0/gtk.css'
-
-# GTK4 theme
-[templates.gtk4]
-input_path = '~/.config/matugen/templates/gtk-4.0/gtk.css'
-output_path = '~/.config/gtk-4.0/gtk.css'
-
-# KDE colors (for Dolphin integration)
-[templates.kde_colors]
-input_path = '~/.config/matugen/templates/kde/color.txt'
-output_path = '~/.local/state/quickshell/user/generated/color.txt'
-
-# Wallpaper path tracking
-[templates.wallpaper]
-input_path = '~/.config/matugen/templates/wallpaper.txt'
-output_path = '~/.local/state/quickshell/user/generated/wallpaper/path.txt'
