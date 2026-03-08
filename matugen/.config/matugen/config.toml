@@ -54,3 +54,7 @@ output_path = "/home/max/.config/rofi/applets/shared/colors.rasi"
 [templates.lualine]
 input_path = "/home/max/.config/matugen/templates/dank-lualine.lua"
 output_path = "/home/max/.config/nvim/lua/plugins/dank-lualine.lua"
+
+[templates.picker]
+input_path = "/home/max/.config/matugen/templates/picker-colors.qml"
+output_path = "/home/max/.config/quickshell/wallpaper/shell.qml"
