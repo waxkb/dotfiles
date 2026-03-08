@@ -38,18 +38,18 @@ Scope {
     property bool thumbsReady: false
     property var wallpaperHashes: ({})
 
-    property color mdSurface: "#151216"
-    property color mdOnSurface: "#e8e0e5"
-    property color mdPrimary: "#e7b4ff"
-    property color mdOnPrimary: "#491765"
-    property color mdSecondary: "#d3c0d8"
-    property color mdOnSecondary: "#382c3e"
-    property color mdTertiary: "#f4b7b7"
-    property color mdOnTertiary: "#4c2526"
+    property color mdSurface: "#131316"
+    property color mdOnSurface: "#e4e1e6"
+    property color mdPrimary: "#bac3ff"
+    property color mdOnPrimary: "#162778"
+    property color mdSecondary: "#c3c5dd"
+    property color mdOnSecondary: "#2c2f42"
+    property color mdTertiary: "#e5bad8"
+    property color mdOnTertiary: "#44263e"
     property color mdError: "#ffb4ab"
     property color mdOnError: "#690005"
-    property color mdOutline: "#978e98"
-    property color mdSurfaceVariant: "#4b444d"
+    property color mdOutline: "#90909a"
+    property color mdSurfaceVariant: "#46464f"
 
     function loadWallpapers() {
         root.wallpaperList = []
