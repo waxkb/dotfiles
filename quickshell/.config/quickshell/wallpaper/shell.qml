@@ -32,16 +32,16 @@ Scope {
             root.filteredWallpapers = result
         }
     }
-    property string applyCommand: "ln -sf '{wallpaper}' '{wall}/current' && swww img '{wallpaper}' --transition-type any --transition-duration 2 & wal -i '{wallpaper}' -n -q && sleep 0.3"
+    property string applyCommand: "dms ipc call wallpaper set {wallpaper}"
     property string wallPath: homePath + "/wall"
     property bool wallsLoaded: false
     property bool thumbsReady: false
     property var wallpaperHashes: ({})
 
-    property color mdSurface: "#131316"
-    property color mdOnSurface: "#e4e1e6"
+    property color mdSurface: "#121318"
+    property color mdOnSurface: "#e3e1e9"
     property color mdPrimary: "#bac3ff"
-    property color mdOnPrimary: "#162778"
+    property color mdOnPrimary: "#222c61"
     property color mdSecondary: "#c3c5dd"
     property color mdOnSecondary: "#2c2f42"
     property color mdTertiary: "#e5bad8"
@@ -461,6 +461,7 @@ Scope {
             id: applyWallProc
             onExited: {
                 if (!walColorsProc.running) walColorsProc.running = true
+                Qt.quit()
             }
         }
 

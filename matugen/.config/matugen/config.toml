@@ -1,25 +1,16 @@
-#[config.wallpaper]
-#command = "swww"
-#arguments = ["img", "--transition-type", "center"]
-#set = false
-
 [config]
 
 version_check = false
 
-#[templates.kitty]
-#input_path = "/home/max/.config/matugen/templates/kitty-colors.conf"
-#output_path = "/home/max/.config/kitty/themes/your-theme.conf"
-#post_hook = "kitty +kitten themes --reload-in=all your-theme"
+[templates.kitty]
+input_path = "/home/max/.config/matugen/templates/kitty-colors.conf"
+output_path = "/home/max/.config/kitty/themes/your-theme.conf"
+post_hook = "kitty +kitten themes --reload-in=all your-theme"
 
 [templates.btop]
 input_path = "/home/max/.config/matugen/templates/btop.theme"
 output_path = "/home/max/.config/btop/themes/matugen.theme"
 post_hook = "pkill -SIGUSR2 btop"
-
-#[templates.vesktop]
-#input_path = "/home/max/.config/matugen/templates/midnight-discord.css"
-#output_path = "/home/max/.config/vesktop/themes/midnight.theme.css"
 
 #[templates.nvim]
 #input_path = "/home/max/.config/matugen/templates/nvim-colors.lua"
@@ -46,10 +37,6 @@ output_path = "/home/max/dotfiles/niri/.config/niri/colors.kdl"
 input_path = "/home/max/.config/matugen/templates/vicinae.toml"
 output_path = "~/.local/share/vicinae/themes/matugen.toml"
 post_hook = "vicinae theme set matugen"
-
-[templates.rofi]
-input_path = "/home/max/.config/matugen/templates/rofi-colors.rasi"
-output_path = "/home/max/.config/rofi/applets/shared/colors.rasi"
 
 [templates.lualine]
 input_path = "/home/max/.config/matugen/templates/dank-lualine.lua"

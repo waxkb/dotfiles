@@ -32,7 +32,7 @@ Scope {
             root.filteredWallpapers = result
         }
     }
-    property string applyCommand: "ln -sf '{wallpaper}' '{wall}/current' && swww img '{wallpaper}' --transition-type any --transition-duration 2 & wal -i '{wallpaper}' -n -q && sleep 0.3"
+    property string applyCommand: "dms ipc call wallpaper set {wallpaper}"
     property string wallPath: homePath + "/wall"
     property bool wallsLoaded: false
     property bool thumbsReady: false
@@ -461,6 +461,7 @@ Scope {
             id: applyWallProc
             onExited: {
                 if (!walColorsProc.running) walColorsProc.running = true
+                Qt.quit()
             }
         }
 

@@ -21,7 +21,7 @@ layout {
         on
         width 2
         active-color "#bac3ff"
-        inactive-color "#131316"
+        inactive-color "#121318"
         urgent-color "#ffb4ab"
     }
 

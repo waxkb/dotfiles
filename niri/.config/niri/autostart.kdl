@@ -1,4 +1,4 @@
-spawn-at-startup "noctalia-shell"
+//spawn-at-startup "noctalia-shell"
 //spawn-at-startup "dms" "run" "--session"
 //spawn-at-startup "qsc" "-c" "ii"
 //spawn-sh-at-startup "~/start-waybar.sh"
