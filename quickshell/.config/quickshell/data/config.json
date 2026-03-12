@@ -1,0 +1,9 @@
+{
+  "paths": {
+    "wallpaper": "~/wall",
+    "cache": "~/.cache/quickshell-wallpaper-picker"
+  },
+  "intervals": {
+    "ollamaStatusPollMs": 2000
+  }
+}

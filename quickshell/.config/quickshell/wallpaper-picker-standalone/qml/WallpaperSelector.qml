@@ -80,55 +80,33 @@ Scope {
   }
 
 
-  // Ollama analysis status polling
+  // Ollama analysis status polling (disabled - no backend)
   Timer {
     id: ollamaStatusTimer
-    interval: Config.ollamaStatusPollMs
-    running: wallpaperSelector.showing
-    repeat: true
-    triggeredOnStart: true
-    onTriggered: {
-      ollamaStatusCheck.running = true
-      ollamaProgressCheck.running = true
-      if (wallpaperSelector.ollamaActive) {
-        ollamaLogCheck.running = true
-      }
-    }
+    interval: 2000
+    running: false
   }
 
-
-  // Live-reload metadata while ollama is analyzing
+  // Live-reload metadata while ollama is analyzing (disabled)
   Timer {
     id: liveReloadTimer
     interval: 15000
-    running: wallpaperSelector.showing && wallpaperSelector.ollamaActive
-    repeat: true
-    onTriggered: {
-      reloadMetadata()
-    }
+    running: false
   }
 
 
-  // Ollama analysis log tail reader
+  // Ollama analysis log tail reader (disabled)
   Process {
     id: ollamaLogCheck
-    command: ["/run/current-system/sw/bin/bash", "-c", "tail -n1 " + Config.cacheDir + "/analyze-wallpapers.log 2>/dev/null | cut -c1-120"]
+    command: ["true"]
     running: false
-    stdout: SplitParser {
-      onRead: line => {
-        var trimmed = line.trim()
-        if (trimmed && trimmed.length > 0) {
-          wallpaperSelector.ollamaLogLine = trimmed
-        }
-      }
-    }
   }
 
 
   // Ollama process active/idle detection
   Process {
     id: ollamaStatusCheck
-    command: ["/run/current-system/sw/bin/bash", "-c", "pgrep -f 'analyze-wallpapers' > /dev/null && echo 'active' || echo 'idle'"]
+    command: ["bash", "-c", "pgrep -f 'analyze-wallpapers' > /dev/null && echo 'active' || echo 'idle'"]
     property string result: ""
     stdout: SplitParser {
       onRead: line => {
@@ -140,131 +118,24 @@ Scope {
     }
     onExited: {
       if (result === "active") {
-        ollamaDetailCheck.running = true
-      } else {
-        wallpaperSelector.ollamaTaggingActive = false
-        wallpaperSelector.ollamaColorsActive = false
-        wallpaperSelector.ollamaLogLine = ""
       }
     }
   }
 
   Process {
     id: ollamaDetailCheck
-    command: ["/run/current-system/sw/bin/bash", "-c", "pgrep -f '[a]nalyze-wallpapers' > /dev/null && echo 'tag:1:color:1' || echo 'tag:0:color:0'"]
-    stdout: SplitParser {
-      onRead: line => {
-        var parts = line.trim().split(":")
-        if (parts.length >= 4) {
-          wallpaperSelector.ollamaTaggingActive = (parts[1] === "1")
-          wallpaperSelector.ollamaColorsActive = (parts[3] === "1")
-        }
-      }
-    }
+    command: ["true"]
   }
 
-  // Ollama progress tracking (thumbs, tagged, colored counts + ETA)
+  // Ollama progress tracking (disabled)
   Process {
     id: ollamaProgressCheck
-    command: ["/run/current-system/sw/bin/bash", "-c", `
-      thumbs=$(( $(find ~/.cache/piixident/wallpaper/thumbs -name '*.jpg' 2>/dev/null | wc -l) + $(find ~/.cache/piixident/wallpaper/we-thumbs -name '*.jpg' 2>/dev/null | wc -l) + $(find ~/.cache/piixident/wallpaper/video-thumbs -name '*.jpg' 2>/dev/null | wc -l) ))
-      tags=$(jq 'keys | length' ~/.cache/piixident/wallpaper/tags.json 2>/dev/null || echo 0)
-      colors=$(jq 'keys | length' ~/.cache/piixident/wallpaper/colors.json 2>/dev/null || echo 0)
-      echo "$thumbs:$tags:$colors"
-    `]
-    stdout: SplitParser {
-      onRead: line => {
-        var parts = line.trim().split(":")
-        if (parts.length >= 3) {
-          var total = parseInt(parts[0]) || 0
-          var tagged = parseInt(parts[1]) || 0
-          var colored = parseInt(parts[2]) || 0
-
-          wallpaperSelector.ollamaTotalThumbs = total
-          wallpaperSelector.ollamaTaggedCount = tagged
-          wallpaperSelector.ollamaColoredCount = colored
-
-          if (!wallpaperSelector.ollamaActive) {
-            wallpaperSelector.ollamaStartTime = 0
-            wallpaperSelector.ollamaEta = ""
-            return
-          }
-
-          var now = Date.now() / 1000
-
-          if (wallpaperSelector.ollamaStartTime === 0) {
-            wallpaperSelector.ollamaStartTime = now
-            wallpaperSelector.ollamaStartTagCount = tagged
-            wallpaperSelector.ollamaStartColorCount = colored
-            wallpaperSelector.ollamaEta = "starting..."
-            return
-          }
-
-          var elapsed = now - wallpaperSelector.ollamaStartTime
-          if (elapsed < 8) {
-            wallpaperSelector.ollamaEta = "calculating..."
-            return
-          }
-
-          var processed = 0
-          var remaining = 0
-
-          if (wallpaperSelector.ollamaTaggingActive && wallpaperSelector.ollamaColorsActive) {
-            var tagRemaining = total - tagged
-            var colorRemaining = total - colored
-            remaining = tagRemaining + colorRemaining
-            processed = (tagged - wallpaperSelector.ollamaStartTagCount) + (colored - wallpaperSelector.ollamaStartColorCount)
-          } else if (wallpaperSelector.ollamaTaggingActive) {
-            processed = tagged - wallpaperSelector.ollamaStartTagCount
-            remaining = total - tagged
-          } else if (wallpaperSelector.ollamaColorsActive) {
-            processed = colored - wallpaperSelector.ollamaStartColorCount
-            remaining = total - colored
-          }
-
-          if (processed > 0 && remaining > 0) {
-            var rate = processed / elapsed
-            var etaSeconds = remaining / rate
-
-            if (etaSeconds < 60) {
-              wallpaperSelector.ollamaEta = "~" + Math.round(etaSeconds) + "s"
-            } else if (etaSeconds < 3600) {
-              wallpaperSelector.ollamaEta = "~" + Math.round(etaSeconds / 60) + "m"
-            } else {
-              var hours = Math.floor(etaSeconds / 3600)
-              var mins = Math.round((etaSeconds % 3600) / 60)
-              wallpaperSelector.ollamaEta = "~" + hours + "h" + mins + "m"
-            }
-          } else if (remaining === 0) {
-            if (tagged >= total && colored >= total && total > 0) {
-              ollamaFinalCheck.running = true
-            } else {
-              wallpaperSelector.ollamaEta = "finishing..."
-            }
-          } else {
-            wallpaperSelector.ollamaEta = "calculating..."
-          }
-        }
-      }
-    }
+    command: ["true"]
   }
 
   Process {
     id: ollamaFinalCheck
-    command: ["/run/current-system/sw/bin/bash", "-c", "pgrep -f '[t]ag-wallpapers|[a]nalyze-wallpaper-colors' > /dev/null && echo 'active' || echo 'idle'"]
-    stdout: SplitParser {
-      onRead: line => {
-        if (line.trim() === "idle") {
-          wallpaperSelector.ollamaTaggingActive = false
-          wallpaperSelector.ollamaColorsActive = false
-          wallpaperSelector.ollamaEta = ""
-          wallpaperSelector.ollamaStartTime = 0
-          wallpaperSelector.ollamaLogLine = ""
-        } else {
-          wallpaperSelector.ollamaEta = "finishing..."
-        }
-      }
-    }
+    command: ["true"]
   }
 
 
@@ -278,7 +149,7 @@ Scope {
   // Slice geometry constants
   property int sliceWidth: 135
   property int expandedWidth: 924
-  property int sliceHeight: 520
+  property int sliceHeight: 540
   property int skewOffset: 35
   property int sliceSpacing: -22
 
@@ -510,7 +381,7 @@ Scope {
   // Cache checker process (scans wallpaper dirs, generates thumbnails)
   Process {
     id: checkCache
-    command: ["/run/current-system/sw/bin/bash", wallpaperSelector.scriptsDir + "/bash/check-wallpaper-cache"]
+    command: ["bash", wallpaperSelector.scriptsDir + "/bash/check-wallpaper-cache"]
     onRunningChanged: {
       if (running) {
         wallpaperSelector.cacheLoading = true
@@ -546,7 +417,7 @@ Scope {
   // JSONL wallpaper list loader
   Process {
     id: listWallpapers
-    command: ["/run/current-system/sw/bin/bash", "-c",
+    command: ["bash", "-c",
       "if [ -f '" + wallpaperSelector.wallpaperListCache + "' ]; then cat '" + wallpaperSelector.wallpaperListCache + "'; fi"
     ]
     running: false
@@ -582,30 +453,30 @@ Scope {
   // Wallpaper apply processes (static, WE, video)
   Process {
     id: applyWallpaper
-    command: ["/run/current-system/sw/bin/bash", "-c", "true"]
+    command: ["bash", "-c", "true"]
     onExited: function(code, status) {
       if (code === 0) wallpaperSelector.wallpaperChanged()
     }
     function apply(path) {
-      command = ["/run/current-system/sw/bin/bash", wallpaperSelector.scriptsDir + "/bash/apply-static-wallpaper", path]
+      command = ["bash", wallpaperSelector.scriptsDir + "/bash/apply-static-wallpaper", path]
       running = true
     }
   }
 
   Process {
     id: applyWEWallpaper
-    command: ["/run/current-system/sw/bin/bash", "-c", "true"]
+    command: ["bash", "-c", "true"]
     function apply(id) {
-      command = ["/run/current-system/sw/bin/bash", wallpaperSelector.scriptsDir + "/bash/apply-we-wallpaper", id]
+      command = ["bash", wallpaperSelector.scriptsDir + "/bash/apply-we-wallpaper", id]
       running = true
     }
   }
 
   Process {
     id: applyVideoWallpaper
-    command: ["/run/current-system/sw/bin/bash", "-c", "true"]
+    command: ["bash", "-c", "true"]
     function apply(path) {
-      command = ["/run/current-system/sw/bin/bash", wallpaperSelector.scriptsDir + "/bash/apply-video-wallpaper", path]
+      command = ["bash", wallpaperSelector.scriptsDir + "/bash/apply-video-wallpaper", path]
       running = true
     }
   }
@@ -613,7 +484,7 @@ Scope {
   // Delete wallpaper and clear cache
   Process {
     id: deleteWallpaper
-    command: ["/run/current-system/sw/bin/bash", "-c", "true"]
+    command: ["bash", "-c", "true"]
     function remove(type, name, weId) {
       if (type === "we") {
         command = ["rm", "-rf", wallpaperSelector.weDir + "/" + weId]
@@ -636,7 +507,7 @@ Scope {
 
   Process {
     id: unsubscribeWE
-    command: ["/run/current-system/sw/bin/bash", "-c", "true"]
+    command: ["bash", "-c", "true"]
     function unsubscribe(weId) {
       command = ["xdg-open", "steam://url/CommunityFilePage/" + weId]
       running = true
@@ -693,7 +564,10 @@ Scope {
 
     MouseArea {
       anchors.fill: parent
-      onClicked: wallpaperSelector.showing = false
+      onClicked: {
+        wallpaperSelector.showing = false
+        Qt.exit(0)
+      }
     }
 
 
@@ -1457,7 +1331,10 @@ Scope {
         }
       }
 
-      Keys.onEscapePressed: wallpaperSelector.showing = false
+      Keys.onEscapePressed: {
+        wallpaperSelector.showing = false
+        Qt.exit(0)
+      }
       Keys.onReturnPressed: {
         if (currentIndex >= 0 && currentIndex < filteredModel.count) {
           const item = filteredModel.get(currentIndex)
@@ -1468,6 +1345,7 @@ Scope {
           } else {
             applyWallpaper.apply(item.path)
           }
+          Qt.exit(0)
         }
       }
       Keys.onPressed: function(event) {
@@ -1623,8 +1501,6 @@ Scope {
             fillMode: Image.PreserveAspectCrop
             smooth: true
             asynchronous: true
-            sourceSize.width: wallpaperSelector.expandedWidth
-            sourceSize.height: wallpaperSelector.sliceHeight
           }
 
           Rectangle {
@@ -1917,6 +1793,7 @@ Scope {
                 } else {
                   applyWallpaper.apply(model.path)
                 }
+                Qt.exit(0)
               } else {
                 sliceListView.currentIndex = index
               }

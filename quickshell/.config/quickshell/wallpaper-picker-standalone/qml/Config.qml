@@ -26,7 +26,7 @@ QtObject {
 
     // Directory paths
     readonly property string homeDir: Quickshell.env("HOME")
-    readonly property string configDir: homeDir + "/.config/piixident"
+    readonly property string configDir: homeDir + "/.config/quickshell"
 
     function _resolve(path) { return path ? path.replace("~", homeDir) : "" }
 
