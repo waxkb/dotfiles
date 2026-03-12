@@ -1,0 +1,70 @@
+#!/bin/bash
+# Simple wallpaper thumbnail generation using ImageMagick
+IFS=$'\t' read -r type src name mtime thumb_path title <<< "$1"
+
+# Generate thumbnail with ImageMagick
+case "$type" in
+  static)
+    magick "$src" -resize "640x360^" -gravity center -crop 640x360+0+0 +repage "$thumb_path"
+    ;;
+  video)
+    # For videos, just use a placeholder or skip for now
+    magick -size 640x360 xc:black "$thumb_path" 2>/dev/null
+    ;;
+  we)
+    magick -resize "640x360^" -gravity center -crop 640x360+0+0 +repage "$src" "$thumb_path" 2>/dev/null
+    ;;
+esac
+
+# Extract dominant color using ImageMagick
+if [ -f "$thumb_path" ]; then
+  dominant=$(magick "$thumb_path" -colors 1 -format "%[hex:u]" info:)
+  # Parse hex color to get approximate hue group (0-11)
+  if [ -n "$dominant" ]; then
+    r=$((16#${dominant:0:2}))
+    g=$((16#${dominant:2:2}))
+    b=$((16#${dominant:4:2}))
+    # Simple hue calculation
+    max=$(( r > g ? (r > b ? r : b) : (g > b ? g : b) ))
+    min=$(( r < g ? (r < b ? r : b) : (g < b ? g : b) ))
+    if [ $max -eq 0 ]; then
+      group=99; sat=0
+    else
+      delta=$((max - min))
+      sat=$(( (delta * 100) / max ))
+      if [ $delta -eq 0 ]; then
+        group=0
+      else
+        if [ $max -eq $r ]; then
+          h=$(( (g - b) * 60 / delta ))
+        elif [ $max -eq $g ]; then
+          h=$(( (b - r) * 60 / delta + 120 ))
+        else
+          h=$(( (r - g) * 60 / delta + 240 ))
+        fi
+        h=$(( (h + 360) % 360 ))
+        group=$(( (h + 15) / 30 % 12 ))
+      fi
+    fi
+  else
+    group=99; sat=0
+  fi
+else
+  group=99; sat=0
+fi
+
+# Output JSONL
+case "$type" in
+  static|video)
+    jq -cn --argjson g "$group" --argjson s "$sat" --argjson m "$mtime" \
+      --arg t "$type" --arg id "" --arg n "$name" --arg th "$thumb_path" \
+      --arg vf "$src" \
+      '{group:$g,sat:$s,mtime:$m,type:$t,id:$id,name:$n,thumb:$th,videoFile:$vf}'
+    ;;
+  we)
+    jq -cn --argjson g "$group" --argjson s "$sat" --argjson m "$mtime" \
+      --arg t "we" --arg id "$name" --arg n "$title" --arg th "$thumb_path" \
+      --arg vf "" \
+      '{group:$g,sat:$s,mtime:$m,type:$t,id:$id,name:$n,thumb:$th,videoFile:$vf}'
+    ;;
+esac
