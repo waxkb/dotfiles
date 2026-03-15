@@ -15,4 +15,3 @@ fi
 
 echo "$now" >"$STATE_FILE"
 noctalia-shell ipc call wallpaper toggle
-matugen image "$1" >>"/home/max/wtfIsHappening.txt"

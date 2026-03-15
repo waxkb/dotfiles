@@ -45,6 +45,7 @@ Scope {
       checkCache.running = true
 
       cardShowTimer.restart()
+      searchFocusTimer.restart()
     } else {
       cardVisible = false
     }
@@ -77,6 +78,12 @@ Scope {
     id: cardShowTimer
     interval: 50
     onTriggered: wallpaperSelector.cardVisible = true
+  }
+
+  Timer {
+    id: searchFocusTimer
+    interval: 500
+    onTriggered: searchInput.forceActiveFocus()
   }
 
 
@@ -141,7 +148,7 @@ Scope {
 
   Timer {
     id: focusTimer
-    interval: 50
+    interval: 150
     onTriggered: sliceListView.forceActiveFocus()
   }
 
@@ -157,7 +164,7 @@ Scope {
   property string homeDir: Config.homeDir
 
 
-  property string scriptsDir: Config.scriptsDir
+  property string scriptsDir: homeDir + "/.config/quickshell/wallpaper-picker-standalone/scripts"
 
 
   // Wallpaper directory paths
@@ -192,9 +199,8 @@ Scope {
 
 
   // Filter and sort state
+  property string searchQuery: ""
   property int selectedColorFilter: -1
-
-
   property string selectedTypeFilter: ""
 
 
@@ -371,6 +377,48 @@ Scope {
     if (filteredModel.count > 0) {
       sliceListView.currentIndex = 0
       sliceListView.positionViewAtIndex(0, ListView.Beginning)
+    }
+  }
+
+  function searchAndFocus() {
+    if (searchQuery === "" || filteredModel.count === 0) return
+    var query = searchQuery.toLowerCase()
+    var bestIndex = -1
+    var bestScore = -1
+    for (var i = 0; i < filteredModel.count; i++) {
+      var name = filteredModel.get(i).name.toLowerCase()
+      var score = 0
+      if (name === query) {
+        score = 100
+      } else if (name.startsWith(query)) {
+        score = 80
+      } else if (name.includes(query)) {
+        score = 60
+      } else {
+        var queryIdx = 0
+        var consecutive = 0
+        var maxConsecutive = 0
+        for (var j = 0; j < name.length && queryIdx < query.length; j++) {
+          if (name[j] === query[queryIdx]) {
+            consecutive++
+            maxConsecutive = Math.max(maxConsecutive, consecutive)
+            queryIdx++
+          } else {
+            consecutive = 0
+          }
+        }
+        if (queryIdx === query.length) {
+          score = 30 + maxConsecutive * 5
+        }
+      }
+      if (score > bestScore) {
+        bestScore = score
+        bestIndex = i
+      }
+    }
+    if (bestIndex >= 0) {
+      sliceListView.currentIndex = bestIndex
+      sliceListView.positionViewAtIndex(bestIndex, ListView.Center)
     }
   }
 
@@ -784,78 +832,56 @@ Scope {
 
       // Color hue filter (parallelogram dots)
       Row {
-        id: colorDotsRow
-        spacing: -5
+        id: searchRow
+        spacing: 8
+        anchors.verticalCenter: parent.verticalCenter
 
-        Repeater {
-          model: 13
-
-          Item {
-            width: 38; height: 20
-            readonly property int filterValue: index < 12 ? index : 99
-            readonly property bool isSelected: wallpaperSelector.selectedColorFilter === filterValue
-            readonly property color shapeColor: index === 12 ? "#777" : Qt.hsla(index / 12.0, 0.7, 0.5, 1.0)
-            readonly property color shadowColor: index === 12 ? "#555" : Qt.hsla(index / 12.0, 0.8, 0.3, 1.0)
-
-            Canvas {
-              id: colorCanvas
-              anchors.centerIn: parent
-              width: parent.width; height: parent.height
-              scale: parent.isSelected ? 1.15 : 1.0
-              Behavior on scale { NumberAnimation { duration: 100; easing.type: Easing.OutBack } }
-
-              property color fillColor: parent.shapeColor
-              property color borderColor: index === 12 ? "#aaa" : Qt.hsla(index / 12.0, 0.7, 0.75, 1.0)
-              property color dropShadowColor: parent.shadowColor
-              property real fillOpacity: parent.isSelected ? 1.0 : 0.6
-              property bool showShadow: parent.isSelected
-
-              onFillColorChanged: requestPaint()
-              onFillOpacityChanged: requestPaint()
-              onShowShadowChanged: requestPaint()
-
-              onPaint: {
-                var ctx = getContext("2d")
-                ctx.clearRect(0, 0, width, height)
-                var skew = 15
-                if (showShadow) {
-                  ctx.globalAlpha = 0.6
-                  ctx.fillStyle = dropShadowColor
-                  ctx.beginPath()
-                  ctx.moveTo(skew + 3, 2 + 3)
-                  ctx.lineTo(width + 3, 2 + 3)
-                  ctx.lineTo(width - skew + 3, 18 + 3)
-                  ctx.lineTo(0 + 3, 18 + 3)
-                  ctx.closePath()
-                  ctx.fill()
-                }
-                ctx.globalAlpha = fillOpacity
-                ctx.fillStyle = fillColor
-                ctx.beginPath()
-                ctx.moveTo(skew, 2)
-                ctx.lineTo(width, 2)
-                ctx.lineTo(width - skew, 18)
-                ctx.lineTo(0, 18)
-                ctx.closePath()
-                ctx.fill()
-                ctx.globalAlpha = fillOpacity
-                ctx.strokeStyle = borderColor
-                ctx.lineWidth = 1.5
-                ctx.stroke()
+        TextInput {
+          id: searchInput
+          width: 140
+          height: 24
+          verticalAlignment: TextInput.AlignVCenter
+          color: wallpaperSelector.colors ? wallpaperSelector.colors.surfaceText : "#fff"
+          font.family: Style.fontFamily
+          font.pixelSize: 12
+          text: wallpaperSelector.searchQuery
+          onTextChanged: {
+            wallpaperSelector.searchQuery = text
+            wallpaperSelector.searchAndFocus()
+          }
+          Keys.onReturnPressed: {
+            if (sliceListView.currentIndex >= 0 && sliceListView.currentIndex < filteredModel.count) {
+              const item = filteredModel.get(sliceListView.currentIndex)
+              if (item.type === "we") {
+                applyWEWallpaper.apply(item.weId)
+              } else if (item.type === "video") {
+                applyVideoWallpaper.apply(item.path)
+              } else {
+                applyWallpaper.apply(item.path)
               }
+              Qt.exit(0)
             }
+          }
 
-            MouseArea {
-              anchors.fill: parent
-              cursorShape: Qt.PointingHandCursor
-              onClicked: {
-                if (parent.isSelected) {
-                  wallpaperSelector.selectedColorFilter = -1
-                } else {
-                  wallpaperSelector.selectedColorFilter = parent.filterValue
-                }
-              }
-            }
+          Rectangle {
+            anchors.fill: parent
+            radius: 4
+            color: "transparent"
+            border.width: 1
+            border.color: searchInput.activeFocus
+              ? (wallpaperSelector.colors ? wallpaperSelector.colors.primary : "#cba6f7")
+              : (wallpaperSelector.colors ? wallpaperSelector.colors.outline : Qt.rgba(1, 1, 1, 0.2))
+          }
+
+          Text {
+            anchors.verticalCenter: parent.verticalCenter
+            anchors.left: parent.left
+            anchors.leftMargin: 8
+            text: "Search..."
+            color: Qt.rgba(1, 1, 1, 0.3)
+            font.family: Style.fontFamily
+            font.pixelSize: 12
+            visible: searchInput.text === ""
           }
         }
       }
@@ -1624,7 +1650,7 @@ Scope {
           ShapePath {
             fillColor: "transparent"
             strokeColor: delegateItem.isCurrent
-              ? (wallpaperSelector.colors ? wallpaperSelector.colors.primary : "#8BC34A")
+              ? "#cba6f7"
               : (delegateItem.isHovered
                 ? Qt.rgba(wallpaperSelector.colors ? wallpaperSelector.colors.primary.r : 0.5, wallpaperSelector.colors ? wallpaperSelector.colors.primary.g : 0.76, wallpaperSelector.colors ? wallpaperSelector.colors.primary.b : 0.29, 0.4)
                 : Qt.rgba(0, 0, 0, 0.6))
@@ -1669,68 +1695,14 @@ Scope {
           }
         }
 
-        Rectangle {
-          id: nameLabel
-          anchors.bottom: parent.bottom
-          anchors.bottomMargin: 40
-          anchors.horizontalCenter: parent.horizontalCenter
-          width: nameText.width + 24
-          height: 32
-          radius: 6
-          color: Qt.rgba(0, 0, 0, 0.75)
-          border.width: 1
-          border.color: wallpaperSelector.colors ? Qt.rgba(wallpaperSelector.colors.primary.r, wallpaperSelector.colors.primary.g, wallpaperSelector.colors.primary.b, 0.5) : Qt.rgba(1, 1, 1, 0.2)
-          visible: delegateItem.isCurrent
-          opacity: delegateItem.isCurrent ? 1 : 0
-          Behavior on opacity { NumberAnimation { duration: 200 } }
-          Text {
-            id: nameText
-            anchors.centerIn: parent
-            text: model.name.replace(/\.[^/.]+$/, "").toUpperCase()
-            font.family: Style.fontFamily
-            font.pixelSize: 12
-            font.weight: Font.Bold
-            font.letterSpacing: 0.5
-            color: wallpaperSelector.colors ? wallpaperSelector.colors.tertiary : "#8bceff"
-            elide: Text.ElideMiddle
-            maximumLineCount: 1
-            width: Math.min(implicitWidth, delegateItem.width - 60)
-          }
-        }
-
-        Rectangle {
-          anchors.bottom: parent.bottom
-          anchors.bottomMargin: 8
-          anchors.right: parent.right
-          anchors.rightMargin: wallpaperSelector.skewOffset + 8
-          width: typeBadgeText.width + 8
-          height: 16
-          radius: 4
-          color: Qt.rgba(0, 0, 0, 0.75)
-          border.width: 1
-          border.color: wallpaperSelector.colors ? Qt.rgba(wallpaperSelector.colors.primary.r, wallpaperSelector.colors.primary.g, wallpaperSelector.colors.primary.b, 0.4) : Qt.rgba(1, 1, 1, 0.2)
-          z: 10
-
-          Text {
-            id: typeBadgeText
-            anchors.centerIn: parent
-            text: model.type === "static" ? "PIC" : (model.type === "video" ? "VID" : "WE")
-            font.family: Style.fontFamily
-            font.pixelSize: 9
-            font.weight: Font.Bold
-            font.letterSpacing: 0.5
-            color: wallpaperSelector.colors ? wallpaperSelector.colors.tertiary : "#8bceff"
-          }
-        }
-
-        // Matugen color preview dots (bottom-left of selected slice)
+        // Mouse interaction (hover, click to apply, right-click context menu) (bottom-left of selected slice)
         Row {
           anchors.bottom: parent.bottom
           anchors.bottomMargin: 12
           anchors.left: parent.left
           anchors.leftMargin: wallpaperSelector.skewOffset + 8
           spacing: 6
-          visible: delegateItem.isCurrent && wallpaperColors !== undefined
+          visible: false
           property var wallpaperColors: {
             var key = model.weId ? model.weId : model.name.replace(/\.[^/.]+$/, "")
             return wallpaperSelector.matugenDb[key]

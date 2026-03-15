@@ -2,12 +2,12 @@ workspace "1"
 workspace "2"
 workspace "3"
 
-window-rule {
+window-rule{
   match is-active=true
   opacity 0.95
 }
 
-window-rule {
+window-rule{
   match is-active=false
   opacity 0.85
 }
@@ -15,9 +15,4 @@ window-rule {
 
 window-rule {
     draw-border-with-background false
-}
-
-window-rule {
-  match app-id="org.quickshell"
-  open-floating true
 }

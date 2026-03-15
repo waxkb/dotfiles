@@ -1,0 +1,98 @@
+/**
+ * Minimal wallpaper picker base
+ */
+
+configuration {
+    modi: "drun";
+    show-icons: true;
+    drun-display-format: "{name}";
+}
+
+/* Theme */
+@import "~/.config/rofi/applets/shared/colors.rasi"
+
+/* GLOBAL DEFAULTS — THIS IS THE KEY */
+* {
+    background-color: @surface;
+    text-color: @on-surface;
+    font: "JetBrainsMono Nerd Font Mono 10";
+}
+
+/* Window */
+window {
+    width: 50%;
+    location: south;
+    anchor: south;
+    y-offset: -10px;
+    border-radius: 18px;
+}
+
+/* Layout */
+mainbox {
+    children: [ inputbar, listview ];
+}
+
+/* Search bar */
+inputbar {
+    padding: 20px 30px 10px 30px;
+}
+
+entry {
+    placeholder: "Search wallpapers…";
+}
+
+/* Grid */
+listview {
+    columns: 4;
+    lines: 1;
+    spacing: 00px;
+    padding: 10px 30px 30px 30px;
+    fixed-columns: true;
+    fixed-height: false;
+    scrollbar: false;
+}
+
+/* Items */
+element {
+    orientation: vertical;
+    padding: 6px;
+    border-radius: 18px;
+    text-color: @on-surface;
+}
+
+
+/* Thumbnails */
+element-icon {
+    squared: false;
+    size: 360px;
+    border-radius: 18px;
+    background-color: transparent;
+    text-color: inherit;
+    padding: 0;
+    margin: 0;
+}
+
+element-text {
+    padding-top: 8px;
+    horizontal-align: 0.5;
+    background-color: transparent;
+    text-color: inherit;
+}
+
+element selected.normal {
+    background-color: @primary;
+}
+
+element selected.normal {
+    background-color: @primary;
+    text-color: @on-primary;
+}
+
+element normal.hover {
+    background-color: @primary;
+}
+
+element normal.hover element-text,
+element normal.hover element-icon {
+    text-color: @surface;
+}

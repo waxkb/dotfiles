@@ -31,9 +31,7 @@ binds {
     Mod+T hotkey-overlay-title="Toggle Floating Window" { toggle-window-floating; }
     Mod+V hotkey-overlay-title="Toggle Window Overview" { toggle-overview; }
     Mod+Shift+V hotkey-overlay-title="Open Vesktop (Discord)" { spawn "vesktop"; }
-    Mod+W hotkey-overlay-title="Open Wallpaper Grid" {
-        spawn-sh "noctalia-shell ipc call wallpaper toggle || qs -c wallpaper || dms ipc call dankdash wallpaper || vicinae vicinae://extensions/sovereign/awww-switcher/wpgrid";
-    }
+    Mod+W hotkey-overlay-title="Open Wallpaper Picker" { spawn "./tofiThingy.sh"; }
     Mod+X hotkey-overlay-title="Open Logout Menu" {
         spawn-sh "dms ipc call powermenu toggle; noctalia-shell ipc call sessionMenu toggle";
     }
@@ -104,8 +102,8 @@ binds {
 
     Mod+F { maximize-column; }
     Mod+Shift+F { expand-column-to-available-width; }
-    Mod+Z { center-column; }
-    Mod+Shift+Z { center-visible-columns; }
+    //Mod+C { center-column; }
+    Mod+Shift+C { center-visible-columns; }
 
     Mod+1 { focus-workspace 1; }
     Mod+2 { focus-workspace 2; }

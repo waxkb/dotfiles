@@ -57,6 +57,11 @@ alias stnoct='ddms && enoct'
 # Added by LM Studio CLI (lms)
 export PATH="$PATH:/home/max/.lmstudio/bin"
 # End of LM Studio CLI section
+#
+export LD_LIBRARY_PATH=/run/opengl-driver/lib:$LD_LIBRARY_PATH
+export PYTHONPATH="" # Clean up any python interference
+export STABLE_GL=1
+export FORCE_X11=1
 
 alias runGLMServer='llama-server -m .cache/llama.cpp/unsloth_GLM-4.7-Flash-GGUF_GLM-4.7-Flash-Q4_K_M.gguf -c 32000 --temp 0.7 --top-p 1.0 --min-p 0.01 -t 6'
 
@@ -69,7 +74,7 @@ q27Serv() {
 }
 
 q97Serv() {
-  llama-server -m .cache/llama.cpp/OpenMOSE_Qwen3.5-REAP-97B-A10B-GGUF_IQ4_XS_Qwen3.5-REAP-97B-A10B-IQ4_XS-00001-of-00002.gguf -c 256144 --temp 0.6 --top_p 0.95 --top_k 20 --min_p 0.0 --presence_penalty 0.0 -ctk q4_0 -ctv q4_0 -t 6
+  llama-server -m .cache/llama.cpp/OpenMOSE_Qwen3.5-REAP-97B-A10B-GGUF_IQ4_XS_Qwen3.5-REAP-97B-A10B-IQ4_XS-00001-of-00002.gguf -c 256144 --temp 0.6 --top_p 0.95 --top_k 20 --min_p 0.0 --presence_penalty 0.0 -ctk q4_0 -ctv q4_0 -t 6 --spec-type ngram-cache
 }
 
 q4Serv() {
