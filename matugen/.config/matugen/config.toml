@@ -19,14 +19,14 @@ input_path = "/home/max/.config/matugen/templates/zen-logo-mocha.svg"
 output_path = "/home/max/.zen/davnng42.Default (release)/chrome/zen-mocha.svg"
 
 [templates.niri]
-input_path = "/home/max/.config/matugen/templates/colors.kdl"
+input_path = "/home/max/.config/matugen/templates/niri-colors.kdl"
 output_path = "/home/max/dotfiles/niri/.config/niri/colors.kdl"
 
 [templates.vicinae]
-input_path = "/home/max/.config/matugen/templates/vicinae.toml"
+input_path = "/home/max/.config/matugen/templates/vicinae-colors.toml"
 output_path = "~/.local/share/vicinae/themes/matugen.toml"
 post_hook = "vicinae theme set matugen"
 
 [templates.lualine]
-input_path = "/home/max/.config/matugen/templates/dank-lualine.lua"
+input_path = "/home/max/.config/matugen/templates/dank-lualine-colors.lua"
 output_path = "/home/max/.config/nvim/lua/plugins/dank-lualine.lua"
