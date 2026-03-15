@@ -13,8 +13,8 @@
   "controlCenterTileColorMode": "primary",
   "buttonColorMode": "primary",
   "cornerRadius": 12,
-  "niriLayoutGapsOverride": -1,
-  "niriLayoutRadiusOverride": -1,
+  "niriLayoutGapsOverride": 8,
+  "niriLayoutRadiusOverride": 14,
   "niriLayoutBorderSize": -1,
   "hyprlandLayoutGapsOverride": -1,
   "hyprlandLayoutRadiusOverride": -1,
@@ -22,6 +22,7 @@
   "mangoLayoutGapsOverride": -1,
   "mangoLayoutRadiusOverride": -1,
   "mangoLayoutBorderSize": -1,
+  "firstDayOfWeek": -1,
   "use24HourClock": false,
   "showSeconds": false,
   "padHours12Hour": false,
@@ -36,6 +37,15 @@
   "modalAnimationSpeed": 1,
   "modalCustomAnimationDuration": 150,
   "enableRippleEffects": true,
+  "m3ElevationEnabled": false,
+  "m3ElevationIntensity": 12,
+  "m3ElevationOpacity": 30,
+  "m3ElevationColorMode": "default",
+  "m3ElevationLightDirection": "top",
+  "m3ElevationCustomColor": "#000000",
+  "modalElevationEnabled": true,
+  "popoutElevationEnabled": true,
+  "barElevationEnabled": false,
   "wallpaperFillMode": "Fill",
   "blurredWallpaperLayer": false,
   "blurWallpaperOnOverview": false,
@@ -128,6 +138,7 @@
   "showOccupiedWorkspacesOnly": false,
   "reverseScrolling": false,
   "dwlShowAllTags": false,
+  "workspaceActiveAppHighlightEnabled": false,
   "workspaceColorMode": "default",
   "workspaceOccupiedColorMode": "schh",
   "workspaceUnfocusedColorMode": "default",
@@ -187,6 +198,17 @@
   "centeringMode": "geometric",
   "clockDateFormat": "",
   "lockDateFormat": "",
+  "greeterRememberLastSession": true,
+  "greeterRememberLastUser": true,
+  "greeterEnableFprint": false,
+  "greeterEnableU2f": false,
+  "greeterWallpaperPath": "",
+  "greeterUse24HourClock": true,
+  "greeterShowSeconds": false,
+  "greeterPadHours12Hour": false,
+  "greeterLockDateFormat": "",
+  "greeterFontFamily": "",
+  "greeterWallpaperFillMode": "",
   "mediaSize": 1,
   "appLauncherViewMode": "list",
   "spotlightModalViewMode": "list",
@@ -289,7 +311,7 @@
   "matugenTemplateEquibop": false,
   "matugenTemplateGhostty": false,
   "matugenTemplateKitty": true,
-  "matugenTemplateFoot": true,
+  "matugenTemplateFoot": false,
   "matugenTemplateAlacritty": false,
   "matugenTemplateNeovim": true,
   "matugenTemplateWezterm": false,
@@ -297,10 +319,22 @@
   "matugenTemplateKcolorscheme": false,
   "matugenTemplateVscode": false,
   "matugenTemplateEmacs": false,
+  "matugenTemplateZed": false,
+  "matugenTemplateNeovimSettings": {
+    "dark": {
+      "baseTheme": "github_dark",
+      "harmony": 0.5
+    },
+    "light": {
+      "baseTheme": "github_light",
+      "harmony": 0.5
+    }
+  },
   "showDock": false,
   "dockAutoHide": false,
   "dockSmartAutoHide": false,
   "dockGroupByApp": false,
+  "dockRestoreSpecialWorkspaceOnClick": false,
   "dockOpenOnOverview": false,
   "dockPosition": 1,
   "dockSpacing": 4,
@@ -338,9 +372,14 @@
   "lockAtStartup": false,
   "enableFprint": false,
   "maxFprintTries": 15,
+  "enableU2f": false,
+  "u2fMode": "or",
   "lockScreenActiveMonitor": "all",
   "lockScreenInactiveColor": "#000000",
   "lockScreenNotificationMode": 0,
+  "lockScreenVideoEnabled": false,
+  "lockScreenVideoPath": "",
+  "lockScreenVideoCycling": false,
   "hideBrightnessSlider": false,
   "notificationTimeoutLow": 5000,
   "notificationTimeoutNormal": 5000,
@@ -356,6 +395,7 @@
   "notificationHistorySaveNormal": true,
   "notificationHistorySaveCritical": true,
   "notificationRules": [],
+  "notificationFocusedMonitor": false,
   "osdAlwaysShowValue": false,
   "osdPosition": 7,
   "osdVolumeEnabled": true,
@@ -424,14 +464,15 @@
           "mediaSize": 2
         },
         {
-          "id": "dankActions:variant_1771471128049",
+          "id": "dankActions:variant_1773611194630",
           "enabled": true
         }
       ],
       "rightWidgets": [
         {
           "id": "memUsage",
-          "enabled": true
+          "enabled": true,
+          "minimumWidth": true
         }
       ],
       "spacing": 0,
@@ -449,9 +490,9 @@
       "borderOpacity": 1,
       "borderThickness": 2,
       "widgetOutlineEnabled": false,
-      "widgetOutlineColor": "surfaceText",
+      "widgetOutlineColor": "primary",
       "widgetOutlineOpacity": 1,
-      "widgetOutlineThickness": 1,
+      "widgetOutlineThickness": 2,
       "fontScale": 1,
       "autoHide": false,
       "autoHideDelay": 250,
@@ -459,7 +500,9 @@
       "visible": true,
       "popupGapsAuto": true,
       "popupGapsManual": 4,
-      "maximizeDetection": false
+      "maximizeDetection": false,
+      "widgetPadding": 8,
+      "clickThrough": false
     },
     {
       "id": "bar1767304587196",
@@ -659,5 +702,5 @@
   "clipboardEnterToPaste": false,
   "launcherPluginVisibility": {},
   "launcherPluginOrder": [],
-  "configVersion": 5
+  "configVersion": 6
 }

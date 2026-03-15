@@ -1,2 +1,0 @@
-#!/run/current-system/sw/bin/bash
-exec /home/max/.config/quickshell/scripts/bash/check-wallpaper-cache "$@"

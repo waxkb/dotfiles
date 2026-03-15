@@ -5,17 +5,32 @@
       {
         "icon": "TCD",
         "displayText": "",
-        "displayCommand": "full_path=$(dms ipc call wallpaper get) && filename=$(basename \"$full_path\") && echo \"Wallpaper: ${filename%.*}\"",
+        "displayCommand": "~/wallpaperWidget.sh",
         "clickCommand": "",
         "middleClickCommand": "",
         "rightClickCommand": "",
         "updateInterval": 10,
-        "showIcon": true,
+        "showIcon": false,
         "showText": true,
         "visibilityCommand": "",
         "visibilityInterval": 0,
         "id": "variant_1771471128049",
         "name": "Test Command Display"
+      },
+      {
+        "icon": "terminal",
+        "displayText": "",
+        "displayCommand": "~/modelCheck.sh",
+        "clickCommand": "",
+        "middleClickCommand": "",
+        "rightClickCommand": "",
+        "updateInterval": 10,
+        "showIcon": false,
+        "showText": true,
+        "visibilityCommand": "",
+        "visibilityInterval": 0,
+        "id": "variant_1773611194630",
+        "name": "Model status"
       }
     ]
   },
