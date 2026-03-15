@@ -1,39 +1,35 @@
 binds {
     Mod+B hotkey-overlay-title="Open Zen Browser" { spawn "zen-beta"; }
     Mod+Shift+B hotkey-overlay-title="Open System Monitor (btop)" { spawn "kitty" "btop"; }
-    Mod+C { spawn "code"; }
-    Mod+Alt+C { center-column; }
     Mod+D hotkey-overlay-title="Close Focused Window" { close-window; }
     Mod+Shift+D hotkey-overlay-title="Quit Niri Session" { quit; }
     Mod+E hotkey-overlay-title="Open File Manager (Yazi)" { spawn "kitty" "yazi"; }
     Mod+M hotkey-overlay-title="Open Spotify" { spawn "spotify"; }
     Mod+Shift+M hotkey-overlay-title="Show Current Track Notification" {
-        spawn-sh "dms ipc call dash open media; noctalia-shell ipc call controlCenter toggle";
+        spawn-sh "dms ipc call dash open media";
     }
     Mod+N hotkey-overlay-title="Open Nix Packages Browser" {
         spawn-sh "vicinae vicinae://extensions/knoopx/nix/packages";
     }
     Mod+Shift+N hotkey-overlay-title="Toggle Notification Center" {
-        spawn-sh "dms ipc call notifications open; noctalia-shell ipc call notifications toggleHistory";
+        spawn-sh "dms ipc call notifications open";
     }
-    //Mod+Shift+N hotkey-overlay-title="Toggle Night Mode" { spawn-sh "dms ipc call night toggle"; }
     Mod+O hotkey-overlay-title="Lock Screen" { spawn "hyprlock"; }
-    Mod+Shift+O { spawn "VirtualBox"; }
-    Mod+Ctrl+O { spawn "obs"; }
+    Mod+Shift+O { spawn "obs"; }
     Mod+P hotkey-overlay-title="Pick Color from Screen" { spawn "hyprpicker"; }
     Mod+R hotkey-overlay-title="Switch Column Width Preset" { switch-preset-column-width; }
     Mod+Shift+R hotkey-overlay-title="Switch Window Height Preset" { switch-preset-window-height; }
     Mod+Ctrl+R hotkey-overlay-title="Reset Window Height" { reset-window-height; }
     Mod+S hotkey-overlay-title="Open DMS settings" {
-        spawn-sh "dms ipc call settings toggle; noctalia-shell ipc call settings toggle";
+        spawn-sh "dms ipc call settings toggle";
     }
     Mod+Shift+S hotkey-overlay-title="Take Screenshot" { screenshot; }
     Mod+T hotkey-overlay-title="Toggle Floating Window" { toggle-window-floating; }
     Mod+V hotkey-overlay-title="Toggle Window Overview" { toggle-overview; }
     Mod+Shift+V hotkey-overlay-title="Open Vesktop (Discord)" { spawn "vesktop"; }
-    Mod+W hotkey-overlay-title="Open Wallpaper Picker" { spawn "./tofiThingy.sh"; }
+    Mod+W hotkey-overlay-title="Open Wallpaper Picker" { spawn "./tofiWall.sh"; }
     Mod+X hotkey-overlay-title="Open Logout Menu" {
-        spawn-sh "dms ipc call powermenu toggle; noctalia-shell ipc call sessionMenu toggle";
+        spawn-sh "dms ipc call powermenu toggle";
     }
     Mod+Return hotkey-overlay-title="Open Terminal (Kitty)" { spawn "kitty"; }
     Mod+End hotkey-overlay-title="Play / Pause Media" { spawn-sh "playerctl play-pause"; }
@@ -41,41 +37,6 @@ binds {
     Mod+Delete hotkey-overlay-title="Previous Media Track" { spawn-sh "playerctl previous"; }
     Mod+Shift+Slash hotkey-overlay-title="Show Hotkey Overlay" { show-hotkey-overlay; }
     Mod+Space hotkey-overlay-title="Toggle App Launcher" { spawn "vicinae" "toggle"; }
-
-        // System
-    Mod+Tab repeat=false { toggle-overview; }
-    Mod+Shift+E { quit; }
-    Mod+Escape allow-inhibiting=false { toggle-keyboard-shortcuts-inhibit; }
-    
-    // ii Window Switcher (Alt+Tab)
-    Alt+Tab { spawn "qsc" "-c" "ii" "ipc" "call" "altSwitcher" "next"; }
-    Alt+Shift+Tab { spawn "qsc" "-c" "ii" "ipc" "call" "altSwitcher" "previous"; }
-    
-    // ii Overlay
-    Super+Shift+Alt+P { spawn "qsc" "-c" "ii" "ipc" "call" "overlay" "toggle"; }
-
-    // ii Overview (daemon)
-    Mod+Alt+V repeat=false { spawn "qsc" "-c" "ii" "ipc" "call" "overview" "toggle"; }
-    
-    // ii Clipboard
-    Mod+Alt+Shift+V { spawn "qsc" "-c" "ii" "ipc" "call" "clipboard" "toggle"; }
-    
-    // ii Lock screen
-    Mod+Alt+O allow-when-locked=true { spawn "qsc" "-c" "ii" "ipc" "call" "lock" "activate"; }
-    
-    // ii Region tools
-    Mod+Shift+Alt+S { spawn "qsc" "-c" "ii" "ipc" "call" "region" "screenshot"; }
-    //Mod+Shift+X { spawn "qs" "-c" "ii" "ipc" "call" "region" "ocr"; }
-    //Mod+Shift+A { spawn "qs" "-c" "ii" "ipc" "call" "region" "search"; }
-    
-    // ii Wallpaper selector
-    Mod+Alt+W { spawn "qsc" "-c" "ii" "ipc" "call" "wallpaperSelector" "toggle"; }
-    
-    // ii Settings
-    Mod+Alt+S { spawn "qsc" "-c" "ii" "ipc" "call" "settings" "open"; }
-    
-    // ii Cheatsheet
-    Mod+Alt+Slash { spawn "qsc" "-c" "ii" "ipc" "call" "cheatsheet" "toggle"; }
 
     Mod+H { focus-column-left; }
     Mod+L { focus-column-right; }
@@ -102,7 +63,7 @@ binds {
 
     Mod+F { maximize-column; }
     Mod+Shift+F { expand-column-to-available-width; }
-    //Mod+C { center-column; }
+    Mod+C { center-column; }
     Mod+Shift+C { center-visible-columns; }
 
     Mod+1 { focus-workspace 1; }
