@@ -1,5 +1,0 @@
-background-color={{colors.background.default.hex}}
-border-color={{colors.primary.default.hex}}
-default-timeout=5000
-font=JetBrainsMono Nerd Font Mono 10
-border-radius=7

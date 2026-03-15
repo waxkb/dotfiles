@@ -209,9 +209,9 @@
   "useAutoLocation": false,
   "weatherEnabled": false,
   "networkPreference": "wifi",
-  "iconTheme": "System Default",
+  "iconTheme": "Bibata-Modern-Ice",
   "cursorSettings": {
-    "theme": "System Default",
+    "theme": "Bibata-Modern-Ice",
     "size": 24,
     "niri": {
       "hideWhenTyping": false,
@@ -288,7 +288,7 @@
   "matugenTemplateVesktop": true,
   "matugenTemplateEquibop": false,
   "matugenTemplateGhostty": false,
-  "matugenTemplateKitty": false,
+  "matugenTemplateKitty": true,
   "matugenTemplateFoot": false,
   "matugenTemplateAlacritty": false,
   "matugenTemplateNeovim": true,
