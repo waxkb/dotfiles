@@ -44,26 +44,14 @@ eval "$(starship init zsh)"
 alias syncdots='gita ll && gita super add . && gita super commit -m "e" && gita push && gita ll'
 alias ff='fastfetch'
 alias cf='clear; fastfetch'
-alias edms='systemctl --user enable --now dms'
-alias ddms='systemctl --user disable --now dms'
-alias enoct='systemctl --user enable --now noctalia'
-alias dnoct='systemctl --user disable --now noctalia'
-alias stdms='dnoct && edms'
-alias stnoct='ddms && enoct'
 
-#export KIRI_PATH=$(nix build --no-link --print-out-paths nixpkgs#kdePackages.kirigami)/lib/qt-6/qml
-#export QML2_IMPORT_PATH=$KIRI_PATH
-
-# Added by LM Studio CLI (lms)
-export PATH="$PATH:/home/max/.lmstudio/bin"
-# End of LM Studio CLI section
-#
 export LD_LIBRARY_PATH=/run/opengl-driver/lib:$LD_LIBRARY_PATH
 export PYTHONPATH="" # Clean up any python interference
 export STABLE_GL=1
 export FORCE_X11=1
 
-alias runGLMServer='llama-server -m .cache/llama.cpp/unsloth_GLM-4.7-Flash-GGUF_GLM-4.7-Flash-Q4_K_M.gguf -c 32000 --temp 0.7 --top-p 1.0 --min-p 0.01 -t 6'
+export ANTHROPIC_BASE_URL="http://localhost:8080"
+export ANTHROPIC_API_KEY='sk-no-key-required'
 
 q35Serv() {
   llama-server -m .cache/llama.cpp/unsloth_Qwen3.5-35B-A3B-GGUF_Qwen3.5-35B-A3B-UD-Q5_K_XL.gguf -c 262144 --temp 0.6 --top_p 0.8 --top_k 20 --min_p 0.0 --presence_penalty 0.0 -ctk q4_0 -ctv q4_0 -t 6 --no-mmap --mlock
