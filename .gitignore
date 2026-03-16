@@ -23,10 +23,3 @@
 # OS junk
 .DS_Store
 Thumbs.db
-
-#nvim/*
-#!nvim/
-#!nvim/init.lua
-#!nvim/stylua.toml
-#!nvim/UltiSnips
-#!nvim/
