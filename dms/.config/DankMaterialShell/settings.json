@@ -23,6 +23,7 @@
   "mangoLayoutRadiusOverride": -1,
   "mangoLayoutBorderSize": -1,
   "firstDayOfWeek": -1,
+  "showWeekNumber": false,
   "use24HourClock": false,
   "showSeconds": false,
   "padHours12Hour": false,
@@ -231,7 +232,7 @@
   "useAutoLocation": false,
   "weatherEnabled": false,
   "networkPreference": "wifi",
-  "iconTheme": "Bibata-Modern-Ice",
+  "iconTheme": "System Default",
   "cursorSettings": {
     "theme": "Bibata-Modern-Ice",
     "size": 24,
@@ -297,6 +298,10 @@
   "qtThemingEnabled": false,
   "syncModeWithPortal": true,
   "terminalsAlwaysDark": false,
+  "muxType": "tmux",
+  "muxUseCustomCommand": false,
+  "muxCustomCommand": "",
+  "muxSessionFilter": "",
   "runDmsMatugenTemplates": true,
   "matugenTemplateGtk": true,
   "matugenTemplateNiri": false,
@@ -702,5 +707,5 @@
   "clipboardEnterToPaste": false,
   "launcherPluginVisibility": {},
   "launcherPluginOrder": [],
-  "configVersion": 6
+  "configVersion": 5
 }
