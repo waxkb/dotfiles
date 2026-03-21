@@ -51,8 +51,15 @@ export PYTHONPATH="" # Clean up any python interference
 export STABLE_GL=1
 export FORCE_X11=1
 
-export ANTHROPIC_BASE_URL="http://localhost:8080"
-#export ANTHROPIC_API_KEY='sk-no-key-required'
+export OPENAI_API_KEY='sk-juEqVBVB7TXpJlXzPcAufbiEYlfnafNGcjikrEqYhIdQq6xyDcOwlDypb9GoIRQr'
+export ANTHROPIC_BASE_URL="http://localhost:4000"
+export ANTHROPIC_MODEL="claude-3-5-sonnet-latest"
+
+cclexp(){
+  export ANTHROPIC_BASE_URL="http://localhost:8080"
+  export OPENAI_API_KEY=''
+  export ANTHROPIC_MODEL=""
+}
 
 q35Serv() {
   llama-server -m .cache/llama.cpp/unsloth_Qwen3.5-35B-A3B-GGUF_Qwen3.5-35B-A3B-UD-Q5_K_XL.gguf -c 262144 --temp 0.6 --top_p 0.8 --top_k 20 --min_p 0.0 --presence_penalty 0.0 -ctk q8_0 -ctv q8_0 -t 6 --no-mmap --mlock --jinja
@@ -72,4 +79,8 @@ q08Serv() {
 
 q9Serv() {
   llama-server -m /home/max/.cache/llama.cpp/Jackrong_Qwen3.5-9B-Claude-4.6-Opus-Reasoning-Distilled-v2-GGUF_Qwen3.5-9B.Q5_K_M.gguf -c 262144 --temp 0.6 --top_p 0.8 --top_k 20 --min_p 0.0 --presence_penalty 0.0 -ctk q8_0 -ctv q8_0 -t 6 --no-mmap --mlock --jinja
+}
+
+n30Serv() {
+  llama-server -m .cache/llama.cpp/mradermacher_Nemotron-Cascade-2-30B-A3B-i1-GGUF_Nemotron-Cascade-2-30B-A3B.i1-IQ4_XS.gguf -c 262144 --temp 1.0 --top_p 0.95 -ctk q8_0 -ctv q8_0 -t 6 --jinja
 }
