@@ -55,13 +55,21 @@ export ANTHROPIC_BASE_URL="http://localhost:8080"
 #export ANTHROPIC_API_KEY='sk-no-key-required'
 
 q35Serv() {
-  llama-server -m .cache/llama.cpp/unsloth_Qwen3.5-35B-A3B-GGUF_Qwen3.5-35B-A3B-UD-Q5_K_XL.gguf -c 262144 --temp 0.6 --top_p 0.8 --top_k 20 --min_p 0.0 --presence_penalty 0.0 -ctk q4_0 -ctv q4_0 -t 6 --no-mmap --mlock --jinja
+  llama-server -m .cache/llama.cpp/unsloth_Qwen3.5-35B-A3B-GGUF_Qwen3.5-35B-A3B-UD-Q5_K_XL.gguf -c 262144 --temp 0.6 --top_p 0.8 --top_k 20 --min_p 0.0 --presence_penalty 0.0 -ctk q8_0 -ctv q8_0 -t 6 --no-mmap --mlock --jinja
 }
 
 q4Serv() {
-  llama-server -m .cache/llama.cpp/unsloth_Qwen3.5-4B-GGUF_Qwen3.5-4B-Q4_K_M.gguf -c 262144 --temp 0.6 --top_p 0.8 --top_k 20 --min_p 0.0 --presence_penalty 0.0 -ctk q4_0 -ctv q4_0 -t 6 --no-mmap --mlock --jinja
+  llama-server -m .cache/llama.cpp/unsloth_Qwen3.5-4B-GGUF_Qwen3.5-4B-Q4_K_M.gguf -c 262144 --temp 0.6 --top_p 0.8 --top_k 20 --min_p 0.0 --presence_penalty 0.0 -ctk q8_0 -ctv q8_0 -t 6 --no-mmap --mlock --jinja
 }
 
 q122Serv() {
   llama-server -m .cache/llama.cpp/unsloth_Qwen3.5-122B-A10B-GGUF_UD-IQ4_NL_Qwen3.5-122B-A10B-UD-IQ4_NL-00001-of-00003.gguf -c 262144 --temp 1 --top_p 0.95 --top_k 20 --min_p 0.0 --presence_penalty 1.5 -ctk q8_0 -ctv q8_0 -t 6 --jinja
+}
+
+q08Serv() {
+  llama-server -m .cache/llama.cpp/unsloth_Qwen3.5-0.8B-GGUF_Qwen3.5-0.8B-IQ4_NL.gguf -c 262144 --temp 0.6 --top_p 0.8 --top_k 20 --min_p 0.0 --presence_penalty 0.0 -ctk q8_0 -ctv q8_0 -t 6 --no-mmap --mlock --jinja
+}
+
+q9Serv() {
+  llama-server -m /home/max/.cache/llama.cpp/Jackrong_Qwen3.5-9B-Claude-4.6-Opus-Reasoning-Distilled-v2-GGUF_Qwen3.5-9B.Q5_K_M.gguf -c 262144 --temp 0.6 --top_p 0.8 --top_k 20 --min_p 0.0 --presence_penalty 0.0 -ctk q8_0 -ctv q8_0 -t 6 --no-mmap --mlock --jinja
 }
