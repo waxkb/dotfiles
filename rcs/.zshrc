@@ -55,6 +55,12 @@ export OPENAI_API_KEY='sk-juEqVBVB7TXpJlXzPcAufbiEYlfnafNGcjikrEqYhIdQq6xyDcOwlD
 export ANTHROPIC_BASE_URL="http://localhost:4000"
 export ANTHROPIC_MODEL="claude-3-5-sonnet-latest"
 
+rotatessh(){
+  ssh-keygen -t ed25519 -C "maxwellr2028@gmail.com"
+  read -p "Press any key to test SSH connection: " _
+  ssh -T git@github.com
+}
+
 cclexp(){
   export ANTHROPIC_BASE_URL="http://localhost:8080"
   export OPENAI_API_KEY=''

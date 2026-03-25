@@ -476,6 +476,16 @@
       ],
       "rightWidgets": [
         {
+          "id": "cpuTemp",
+          "enabled": true,
+          "minimumWidth": true
+        },
+        {
+          "id": "cpuUsage",
+          "enabled": true,
+          "minimumWidth": true
+        },
+        {
           "id": "memUsage",
           "enabled": true,
           "minimumWidth": true
