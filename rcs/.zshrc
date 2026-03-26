@@ -36,8 +36,6 @@ export MPD_HOST="/home/max/.mpd/socket"
 eval "$(ssh-agent -s)"  >/dev/null
 ssh-add -l >/dev/null 2>&1 || ssh-add ~/.ssh/id_ed25519 >/dev/null 2>&1
 
-export GH_TOKEN="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"
-
 mkcd () {
   mkdir -p "$1" && cd "$1"
 }
@@ -53,7 +51,6 @@ export PYTHONPATH="" # Clean up any python interference
 export STABLE_GL=1
 export FORCE_X11=1
 
-export OPENAI_API_KEY='sk-juEqVBVB7TXpJlXzPcAufbiEYlfnafNGcjikrEqYhIdQq6xyDcOwlDypb9GoIRQr'
 export ANTHROPIC_BASE_URL="http://localhost:4000"
 export ANTHROPIC_MODEL="claude-3-5-sonnet-latest"
 
@@ -82,7 +79,6 @@ cclexp(){
 }
 
 cczexp(){
-  export OPENAI_API_KEY='sk-juEqVBVB7TXpJlXzPcAufbiEYlfnafNGcjikrEqYhIdQq6xyDcOwlDypb9GoIRQr'
   export ANTHROPIC_BASE_URL="http://localhost:4000"
   export ANTHROPIC_MODEL="claude-3-5-sonnet-latest"
 }
