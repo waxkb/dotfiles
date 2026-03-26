@@ -42,7 +42,7 @@ mkcd () {
     KEY_FILE=$(mktemp)
     trap 'rm -f "$KEY_FILE"' EXIT
     
-    infisical secrets get --path=/ssh-keys PrivateMainsshKey --plain --skip-update-check 2>/dev/null | sed 's/\\n/\n/g' > "$KEY_FILE"
+    infisical secrets get --path=/ssh-keys PrivateMainsshKey --plain 2>/dev/null | sed 's/\\n/\n/g' > "$KEY_FILE"
     
     chmod 600 "$KEY_FILE"
     ssh-add "$KEY_FILE" > /dev/null 2>&1
