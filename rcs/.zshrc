@@ -101,3 +101,1999 @@ n30Serv() {
 q27Serv() {
   llama-server -m .cache/llama.cpp/unsloth_Qwen3.5-27B-GGUF_Qwen3.5-27B-IQ4_NL.gguf -c 262144 --temp 1 --top_p 0.95 --top_k 20 --min_p 0.0 --presence_penalty 1.5 -t 6 --jinja 
 }
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
+
+# Ignoring specific Infisical CLI commands
+DEFAULT_HISTIGNORE=
+export HISTIGNORE="*infisical secrets set*:"
