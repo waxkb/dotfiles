@@ -36,6 +36,8 @@ export MPD_HOST="/home/max/.mpd/socket"
 eval "$(ssh-agent -s)"  >/dev/null
 ssh-add -l >/dev/null 2>&1 || ssh-add ~/.ssh/id_ed25519 >/dev/null 2>&1
 
+export GH_TOKEN="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"
+
 mkcd () {
   mkdir -p "$1" && cd "$1"
 }
@@ -56,8 +58,20 @@ export ANTHROPIC_BASE_URL="http://localhost:4000"
 export ANTHROPIC_MODEL="claude-3-5-sonnet-latest"
 
 rotatessh(){
+  gh ssh-key list | awk '
+  {
+    for (i=1;i<=NF;i++) {
+      if ($i ~ /^[0-9]+$/) {
+        print $i
+        break
+      }
+    }
+  }' | while read -r id; do
+    gh ssh-key delete "$id" --yes
+  done
+  rm ~/.ssh/id_ed25519
   ssh-keygen -t ed25519 -C "maxwellr2028@gmail.com"
-  read -p "Press any key to test SSH connection: " _
+  gh ssh-key add ~/.ssh/id_ed25519.pub -t "RotatedKey"
   ssh -T git@github.com
 }
 
