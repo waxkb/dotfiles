@@ -33,12 +33,32 @@ export PATH="$PATH:/home/max/.julia/bin"
 export PATH=$PATH:/home/max/.spicetify
 export MPD_HOST="/home/max/.mpd/socket"
 
-eval "$(ssh-agent -s)"  >/dev/null
-ssh-add -l >/dev/null 2>&1 || ssh-add ~/.ssh/id_ed25519 >/dev/null 2>&1
+# eval "$(ssh-agent -s)"  >/dev/null
+# ssh-add -l >/dev/null 2>&1 || ssh-add ~/.ssh/id_ed25519 >/dev/null 2>&1
 
 mkcd () {
   mkdir -p "$1" && cd "$1"
 }
+
+# Execute in a silent, disowned background subshell
+(
+  # 1. Check/Start agent
+  if ! pgrep -u "$USER" ssh-agent > /dev/null; then
+    eval "$(ssh-agent -s)" > /dev/null 2>&1
+  fi
+
+  # 2. Fetch and add key
+  if ! ssh-add -l | grep -q "github"; then
+    KEY_FILE=$(mktemp)
+    trap 'rm -f "$KEY_FILE"' EXIT
+    
+    # Use --skip-update-check and redirect all output (2>&1) to /dev/null
+    infisical secrets get --path=/ssh-keys PrivateMainsshKey --plain --skip-update-check 2>/dev/null | sed 's/\\n/\n/g' > "$KEY_FILE"
+    
+    chmod 600 "$KEY_FILE"
+    ssh-add "$KEY_FILE" > /dev/null 2>&1
+  fi
+) >/dev/null 2>&1 &!
 
 eval "$(starship init zsh)"
 
