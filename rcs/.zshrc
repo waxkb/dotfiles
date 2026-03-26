@@ -54,24 +54,6 @@ export FORCE_X11=1
 export ANTHROPIC_BASE_URL="http://localhost:4000"
 export ANTHROPIC_MODEL="claude-3-5-sonnet-latest"
 
-rotatessh(){
-  gh ssh-key list | awk '
-  {
-    for (i=1;i<=NF;i++) {
-      if ($i ~ /^[0-9]+$/) {
-        print $i
-        break
-      }
-    }
-  }' | while read -r id; do
-    gh ssh-key delete "$id" --yes
-  done
-  rm ~/.ssh/id_ed25519
-  ssh-keygen -t ed25519 -C "maxwellr2028@gmail.com"
-  gh ssh-key add ~/.ssh/id_ed25519.pub -t "RotatedKey"
-  ssh -T git@github.com
-}
-
 cclexp(){
   export ANTHROPIC_BASE_URL="http://localhost:8080"
   export OPENAI_API_KEY=''
