@@ -49,5 +49,9 @@
     "longBreakDuration": "15",
     "autoStartBreaks": true,
     "autoStartPomodoros": true
+  },
+  "dankKDEConnect": {
+    "enabled": true,
+    "selectedDeviceId": "f26e7fda3488490da573b4a165449b2b"
   }
 }

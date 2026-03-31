@@ -487,9 +487,8 @@
           "minimumWidth": true
         },
         {
-          "id": "memUsage",
-          "enabled": true,
-          "minimumWidth": true
+          "id": "dankKDEConnect",
+          "enabled": true
         }
       ],
       "spacing": 0,
