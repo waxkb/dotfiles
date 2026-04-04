@@ -109,6 +109,7 @@ o9Serv(){
 }
 
 obui(){
+
   sudo docker pull ghcr.io/open-webui/open-webui:main
   sudo docker run \
   --network=host \
