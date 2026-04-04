@@ -109,11 +109,9 @@ o9Serv(){
 }
 
 obui(){
-
   sudo docker pull ghcr.io/open-webui/open-webui:main
   sudo docker run \
   --network=host \
-  -v open-webui:/app/backend/data \
   -e PORT=3000 \
   ghcr.io/open-webui/open-webui:main
 }
