@@ -112,13 +112,13 @@ export PLAYWRIGHT_BROWSERS_PATH=/nix/store/ys5hrp8fq4w5fiifw7jiqs6axffskav8-play
 export PLAYWRIGHT_SKIP_VALIDATE_HOST_REQUIREMENTS=true
 export PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD=1
 
-obui(){
-  docker rm -f open-webui open-webui-custom redlib 2>/dev/null
+obuinotcustom(){
+  sudo docker rm -f open-webui open-webui-custom redlib 2>/dev/null
   pkill playwright
   local NIX_PLAYWRIGHT_PATH=/nix/store/ys5hrp8fq4w5fiifw7jiqs6axffskav8-playwright-browsers/chromium-1148/chrome-linux
   playwright run-server --host 0.0.0.0 --port 4000 &
-  docker run -d --name redlib -p 5000:8080 quay.io/redlib/redlib:latest
-  docker run -d \
+  sudo docker run -d --name redlib -p 5000:8080 quay.io/redlib/redlib:latest
+  sudo docker run -d \
     --name open-webui \
     --network=host \
     -v open-webui:/app/backend/data \
@@ -127,16 +127,16 @@ obui(){
     -e PORT=3000 \
     -e USER_AGENT="Mozilla/5.0 (X11; Linux x86_64)" \
   ghcr.io/open-webui/open-webui:main
-  docker exec -it open-webui update-ca-certificates
+  sudo docker exec -it open-webui update-ca-certificates
 }
 
-obuicustom(){
-  docker rm -f open-webui open-webui-custom redlib 2>/dev/null
+obui(){
+  sudo docker rm -f open-webui open-webui-custom redlib 2>/dev/null
   pkill playwright
   local NIX_PLAYWRIGHT_PATH=/nix/store/ys5hrp8fq4w5fiifw7jiqs6axffskav8-playwright-browsers/chromium-1148/chrome-linux
   playwright run-server --host 0.0.0.0 --port 4000 &
-  docker run -d --name redlib -p 5000:8080 quay.io/redlib/redlib:latest
-  docker run -d \
+  sudo docker run -d --name redlib -p 5000:8080 quay.io/redlib/redlib:latest
+  sudo docker run -d \
     --name open-webui-custom \
     --network=host \
     -v open-webui:/app/backend/data \
@@ -144,9 +144,11 @@ obuicustom(){
     -e PLAYWRIGHT_WS_URL=ws://127.0.0.1:4000 \
     -e PORT=3000 \
     -e USER_AGENT="Mozilla/5.0 (X11; Linux x86_64)" \
-  open-webui-custom
-  docker exec -it open-webui update-ca-certificates
+  open-webui-custom:custom
+  sudo docker exec -it open-webui-custom update-ca-certificates
 }
+
+#-e ALLOW_LOCAL_NETWORKS=true
 
 
 # Ignoring specific Infisical CLI commands
