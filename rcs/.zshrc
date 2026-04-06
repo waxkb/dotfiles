@@ -60,8 +60,9 @@ export PYTHONPATH=""
 export STABLE_GL=1
 export FORCE_X11=1
 
-export ANTHROPIC_BASE_URL="http://localhost:4000"
-export ANTHROPIC_MODEL="claude-3-5-sonnet-latest"
+export ANTHROPIC_BASE_URL="http://localhost:8080"
+export OPENAI_API_KEY=''
+export ANTHROPIC_MODEL=""
 
 export BRAVE_API_KEY=""
 
@@ -77,9 +78,9 @@ cczexp(){
 }
 
 q35Serv() {
-  llama-server -m /home/max/.cache/huggingface/hub/models--unsloth--Qwen3.5-35B-A3B-GGUF/snapshots/bc014a17be43adabd7066b7a86075ff935c6a4e2/Qwen3.5-35B-A3B-UD-IQ4_NL.gguf --host 0.0.0.0 --port 8080 -c 262144 --temp 0 --top_p 0.8 --top_k 20 --min_p 0.0 --presence_penalty 0.0 -ctk turbo3 -ctv turbo3 -t 6 --no-mmap --mlock --jinja --metrics -np 1
+  llama-server -m /home/max/.cache/huggingface/hub/models--unsloth--Qwen3.5-35B-A3B-GGUF/snapshots/bc014a17be43adabd7066b7a86075ff935c6a4e2/Qwen3.5-35B-A3B-UD-IQ4_NL.gguf --host 0.0.0.0 --port 8080 -c 262144 --temp 0 --top_p 0.8 --top_k 20 --min_p 0.0 --presence_penalty 0.0 -ctk turbo3 -ctv turbo3 -t 6 --no-mmap --mlock --jinja --metrics -np 2
 }
-
+#.cache/huggingface/hub/models--unsloth--Qwen3.5-35B-A3B-GGUF/snapshots/bc014a17be43adabd7066b7a86075ff935c6a4e2/mmproj-BF16.gguf
 q4Serv() {
   llama-server -m /home/max/.cache/huggingface/hub/models--Jackrong--Qwen3.5-4B-Claude-4.6-Opus-Reasoning-Distilled-v2-GGUF/snapshots/40d46d9a653390d33b88ed5f77d7fae110214955/Qwen3.5-4B.Q5_K_M.gguf --host 0.0.0.0 --port 8080 -c 262144 --temp 0.6 --top_p 0.8 --top_k 20 --min_p 0.0 --presence_penalty 0.0 -ctk turbo3 -ctv turbo3 -t 6 --no-mmap --mlock --jinja -np 2 --metrics
 }
@@ -133,9 +134,11 @@ obuinotcustom(){
 obui(){
   sudo docker rm -f open-webui open-webui-custom redlib 2>/dev/null
   pkill playwright
+  pkill mitmdump
   local NIX_PLAYWRIGHT_PATH=/nix/store/ys5hrp8fq4w5fiifw7jiqs6axffskav8-playwright-browsers/chromium-1148/chrome-linux
-  playwright run-server --host 0.0.0.0 --port 4000 &
-  sudo docker run -d --name redlib -p 5000:8080 quay.io/redlib/redlib:latest
+  playwright run-server --host 0.0.0.0 --port 4000 --headed &
+  mitmdump -s /home/max/failover.py --mode reverse:http://localhost:8888 -p 5000 &
+  sudo docker run -d --name redlib -p 8888:8080 quay.io/redlib/redlib:latest
   sudo docker run -d \
     --name open-webui-custom \
     --network=host \

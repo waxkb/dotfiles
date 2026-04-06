@@ -16,3 +16,9 @@ window-rule{
 window-rule {
     draw-border-with-background false
 }
+
+window-rule {
+  match app-id="chromium-browser"
+  open-on-workspace "2"
+  open-focused false
+}
