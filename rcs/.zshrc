@@ -151,7 +151,12 @@ obui(){
   sudo docker exec -it open-webui-custom update-ca-certificates
 }
 
+export UV_PYTHON_PREFERENCE=only-managed
+export UV_PYTHON=3.14
+
 #-e ALLOW_LOCAL_NETWORKS=true
+
+export LD_LIBRARY_PATH=$NIX_LD_LIBRARY_PATH
 
 
 # Ignoring specific Infisical CLI commands
