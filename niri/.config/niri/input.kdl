@@ -3,7 +3,7 @@ input {
         xkb {
             layout "us"
         }
-        repeat-delay 301
+        repeat-delay 300
         repeat-rate 45
         numlock
     }
@@ -14,14 +14,9 @@ input {
     }
 
     mouse {
-        // defaults
         accel-speed -0.7
     }
 
     trackpoint {
-        // defaults
     }
-
-    // warp-mouse-to-focus
-    // focus-follows-mouse max-scroll-amount="0%"
 }

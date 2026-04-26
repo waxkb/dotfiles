@@ -1,9 +1,9 @@
 binds {
     Mod+B hotkey-overlay-title="Open Zen Browser" { spawn "zen-beta"; }
-    Mod+Shift+B hotkey-overlay-title="Open System Monitor (btop)" { spawn "kitty" "btop"; }
+    Mod+Shift+B hotkey-overlay-title="Open System Monitor (btop)" { spawn "foot" "btop"; }
     Mod+D hotkey-overlay-title="Close Focused Window" { close-window; }
     Mod+Shift+D hotkey-overlay-title="Quit Niri Session" { quit; }
-    Mod+E hotkey-overlay-title="Open File Manager (Yazi)" { spawn "kitty" "yazi"; }
+    Mod+E hotkey-overlay-title="Open File Manager (Yazi)" { spawn "foot" "yazi"; }
     Mod+M hotkey-overlay-title="Open Spotify" { spawn "spotify"; }
     Mod+Shift+M hotkey-overlay-title="Show Current Track Notification" {
         spawn-sh "dms ipc call dash open media";
@@ -31,7 +31,7 @@ binds {
     Mod+X hotkey-overlay-title="Open Logout Menu" {
         spawn-sh "dms ipc call powermenu toggle";
     }
-    Mod+Return hotkey-overlay-title="Open Terminal (Kitty)" { spawn "kitty"; }
+    Mod+Return hotkey-overlay-title="Open Terminal (foot)" { spawn "foot"; }
     Mod+End hotkey-overlay-title="Play / Pause Media" { spawn-sh "playerctl play-pause"; }
     Mod+Home hotkey-overlay-title="Next Media Track" { spawn-sh "playerctl next"; }
     Mod+Delete hotkey-overlay-title="Previous Media Track" { spawn-sh "playerctl previous"; }
