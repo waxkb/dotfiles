@@ -69,93 +69,65 @@ export CLAUDE_CODE_USE_OPENAI=1
 export OPENAI_BASE_URL=http://localhost:8080/v1
 export OPENAI_MODEL=qwen3.6
 
-export ANTHROPIC_BASE_URL="http://localhost:8081"
-export OPENAI_API_KEY=''
-export ANTHROPIC_MODEL=""
-
 export CLAUDE_CODE_ATTRIBUTION_HEADER=0
 export CLAUDE_CODE_DISABLE_NONESSENTIAL_TRAFFIC=1
 
+export OPENROUTER_API_KEY="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"
+
+export ANTHROPIC_BASE_URL="http://localhost:8081"
+export ANTHROPIC_API_KEY=""
+export ANTHROPIC_MODEL=""
 
 cclexp(){
-  export ANTHROPIC_BASE_URL="http://localhost:8080"
-  export OPENAI_API_KEY=''
+  export ANTHROPIC_BASE_URL="http://localhost:8081"
+  export ANTHROPIC_API_KEY=""
   export ANTHROPIC_MODEL=""
 }
 
-cczexp(){
-  export ANTHROPIC_BASE_URL="http://localhost:4000"
-  export ANTHROPIC_MODEL="claude-3-5-sonnet-latest"
+ccoexp(){
+  export ANTHROPIC_BASE_URL="http://localhost:11434"
+  export ANTHROPIC_API_KEY=""
+  export ANTHROPIC_MODEL="minimax-m2.7:cloud"
 }
 
-localllama() {
-  q35Serv_1 &
-  echo "Started llama.cpp"
-  sleep 15
-  openclaw gateway stop > /dev/null 2>&1
-  openclaw gateway > /dev/null 2>&1 &
-  echo "Started openclaw"
-  agent-browser close --all > /dev/null 2>&1
-  agent-browser open --headed reddit.com/r/localllama > /dev/null 2>&1
-  sleep 1
-  agent-browser snapshot > localllama.txt
-  agent-browser close --all > /dev/null 2>&1
-  openclaw agent --agent main -m "Read localllama.txt. Based on that r/localllama feed, have there been any new AI models released in the LAST 2 DAYS?"
+ccrexp(){
+  export ANTHROPIC_BASE_URL="https://openrouter.ai/api"
+  export ANTHROPIC_API_KEY=$OPENROUTER_API_KEY
+  export ANTHROPIC_MODEL="tencent/hy3-preview:free"
 }
 
-#q35Serv_1() {
-#  llama-server -m .cache/huggingface/hub/models--unsloth--Qwen3.6-35B-A3B-GGUF/snapshots/9280dd353ab587157920d5bd391ada414d84e552/Qwen3.6-35B-A3B-UD-IQ4_NL.gguf --host 0.0.0.0 --port 8080 -c 110000 --temp 0.6 --top_p 0.95 --top_k 20 --min_p 0.0 --presence_penalty 0.0 -ctk turbo3 -ctv turbo3 -t 6 --mmap --mlock --jinja --metrics -np 1 --fit-target 1024 --perf --chat-template-kwargs '{"preserve_thinking": true}' --spec-type ngram-map-k --spec-ngram-size-n 24 --draft-min 12 --draft-max 48 -mm /home/max/.cache/huggingface/hub/models--unsloth--Qwen3.6-35B-A3B-GGUF/snapshots/9280dd353ab587157920d5bd391ada414d84e552/mmproj-BF16.gguf
-#}
-#
-#q35Serv_4() {
-#  llama-server -m .cache/huggingface/hub/models--unsloth--Qwen3.6-35B-A3B-GGUF/snapshots/9280dd353ab587157920d5bd391ada414d84e552/Qwen3.6-35B-A3B-UD-IQ4_NL.gguf --host 0.0.0.0 --port 8080 -c 200000 --temp 0.6 --top_p 0.95 --top_k 20 --min_p 0.0 --presence_penalty 0.0 -ctk turbo3 -ctv turbo3 -t 6 --mmap --mlock --jinja --metrics -np 4 --fit-target 1024 --perf --chat-template-kwargs '{"preserve_thinking": true}' --spec-type ngram-map-k --spec-ngram-size-n 24 --draft-min 12 --draft-max 48 -mm /home/max/.cache/huggingface/hub/models--unsloth--Qwen3.6-35B-A3B-GGUF/snapshots/9280dd353ab587157920d5bd391ada414d84e552/mmproj-BF16.gguf
-#}
-
-q35Serv_1() {
+q35Serv_m() {
   llama-server -hf unsloth/Qwen3.6-35B-A3B-GGUF:UD-IQ4_NL --host 0.0.0.0 --port 8080 -c 110000 --temp 0.6 --top_p 0.95 --top_k 20 --min_p 0.0 --presence_penalty 0.0 -ctk turbo3 -ctv turbo3 -t 6 --mmap --mlock --jinja --metrics -np 1 --fit-target 2048 --perf --chat-template-kwargs '{"preserve_thinking": true}' --image-min-tokens 1024
 }
 
-q35Serv_4() {
-  llama-server -hf unsloth/Qwen3.6-35B-A3B-GGUF:UD-IQ4_NL --host 0.0.0.0 --port 8080 -c 200000 --temp 0.6 --top_p 0.95 --top_k 20 --min_p 0.0 --presence_penalty 0.0 -ctk turbo3 -ctv turbo3 -t 6 --mmap --mlock --jinja --metrics -np 4 --fit-target 2048 --perf --chat-template-kwargs '{"preserve_thinking": true}' --image-min-tokens 1024
+q35Serv_t_1() {
+  llama-server -hf unsloth/Qwen3.6-35B-A3B-GGUF:UD-IQ4_NL --host 0.0.0.0 --port 8080 -c 110000 --temp 0.6 --top_p 0.95 --top_k 20 --min_p 0.0 --presence_penalty 0.0 -ctk turbo3 -ctv turbo3 -t 6 --mmap --mlock --jinja --metrics -np 1 --fit-target 128 --perf --chat-template-kwargs '{"preserve_thinking": true}' --no-mmproj --spec-type ngram-map-k --spec-ngram-size-n 24 --draft-min 12 --draft-max 48
 }
 
-#--spec-type ngram-map-k --spec-ngram-size-n 24 --draft-min 12 --draft-max 48
-
-
-#q27Serv(){
-#  llama-server -hf unsloth/Qwen3.6-27B-GGUF:Q4_K_M --host 0.0.0.0 --port 8080 -c 15000 --temp 0.6 --top_p 0.95 --top_k 20 --min_p 0.0 --presence_penalty 0.0 -ctk turbo3 -ctv turbo3 -t 6 --mmap --mlock --jinja --metrics -np 1 --fit-target 128 --perf --chat-template-kwargs '{"preserve_thinking": true}'
-#}
-
-#q27Serv(){
-#  llama-server -hf hf unsloth/Qwen3.6-27B-GGUF:IQ4_XS --host 0.0.0.0 --port 8080 -c 15000 --temp 0.6 --top_p 0.95 --top_k 20 --min_p 0.0 --presence_penalty 0.0 -ctk turbo3 -ctv turbo3 -t 6 --mmap --mlock --jinja --metrics -np 1 --fit-target 128 --perf --chat-template-kwargs '{"preserve_thinking": true}'
-#}
-
-q27Serv(){
-  llama-server -hf unsloth/Qwen3.6-27B-GGUF:Q3_K_S --host 0.0.0.0 --port 8080 -c 15000 --temp 0.6 --top_p 0.95 --top_k 20 --min_p 0.0 --presence_penalty 0.0 -ctk turbo3 -ctv turbo3 -t 6 --mmap --mlock --jinja --metrics -np 1 --fit-target 128 --perf --chat-template-kwargs '{"preserve_thinking": true}'
+q35Serv_t_4() {
+  llama-server -hf unsloth/Qwen3.6-35B-A3B-GGUF:UD-IQ4_NL --host 0.0.0.0 --port 8080 -c 200000 --temp 0.6 --top_p 0.95 --top_k 20 --min_p 0.0 --presence_penalty 0.0 -ctk turbo3 -ctv turbo3 -t 6 --mmap --mlock --jinja --metrics -np 4 --fit-target 128 --perf --chat-template-kwargs '{"preserve_thinking": true}' --no-mmproj --spec-type ngram-map-k --spec-ngram-size-n 24 --draft-min 12 --draft-max 48
 }
+
+q27Serv_4K(){
+  llama-server -hf unsloth/Qwen3.6-27B-GGUF:Q4_K_M --host 0.0.0.0 --port 8080 -c 40000 --temp 0.6 --top_p 0.95 --top_k 20 --min_p 0.0 --presence_penalty 0.0 -ctk turbo3 -ctv turbo3 -t 6 --mmap --mlock --jinja --metrics -np 1 --fit-target 128 --perf --chat-template-kwargs '{"preserve_thinking": true}' --no-mmproj
+}
+
+q27Serv_4I(){
+  llama-server -hf unsloth/Qwen3.6-27B-GGUF:IQ4_XS --host 0.0.0.0 --port 8080 -c 40000 --temp 0.6 --top_p 0.95 --top_k 20 --min_p 0.0 --presence_penalty 0.0 -ctk turbo3 -ctv turbo3 -t 6 --mmap --mlock --jinja --metrics -np 1 --fit-target 128 --perf --chat-template-kwargs '{"preserve_thinking": true}' --no-mmproj
+}
+
+q27Serv_3(){
+  llama-server -hf unsloth/Qwen3.6-27B-GGUF:Q3_K_S --host 0.0.0.0 --port 8080 -c 40000 --temp 0.6 --top_p 0.95 --top_k 20 --min_p 0.0 --presence_penalty 0.0 -ctk turbo3 -ctv turbo3 -t 6 --mmap --mlock --jinja --metrics -np 1 --fit-target 128 --perf --chat-template-kwargs '{"preserve_thinking": true}' --no-mmproj
+}
+
+#--spec-type ngram-mod --spec-ngram-size-n 24 --draft-min 12 --draft-max 48
 
 export PLAYWRIGHT_BROWSERS_PATH=/nix/store/ys5hrp8fq4w5fiifw7jiqs6axffskav8-playwright-browsers
 export PLAYWRIGHT_SKIP_VALIDATE_HOST_REQUIREMENTS=true
 export PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD=1
 
-obui(){
-  sudo docker rm -f open-webui open-webui-custom redlib 2>/dev/null
-  sudo docker run -d \
-    --name open-webui-custom \
-    --network=host \
-    -v open-webui:/app/backend/data \
-    -e WEB_LOADER_ENGINE=playwright \
-    -e PLAYWRIGHT_WS_URL=ws://127.0.0.1:4000 \
-    -e PORT=3000 \
-    -e USER_AGENT="Mozilla/5.0 (X11; Linux x86_64)" \
-  open-webui-custom:custom
-  sudo docker exec -it open-webui-custom update-ca-certificates
-}
-
 export UV_PYTHON_PREFERENCE=only-managed
 export UV_PYTHON=3.14
-
-#-e ALLOW_LOCAL_NETWORKS=true
 
 export LD_LIBRARY_PATH=$NIX_LD_LIBRARY_PATH
 
