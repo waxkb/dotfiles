@@ -60,7 +60,6 @@ alias cf='clear; fastfetch'
 
 export NIXPKGS_ALLOW_UNFREE=1
 
-export LD_LIBRARY_PATH=/run/opengl-driver/lib:$LD_LIBRARY_PATH
 export PYTHONPATH="" 
 export STABLE_GL=1
 export FORCE_X11=1
@@ -97,27 +96,35 @@ ccrexp(){
 }
 
 q35Serv_m() {
-  llama-server -hf unsloth/Qwen3.6-35B-A3B-GGUF:UD-IQ4_NL --host 0.0.0.0 --port 8080 -c 110000 --temp 0.6 --top_p 0.95 --top_k 20 --min_p 0.0 --presence_penalty 0.0 -ctk turbo3 -ctv turbo3 -t 6 --mmap --mlock --jinja --metrics -np 1 --fit-target 2048 --perf --chat-template-kwargs '{"preserve_thinking": true}' --image-min-tokens 1024
+  llama-server -hf unsloth/Qwen3.6-35B-A3B-GGUF:UD-IQ4_NL --host 0.0.0.0 --port 8080 -c 110000 --temp 0.6 --top_p 0.95 --top_k 20 --min_p 0.0 --presence_penalty 0.0 -ctk q4_0 -ctv q4_0 -t 6 --mmap --mlock --jinja --metrics -np 1 --fit-target 2048 --perf --chat-template-kwargs '{"preserve_thinking": true}' --image-min-tokens 1024
 }
 
 q35Serv_t_1() {
-  llama-server -hf unsloth/Qwen3.6-35B-A3B-GGUF:UD-IQ4_NL --host 0.0.0.0 --port 8080 -c 110000 --temp 0.6 --top_p 0.95 --top_k 20 --min_p 0.0 --presence_penalty 0.0 -ctk turbo3 -ctv turbo3 -t 6 --mmap --mlock --jinja --metrics -np 1 --fit-target 128 --perf --chat-template-kwargs '{"preserve_thinking": true}' --no-mmproj --spec-type ngram-map-k --spec-ngram-size-n 24 --draft-min 12 --draft-max 48
+  llama-server -hf unsloth/Qwen3.6-35B-A3B-GGUF:UD-IQ4_NL --host 0.0.0.0 --port 8080 -c 110000 --temp 0.6 --top_p 0.95 --top_k 20 --min_p 0.0 --presence_penalty 0.0 -ctk q4_0 -ctv q4_0 -t 6 --mmap --mlock --jinja --metrics -np 1 --fit-target 128 --perf --chat-template-kwargs '{"preserve_thinking": true}' --no-mmproj
+}
+
+q35Serv_mtp() {
+  llama-server -m /home/max/mtp/Qwen3.6-35B-A3B-customwow.gguf --host 0.0.0.0 --port 8080 -c 100000 --temp 0 --top_p 0.95 --top_k 20 --min_p 0.0 --presence_penalty 0.0 -ctk q4_0 -ctv q4_0 -t 6 --mmap --mlock --jinja --metrics -np 1 --fit-target 750 --perf --chat-template-kwargs '{"preserve_thinking": true}' --no-mmproj --spec-type mtp --spec-draft-n-max 3 -fa on
 }
 
 q35Serv_t_4() {
-  llama-server -hf unsloth/Qwen3.6-35B-A3B-GGUF:UD-IQ4_NL --host 0.0.0.0 --port 8080 -c 200000 --temp 0.6 --top_p 0.95 --top_k 20 --min_p 0.0 --presence_penalty 0.0 -ctk turbo3 -ctv turbo3 -t 6 --mmap --mlock --jinja --metrics -np 4 --fit-target 128 --perf --chat-template-kwargs '{"preserve_thinking": true}' --no-mmproj --spec-type ngram-map-k --spec-ngram-size-n 24 --draft-min 12 --draft-max 48
+  llama-server -hf unsloth/Qwen3.6-35B-A3B-GGUF:UD-IQ4_NL --host 0.0.0.0 --port 8080 -c 200000 --temp 0.6 --top_p 0.95 --top_k 20 --min_p 0.0 --presence_penalty 0.0 -ctk q4_0 -ctv q4_0 -t 6 --mmap --mlock --jinja --metrics -np 4 --fit-target 128 --perf --chat-template-kwargs '{"preserve_thinking": true}' --no-mmproj
 }
 
 q27Serv_4K(){
-  llama-server -hf unsloth/Qwen3.6-27B-GGUF:Q4_K_M --host 0.0.0.0 --port 8080 -c 40000 --temp 0.6 --top_p 0.95 --top_k 20 --min_p 0.0 --presence_penalty 0.0 -ctk turbo3 -ctv turbo3 -t 6 --mmap --mlock --jinja --metrics -np 1 --fit-target 128 --perf --chat-template-kwargs '{"preserve_thinking": true}' --no-mmproj
+  llama-server -hf unsloth/Qwen3.6-27B-GGUF:Q4_K_M --host 0.0.0.0 --port 8080 -c 40000 --temp 0.6 --top_p 0.95 --top_k 20 --min_p 0.0 --presence_penalty 0.0 -ctk q4_0 -ctv q4_0 -t 6 --mmap --mlock --jinja --metrics -np 1 --fit-target 128 --perf --chat-template-kwargs '{"preserve_thinking": true}' --no-mmproj
 }
 
 q27Serv_4I(){
-  llama-server -hf unsloth/Qwen3.6-27B-GGUF:IQ4_XS --host 0.0.0.0 --port 8080 -c 40000 --temp 0.6 --top_p 0.95 --top_k 20 --min_p 0.0 --presence_penalty 0.0 -ctk turbo3 -ctv turbo3 -t 6 --mmap --mlock --jinja --metrics -np 1 --fit-target 128 --perf --chat-template-kwargs '{"preserve_thinking": true}' --no-mmproj
+  llama-server -hf unsloth/Qwen3.6-27B-GGUF:IQ4_XS --host 0.0.0.0 --port 8080 -c 40000 --temp 0.6 --top_p 0.95 --top_k 20 --min_p 0.0 --presence_penalty 0.0 -ctk q4_0 -ctv q4_0 -t 6 --mmap --mlock --jinja --metrics -np 1 --fit-target 128 --perf --chat-template-kwargs '{"preserve_thinking": true}' --no-mmproj
 }
 
 q27Serv_3(){
-  llama-server -hf unsloth/Qwen3.6-27B-GGUF:Q3_K_S --host 0.0.0.0 --port 8080 -c 40000 --temp 0.6 --top_p 0.95 --top_k 20 --min_p 0.0 --presence_penalty 0.0 -ctk turbo3 -ctv turbo3 -t 6 --mmap --mlock --jinja --metrics -np 1 --fit-target 128 --perf --chat-template-kwargs '{"preserve_thinking": true}' --no-mmproj
+  llama-server -hf unsloth/Qwen3.6-27B-GGUF:Q3_K_S --host 0.0.0.0 --port 8080 -c 40000 --temp 0.6 --top_p 0.95 --top_k 20 --min_p 0.0 --presence_penalty 0.0 -ctk q4_0 -ctv q4_0 -t 6 --mmap --mlock --jinja --metrics -np 1 --fit-target 128 --perf --chat-template-kwargs '{"preserve_thinking": true}' --no-mmproj
+}
+
+q27Serv_mtp(){
+  llama-server -hf froggeric/Qwen3.6-27B-MTP-GGUF:IQ3_M --host 0.0.0.0 --port 8080 -c 5000 --temp 0 --top_p 0.95 --top_k 20 --min_p 0.0 --presence_penalty 0.0 -ctk q4_0 -ctv q4_0 -t 6 --mmap --mlock --jinja --metrics -np 1 --fit-target 1400 --perf --chat-template-kwargs '{"preserve_thinking": true}' --no-mmproj --spec-type mtp --spec-draft-n-max 3 -fa on
 }
 
 #--spec-type ngram-mod --spec-ngram-size-n 24 --draft-min 12 --draft-max 48
@@ -129,8 +136,9 @@ export PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD=1
 export UV_PYTHON_PREFERENCE=only-managed
 export UV_PYTHON=3.14
 
-export LD_LIBRARY_PATH=$NIX_LD_LIBRARY_PATH
-
+export MOZ_ENABLE_WAYLAND=1
+export MOZ_WEBRENDER_COMPOSITOR=auto
+export __GLX_VENDOR_LIBRARY_NAME=nvidia
 
 # Ignoring specific Infisical CLI commands
 DEFAULT_HISTIGNORE=
