@@ -12,12 +12,12 @@ window-rule{
   opacity 0.85
 }
 
-
 window-rule {
     draw-border-with-background false
 }
 
-window-rule {
-  match app-id="chromium-browser"
-  open-focused false
-}
+//window-rule {
+//  background-effect {
+//    blur true
+//  }
+//}

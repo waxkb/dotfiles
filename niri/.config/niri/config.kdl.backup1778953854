@@ -3,7 +3,7 @@ include "binds.kdl"
 include "lookandfeel.kdl"
 include "input.kdl"
 include "colors.kdl"
-include "windowrules.kdl"
+include "windows.kdl"
 include "animations.kdl"
 include "dms/binds.kdl"
 include "dms/layout.kdl"
@@ -14,5 +14,3 @@ cursor {
 }
 
 include "dms/cursor.kdl"
-
-include "dms/windowrules.kdl"
