@@ -30,3 +30,7 @@ post_hook = "vicinae theme set matugen"
 [templates.lualine]
 input_path = "/home/max/.config/matugen/templates/dank-lualine-colors.lua"
 output_path = "/home/max/.config/nvim/lua/plugins/dank-lualine.lua"
+
+[templates.ratty]
+input_path = "/home/max/.config/matugen/templates/ratty.toml"
+output_path = "/home/max/.config/ratty/ratty.toml"
