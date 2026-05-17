@@ -14,6 +14,6 @@ find "$WALLPAPER_DIR" -type f | $TOFI_BIN --config ~/.config/tofi/config | while
   if [[ -f "$selection" ]]; then
     # Apply the wallpaper
     # Replace 'swww' with 'swaybg -i' or 'feh --bg-fill' as needed
-    dms ipc call wallpaper set "$selection"
+    dms ipc call wallpaper set "$selection" || noctalia msg wallpaper-set "$selection" && matugen image "$selection" --scource-color-index 0
   fi
 done

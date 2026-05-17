@@ -323,8 +323,8 @@
   "muxUseCustomCommand": false,
   "muxCustomCommand": "",
   "muxSessionFilter": "",
-  "runDmsMatugenTemplates": true,
-  "matugenTemplateGtk": true,
+  "runDmsMatugenTemplates": false,
+  "matugenTemplateGtk": false,
   "matugenTemplateNiri": false,
   "matugenTemplateHyprland": false,
   "matugenTemplateMangowc": false,
@@ -333,14 +333,14 @@
   "matugenTemplateFirefox": false,
   "matugenTemplatePywalfox": false,
   "matugenTemplateZenBrowser": false,
-  "matugenTemplateVesktop": true,
-  "matugenTemplateVencord": true,
+  "matugenTemplateVesktop": false,
+  "matugenTemplateVencord": false,
   "matugenTemplateEquibop": false,
   "matugenTemplateGhostty": false,
   "matugenTemplateKitty": false,
   "matugenTemplateFoot": true,
   "matugenTemplateAlacritty": false,
-  "matugenTemplateNeovim": true,
+  "matugenTemplateNeovim": false,
   "matugenTemplateWezterm": false,
   "matugenTemplateDgop": false,
   "matugenTemplateKcolorscheme": false,
@@ -509,7 +509,7 @@
         },
         {
           "id": "dankActions:variant_1773611194630",
-          "enabled": true
+          "enabled": false
         }
       ],
       "rightWidgets": [
@@ -635,7 +635,11 @@
   },
   "desktopWidgetInstances": [],
   "desktopWidgetGroups": [],
-  "builtInPluginSettings": {},
+  "builtInPluginSettings": {
+    "dms_settings_search": {
+      "trigger": "?"
+    }
+  },
   "clipboardEnterToPaste": false,
   "launcherPluginVisibility": {},
   "launcherPluginOrder": [],

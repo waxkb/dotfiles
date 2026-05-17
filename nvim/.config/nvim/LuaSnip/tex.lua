@@ -9,13 +9,14 @@ local fmt = require("luasnip.extras.fmt").fmt
 local fmta = require("luasnip.extras.fmt").fmta
 local rep = require("luasnip.extras").rep
 local in_mathzone = function()
-  return vim.fn['vimtex#syntax#in_mathzone']() == 1
+    return vim.fn["vimtex#syntax#in_mathzone"]() == 1
 end
 
 return {
-  s({trig="temp", wordTrig=false},
-    fmta(
-      [[
+    s(
+        { trig = "temp", wordTrig = false },
+        fmta(
+            [[
         \documentclass{article}
 
         \usepackage{amsmath,amssymb,amsthm}
@@ -23,6 +24,7 @@ return {
         \usepackage{thmtools}
         \usepackage{tikz}
         \usepackage{tikz-cd}
+        \usepackage{mhchem siunitx}
 
         \newcommand\N{\ensuremath{\mathbb{N}}}
         \newcommand\R{\ensuremath{\mathbb{R}}}
@@ -57,98 +59,128 @@ return {
 
         \end{document}
       ]],
-      { i(1, "Section"), i(0)}
-    )
-  ),
-  s({trig="beg", snippetType="autosnippet"},
-    fmta(
-      [[
+            { i(1, "Section"), i(0) }
+        )
+    ),
+    s(
+        { trig = "beg", snippetType = "autosnippet" },
+        fmta(
+            [[
         \begin{<>}
             <>
         \end{<>}
       ]],
-      { i(1), i(0), rep(1) }
-    )
-  ),
-  s({trig="mk", snippetType="autosnippet"},
-    fmta(
-      [[
+            { i(1), i(0), rep(1) }
+        )
+    ),
+    s(
+        { trig = "mk", snippetType = "autosnippet" },
+        fmta(
+            [[
         $<>$ <>
       ]],
-      { i(1), i(0) }
-    )
-  ),
-  s({trig="//", wordTrig=false, snippetType="autosnippet", condition=in_mathzone},
-    fmta(
-      [[
+            { i(1), i(0) }
+        )
+    ),
+    s(
+        { trig = "//", wordTrig = false, snippetType = "autosnippet", condition = in_mathzone },
+        fmta(
+            [[
         \frac{<>}{<>}<>
       ]],
-      { i(1), i(2), i(3)}
-    )
-  ),
-  s({trig="dm", snippetType="autosnippet"},
-    fmta(
-      [[
+            { i(1), i(2), i(3) }
+        )
+    ),
+    s(
+        { trig = "dm", snippetType = "autosnippet" },
+        fmta(
+            [[
         \begin{align*}
           <>
         \end{align*}
         <>
       ]],
-      { i(1), i(0)}
-    )
-  ),
-  s({trig="([%a])([%d])", regTrig=true, wordTrig=false, snippetType="autosnippet", condition=in_mathzone},
-    fmta(
-      [[
+            { i(1), i(0) }
+        )
+    ),
+    s(
+        {
+            trig = "([%a])([%d])",
+            regTrig = true,
+            wordTrig = false,
+            snippetType = "autosnippet",
+            condition = in_mathzone,
+        },
+        fmta(
+            [[
         <>_<><>
       ]],
-      { f( function(_, snip) return snip.captures[1] end ), f( function(_, snip) return snip.captures[2] end ), i(0)}
-    )
-  ),
-  s({trig="sb", wordTrig=false, snippetType="autosnippet", condition=in_mathzone},
-    fmta(
-      [[
+            {
+                f(function(_, snip)
+                    return snip.captures[1]
+                end),
+                f(function(_, snip)
+                    return snip.captures[2]
+                end),
+                i(0),
+            }
+        )
+    ),
+    s(
+        { trig = "sb", wordTrig = false, snippetType = "autosnippet", condition = in_mathzone },
+        fmta(
+            [[
         _{<>}<>
       ]],
-      { i(1), i(0)}
-    )
-  ),
-  s({trig="sd", wordTrig=false, snippetType="autosnippet", condition=in_mathzone},
-    t("^2")
-  ),
-  s({trig="cd", wordTrig=false, snippetType="autosnippet", condition=in_mathzone},
-    t("^3")
-  ),
-  s({trig="tt", wordTrig=false, snippetType="autosnippet", condition=in_mathzone},
-    fmta(
-      [[
+            { i(1), i(0) }
+        )
+    ),
+    s({ trig = "sd", wordTrig = false, snippetType = "autosnippet", condition = in_mathzone }, t("^2")),
+    s({ trig = "cd", wordTrig = false, snippetType = "autosnippet", condition = in_mathzone }, t("^3")),
+    s(
+        { trig = "tt", wordTrig = false, snippetType = "autosnippet", condition = in_mathzone },
+        fmta(
+            [[
         ^{<>}<>
       ]],
-      { i(1), i(0)}
-    )
-  ),
-  s({trig="rt", wordTrig=false, snippetType="autosnippet", condition=in_mathzone},
-    fmta(
-      [[
+            { i(1), i(0) }
+        )
+    ),
+    s(
+        { trig = "rt", wordTrig = false, snippetType = "autosnippet", condition = in_mathzone },
+        fmta(
+            [[
         \sqrt{<>}<>
       ]],
-      { i(1), i(0)}
-    )
-  ),
-  s({trig="([%a])hat", regTrig=true, wordTrig=false, snippetType="autosnippet", condition=in_mathzone},
-    fmta(
-      [[
+            { i(1), i(0) }
+        )
+    ),
+    s(
+        { trig = "([%a])hat", regTrig = true, wordTrig = false, snippetType = "autosnippet", condition = in_mathzone },
+        fmta(
+            [[
         \hat{<>}<>
       ]],
-      { f( function(_, snip) return snip.captures[1] end ), i(0)}
-    )
-  ),
-  s({trig="([%a])([.,]+)", regTrig=true, wordTrig=false, snippetType="autosnippet", condition=in_mathzone},
-    fmta(
-      [[
+            { f(function(_, snip)
+                return snip.captures[1]
+            end), i(0) }
+        )
+    ),
+    s(
+        {
+            trig = "([%a])([.,]+)",
+            regTrig = true,
+            wordTrig = false,
+            snippetType = "autosnippet",
+            condition = in_mathzone,
+        },
+        fmta(
+            [[
         \vec{<>}<>
       ]],
-      { f( function(_, snip) return snip.captures[1] end ), i(0)}
-    )
-  )
+            { f(function(_, snip)
+                return snip.captures[1]
+            end), i(0) }
+        )
+    ),
 }

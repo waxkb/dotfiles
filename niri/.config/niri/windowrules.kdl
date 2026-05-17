@@ -16,8 +16,23 @@ window-rule {
     draw-border-with-background false
 }
 
-//window-rule {
-//  background-effect {
-//    blur true
-//  }
-//}
+layer-rule {
+  match namespace="^noctalia-wallpaper"
+  place-within-backdrop true
+}
+
+layout {
+  background-color "transparent"
+}
+
+overview {
+  workspace-shadow {
+    off
+  }
+}
+
+window-rule {
+  background-effect {
+    blur true
+  }
+}

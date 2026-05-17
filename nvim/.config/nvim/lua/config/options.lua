@@ -3,6 +3,7 @@
 -- Add any additional options here
 vim.opt.spell = true
 vim.opt.spelllang = "en_us"
+vim.opt.relativenumber = true
 
 --vim.g.vimtex_compiler_latexmk = {
 --  continuous = 0,
