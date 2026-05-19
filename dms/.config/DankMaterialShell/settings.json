@@ -504,7 +504,7 @@
       "centerWidgets": [
         {
           "id": "music",
-          "enabled": false,
+          "enabled": true,
           "mediaSize": 2
         },
         {

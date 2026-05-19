@@ -1,5 +1,3 @@
-export EDITOR='nvim'
-
 function y() {
 	local tmp="$(mktemp -t "yazi-cwd.XXXXXX")" cwd
 	yazi "$@" --cwd-file="$tmp"
@@ -92,7 +90,7 @@ ccoexp(){
 ccrexp(){
   export ANTHROPIC_BASE_URL="https://openrouter.ai/api"
   export ANTHROPIC_API_KEY=$OPENROUTER_API_KEY
-  export ANTHROPIC_MODEL="tencent/hy3-preview:free"
+  export ANTHROPIC_MODEL="deepseek/deepseek-v4-flash:free"
 }
 
 q35Serv_m() {

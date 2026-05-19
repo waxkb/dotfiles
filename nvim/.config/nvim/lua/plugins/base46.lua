@@ -1,7 +1,10 @@
 return {
     {
         "AvengeMedia/base46",
-        lazy = false,
+        event = "VeryLazy",
         opts = {},
+        config = function()
+          vim.cmd.colorscheme("base46-matugen")
+        end
     },
 }
