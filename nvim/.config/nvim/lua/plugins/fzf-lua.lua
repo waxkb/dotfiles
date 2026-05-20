@@ -12,7 +12,7 @@ return {
     ---@type fzf-lua.Config|{}
     ---@diagnostic disable: missing-fields
     opts = {
-      -- fzf_bin = "sk",
+      fzf_bin = "sk",
       winopts = {
         preview = {
           hidden = true,

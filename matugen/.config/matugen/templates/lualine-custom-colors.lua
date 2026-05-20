@@ -2,6 +2,9 @@ return {
 	{
 		"nvim-lualine/lualine.nvim",
     event = "VeryLazy",
+    dependencies = {
+      "AvengeMedia/base46",
+    },
 		opts = function(_, opts)
 			local colors = {
 				bg = "{{colors.surface.default.hex}}",
