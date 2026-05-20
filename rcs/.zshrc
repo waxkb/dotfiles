@@ -6,7 +6,10 @@ function y() {
 	rm -f -- "$tmp"
 }
 
+export FZF_CTRL_T_OPTS="--preview 'bat --color=always --style=numbers --line-range=:500 {}' --preview-border none --height 40%"
+export FZF_CTRL_R_OPTS=""
 source <(fzf --zsh)
+
 rm() {
   if [[ "$*" == *"-rf"* || "$*" == *"-fr"* ]]; then
     echo "⚠️  You are about to run: rm $*"

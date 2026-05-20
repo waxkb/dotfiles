@@ -1,6 +1,7 @@
 return {
 	{
 		"nvim-lualine/lualine.nvim",
+    event = "VeryLazy",
 		opts = function(_, opts)
 			local colors = {
 				bg = "#161217",
