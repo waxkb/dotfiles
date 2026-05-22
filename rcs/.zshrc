@@ -5,13 +5,16 @@ function y() {
 	[ -n "$cwd" ] && [ "$cwd" != "$PWD" ] && builtin cd -- "$cwd"
 	rm -f -- "$tmp"
 }
-export FZF_DEFAULT_COMMAND="fd"
-export FZF_CTRL_T_COMMAND=$FZF_DEFAULT_COMMAND
-export FZF_CTRL_T_OPTS="--preview 'bat --color=always --style=numbers --line-range=:500 {}' --preview-border none --height 40%"
+# export FZF_DEFAULT_COMMAND="fd -H"
+export FZF_DEFAULT_OPTS="--no-scrollbar"
+# export FZF_CTRL_T_COMMAND=$FZF_DEFAULT_COMMAND
+export FZF_CTRL_T_OPTS="$FZF_DEFAULT_OPTS --preview 'bat --color=always --style=numbers --line-range=:500 {}' --preview-border none --height 40%"
 export FZF_CTRL_R_OPTS=""
 source <(fzf --zsh)
 
-export SKIM_DEFAULT_COMMAND="fd"
+# export SKIM_DEFAULT_COMMAND="fd -H"
+
+source /home/max/.config/broot/launcher/bash/br
 
 rm() {
   if [[ "$*" == *"-rf"* || "$*" == *"-fr"* ]]; then
@@ -147,3 +150,4 @@ export __GLX_VENDOR_LIBRARY_NAME=nvidia
 # Ignoring specific Infisical CLI commands
 DEFAULT_HISTIGNORE=
 export HISTIGNORE="*infisical secrets set*:*infisical secrets get*:"
+

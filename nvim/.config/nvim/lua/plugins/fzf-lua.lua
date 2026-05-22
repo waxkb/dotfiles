@@ -12,19 +12,31 @@ return {
     ---@type fzf-lua.Config|{}
     ---@diagnostic disable: missing-fields
     opts = {
-      fzf_bin = "sk",
+      "ivy",
+      -- fzf_bin = "sk",
       winopts = {
+        -- row = 1,
+        -- col = 0,
+        -- width = 1,
+        -- height = 0.4,
+        -- title_pos = "left",
+        -- border = { "", "─", "", "", "", "", "", "" },
         preview = {
-          hidden = true,
-          default = 'bat_native',
+          hidden = false,
+          -- default = 'bat_native',
+          -- layout = "horizontal",
+          -- horizontal = "right:50%",
         },
         treesitter = false,
       },
       fzf_opts = {
         ['--ansi'] = false,
-        -- ['--algo'] = "frizbee",
+        -- ['--no-scrollbar'] = true,
         -- ["--info"] = false,
       },
+      -- fzf_colors = {
+      --   ["separator"] = "white",
+      -- },
       files = {
         fzf_opts = { ["--ansi"] = false },
         git_icons = false,
