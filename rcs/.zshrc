@@ -1,10 +1,3 @@
-function y() {
-	local tmp="$(mktemp -t "yazi-cwd.XXXXXX")" cwd
-	yazi "$@" --cwd-file="$tmp"
-	IFS= read -r -d '' cwd < "$tmp"
-	[ -n "$cwd" ] && [ "$cwd" != "$PWD" ] && builtin cd -- "$cwd"
-	rm -f -- "$tmp"
-}
 # export FZF_DEFAULT_COMMAND="fd -H"
 export FZF_DEFAULT_OPTS="--no-scrollbar"
 # export FZF_CTRL_T_COMMAND=$FZF_DEFAULT_COMMAND
@@ -14,7 +7,19 @@ source <(fzf --zsh)
 
 # export SKIM_DEFAULT_COMMAND="fd -H"
 
-source /home/max/.config/broot/launcher/bash/br
+function br {
+    local cmd cmd_file code
+    cmd_file=$(mktemp)
+    if TERM="kitty" TERMINAL="kitty" broot --outcmd "$cmd_file" "$@"; then
+        cmd=$(<"$cmd_file")
+        command rm -f "$cmd_file"
+        eval "$cmd"
+    else
+        code=$?
+        command rm -f "$cmd_file"
+        return "$code"
+    fi
+}
 
 rm() {
   if [[ "$*" == *"-rf"* || "$*" == *"-fr"* ]]; then
@@ -114,31 +119,7 @@ q35Serv_mtp() {
   llama-server -m /home/max/mtp/Qwen3.6-35B-A3B-customwow.gguf --host 0.0.0.0 --port 8080 -c 100000 --temp 0 --top_p 0.95 --top_k 20 --min_p 0.0 --presence_penalty 0.0 -ctk q4_0 -ctv q4_0 -t 6 --mmap --mlock --jinja --metrics -np 1 --fit-target 750 --perf --chat-template-kwargs '{"preserve_thinking": true}' --no-mmproj --spec-type mtp --spec-draft-n-max 3 -fa on
 }
 
-q35Serv_t_4() {
-  llama-server -hf unsloth/Qwen3.6-35B-A3B-GGUF:UD-IQ4_NL --host 0.0.0.0 --port 8080 -c 200000 --temp 0.6 --top_p 0.95 --top_k 20 --min_p 0.0 --presence_penalty 0.0 -ctk q4_0 -ctv q4_0 -t 6 --mmap --mlock --jinja --metrics -np 4 --fit-target 128 --perf --chat-template-kwargs '{"preserve_thinking": true}' --no-mmproj
-}
-
-q27Serv_4K(){
-  llama-server -hf unsloth/Qwen3.6-27B-GGUF:Q4_K_M --host 0.0.0.0 --port 8080 -c 40000 --temp 0.6 --top_p 0.95 --top_k 20 --min_p 0.0 --presence_penalty 0.0 -ctk q4_0 -ctv q4_0 -t 6 --mmap --mlock --jinja --metrics -np 1 --fit-target 128 --perf --chat-template-kwargs '{"preserve_thinking": true}' --no-mmproj
-}
-
-q27Serv_4I(){
-  llama-server -hf unsloth/Qwen3.6-27B-GGUF:IQ4_XS --host 0.0.0.0 --port 8080 -c 40000 --temp 0.6 --top_p 0.95 --top_k 20 --min_p 0.0 --presence_penalty 0.0 -ctk q4_0 -ctv q4_0 -t 6 --mmap --mlock --jinja --metrics -np 1 --fit-target 128 --perf --chat-template-kwargs '{"preserve_thinking": true}' --no-mmproj
-}
-
-q27Serv_3(){
-  llama-server -hf unsloth/Qwen3.6-27B-GGUF:Q3_K_S --host 0.0.0.0 --port 8080 -c 40000 --temp 0.6 --top_p 0.95 --top_k 20 --min_p 0.0 --presence_penalty 0.0 -ctk q4_0 -ctv q4_0 -t 6 --mmap --mlock --jinja --metrics -np 1 --fit-target 128 --perf --chat-template-kwargs '{"preserve_thinking": true}' --no-mmproj
-}
-
-q27Serv_mtp(){
-  llama-server -hf froggeric/Qwen3.6-27B-MTP-GGUF:IQ3_M --host 0.0.0.0 --port 8080 -c 5000 --temp 0 --top_p 0.95 --top_k 20 --min_p 0.0 --presence_penalty 0.0 -ctk q4_0 -ctv q4_0 -t 6 --mmap --mlock --jinja --metrics -np 1 --fit-target 1400 --perf --chat-template-kwargs '{"preserve_thinking": true}' --no-mmproj --spec-type mtp --spec-draft-n-max 3 -fa on
-}
-
 #--spec-type ngram-mod --spec-ngram-size-n 24 --draft-min 12 --draft-max 48
-
-export PLAYWRIGHT_BROWSERS_PATH=/nix/store/ys5hrp8fq4w5fiifw7jiqs6axffskav8-playwright-browsers
-export PLAYWRIGHT_SKIP_VALIDATE_HOST_REQUIREMENTS=true
-export PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD=1
 
 export UV_PYTHON_PREFERENCE=only-managed
 export UV_PYTHON=3.14
