@@ -56,9 +56,7 @@ mkcd () {
   if ! ssh-add -l | grep -q "github"; then
     KEY_FILE=$(mktemp)
     trap 'rm -f "$KEY_FILE"' EXIT
-    
     infisical secrets get --path=/ssh-keys PrivateMainsshKey --plain 2>/dev/null | sed 's/\\n/\n/g' > "$KEY_FILE"
-    
     chmod 600 "$KEY_FILE"
     ssh-add "$KEY_FILE" > /dev/null 2>&1
   fi
@@ -85,12 +83,12 @@ export CLAUDE_CODE_DISABLE_NONESSENTIAL_TRAFFIC=1
 
 export OPENROUTER_API_KEY="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"
 
-export ANTHROPIC_BASE_URL="http://localhost:8081"
+export ANTHROPIC_BASE_URL="http://localhost:8080"
 export ANTHROPIC_API_KEY=""
 export ANTHROPIC_MODEL=""
 
 cclexp(){
-  export ANTHROPIC_BASE_URL="http://localhost:8081"
+  export ANTHROPIC_BASE_URL="http://localhost:8080"
   export ANTHROPIC_API_KEY=""
   export ANTHROPIC_MODEL=""
 }
@@ -116,7 +114,7 @@ q35Serv_t_1() {
 }
 
 q35Serv_mtp() {
-  llama-server -m /home/max/mtp/Qwen3.6-35B-A3B-customwow.gguf --host 0.0.0.0 --port 8080 -c 100000 --temp 0 --top_p 0.95 --top_k 20 --min_p 0.0 --presence_penalty 0.0 -ctk q4_0 -ctv q4_0 -t 6 --mmap --mlock --jinja --metrics -np 1 --fit-target 750 --perf --chat-template-kwargs '{"preserve_thinking": true}' --no-mmproj --spec-type mtp --spec-draft-n-max 3 -fa on
+  llama-server -m /home/max/mtp/Qwen3.6-35B-A3B-customwow.gguf --host 0.0.0.0 --port 8080 -c 100000 --temp 0 --top_p 0.95 --top_k 20 --min_p 0.0 --presence_penalty 0.0 -ctk q4_0 -ctv q4_0 -t 6 --mmap --mlock --jinja --metrics -np 1 --fit-target 1250 --perf --chat-template-kwargs '{"preserve_thinking": true}' --no-mmproj --spec-type draft-mtp --spec-draft-n-max 3 -fa on
 }
 
 #--spec-type ngram-mod --spec-ngram-size-n 24 --draft-min 12 --draft-max 48
