@@ -48,3 +48,8 @@ output_path = "/home/max/.config/ratty/ratty.toml"
 input_path = "/home/max/.config/matugen/templates/foot-colors-start.ini"
 output_path = "/home/max/.config/foot/foot-colors.ini"
 post_hook = "nohup ./foot-colors.sh \"{{colors.primary.default.hex}}\" &"
+
+[templates.wezterm]
+input_path = "/home/max/.config/matugen/templates/wezterm-theme.toml"
+output_path = "/home/max/.config/wezterm/colors/wezterm-theme.toml"
+post_hook = "nohup ./wezterm-theme.sh \"{{colors.primary.default.hex}}\" &"
