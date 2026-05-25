@@ -428,6 +428,7 @@
   "notificationTimeoutNormal": 5000,
   "notificationTimeoutCritical": 0,
   "notificationCompactMode": false,
+  "notificationDedupeEnabled": true,
   "notificationPopupPosition": 0,
   "notificationAnimationSpeed": 1,
   "notificationCustomAnimationDuration": 400,
@@ -488,7 +489,14 @@
   "displayProfileAutoSelect": false,
   "displayShowDisconnected": false,
   "displaySnapToEdge": true,
-  "connectedFrameBarStyleBackups": {},
+  "connectedFrameBarStyleBackups": {
+    "default": {
+      "shadowIntensity": 0,
+      "squareCorners": false,
+      "gothCornersEnabled": false,
+      "borderEnabled": false
+    }
+  },
   "barConfigs": [
     {
       "id": "default",
@@ -518,6 +526,10 @@
       ],
       "rightWidgets": [
         {
+          "id": "dankKDEConnect",
+          "enabled": false
+        },
+        {
           "id": "cpuTemp",
           "enabled": true,
           "minimumWidth": true
@@ -526,10 +538,6 @@
           "id": "cpuUsage",
           "enabled": true,
           "minimumWidth": true
-        },
-        {
-          "id": "dankKDEConnect",
-          "enabled": true
         }
       ],
       "spacing": 0,
@@ -647,8 +655,8 @@
   "clipboardEnterToPaste": false,
   "launcherPluginVisibility": {},
   "launcherPluginOrder": [],
-  "frameEnabled": false,
-  "frameThickness": 16,
+  "frameEnabled": true,
+  "frameThickness": 10,
   "frameRounding": 23,
   "frameColor": "",
   "frameOpacity": 1,
