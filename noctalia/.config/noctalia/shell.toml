@@ -1,0 +1,48 @@
+[shell]
+ui_scale              = 1.0             # content scale for panels and non-bar shell UI
+font_family           = "sans-serif"    # Pango family string; Fontconfig handles fallback
+lang                  = "en"            # override language detection
+time_format           = "{:%H:%M}"      # default time format for shell UI without its own setting
+date_format           = "%A, %x"        # default date format for shell UI without its own setting
+offline_mode          = false           # block all outgoing HTTP requests
+telemetry_enabled     = false           # anonymous startup ping
+polkit_agent          = false           # register Noctalia's native polkit authentication agent
+password_style        = "default"       # default | random
+avatar_path           = "~/nixos/wall/xkcdLocalViewing.jpg"
+settings_show_advanced = false          # show advanced settings by default in Settings
+middle_click_opens_widget_settings = true # middle-click bar widgets to open their Settings entry
+show_location         = true            # show weather location text in shell UI
+clipboard_enabled     = true            # false disables clipboard history, panel, and compositor clipboard hooks
+clipboard_auto_paste  = "auto"          # off | auto | ctrl_v | ctrl_shift_v | shift_insert
+clipboard_image_action_command = ""     # image clipboard action; e.g. "gimp {path}" or "satty -f -"
+
+[shell.animation]
+enabled = true
+speed   = 1.0   # 1.0 = normal, 0.5 = 2× slower, 2.0 = 2× faster
+
+[shell.shadow]
+blur     = 12    # global surface shadow blur radius; 0 disables all rendered surface shadows
+offset_x = 2
+offset_y = 2     # positive = down
+alpha    = 0.55  # multiplied by each component's background opacity
+
+[shell.panel]
+background_blur       = true   # request compositor blur behind panels via ext-background-effect-v1
+transparency_mode     = "solid"  # solid | soft | glass; controls detached panel opacity and card translucency
+attach_launcher       = false  # attach launcher to the bar when a suitable bar is available
+attach_clipboard      = false  # attach clipboard history to the bar when a suitable bar is available
+attach_control_center = true   # attach Control Center to the bar when a suitable bar is available
+attach_wallpaper      = true   # attach wallpaper picker to the bar when a suitable bar is available
+attach_session        = false  # attach session power menu to the bar when a suitable bar is available
+open_near_click_control_center = false  # open Control Center near the click on the bar
+open_near_click_launcher       = false  # open Launcher near the click on the bar
+open_near_click_clipboard      = false  # open Clipboard near the click on the bar
+open_near_click_wallpaper      = false  # open Wallpaper picker near the click on the bar
+open_near_click_session        = false  # open Session panel near the click on the bar
+
+[shell.screen_corners]
+enabled = true    # overlay black rounded corners on each screen
+size    = 32       # corner radius in logical pixels (1–100)
+
+[shell.mpris]
+blacklist = []           # optional list of players to hide from media widgets/control-center

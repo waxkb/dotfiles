@@ -1,0 +1,55 @@
+[font]
+family = "JetBrainsMono Nerd Font Mono"
+style = "Regular"
+size = 16
+
+[cursor.model]
+path = "CairoSpinyMouse.obj"
+scale_factor = 6.0
+brightness = 0.5
+x_offset = 0.5
+plane_offset = 18.0
+visible = true
+
+[cursor.animation]
+spin_speed = 1.4
+bob_speed = 2.2
+bob_amplitude = 0.08
+
+[bindings]
+keys = [
+  { key = "C", with = "Control | shift", action = "Copy" },
+  { key = "V", with = "Control | shift", action = "Paste" },
+  { key = "Equal", with = "Control", action = "IncreaseFontSize" },
+  { key = "Minus", with = "Control", action = "DecreaseFontSize" },
+  { key = "Digit0", with = "Control | shift", action = "ResetFontSize" },
+  { key = "Enter", with = "Control | shift", action = "Toggle3DMode" },
+  { key = "M", with = "Control | shift", action = "ToggleMobiusMode" },
+  { key = "Up", with = "Control | shift", action = "IncreaseWarp" },
+  { key = "Down", with = "Control | shift", action = "DecreaseWarp" },
+]
+
+[theme]
+foreground = "#e9e0e7"
+background = "#161217"
+cursor = "#e9e0e7"
+
+[theme.normal]
+black =   "#221520"
+red =     "#3d2c21"
+green =   "#584422"
+yellow =  "#735b23"
+blue =    "#8e7324"
+magenta = "#aa8a25"
+cyan =    "#c5a126"
+white =   "#e0b927"
+
+[theme.bright]
+black =   "#17e1c7"
+red =     "#dfb827"
+green =   "#a9570e"
+yellow =  "#7423bd"
+blue =    "#8b45bc"
+magenta = "#ad60d3"
+cyan =    "#7137a6"
+white =   "#ffffff"
