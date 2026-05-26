@@ -138,3 +138,7 @@ export __GLX_VENDOR_LIBRARY_NAME=nvidia
 # Ignoring specific Infisical CLI commands
 DEFAULT_HISTIGNORE=
 export HISTIGNORE="*infisical secrets set*:*infisical secrets get*:"
+
+HISTSIZE=20000
+SAVEHIST=20000
+HISTFILE=~/.zsh_history

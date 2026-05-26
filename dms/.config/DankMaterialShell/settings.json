@@ -492,6 +492,12 @@
   "connectedFrameBarStyleBackups": {
     "default": {
       "shadowIntensity": 0,
+      "squareCorners": true,
+      "gothCornersEnabled": false,
+      "borderEnabled": false
+    },
+    "bar1779751617862": {
+      "shadowIntensity": 0,
       "squareCorners": false,
       "gothCornersEnabled": false,
       "borderEnabled": false
@@ -502,7 +508,7 @@
       "id": "default",
       "name": "Main Bar",
       "enabled": true,
-      "position": 0,
+      "position": 2,
       "screenPreferences": [
         "all"
       ],
@@ -568,7 +574,97 @@
       "maximizeDetection": false,
       "widgetPadding": 8,
       "clickThrough": false,
-      "shadowIntensity": 0
+      "shadowIntensity": 0,
+      "maximizeWidgetIcons": false,
+      "maximizeWidgetText": false,
+      "removeWidgetPadding": true,
+      "shadowOpacity": 60
+    },
+    {
+      "id": "bar1779751617862",
+      "name": "Bar 2",
+      "enabled": false,
+      "position": 0,
+      "screenPreferences": [
+        "all"
+      ],
+      "showOnLastDisplay": false,
+      "leftWidgets": [
+        {
+          "id": "workspaceSwitcher",
+          "enabled": true
+        }
+      ],
+      "centerWidgets": [
+        {
+          "id": "music",
+          "enabled": true,
+          "mediaSize": 2
+        },
+        {
+          "id": "dankActions:variant_1773611194630",
+          "enabled": false
+        }
+      ],
+      "rightWidgets": [
+        {
+          "id": "dankKDEConnect",
+          "enabled": false
+        },
+        {
+          "id": "cpuTemp",
+          "enabled": true,
+          "minimumWidth": true
+        },
+        {
+          "id": "cpuUsage",
+          "enabled": true,
+          "minimumWidth": true
+        }
+      ],
+      "spacing": 8,
+      "innerPadding": 4,
+      "bottomGap": 0,
+      "transparency": 1,
+      "widgetTransparency": 1,
+      "squareCorners": false,
+      "noBackground": false,
+      "gothCornersEnabled": false,
+      "gothCornerRadiusOverride": true,
+      "gothCornerRadiusValue": 18,
+      "borderEnabled": false,
+      "borderColor": "primary",
+      "borderOpacity": 1,
+      "borderThickness": 2,
+      "widgetOutlineEnabled": false,
+      "widgetOutlineColor": "primary",
+      "widgetOutlineOpacity": 1,
+      "widgetOutlineThickness": 2,
+      "widgetPadding": 8,
+      "maximizeWidgetIcons": false,
+      "maximizeWidgetText": false,
+      "removeWidgetPadding": false,
+      "fontScale": 1,
+      "iconScale": 1,
+      "autoHide": false,
+      "autoHideStrict": false,
+      "autoHideDelay": 250,
+      "showOnWindowsOpen": false,
+      "openOnOverview": false,
+      "visible": true,
+      "popupGapsAuto": true,
+      "popupGapsManual": 4,
+      "maximizeDetection": false,
+      "useOverlayLayer": false,
+      "scrollEnabled": true,
+      "scrollXBehavior": "column",
+      "scrollYBehavior": "workspace",
+      "shadowIntensity": 0,
+      "shadowOpacity": 60,
+      "shadowDirectionMode": "inherit",
+      "shadowDirection": "top",
+      "shadowColorMode": "default",
+      "shadowCustomColor": "#000000"
     }
   ],
   "desktopClockEnabled": false,
