@@ -752,7 +752,7 @@
   "launcherPluginVisibility": {},
   "launcherPluginOrder": [],
   "frameEnabled": true,
-  "frameThickness": 10,
+  "frameThickness": 2,
   "frameRounding": 23,
   "frameColor": "",
   "frameOpacity": 1,

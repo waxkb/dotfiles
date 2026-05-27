@@ -142,3 +142,5 @@ export HISTIGNORE="*infisical secrets set*:*infisical secrets get*:"
 HISTSIZE=20000
 SAVEHIST=20000
 HISTFILE=~/.zsh_history
+
+export _JAVA_AWT_WM_NONREPARENTING=1
