@@ -5,3 +5,5 @@ end
 -- bootstrap lazy.nvim, LazyVim and your plugins
 require("config.lazy")
 require("oil").setup()
+
+vim.cmd.colorscheme("base46-matugen")
