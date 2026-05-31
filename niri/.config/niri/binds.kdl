@@ -1,10 +1,9 @@
 binds {
     Mod+B hotkey-overlay-title="Open Zen Browser" { spawn "zen-beta"; }
-    Mod+Alt+B hotkey-overlay-title="Open Zen Browser (bellarmine profile)" { spawn-sh "zen-beta -p bellarmine"; }
-    Mod+Shift+B hotkey-overlay-title="Open System Monitor (btop)" { spawn "wezterm" "btop"; }
+    Mod+Shift+B hotkey-overlay-title="Open System Monitor (btop)" { spawn-sh "wezterm start -- btop"; }
     Mod+D hotkey-overlay-title="Close Focused Window" { close-window; }
     Mod+Shift+D hotkey-overlay-title="Quit Niri Session" { quit; }
-    Mod+E hotkey-overlay-title="Open File Manager (Broot)" { spawn "wezterm" "br"; }
+    Mod+E hotkey-overlay-title="Open File Manager (Broot)" { spawn-sh "wezterm start -- broot"; }
     Mod+M hotkey-overlay-title="Open Spotify" { spawn "spotify"; }
     Mod+Shift+M hotkey-overlay-title="Show Current Track Notification" {
         spawn-sh "dms ipc call dash open media";
@@ -16,7 +15,6 @@ binds {
         spawn-sh "dms ipc call notifications open";
     }
     Mod+O hotkey-overlay-title="Lock Screen" { spawn "hyprlock"; }
-    Mod+Shift+O { spawn "obs"; }
     Mod+P hotkey-overlay-title="Pick Color from Screen" { spawn "hyprpicker"; }
     Mod+R hotkey-overlay-title="Switch Column Width Preset" { switch-preset-column-width; }
     Mod+Shift+R hotkey-overlay-title="Switch Window Height Preset" { switch-preset-window-height; }
@@ -64,8 +62,6 @@ binds {
 
     Mod+F { maximize-column; }
     Mod+Shift+F { expand-column-to-available-width; }
-    Mod+C { center-column; }
-    Mod+Shift+C { center-visible-columns; }
 
     Mod+1 { focus-workspace 1; }
     Mod+2 { focus-workspace 2; }
@@ -87,8 +83,8 @@ binds {
     Mod+Shift+8 { move-column-to-workspace 8; }
     Mod+Shift+9 { move-column-to-workspace 9; }
 
-    Mod+Minus { set-column-width "-10%"; }
-    Mod+Equal { set-column-width "+10%"; }
-    Mod+Shift+Minus { set-window-height "-10%"; }
-    Mod+Shift+Equal { set-window-height "+10%"; }
+    Mod+Minus { set-column-width "-5%"; }
+    Mod+Equal { set-column-width "+5%"; }
+    Mod+Shift+Minus { set-window-height "-5%"; }
+    Mod+Shift+Equal { set-window-height "+5%"; }
 }

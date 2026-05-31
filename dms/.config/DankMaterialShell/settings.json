@@ -519,21 +519,18 @@
           "enabled": true
         }
       ],
-      "centerWidgets": [
-        {
-          "id": "music",
-          "enabled": true,
-          "mediaSize": 2
-        },
-        {
-          "id": "dankActions:variant_1773611194630",
-          "enabled": false
-        }
-      ],
+      "centerWidgets": [],
       "rightWidgets": [
         {
           "id": "dankKDEConnect",
           "enabled": false
+        },
+        {
+          "id": "memUsage",
+          "enabled": true,
+          "minimumWidth": true,
+          "showSwap": false,
+          "showInGb": true
         },
         {
           "id": "cpuTemp",
@@ -595,21 +592,17 @@
           "enabled": true
         }
       ],
-      "centerWidgets": [
-        {
-          "id": "music",
-          "enabled": true,
-          "mediaSize": 2
-        },
-        {
-          "id": "dankActions:variant_1773611194630",
-          "enabled": false
-        }
-      ],
+      "centerWidgets": [],
       "rightWidgets": [
         {
           "id": "dankKDEConnect",
           "enabled": false
+        },
+        {
+          "id": "memUsage",
+          "enabled": true,
+          "minimumWidth": true,
+          "showInGb": false
         },
         {
           "id": "cpuTemp",

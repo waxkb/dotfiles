@@ -2,7 +2,8 @@
 order = ["main"]              # layer-shell creation order
 
 [bar.main]
-position           = "top"       # top | bottom | left | right
+# position           = "top"       # top | bottom | left | right
+position           = "left"       # top | bottom | left | right
 enabled            = true
 auto_hide          = false       # slide out after pointer leaves; reveal from edge trigger strip
 reserve_space      = true        # reserve compositor exclusive zone / push windows away
@@ -12,8 +13,10 @@ background_opacity = 1.0         # 0.0 (transparent) to 1.0 (opaque)
 shadow             = false        # cast the global [shell.shadow]
 contact_shadow     = false       # dark gradient between an attached panel and the bar (depth at the seam)
 attach_panels      = true        # allow panels to attach to this bar (false = always float)
-radius             = 10          # global corner radius fallback
-margin_ends        = 10         # inset from each end of the bar along its main axis
+# radius             = 10          # global corner radius fallback
+radius             = 0          # global corner radius fallback
+# margin_ends        = 10         # inset from each end of the bar along its main axis
+margin_ends        = 0         # inset from each end of the bar along its main axis
 margin_edge        = 0          # distance from the nearest screen edge (positive values float the bar)
 padding            = 14          # main-axis padding from bar edges to start/end widget sections
 widget_spacing     = 6           # gap between widgets within a section
@@ -27,5 +30,20 @@ capsule_opacity    = 1.0
 # capsule_border   = "outline"   # omit this key for no border by default
 
 start  = ["workspaces"]
-center = ["media"]
-end    = ["notifications"]
+center = []
+end    = ["memory", "cpu_temp", "cpu_usage"]
+
+[widget.memory]
+type = "sysmon"
+stat = "ram_used"
+display = "text"
+
+[widget.cpu_temp]
+type = "sysmon"
+stat = "cpu_temp"
+display = "text"
+
+[widget.cpu_usage]
+type = "sysmon"
+stat = "cpu_usage"
+display = "text"

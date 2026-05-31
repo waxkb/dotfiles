@@ -7,14 +7,14 @@ return {
     },
 		opts = function(_, opts)
 			local colors = {
-				bg = "#161217",
-				fg = "#e9e0e7",
-				muted = "#4b444d",
+				bg = "#1a120d",
+				fg = "#f0dfd7",
+				muted = "#52443c",
 
-				accent = "#e1b7f5",
-				visual = "#d3c0d8",
-				insert = "#f4b7b7",
-				replace = "#f4b7b7",
+				accent = "#ffb68b",
+				visual = "#e5bfaa",
+				insert = "#ccc992",
+				replace = "#ccc992",
 			}
 
 			opts.options.theme = {

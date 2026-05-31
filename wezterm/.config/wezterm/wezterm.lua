@@ -1,7 +1,8 @@
 local wezterm = require("wezterm")
 local config = wezterm.config_builder()
 
-config.font_size = 11.0
+-- config.font_size = 10.7
+config.font_size = 11
 
 -- local font = "JetBrainsMono NFM"
 -- local font = "GeistMono NF"

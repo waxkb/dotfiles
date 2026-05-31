@@ -73,9 +73,9 @@ mkcd() {
 
 eval "$(starship init zsh)"
 
-alias syncdots='gita ll && gita super add . && gita super commit -m "e" && gita push && gita ll'
-alias ff='fastfetch'
-alias cf='clear; fastfetch'
+alias syncdots="gita ll && gita super add . && gita super commit -m "e" && gita push && gita ll"
+alias ff="fastfetch"
+alias cf="clear; fastfetch"
 
 export NIXPKGS_ALLOW_UNFREE=1
 
@@ -144,3 +144,8 @@ SAVEHIST=20000
 HISTFILE=~/.zsh_history
 
 export _JAVA_AWT_WM_NONREPARENTING=1
+
+e() {
+  echo "e"
+  echo "hahah"
+}
