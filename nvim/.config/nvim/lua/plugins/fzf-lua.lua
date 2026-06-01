@@ -70,7 +70,7 @@ return {
         desc = "Grep files",
       },
       {
-        "<leader>l",
+        "<leader>i",
         function()
           require("fzf-lua").live_grep_native()
         end,

@@ -9,14 +9,31 @@ opt.expandtab = true
 opt.termguicolors = true
 opt.clipboard = "unnamedplus"
 
-vim.opt.fillchars = {
+opt.fillchars = {
   foldopen = "",
   foldclose = "",
   fold = " ",
   foldsep = " ",
   diff = "╱",
-  eob = " ", -- This is the line that hides the tildes
+  eob = " ",
 }
+
+opt.foldlevel = 99
+opt.foldmethod = "indent"
+opt.foldtext = ""
+opt.ignorecase = true
+opt.cursorline = true
+opt.expandtab = true
+opt.ruler = false
+opt.showmode = false
+opt.signcolumn = "yes"
+opt.smartcase = true
+opt.smartindent = true
+-- opt.smoothscroll = true
+opt.undofile = true
+opt.undolevels = 10000
+opt.updatetime = 200
+opt.virtualedit = "block"
 
 -- vim.g.vimtex_compiler_latexmk = {
 -- 	continuous = 0,

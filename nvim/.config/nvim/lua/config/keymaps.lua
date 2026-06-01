@@ -5,3 +5,5 @@ end, { expr = true })
 vim.keymap.set("n", "k", function()
   return vim.v.count == 0 and "gk" or "k"
 end, { expr = true })
+
+vim.keymap.set("n", "<leader>l", ":Lazy<CR>", { desc = "Lazy" })
