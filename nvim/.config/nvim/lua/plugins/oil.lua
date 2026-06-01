@@ -1,7 +1,7 @@
 return {
   {
     "stevearc/oil.nvim",
-    event = "BufReadPre",
+    event = "VeryLazy",
     ---@module 'oil'
     ---@type oil.SetupOpts
     opts = {},

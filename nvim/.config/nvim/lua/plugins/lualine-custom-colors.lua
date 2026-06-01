@@ -6,6 +6,12 @@ return {
       "AvengeMedia/base46",
     },
     opts = function(_, opts)
+      opts.options = opts.options or {}
+      opts.options.disabled_filetypes = {
+        statusline = { "snacks_dashboard" },
+        winbar = {},
+      }
+
       local colors = {
         bg = "#1a120d",
         fg = "#f0dfd7",
@@ -47,6 +53,9 @@ return {
           b = { bg = colors.bg, fg = colors.muted },
           c = { bg = colors.bg, fg = colors.muted },
         },
+      }
+      opts.disabled_filetypes = {
+        statusline = { "snacks_dashboard" },
       }
       return opts
     end,
