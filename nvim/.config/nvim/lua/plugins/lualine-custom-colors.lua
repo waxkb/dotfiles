@@ -17,7 +17,7 @@ return {
 				replace = "#ccc992",
 			}
 
-			opts.options.theme = {
+			opts.theme = {
 				normal = {
 					a = { bg = colors.accent, fg = colors.bg, gui = "bold" },
 					b = { bg = colors.bg, fg = colors.accent },
@@ -48,6 +48,7 @@ return {
 					c = { bg = colors.bg, fg = colors.muted },
 				},
 			}
+            return opts
 		end,
 	},
 }

@@ -4,7 +4,7 @@ local config = wezterm.config_builder()
 -- config.font_size = 10.7
 config.font_size = 11
 
--- local font = "JetBrainsMono NFM"
+-- local font = "JetBrainsMono NF"
 -- local font = "GeistMono NF"
 -- local font = "Iosevka NFM"
 local font = "Maple Mono NF"
@@ -48,5 +48,7 @@ config.enable_tab_bar = false
 config.scrollback_lines = 10000
 
 config.window_close_confirmation = "NeverPrompt"
+
+-- config.add_to_config_watch_list("colors/wezterm-theme.toml")
 
 return config

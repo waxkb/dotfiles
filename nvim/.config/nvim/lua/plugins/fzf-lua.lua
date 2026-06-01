@@ -30,7 +30,7 @@ return {
         treesitter = false,
       },
       fzf_opts = {
-        ['--ansi'] = false,
+        ["--ansi"] = false,
         -- ['--no-scrollbar'] = true,
         -- ["--info"] = false,
       },
@@ -43,7 +43,7 @@ return {
         file_icons = false,
       },
       grep = {
-        fzf_opts  = { ["--ansi"] = false },
+        fzf_opts = { ["--ansi"] = false },
         rg_opts = "--column --line-number --no-heading --color=never --smart-case --max-columns=4096 -e",
       },
       manpages = { previewer = "man_native" },
@@ -55,9 +55,27 @@ return {
     },
     ---@diagnostic enable: missing-fields
     keys = {
-      { "<leader>ff", function() require("fzf-lua").files({ cwd_prompt = false, prompt = '> ' }) end, desc = "Fuzzy find files" },
-      { "<leader>fg", function() require("fzf-lua").grep() end, desc = "Grep files" },
-      { "<leader>fl", function() require("fzf-lua").live_grep_native() end, desc = "Live grep files" },
+      {
+        "<leader>f",
+        function()
+          require("fzf-lua").files({ cwd_prompt = false, prompt = "> " })
+        end,
+        desc = "Fuzzy find files",
+      },
+      {
+        "<leader>g",
+        function()
+          require("fzf-lua").grep()
+        end,
+        desc = "Grep files",
+      },
+      {
+        "<leader>l",
+        function()
+          require("fzf-lua").live_grep_native()
+        end,
+        desc = "Live grep files",
+      },
     },
-  }
+  },
 }
