@@ -7,3 +7,6 @@ vim.keymap.set("n", "k", function()
 end, { expr = true })
 
 vim.keymap.set("n", "<leader>l", ":Lazy<CR>", { desc = "Lazy" })
+
+vim.keymap.set("v", "<", "<gv", { desc = "Indent left and keep selection" })
+vim.keymap.set("v", ">", ">gv", { desc = "Indent right and keep selection" })

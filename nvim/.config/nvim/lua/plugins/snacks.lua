@@ -43,6 +43,8 @@ return {
       indent = { enabled = true },
       notifier = { enabled = true },
       -- scope = { enabled = true },
+      quickfile = { enabled = true },
+      scroll = { enabled = true },
     },
   },
 }

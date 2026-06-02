@@ -7,6 +7,14 @@ source <(fzf --zsh)
 
 # export SKIM_DEFAULT_COMMAND="fd -H"
 
+function y() {
+  local tmp="$(mktemp -t "yazi-cwd.XXXXXX")" cwd
+  command yazi "$@" --cwd-file="$tmp"
+  IFS= read -r -d '' cwd <"$tmp"
+  [ "$cwd" != "$PWD" ] && [ -d "$cwd" ] && builtin cd -- "$cwd"
+  command rm -f -- "$tmp"
+}
+
 function br {
   local cmd cmd_file code
   cmd_file=$(mktemp)
@@ -144,8 +152,3 @@ SAVEHIST=20000
 HISTFILE=~/.zsh_history
 
 export _JAVA_AWT_WM_NONREPARENTING=1
-
-e() {
-  echo "e"
-  echo "hahah"
-}
