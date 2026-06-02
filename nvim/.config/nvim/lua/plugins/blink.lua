@@ -42,6 +42,12 @@ return {
       -- You may use a lua implementation instead by using `implementation = "lua"`
       -- See the fuzzy documentation for more information
       fuzzy = { implementation = "rust" },
+
+      completion = {
+        menu = { border = "rounded" },
+        documentation = { window = { border = "rounded" } },
+      },
+      signature = { window = { border = "rounded" } },
     },
   },
 }
