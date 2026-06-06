@@ -44,10 +44,10 @@ return {
       fuzzy = { implementation = "rust" },
 
       completion = {
-        menu = { border = "rounded" },
-        documentation = { window = { border = "rounded" } },
+        menu = { border = "single" },
+        documentation = { window = { border = "single" } },
       },
-      signature = { window = { border = "rounded" } },
+      signature = { window = { border = "single" } },
     },
   },
 }

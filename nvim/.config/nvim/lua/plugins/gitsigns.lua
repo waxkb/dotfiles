@@ -18,6 +18,10 @@ return {
       --   topdelete = { text = "" },
       --   changedelete = { text = "▎" },
       -- },
+      signs = {
+        delete = { text = "󰍵" },
+        changedelete = { text = "󱕖" },
+      },
       on_attach = function(buffer)
         local gs = package.loaded.gitsigns
 

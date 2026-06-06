@@ -1,11 +1,11 @@
 -- Change the NvChad base themes you want to use and
 -- the harmonies with matugen colors here
 local bases = {
-  dark = "decay",
+  dark = "onedark",
   light = "github_light",
 }
 local harmonies = {
-  dark = 0.5,
+  dark = 0,
   light = 0.5,
 }
 
