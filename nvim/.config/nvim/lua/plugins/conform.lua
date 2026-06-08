@@ -13,6 +13,7 @@ return {
       python = { "ruff_format" },
       rust = { "rustfmt" },
       zsh = { "shfmt" },
+      tex = { "latexindent" },
     },
     default_format_opts = {
       lsp_format = "fallback",

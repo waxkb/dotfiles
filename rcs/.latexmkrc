@@ -17,3 +17,5 @@ $silent = 1;
 # If you make a typo, latexmk won't hang waiting for input.
 # It will just finish the fail-run and wait for your next fix.
 $force_mode = 1;
+
+$pdf_mode = 5; # Use lualatex
