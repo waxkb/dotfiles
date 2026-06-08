@@ -70,7 +70,6 @@ vim.api.nvim_create_autocmd("ColorScheme", {
         vim.api.nvim_set_hl(0, group, vim.tbl_extend("force", old_hl, { italic = true }))
       end
     end
-
   end,
 })
 
@@ -85,3 +84,16 @@ vim.api.nvim_create_autocmd("ColorScheme", {
 --     end
 --   end,
 -- })
+
+-- Highlight on yank
+local highlight_group = vim.api.nvim_create_augroup("YankHighlight", { clear = true })
+vim.api.nvim_create_autocmd("TextYankPost", {
+  callback = function()
+    vim.highlight.on_yank({
+      higroup = "IncSearch", -- The color group used for the highlight
+      timeout = 150, -- How long the highlight lasts in milliseconds
+    })
+  end,
+  group = highlight_group,
+  pattern = "*",
+})
