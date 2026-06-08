@@ -41,18 +41,24 @@ vim.api.nvim_create_autocmd("ColorScheme", {
 -- 2. STATUSLINE COMPONENTS
 -- ==========================================================================
 local modes = {
-  ["n"] = "NORMAL",
-  ["v"] = "VISUAL",
-  ["V"] = "V-LINE",
-  ["\22"] = "V-BLOCK",
-  ["i"] = "INSERT",
-  ["R"] = "REPLACE",
-  ["c"] = "COMMAND",
+  -- ["n"] = { icon = "", label = "Normal" },
+  ["n"] = { icon = "", label = "Normal" },
+  ["v"] = { icon = "󰈈", label = "Visual" },
+  ["V"] = { icon = "󰈈", label = "V-Line" },
+  ["\22"] = { icon = "󰈈", label = "V-Block" },
+  ["i"] = { icon = "󰛿", label = "Insert" },
+  ["R"] = { icon = "󰛔", label = "Replace" },
+  ["c"] = { icon = "", label = "Command" },
 }
 
 local function get_mode()
   local m = vim.api.nvim_get_mode().mode
-  return modes[m] or m
+  local mode = modes[m]
+  if mode then
+    return mode.icon, mode.label
+  end
+
+  return "", m
 end
 
 local function get_file_info()
@@ -97,7 +103,8 @@ function _G.CustomStatusline()
   -- Self-heal: if base46's hi clear wiped our groups, re-create them now
   ensure_highlights()
 
-  local mode_str = string.format("%%#StMode# %s %%#StModeSep#", get_mode())
+  local icon, label = get_mode()
+  local mode_str = string.format("%%#StMode# %s %s %%#StModeSep#", icon, label)
   local file_str = string.format("%%#StNormal#%s", get_file_info())
   local git_str = string.format("%%#StNormal#%s", get_git())
   local right_str = string.format("%%#StNormal#%s", get_lsp())

@@ -13,17 +13,6 @@ local function set_hl_fg(name, source, fallback)
   })
 end
 
-local function refresh_helpview_highlights()
-  local ok, highlights = pcall(require, "helpview.highlights")
-  if not ok then
-    return
-  end
-
-  pcall(highlights.destroy)
-  pcall(highlights.setup)
-  vim.g.__helpview_hl_group_map = vim.api.nvim_get_hl(0, {})
-end
-
 vim.api.nvim_create_autocmd("FileType", {
   pattern = { "tex", "markdown", "text" },
   callback = function()
@@ -82,7 +71,6 @@ vim.api.nvim_create_autocmd("ColorScheme", {
       end
     end
 
-    refresh_helpview_highlights()
   end,
 })
 

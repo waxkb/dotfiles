@@ -1,7 +1,7 @@
 return {
   {
     "OXY2DEV/helpview.nvim",
-    lazy = false,
+    event = "VeryLazy",
     dependencies = {
       "nvim-mini/mini.icons",
     },
@@ -10,5 +10,9 @@ return {
         icon_provider = "mini",
       },
     },
+    config = function(_, opts)
+      require("helpview").setup(opts)
+      require("helpview.highlights").setup()
+    end,
   },
 }
