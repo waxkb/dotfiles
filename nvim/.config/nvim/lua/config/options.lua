@@ -29,12 +29,7 @@ opt.showmode = false
 opt.signcolumn = "yes"
 opt.smartcase = true
 opt.smartindent = true
--- opt.smoothscroll = true
 opt.undofile = true
 opt.undolevels = 10000
 opt.updatetime = 200
 opt.virtualedit = "block"
-
--- vim.g.vimtex_compiler_latexmk = {
--- 	continuous = 0,
--- }
