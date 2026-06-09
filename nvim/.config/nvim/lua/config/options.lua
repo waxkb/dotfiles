@@ -33,3 +33,20 @@ opt.undofile = true
 opt.undolevels = 10000
 opt.updatetime = 200
 opt.virtualedit = "block"
+
+vim.diagnostic.config({
+  severity_sort = true,
+})
+
+local severity = vim.diagnostic.severity
+
+vim.diagnostic.config({
+  signs = {
+    text = {
+      [severity.ERROR] = "●", -- Replace with your preferred error icon
+      [severity.WARN] = "●", -- Replace with your preferred warning icon
+      [severity.INFO] = "●", -- Replace with your preferred info icon
+      [severity.HINT] = "●", -- Replace with your preferred hint icon
+    },
+  },
+})
