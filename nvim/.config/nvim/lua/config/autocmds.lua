@@ -30,6 +30,40 @@ vim.api.nvim_create_autocmd("FileType", {
   end,
 })
 
+local groups_to_italicize = {
+  "@comment",
+  "Comment",
+  "@keyword",
+  "@keyword.conditional",
+  "@keyword.repeat",
+  "Include",
+  "@keyword.return",
+  -- "@type.builtin",
+  -- "Type",
+  -- "@parameter",
+  -- "Special",
+}
+
+local function apply_italicization()
+  for _, group in ipairs(groups_to_italicize) do
+    local hl = vim.api.nvim_get_hl(0, { name = group, link = false })
+    if hl then
+      if hl.link then
+        -- Group is linked (e.g., hi! link @keyword Keyword).
+        -- Resolve the full chain to get effective attributes, then
+        -- set it as an explicit definition so italic is honored.
+        local resolved = vim.api.nvim_get_hl(0, { name = group, link = true })
+        if resolved then
+          resolved.italic = true
+          vim.api.nvim_set_hl(0, group, resolved)
+        end
+      else
+        vim.api.nvim_set_hl(0, group, vim.tbl_extend("force", hl, { italic = true }))
+      end
+    end
+  end
+end
+
 vim.api.nvim_create_autocmd("ColorScheme", {
   pattern = "*",
   callback = function()
@@ -47,29 +81,15 @@ vim.api.nvim_create_autocmd("ColorScheme", {
       set_hl_fg(spec[2], spec[3], spec[4])
     end
 
-    -- Add any highlight groups you want to be italicized to this list
-    local groups_to_italicize = {
-      "@comment",
-      "Comment",
-      "@keyword",
-      "@keyword.conditional",
-      "@keyword.repeat",
-      "Include",
-      "@keyword.return",
-      -- "@type.builtin",
-      -- "Type",
-      -- "@parameter",
-      -- "Special",
-    }
+    apply_italicization()
+  end,
+})
 
-    for _, group in ipairs(groups_to_italicize) do
-      local old_hl = vim.api.nvim_get_hl(0, { name = group, link = false })
-
-      -- Only update if the group actually exists to avoid errors
-      if old_hl then
-        vim.api.nvim_set_hl(0, group, vim.tbl_extend("force", old_hl, { italic = true }))
-      end
-    end
+-- Run again after lazy.nvim has loaded ALL lazy plugins (tree-sitter, etc.)
+vim.api.nvim_create_autocmd("User", {
+  pattern = "VeryLazy",
+  callback = function()
+    vim.schedule(apply_italicization)
   end,
 })
 

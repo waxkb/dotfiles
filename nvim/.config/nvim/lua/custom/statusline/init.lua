@@ -8,6 +8,8 @@ local function setup_statusline_highlights()
   -- Fallback to default hex integers if theme groups are empty
   local bg_dark = statusline_hl.bg or normal_hl.bg or 0x1e1e2e
   local fg_light = statusline_hl.fg or normal_hl.fg or 0xcdd6f4
+  local bg_grey = 0x424350
+  local fg_dark = 0x11111b
 
   -- Automatically grab the theme's accent color (Blue/Cyan)
   local accent_hl = vim.api.nvim_get_hl(0, { name = "Function" })
@@ -19,7 +21,12 @@ local function setup_statusline_highlights()
   -- Define custom statusline highlight groups
   vim.api.nvim_set_hl(0, "StMode", { fg = bg_dark, bg = accent, bold = true })
   vim.api.nvim_set_hl(0, "StModeSep", { fg = accent, bg = bg_dark })
+  vim.api.nvim_set_hl(0, "StModeSepToSegment", { fg = accent, bg = bg_grey })
   vim.api.nvim_set_hl(0, "StNormal", { fg = fg_light, bg = bg_dark })
+  vim.api.nvim_set_hl(0, "StSegment", { fg = fg_light, bg = bg_grey })
+  vim.api.nvim_set_hl(0, "StSegmentLeftSep", { fg = bg_grey, bg = bg_dark })
+  vim.api.nvim_set_hl(0, "StSegmentRightSep", { fg = bg_grey, bg = bg_dark })
+  vim.api.nvim_set_hl(0, "StSegmentSepToParam", { fg = bg_grey, bg = accent })
   vim.api.nvim_set_hl(0, "StParamSep", { fg = accent, bg = bg_dark })
   vim.api.nvim_set_hl(0, "StParam", { fg = bg_dark, bg = accent, bold = true })
 end
@@ -67,7 +74,7 @@ end
 local function get_file_info()
   local filename = vim.fn.expand("%:t")
   if filename == "" then
-    return " [No Name] "
+    return "[No Name] "
   end
 
   local icon = "󰈔"
@@ -79,7 +86,7 @@ local function get_file_info()
       icon = file_icon
     end
   end
-  return string.format(" %s %s ", icon, filename)
+  return string.format("%s %s ", icon, filename)
 end
 
 local function get_lsp()
@@ -107,14 +114,18 @@ function _G.CustomStatusline()
   ensure_highlights()
 
   local icon, label = get_mode()
-  local mode_str = string.format("%%#StMode# %s %s %%#StModeSep#", icon, label)
+  local git = get_git()
+  local mode_sep = git ~= "" and "StModeSepToSegment" or "StModeSep"
+  local mode_str = string.format("%%#StMode# %s %s %%#%s#", icon, label, mode_sep)
   local file_str = string.format("%%#StNormal#%s", get_file_info())
-  local git_str = string.format("%%#StNormal#%s", get_git())
-  local right_str = string.format("%%#StNormal#%s", get_lsp())
+  local git_str = git ~= "" and string.format("%%#StSegment#%s%%#StSegmentRightSep#", git) or ""
+  local lsp = get_lsp()
+  local right_str = lsp ~= "" and string.format("%%#StSegmentLeftSep#%%#StSegment#%s%%#StSegmentSepToParam#", lsp)
+    or ""
 
   -- Use built-in statusline items: %p%% (percentage), %l (line), %c (column)
   -- local ruler_str = " %#StParamSep#%#StParam# %p%%  %l:%c  "
-  local ruler_str = " %#StParamSep#%#StParam# %p%% %l:%c "
+  local ruler_str = lsp ~= "" and "%#StParam# %p%% %l:%c " or "%#StParamSep#%#StParam# %p%% %l:%c "
 
   return table.concat({
     mode_str,
