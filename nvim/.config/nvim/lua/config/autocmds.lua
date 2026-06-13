@@ -117,3 +117,23 @@ vim.api.nvim_create_autocmd("TextYankPost", {
   group = highlight_group,
   pattern = "*",
 })
+
+vim.api.nvim_create_autocmd("BufWritePost", {
+  pattern = { "*.md", "*.txt", "*.tex" },
+  callback = function()
+    -- Get the absolute path and the filename
+    local filepath = vim.fn.expand("%:p")
+    local filename = vim.fn.expand("%:t")
+
+    -- Arguments for the git command
+    local args = {
+      "-c",
+      string.format("git add %q && git commit -m 'Autosave: %s' --quiet", filepath, filename),
+    }
+
+    -- Runs the job completely in the background silently
+    vim.uv.spawn("sh", { args = args }, function(code)
+      -- Optional: If you ever want to debug errors, 'code' will be non-zero
+    end)
+  end,
+})
