@@ -152,5 +152,3 @@ SAVEHIST=20000
 HISTFILE=~/.zsh_history
 
 export _JAVA_AWT_WM_NONREPARENTING=1
-
-export NH_FLAKE=~/nixos/flake.nix
