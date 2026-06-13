@@ -29,8 +29,11 @@ opt.showmode = false
 opt.signcolumn = "yes"
 opt.smartcase = true
 opt.smartindent = true
+
 opt.undofile = true
 opt.undolevels = 10000
+opt.undodir = vim.fn.expand("~/.local/state/nvim/undo")
+
 opt.updatetime = 200
 opt.virtualedit = "block"
 

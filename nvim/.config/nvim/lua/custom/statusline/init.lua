@@ -86,7 +86,7 @@ local function get_file_info()
       icon = file_icon
     end
   end
-  return string.format("%s %s ", icon, filename)
+  return string.format(" %s %s ", icon, filename)
 end
 
 local function get_lsp()
