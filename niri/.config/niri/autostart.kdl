@@ -8,6 +8,7 @@
 // spawn-sh-at-startup "swww restore"
 // spawn-sh-at-startup "systemctl --user start hyprpolkitagent"
 // spawn-sh-at-startup "dms run"
+spawn-at-startup "noctalia"
 spawn-at-startup "zen-beta"
 spawn-at-startup "activate-linux"
 spawn-sh-at-startup "vicinae server"

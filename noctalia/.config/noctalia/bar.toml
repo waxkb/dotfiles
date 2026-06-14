@@ -31,11 +31,11 @@ capsule_opacity    = 1.0
 
 start  = ["workspaces"]
 center = []
-end    = ["memory", "cpu_temp", "cpu_usage"]
+end    = ["ram_usage", "cpu_temp", "cpu_usage"]
 
-[widget.memory]
+[widget.ram_usage]
 type = "sysmon"
-stat = "ram_used"
+stat = "ram_pct"
 display = "text"
 
 [widget.cpu_temp]

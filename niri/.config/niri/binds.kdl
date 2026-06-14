@@ -8,9 +8,6 @@ binds {
     Mod+Shift+M hotkey-overlay-title="Show Current Track Notification" {
         spawn-sh "dms ipc call dash open media";
     }
-    Mod+N hotkey-overlay-title="Open Nix Packages Browser" {
-        spawn-sh "vicinae vicinae://extensions/knoopx/nix/packages";
-    }
     Mod+Shift+N hotkey-overlay-title="Toggle Notification Center" {
         spawn-sh "dms ipc call notifications open";
     }
@@ -35,7 +32,6 @@ binds {
     Mod+Home hotkey-overlay-title="Next Media Track" { spawn-sh "playerctl next"; }
     Mod+Delete hotkey-overlay-title="Previous Media Track" { spawn-sh "playerctl previous"; }
     Mod+Shift+Slash hotkey-overlay-title="Show Hotkey Overlay" { show-hotkey-overlay; }
-    Mod+Space hotkey-overlay-title="Toggle App Launcher" { spawn "vicinae" "toggle"; }
 
     Mod+H { focus-column-left; }
     Mod+L { focus-column-right; }
