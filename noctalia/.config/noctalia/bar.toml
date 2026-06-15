@@ -30,7 +30,7 @@ capsule_opacity    = 1.0
 # capsule_border   = "outline"   # omit this key for no border by default
 
 start  = ["workspaces"]
-center = []
+center = ["noctalia/bongocat:cat"]
 end    = ["ram_usage", "cpu_temp", "cpu_usage"]
 
 [widget.ram_usage]

@@ -3,29 +3,26 @@ binds {
     Mod+Shift+B hotkey-overlay-title="Open System Monitor (btop)" { spawn-sh "wezterm start -- btop"; }
     Mod+D hotkey-overlay-title="Close Focused Window" { close-window; }
     Mod+Shift+D hotkey-overlay-title="Quit Niri Session" { quit; }
-    Mod+E hotkey-overlay-title="Open File Manager (Broot)" { spawn-sh "wezterm start -- broot"; }
-    Mod+M hotkey-overlay-title="Open Spotify" { spawn "spotify"; }
-    Mod+Shift+M hotkey-overlay-title="Show Current Track Notification" {
-        spawn-sh "dms ipc call dash open media";
+    Mod+Shift+M hotkey-overlay-title="Open Media Panel" {
+        spawn-sh "noctalia msg panel-toggle control-center media || dms ipc call dash open media";
     }
-    Mod+Shift+N hotkey-overlay-title="Toggle Notification Center" {
-        spawn-sh "dms ipc call notifications open";
+    Mod+N hotkey-overlay-title="Toggle Notifications" {
+        spawn-sh "noctalia msg panel-toggle control-center notifications || dms ipc call notifications open";
     }
     Mod+O hotkey-overlay-title="Lock Screen" { spawn "hyprlock"; }
     Mod+P hotkey-overlay-title="Pick Color from Screen" { spawn "hyprpicker"; }
     Mod+R hotkey-overlay-title="Switch Column Width Preset" { switch-preset-column-width; }
     Mod+Shift+R hotkey-overlay-title="Switch Window Height Preset" { switch-preset-window-height; }
     Mod+Ctrl+R hotkey-overlay-title="Reset Window Height" { reset-window-height; }
-    Mod+S hotkey-overlay-title="Open DMS settings" {
-        spawn-sh "dms ipc call settings toggle";
+    Mod+S hotkey-overlay-title="Open Settings" {
+        spawn-sh "noctalia msg settings-toggle || dms ipc call settings toggle";
     }
     Mod+Shift+S hotkey-overlay-title="Take Screenshot" { screenshot; }
     Mod+T hotkey-overlay-title="Toggle Floating Window" { toggle-window-floating; }
     Mod+V hotkey-overlay-title="Toggle Window Overview" { toggle-overview; }
-    Mod+Shift+V hotkey-overlay-title="Open Vesktop (Discord)" { spawn "vesktop"; }
     Mod+W hotkey-overlay-title="Open Wallpaper Picker" { spawn "./tofiWall.sh"; }
     Mod+X hotkey-overlay-title="Open Logout Menu" {
-        spawn-sh "dms ipc call powermenu toggle";
+        spawn-sh "noctalia msg panel-toggle session || dms ipc call powermenu toggle";
     }
     Mod+Return hotkey-overlay-title="Open Terminal (wezterm)" { spawn "wezterm"; }
     Mod+End hotkey-overlay-title="Play / Pause Media" { spawn-sh "playerctl play-pause"; }

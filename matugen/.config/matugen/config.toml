@@ -20,21 +20,7 @@ output_path = "/home/max/.zen/davnng42.Default (release)/chrome/zen-mocha.svg"
 
 [templates.niri]
 input_path = "/home/max/.config/matugen/templates/niri-colors.kdl"
-output_path = "/home/max/dotfiles/niri/.config/niri/colors.kdl"
-
-[templates.vicinae]
-input_path = "/home/max/.config/matugen/templates/vicinae-colors.toml"
-output_path = "~/.local/share/vicinae/themes/matugen.toml"
-post_hook = "vicinae theme set matugen"
-
-# [templates.lualine-custom]
-# input_path = "/home/max/.config/matugen/templates/lualine-custom-colors.lua"
-# output_path = "/home/max/.config/nvim/lua/plugins/lualine-custom-colors.lua"
-
-# [templates.lualine-base46]
-# pre_hook = "rm /home/max/.config/nvim/lua/plugins/lualine-custom-colors.lua"
-# input_path = "/home/max/.config/matugen/templates/lualine-base46-colors.lua"
-# output_path = "/home/max/.config/nvim/lua/lualine/themes/base46-matugen.lua"
+output_path = "/home/max/.config/niri/colors.kdl"
 
 [templates.nvim]
 input_path = "/home/max/.config/matugen/templates/nvim-colors.lua"
@@ -43,11 +29,6 @@ output_path = "/home/max/.config/nvim/colors/base46-matugen.lua"
 [templates.ratty]
 input_path = "/home/max/.config/matugen/templates/ratty.toml"
 output_path = "/home/max/.config/ratty/ratty.toml"
-
-[templates.foot]
-input_path = "/home/max/.config/matugen/templates/foot-colors-start.ini"
-output_path = "/home/max/.config/foot/foot-colors.ini"
-post_hook = "nohup ./foot-colors.sh \"{{colors.primary.default.hex}}\" &"
 
 [templates.wezterm]
 input_path = "/home/max/.config/matugen/templates/wezterm-theme.toml"
