@@ -1,8 +1,8 @@
 return {
   {
     "saghen/blink.cmp",
-    lazy = false,
-    -- event = "VeryLazy",
+    -- lazy = false,
+    event = "VeryLazy",
     dependencies = {
       "saghen/blink.lib",
       -- optional: provides snippets for the snippet source

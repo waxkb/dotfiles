@@ -12,10 +12,14 @@ local font = "Maple Mono NF"
 
 config.front_end = "WebGpu"
 
+local gpus = wezterm.gui.enumerate_gpus()
+
+config.webgpu_preferred_adapter = gpus[2]
+
 if font == "Maple Mono NF" then
-	config.font = wezterm.font(font, { weight = "Light" })
+  config.font = wezterm.font(font, { weight = "Light" })
 else
-	config.font = wezterm.font(font, { weight = "Regular" })
+  config.font = wezterm.font(font, { weight = "Regular" })
 end
 
 config.freetype_render_target = "Normal" -- subpixel makes it thicc
@@ -32,10 +36,10 @@ config.bold_brightens_ansi_colors = "No"
 config.custom_block_glyphs = false
 
 config.window_padding = {
-	left = 16,
-	right = 16,
-	top = 16,
-	bottom = 16,
+  left = 16,
+  right = 16,
+  top = 16,
+  bottom = 16,
 }
 
 config.default_cursor_style = "SteadyBlock"
