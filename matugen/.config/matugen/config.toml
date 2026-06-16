@@ -22,15 +22,20 @@ output_path = "/home/max/.zen/davnng42.Default (release)/chrome/zen-mocha.svg"
 input_path = "/home/max/.config/matugen/templates/niri-colors.kdl"
 output_path = "/home/max/.config/niri/colors.kdl"
 
+[templates.foot]
+input_path = "/home/max/.config/matugen/templates/foot-colors-start.ini"
+output_path = "/home/max/.config/foot/foot-colors.ini"
+post_hook = "nohup ./foot-colors.sh \"{{colors.primary.default.hex}}\" &"
+
 [templates.nvim]
 input_path = "/home/max/.config/matugen/templates/nvim-colors.lua"
 output_path = "/home/max/.config/nvim/colors/base46-matugen.lua"
 
-[templates.ratty]
-input_path = "/home/max/.config/matugen/templates/ratty.toml"
-output_path = "/home/max/.config/ratty/ratty.toml"
-
-[templates.wezterm]
-input_path = "/home/max/.config/matugen/templates/wezterm-theme.toml"
-output_path = "/home/max/.config/wezterm/colors/wezterm-theme.toml"
-post_hook = "nohup ./wezterm-theme.sh \"{{colors.primary.default.hex}}\" &"
+# [templates.ratty]
+# input_path = "/home/max/.config/matugen/templates/ratty.toml"
+# output_path = "/home/max/.config/ratty/ratty.toml"
+# 
+# [templates.wezterm]
+# input_path = "/home/max/.config/matugen/templates/wezterm-theme.toml"
+# output_path = "/home/max/.config/wezterm/colors/wezterm-theme.toml"
+# post_hook = "nohup ./wezterm-theme.sh \"{{colors.primary.default.hex}}\" &"

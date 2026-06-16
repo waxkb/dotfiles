@@ -39,7 +39,7 @@ config.window_padding = {
   left = 16,
   right = 16,
   top = 16,
-  bottom = 16,
+  bottom = 8,
 }
 
 config.default_cursor_style = "SteadyBlock"

@@ -1,6 +1,6 @@
 binds {
     Mod+B hotkey-overlay-title="Open Zen Browser" { spawn "zen-beta"; }
-    Mod+Shift+B hotkey-overlay-title="Open System Monitor (btop)" { spawn-sh "wezterm start -- btop"; }
+    Mod+Shift+B hotkey-overlay-title="Open System Monitor (btop)" { spawn-sh "foot btop"; }
     Mod+D hotkey-overlay-title="Close Focused Window" { close-window; }
     Mod+Shift+D hotkey-overlay-title="Quit Niri Session" { quit; }
     Mod+Shift+M hotkey-overlay-title="Open Media Panel" {
@@ -24,7 +24,7 @@ binds {
     Mod+X hotkey-overlay-title="Open Logout Menu" {
         spawn-sh "noctalia msg panel-toggle session || dms ipc call powermenu toggle";
     }
-    Mod+Return hotkey-overlay-title="Open Terminal (wezterm)" { spawn "wezterm"; }
+    Mod+Return hotkey-overlay-title="Open Terminal (foot)" { spawn "foot"; }
     Mod+End hotkey-overlay-title="Play / Pause Media" { spawn-sh "playerctl play-pause"; }
     Mod+Home hotkey-overlay-title="Next Media Track" { spawn-sh "playerctl next"; }
     Mod+Delete hotkey-overlay-title="Previous Media Track" { spawn-sh "playerctl previous"; }
