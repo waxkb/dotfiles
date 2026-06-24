@@ -1,0 +1,1672 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>alex@dev:~$</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0d1117;
+    --bg-raise: #161b22;
+    --bg-more: #1c2333;
+    --border: #30363d;
+    --text: #c9d1d9;
+    --text-dim: #484f58;
+    --text-bright: #e6edf3;
+    --cyan: #79c0ff;
+    --green: #7ee787;
+    --yellow: #ffa657;
+    --red: #ff7b72;
+    --purple: #d2a8ff;
+    --magenta: #f778ba;
+    --blue: #79c0ff;
+    --orange: #ffa657;
+    --panel-gap: 1px;
+    --radius: 3px;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html {
+    font-family: 'JetBrains Mono', 'Fira Code', 'Cascadia Code', 'SF Mono', monospace;
+    font-size: 14px;
+    line-height: 1.6;
+    background: var(--bg);
+    color: var(--text);
+    scroll-behavior: smooth;
+  }
+
+  body {
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  ::selection {
+    background: var(--cyan);
+    color: var(--bg);
+  }
+
+  ::-webkit-scrollbar { width: 8px; }
+  ::-webkit-scrollbar-track { background: var(--bg); }
+  ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 4px; }
+  ::-webkit-scrollbar-thumb:hover { background: var(--text-dim); }
+
+  /* ── SSH boot sequence overlay ── */
+  #boot-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    background: var(--bg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: opacity 0.6s ease, visibility 0.6s ease;
+  }
+  #boot-overlay.hidden {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+  }
+  #boot-text {
+    font-size: 13px;
+    line-height: 1.8;
+    color: var(--text);
+    white-space: pre;
+    max-width: 700px;
+  }
+  #boot-text .line { opacity: 0; }
+  #boot-text .line.visible { opacity: 1; }
+
+  /* ── Layout ── */
+  .page-wrapper {
+    display: none;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+  }
+  .page-wrapper.active {
+    display: block;
+    opacity: 1;
+  }
+
+  /* ── Header bar ── */
+  .header-bar {
+    background: var(--bg-raise);
+    border-bottom: 1px solid var(--border);
+    padding: 8px 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    font-size: 12px;
+  }
+  .header-left {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+  .prompt {
+    color: var(--green);
+    font-weight: 600;
+  }
+  .path {
+    color: var(--cyan);
+  }
+  .cmd {
+    color: var(--text-bright);
+  }
+  .header-right {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    color: var(--text-dim);
+  }
+  .header-right a {
+    color: var(--text-dim);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  .header-right a:hover {
+    color: var(--cyan);
+  }
+
+  /* ── Status bar ── */
+  .status-bar {
+    background: var(--bg-raise);
+    border-bottom: 1px solid var(--border);
+    padding: 4px 24px;
+    font-size: 11px;
+    color: var(--text-dim);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+  }
+  .status-bar .mode {
+    background: var(--purple);
+    color: var(--bg);
+    padding: 1px 8px;
+    border-radius: 2px;
+    font-weight: 700;
+    text-transform: uppercase;
+    font-size: 10px;
+    letter-spacing: 0.5px;
+  }
+  .status-bar .mode.insert { background: var(--cyan); }
+  .status-bar .branch { color: var(--magenta); }
+
+  /* ── Main grid ── */
+  .main-grid {
+    display: grid;
+    grid-template-columns: 280px 1fr 240px;
+    grid-template-rows: auto;
+    gap: var(--panel-gap);
+    padding: var(--panel-gap);
+    min-height: calc(100vh - 72px);
+  }
+
+  /* ── Panels ── */
+  .panel {
+    background: var(--bg-raise);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    overflow: hidden;
+  }
+  .panel-header {
+    background: var(--bg-more);
+    padding: 8px 12px;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: var(--text-dim);
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    user-select: none;
+    cursor: default;
+  }
+  .panel-header .pin { font-size: 10px; opacity: 0.5; }
+  .panel-body {
+    padding: 16px;
+  }
+
+  /* ── Sidebar nav (ranger-style) ── */
+  .sidebar-nav {
+    display: flex;
+    flex-direction: column;
+  }
+  .nav-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 8px 16px;
+    font-size: 13px;
+    color: var(--text);
+    text-decoration: none;
+    cursor: pointer;
+    transition: all 0.15s ease;
+    border-left: 2px solid transparent;
+    user-select: none;
+  }
+  .nav-item:hover {
+    background: rgba(121, 192, 255, 0.06);
+    color: var(--text-bright);
+  }
+  .nav-item.active {
+    background: rgba(121, 192, 255, 0.1);
+    color: var(--cyan);
+    border-left-color: var(--cyan);
+  }
+  .nav-icon {
+    width: 16px;
+    text-align: center;
+    font-size: 14px;
+  }
+  .nav-icon.directory { color: var(--cyan); }
+  .nav-icon.file { color: var(--text-dim); }
+  .nav-icon.exec { color: var(--green); }
+  .nav-icon.symlink { color: var(--magenta); }
+  .nav-item .permission {
+    margin-left: auto;
+    font-size: 10px;
+    color: var(--text-dim);
+    opacity: 0.5;
+  }
+
+  /* ── Neofetch ── */
+  .neofetch {
+    display: flex;
+    gap: 24px;
+    padding: 16px;
+  }
+  .neofetch-ascii {
+    font-size: 11px;
+    line-height: 1.3;
+    color: var(--cyan);
+    white-space: pre;
+    flex-shrink: 0;
+    text-shadow: 0 0 12px rgba(121, 192, 255, 0.3);
+  }
+  .neofetch-info {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    font-size: 13px;
+  }
+  .neofetch-info .label {
+    color: var(--text-dim);
+  }
+  .neofetch-info .value {
+    color: var(--text-bright);
+  }
+  .neofetch-info .divider {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin: 4px 0;
+  }
+  .neofetch-info .divider::before,
+  .neofetch-info .divider::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--border);
+  }
+  .color-blocks {
+    display: flex;
+    gap: 0;
+    margin-top: 8px;
+  }
+  .color-block {
+    width: 24px;
+    height: 14px;
+    border: 1px solid rgba(0,0,0,0.3);
+  }
+
+  /* ── Main content area ── */
+  .content-area {
+    display: flex;
+    flex-direction: column;
+    gap: var(--panel-gap);
+  }
+
+  /* Section content */
+  .section-content {
+    display: none;
+  }
+  .section-content.active {
+    display: block;
+  }
+
+  /* ── Project cards (file listing style) ── */
+  .project-list {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+  .project-item {
+    display: grid;
+    grid-template-columns: 40px 1fr auto auto;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 16px;
+    border-bottom: 1px solid var(--border);
+    transition: background 0.15s ease;
+    cursor: pointer;
+    text-decoration: none;
+    color: inherit;
+  }
+  .project-item:last-child { border-bottom: none; }
+  .project-item:hover {
+    background: rgba(121, 192, 255, 0.04);
+  }
+  .project-icon {
+    font-size: 18px;
+    text-align: center;
+  }
+  .project-meta {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+  .project-name {
+    color: var(--text-bright);
+    font-weight: 600;
+    font-size: 13px;
+  }
+  .project-desc {
+    color: var(--text-dim);
+    font-size: 12px;
+  }
+  .project-lang {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 11px;
+    color: var(--text-dim);
+  }
+  .lang-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    display: inline-block;
+  }
+  .project-stars {
+    font-size: 12px;
+    color: var(--yellow);
+    white-space: nowrap;
+  }
+
+  /* ── Skills panel (htop style) ── */
+  .skills-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+  .skill-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 12px;
+  }
+  .skill-name {
+    width: 100px;
+    text-align: right;
+    color: var(--text);
+    flex-shrink: 0;
+  }
+  .skill-bar-container {
+    flex: 1;
+    height: 14px;
+    background: var(--bg);
+    border-radius: 2px;
+    overflow: hidden;
+    position: relative;
+  }
+  .skill-bar {
+    height: 100%;
+    border-radius: 2px;
+    transition: width 1.5s cubic-bezier(0.22, 1, 0.36, 1);
+    position: relative;
+  }
+  .skill-bar.green { background: var(--green); }
+  .skill-bar.cyan { background: var(--cyan); }
+  .skill-bar.purple { background: var(--purple); }
+  .skill-bar.yellow { background: var(--yellow); }
+  .skill-bar.magenta { background: var(--magenta); }
+  .skill-bar.red { background: var(--red); }
+  .skill-pct {
+    width: 36px;
+    text-align: right;
+    font-size: 11px;
+    color: var(--text-dim);
+    flex-shrink: 0;
+  }
+
+  /* ── Timeline / commits ── */
+  .commit-log {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+  .commit-entry {
+    padding: 10px 16px;
+    font-size: 12px;
+    border-bottom: 1px solid rgba(48, 54, 61, 0.5);
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+    transition: background 0.15s;
+  }
+  .commit-entry:hover {
+    background: rgba(121, 192, 255, 0.04);
+  }
+  .commit-hash {
+    color: var(--purple);
+    font-size: 11px;
+    flex-shrink: 0;
+    cursor: pointer;
+  }
+  .commit-hash:hover { text-decoration: underline; }
+  .commit-msg {
+    color: var(--text-bright);
+    flex: 1;
+  }
+  .commit-meta {
+    color: var(--text-dim);
+    font-size: 11px;
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+
+  /* ── Flake / config snippet ── */
+  .code-block {
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 16px;
+    font-size: 12px;
+    line-height: 1.7;
+    overflow-x: auto;
+    position: relative;
+  }
+  .code-block .comment { color: var(--text-dim); }
+  .code-block .keyword { color: var(--purple); }
+  .code-block .string { color: var(--green); }
+  .code-block .function { color: var(--cyan); }
+  .code-block .attr { color: var(--orange); }
+  .code-block .bool { color: var(--red); }
+
+  /* ── Contact / links grid ── */
+  .links-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 8px;
+  }
+  .link-card {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 16px;
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    text-decoration: none;
+    color: var(--text);
+    font-size: 13px;
+    transition: all 0.2s ease;
+  }
+  .link-card:hover {
+    border-color: var(--cyan);
+    background: rgba(121, 192, 255, 0.06);
+    color: var(--text-bright);
+    transform: translateY(-1px);
+  }
+  .link-card .link-icon {
+    font-size: 16px;
+    width: 24px;
+    text-align: center;
+  }
+
+  /* ── Right sidebar widgets ── */
+  .right-sidebar {
+    display: flex;
+    flex-direction: column;
+    gap: var(--panel-gap);
+  }
+
+  /* Uptime widget */
+  .uptime-display {
+    text-align: center;
+    padding: 16px;
+  }
+  .uptime-big {
+    font-size: 28px;
+    font-weight: 700;
+    color: var(--green);
+    letter-spacing: 2px;
+  }
+  .uptime-label {
+    font-size: 10px;
+    color: var(--text-dim);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-top: 4px;
+  }
+
+  /* Music player widget */
+  .music-widget {
+    padding: 16px;
+  }
+  .music-now {
+    font-size: 10px;
+    color: var(--text-dim);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 8px;
+  }
+  .music-track {
+    font-size: 13px;
+    color: var(--text-bright);
+    margin-bottom: 4px;
+  }
+  .music-artist {
+    font-size: 12px;
+    color: var(--text-dim);
+    margin-bottom: 10px;
+  }
+  .music-progress {
+    height: 3px;
+    background: var(--bg);
+    border-radius: 2px;
+    overflow: hidden;
+    margin-bottom: 6px;
+  }
+  .music-progress-bar {
+    height: 100%;
+    background: var(--magenta);
+    border-radius: 2px;
+    width: 35%;
+    animation: musicPulse 3s ease-in-out infinite alternate;
+  }
+  @keyframes musicPulse {
+    0% { width: 35%; }
+    100% { width: 42%; }
+  }
+  .music-time {
+    display: flex;
+    justify-content: space-between;
+    font-size: 10px;
+    color: var(--text-dim);
+  }
+
+  /* Process list widget */
+  .process-list {
+    padding: 8px 0;
+  }
+  .process-row {
+    display: grid;
+    grid-template-columns: 40px 1fr auto auto;
+    gap: 8px;
+    padding: 4px 16px;
+    font-size: 11px;
+    border-bottom: 1px solid rgba(48,54,61,0.3);
+  }
+  .process-row:hover { background: rgba(121,192,255,0.04); }
+  .proc-pid { color: var(--text-dim); }
+  .proc-cmd { color: var(--text); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .proc-cpu { color: var(--yellow); text-align: right; }
+  .proc-mem { color: var(--cyan); text-align: right; }
+
+  /* ── Footer ── */
+  .footer-bar {
+    background: var(--bg-raise);
+    border-top: 1px solid var(--border);
+    padding: 6px 24px;
+    font-size: 11px;
+    color: var(--text-dim);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .footer-keys {
+    display: flex;
+    gap: 16px;
+  }
+  .key-hint {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+  }
+  .key {
+    background: var(--bg-more);
+    border: 1px solid var(--border);
+    border-radius: 2px;
+    padding: 1px 6px;
+    font-size: 10px;
+    color: var(--text);
+    font-weight: 600;
+  }
+
+  /* ── Blinking cursor ── */
+  .cursor {
+    display: inline-block;
+    width: 8px;
+    height: 15px;
+    background: var(--green);
+    animation: blink 1s step-end infinite;
+    vertical-align: text-bottom;
+    margin-left: 2px;
+  }
+  @keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+  }
+
+  /* ── Responsive ── */
+  @media (max-width: 1024px) {
+    .main-grid {
+      grid-template-columns: 220px 1fr;
+    }
+    .right-sidebar {
+      display: none;
+    }
+  }
+  @media (max-width: 768px) {
+    .main-grid {
+      grid-template-columns: 1fr;
+    }
+    .sidebar-nav .nav-item { padding: 10px 16px; }
+    .neofetch { flex-direction: column; align-items: center; }
+    .header-bar { padding: 8px 12px; font-size: 11px; }
+    .links-grid { grid-template-columns: 1fr; }
+  }
+
+  /* ── Typing effect ── */
+  .typing-text {
+    overflow: hidden;
+    white-space: nowrap;
+    border-right: 2px solid var(--green);
+    animation: typing 2s steps(40, end), blinkCaret 0.75s step-end infinite;
+    width: 0;
+  }
+  @keyframes typing {
+    from { width: 0; }
+    to { width: 100%; }
+  }
+  @keyframes blinkCaret {
+    from, to { border-color: transparent; }
+    50% { border-color: var(--green); }
+  }
+
+  /* ── Tooltip ── */
+  .tooltip {
+    position: relative;
+  }
+  .tooltip::after {
+    content: attr(data-tip);
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--bg-more);
+    border: 1px solid var(--border);
+    padding: 4px 8px;
+    border-radius: 2px;
+    font-size: 11px;
+    white-space: nowrap;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.2s;
+    color: var(--text);
+  }
+  .tooltip:hover::after { opacity: 1; }
+
+  /* ── Glow effects ── */
+  .glow-cyan { text-shadow: 0 0 8px rgba(121, 192, 255, 0.4); }
+  .glow-green { text-shadow: 0 0 8px rgba(126, 231, 135, 0.4); }
+
+  /* ── Section title ── */
+  .section-title {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: var(--text-dim);
+    padding: 16px 16px 8px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .section-title::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--border);
+  }
+
+  /* ── Matrix rain subtle bg (very subtle) ── */
+  #matrix-canvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    opacity: 0.03;
+    pointer-events: none;
+  }
+
+  /* ── Notification badge ── */
+  .badge {
+    background: var(--red);
+    color: var(--bg);
+    font-size: 9px;
+    font-weight: 700;
+    padding: 1px 5px;
+    border-radius: 10px;
+    line-height: 1.4;
+  }
+
+  /* ── Animated gradient border on hover for project items ── */
+  .project-item::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: var(--radius);
+    padding: 1px;
+    background: linear-gradient(90deg, var(--cyan), var(--purple));
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+  .project-item:hover::before { opacity: 1; }
+</style>
+</head>
+<body>
+
+<!-- Matrix rain background -->
+<canvas id="matrix-canvas"></canvas>
+
+<!-- Boot sequence overlay -->
+<div id="boot-overlay">
+  <div id="boot-text"></div>
+</div>
+
+<!-- Main page -->
+<div class="page-wrapper" id="main-page">
+
+  <!-- Header bar -->
+  <div class="header-bar">
+    <div class="header-left">
+      <span class="prompt">alex@dev</span>
+      <span style="color:var(--text-dim)">:</span>
+      <span class="path">~</span>
+      <span style="color:var(--text-dim)">$</span>
+      <span class="cmd" id="header-cmd"></span><span class="cursor" id="header-cursor"></span>
+    </div>
+    <div class="header-right">
+      <span id="current-time"></span>
+      <a href="#ssh">ssh</a>
+      <a href="#pgp">pgp</a>
+      <a href="#gpg">gpg</a>
+    </div>
+  </div>
+
+  <!-- Status bar -->
+  <div class="status-bar">
+    <div style="display:flex;align-items:center;gap:16px;">
+      <span class="mode" id="mode-indicator">NORMAL</span>
+      <span><span class="branch">● main</span></span>
+      <span>utf-8</span>
+    </div>
+    <div style="display:flex;align-items:center;gap:16px;">
+      <span>flakes ✓</span>
+      <span id="nix-status" style="color:var(--green);">● nixos 24.05</span>
+      <span>wlroots/sway</span>
+    </div>
+  </div>
+
+  <!-- Main grid -->
+  <div class="main-grid">
+
+    <!-- Left sidebar - ranger-style nav -->
+    <div class="panel sidebar-nav" style="grid-row: 1 / -1;">
+      <div class="panel-header">
+        <span>📂 ~/projects</span>
+        <span class="pin">◆</span>
+      </div>
+      <nav style="padding: 8px 0;">
+        <a class="nav-item active" data-section="home" onclick="showSection('home')">
+          <span class="nav-icon directory">📁</span>
+          <span>about</span>
+          <span class="permission">drwxr-xr-x</span>
+        </a>
+        <a class="nav-item" data-section="projects" onclick="showSection('projects')">
+          <span class="nav-icon directory">📁</span>
+          <span>projects</span>
+          <span class="permission">drwxr-xr-x</span>
+        </a>
+        <a class="nav-item" data-section="skills" onclick="showSection('skills')">
+          <span class="nav-icon directory">📁</span>
+          <span>skills</span>
+          <span class="permission">drwxr-xr-x</span>
+        </a>
+        <a class="nav-item" data-section="timeline" onclick="showSection('timeline')">
+          <span class="nav-icon directory">📁</span>
+          <span>timeline</span>
+          <span class="permission">drwxr-xr-x</span>
+        </a>
+        <a class="nav-item" data-section="config" onclick="showSection('config')">
+          <span class="nav-icon directory">📁</span>
+          <span>dotfiles</span>
+          <span class="permission">drwx------</span>
+        </a>
+        <a class="nav-item" data-section="contact" onclick="showSection('contact')">
+          <span class="nav-icon symlink">🔗</span>
+          <span>contact →</span>
+          <span class="permission">lrwxrwxrwx</span>
+        </a>
+      </nav>
+      <div style="padding: 16px; border-top: 1px solid var(--border); margin-top: auto;">
+        <div style="font-size:11px; color:var(--text-dim); line-height:1.8;">
+          <div>──────────────────</div>
+          <div><span style="color:var(--green)">●</span> 6 items in dir</div>
+          <div><span style="color:var(--text-dim)">select:</span> enter</div>
+          <div><span style="color:var(--text-dim)">quit:</span> q / esc</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Main content area -->
+    <div class="content-area">
+
+      <!-- HOME / ABOUT section -->
+      <div class="section-content active" id="section-home">
+        <div class="panel">
+          <div class="neofetch">
+            <pre class="neofetch-ascii">
+       ▄▄▄▄ ▄   ███▄    ▄
+     ▓█   █▓███  ██▀▀█████▓
+     ▓█   █▓▒█░  ██   ███▒▒▒
+     ▓███▀▒▒░░  ██▄▄ ▄▄▄░░░
+      ▓████░▒▒░ ██▀▀ ▀▀▀░░░
+       ▓▀▀░ ░░░▒ ▒▒▒▒▒▒▒▒░░
+        ▀▀▀   ▒▒░░▒▒░░▒▒░░░
+            </pre>
+            <div class="neofetch-info">
+              <div><span class="label" style="color:var(--cyan);font-weight:700;">alex</span><span class="value">@</span><span class="label" style="color:var(--green);font-weight:600;">dev</span></div>
+              <div class="divider"><span style="color:var(--cyan)">───</span></div>
+              <div><span class="label">os:</span> <span class="value">NixOS 24.05 (Uakari)</span></div>
+              <div><span class="label">host:</span> <span class="value">ThinkPad X1 Carbon Gen 11</span></div>
+              <div><span class="label">kernel:</span> <span class="value">6.6.34-xanmod1</span></div>
+              <div><span class="label">uptime:</span> <span class="value" id="neofetch-uptime">∞ (no reboots)</span></div>
+              <div><span class="label">packages:</span> <span class="value">1,247 (nix) + 3 (pipx)</span></div>
+              <div><span class="label">shell:</span> <span class="value">zsh 5.9</span></div>
+              <div><span class="label">editor:</span> <span class="value">neovim 0.10.2</span></div>
+              <div><span class="label">wm:</span> <span class="value">sway 1.9 (wlroots)</span></div>
+              <div><span class="label">term:</span> <span class="value">kitty 0.36.1</span></div>
+              <div><span class="label">lang:</span> <span class="value">en_US.UTF-8</span></div>
+              <div style="margin-top:4px;"><span class="label">roles:</span> <span class="value" style="color:var(--purple);">fullstack · oss · nix wrangler</span></div>
+              <div><span class="label">status:</span> <span class="value" style="color:var(--green);">open to collab</span></div>
+              <div class="color-blocks">
+                <div class="color-block" style="background:#1e2530;"></div>
+                <div class="color-block" style="background:#ff7b72;"></div>
+                <div class="color-block" style="background:#7ee787;"></div>
+                <div class="color-block" style="background:#ffa657;"></div>
+                <div class="color-block" style="background:#79c0ff;"></div>
+                <div class="color-block" style="background:#d2a8ff;"></div>
+                <div class="color-block" style="background:#f778ba;"></div>
+                <div class="color-block" style="background:#e6edf3;"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Bio panel -->
+        <div class="panel" style="margin-top:var(--panel-gap);">
+          <div class="panel-header">
+            <span>📄 cat ~/bio.md</span>
+          </div>
+          <div class="panel-body" style="font-size:13px; line-height:1.8;">
+            <p style="color:var(--text-bright); margin-bottom:12px;">
+              Hey, I'm <span style="color:var(--cyan);">alex</span>. I write software that mostly 
+              <span style="color:var(--green);">doesn't suck</span> and occasionally make open-source things 
+              people actually want to use.
+            </p>
+            <p style="color:var(--text-dim); margin-bottom:12px;">
+              Currently building dev tools, messing with wasm runtimes, and trying to get everything 
+              into a flake.nix so it's <span style="color:var(--purple);">reproducibly deployed</span>. 
+              I care about good UX in the terminal, ergonomic APIs, and not adding unnecessary dependencies.
+            </p>
+            <p style="color:var(--text-dim);">
+              When I'm not coding, I'm probably reading about distributed systems, contributing to 
+              OSS projects I use daily, or writing about Nix in a way that's not completely terrifying.
+            </p>
+          </div>
+        </div>
+
+        <!-- Quote panel -->
+        <div class="panel" style="margin-top:var(--panel-gap);">
+          <div class="panel-body" style="padding:12px 16px; display:flex; align-items:center; gap:12px;">
+            <span style="color:var(--text-dim); font-size:12px;">#</span>
+            <span style="color:var(--text-dim); font-size:12px; font-style:italic;">
+              "the best code is no code at all" — every senior dev ever, probably
+            </span>
+          </div>
+        </div>
+      </div>
+
+      <!-- PROJECTS section -->
+      <div class="section-content" id="section-projects">
+        <div class="panel">
+          <div class="panel-header">
+            <span>📦 ls -la ~/projects/ --sort=stars</span>
+            <span style="color:var(--yellow);">★ 47 total</span>
+          </div>
+          <div class="project-list">
+            <a class="project-item" href="#">
+              <div class="project-icon" style="color:var(--green);">⚡</div>
+              <div class="project-meta">
+                <div class="project-name">writ-notify</div>
+                <div class="project-desc">File watcher CLI that actually respects your RAM. Inotify + epoll, zero alloc.</div>
+              </div>
+              <div class="project-lang">
+                <span class="lang-dot" style="background:#f7df1e;"></span>
+                Rust
+              </div>
+              <div class="project-stars">★ 234</div>
+            </a>
+            <a class="project-item" href="#">
+              <div class="project-icon" style="color:var(--cyan);">🧊</div>
+              <div class="project-meta">
+                <div class="project-name">flake-templates</div>
+                <div class="project-desc">Curated Nix flake templates for web projects, APIs, and CLI tools.</div>
+              </div>
+              <div class="project-lang">
+                <span class="lang-dot" style="background:#5c7fd1;"></span>
+                Nix
+              </div>
+              <div class="project-stars">★ 189</div>
+            </a>
+            <a class="project-item" href="#">
+              <div class="project-icon" style="color:var(--purple);">🔮</div>
+              <div class="project-meta">
+                <div class="project-name">tui-dashboard</div>
+                <div class="project-desc">A beautiful TUI dashboard for monitoring services. think htop but for your infra.</div>
+              </div>
+              <div class="project-lang">
+                <span class="lang-dot" style="background:#f7df1e;"></span>
+                Rust
+              </div>
+              <div class="project-stars">★ 97</div>
+            </a>
+            <a class="project-item" href="#">
+              <div class="project-icon" style="color:var(--magenta);">🌐</div>
+              <div class="project-meta">
+                <div class="project-name">edge-proxy</div>
+                <div class="project-desc">Ultra-lightweight reverse proxy with WASM plugin support. 2MB binary.</div>
+              </div>
+              <div class="project-lang">
+                <span class="lang-dot" style="background:#f7df1e;"></span>
+                Rust
+              </div>
+              <div class="project-stars">★ 64</div>
+            </a>
+            <a class="project-item" href="#">
+              <div class="project-icon" style="color:var(--orange);">📝</div>
+              <div class="project-meta">
+                <div class="project-name">md2conf</div>
+                <div class="project-desc">Markdown → config file converter. Write configs in markdown, ship YAML/JSON/HCL.</div>
+              </div>
+              <div class="project-lang">
+                <span class="lang-dot" style="background:#3178c6;"></span>
+                Go
+              </div>
+              <div class="project-stars">★ 42</div>
+            </a>
+            <a class="project-item" href="#">
+              <div class="project-icon" style="color:var(--yellow);">🔑</div>
+              <div class="project-meta">
+                <div class="project-name">passctl</div>
+                <div class="project-desc">Terminal password manager with GPG, clipboard management, and autofill via DBus.</div>
+              </div>
+              <div class="project-lang">
+                <span class="lang-dot" style="background:#3178c6;"></span>
+                Go
+              </div>
+              <div class="project-stars">★ 28</div>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- SKILLS section -->
+      <div class="section-content" id="section-skills">
+        <div class="panel">
+          <div class="panel-header">
+            <span>⚙ top - skills overview</span>
+          </div>
+          <div class="panel-body">
+            <div class="skills-grid">
+              <div class="skill-row">
+                <span class="skill-name">Rust</span>
+                <div class="skill-bar-container"><div class="skill-bar green" data-width="92"></div></div>
+                <span class="skill-pct">92%</span>
+              </div>
+              <div class="skill-row">
+                <span class="skill-name">TypeScript</span>
+                <div class="skill-bar-container"><div class="skill-bar cyan" data-width="85"></div></div>
+                <span class="skill-pct">85%</span>
+              </div>
+              <div class="skill-row">
+                <span class="skill-name">Nix/NixOS</span>
+                <div class="skill-bar-container"><div class="skill-bar purple" data-width="88"></div></div>
+                <span class="skill-pct">88%</span>
+              </div>
+              <div class="skill-row">
+                <span class="skill-name">Go</span>
+                <div class="skill-bar-container"><div class="skill-bar yellow" data-width="74"></div></div>
+                <span class="skill-pct">74%</span>
+              </div>
+              <div class="skill-row">
+                <span class="skill-name">Python</span>
+                <div class="skill-bar-container"><div class="skill-bar magenta" data-width="70"></div></div>
+                <span class="skill-pct">70%</span>
+              </div>
+              <div class="skill-row">
+                <span class="skill-name">SQL</span>
+                <div class="skill-bar-container"><div class="skill-bar green" data-width="78"></div></div>
+                <span class="skill-pct">78%</span>
+              </div>
+              <div class="skill-row">
+                <span class="skill-name">Docker</span>
+                <div class="skill-bar-container"><div class="skill-bar cyan" data-width="72"></div></div>
+                <span class="skill-pct">72%</span>
+              </div>
+              <div class="skill-row">
+                <span class="skill-name">Linux</span>
+                <div class="skill-bar-container"><div class="skill-bar purple" data-width="95"></div></div>
+                <span class="skill-pct">95%</span>
+              </div>
+            </div>
+
+            <!-- Tools used -->
+            <div style="margin-top:24px;">
+              <div class="section-title">daily drivers</div>
+              <div style="display:flex; flex-wrap:wrap; gap:6px; padding:8px 0;">
+                <span style="padding:4px 10px; background:var(--bg); border:1px solid var(--border); border-radius:2px; font-size:11px; color:var(--cyan);">neovim</span>
+                <span style="padding:4px 10px; background:var(--bg); border:1px solid var(--border); border-radius:2px; font-size:11px; color:var(--green);">zsh</span>
+                <span style="padding:4px 10px; background:var(--bg); border:1px solid var(--border); border-radius:2px; font-size:11px; color:var(--purple);">kitty</span>
+                <span style="padding:4px 10px; background:var(--bg); border:1px solid var(--border); border-radius:2px; font-size:11px; color:var(--orange);">wezfTerm</span>
+                <span style="padding:4px 10px; background:var(--bg); border:1px solid var(--border); border-radius:2px; font-size:11px; color:var(--magenta);">sway</span>
+                <span style="padding:4px 10px; background:var(--bg); border:1px solid var(--border); border-radius:2px; font-size:11px; color:var(--text-dim);">btop</span>
+                <span style="padding:4px 10px; background:var(--bg); border:1px solid var(--border); border-radius:2px; font-size:11px; color:var(--cyan);">fd</span>
+                <span style="padding:4px 10px; background:var(--bg); border:1px solid var(--border); border-radius:2px; font-size:11px; color:var(--green);">fzf</span>
+                <span style="padding:4px 10px; background:var(--bg); border:1px solid var(--border); border-radius:2px; font-size:11px; color:var(--yellow);">ripgrep</span>
+                <span style="padding:4px 10px; background:var(--bg); border:1px solid var(--border); border-radius:2px; font-size:11px; color:var(--purple);">bat</span>
+                <span style="padding:4px 10px; background:var(--bg); border:1px solid var(--border); border-radius:2px; font-size:11px; color:var(--magenta);">zoxide</span>
+                <span style="padding:4px 10px; background:var(--bg); border:1px solid var(--border); border-radius:2px; font-size:11px; color:var(--text-dim);">starship</span>
+                <span style="padding:4px 10px; background:var(--bg); border:1px solid var(--border); border-radius:2px; font-size:11px; color:var(--cyan);">lazygit</span>
+                <span style="padding:4px 10px; background:var(--bg); border:1px solid var(--border); border-radius:2px; font-size:11px; color:var(--green);">tmux</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- TIMELINE section -->
+      <div class="section-content" id="section-timeline">
+        <div class="panel">
+          <div class="panel-header">
+            <span>📜 git log --oneline --decorate</span>
+          </div>
+          <div class="commit-log">
+            <div class="commit-entry">
+              <span class="commit-hash">a1b2c3d</span>
+              <span class="commit-msg">release v0.4.0 — WASM plugin support for edge-proxy</span>
+              <span class="commit-meta">2h ago</span>
+            </div>
+            <div class="commit-entry">
+              <span class="commit-hash">e4f5g6h</span>
+              <span class="commit-msg">fix: handle edge case in file watcher with symlinked dirs</span>
+              <span class="commit-meta">5h ago</span>
+            </div>
+            <div class="commit-entry">
+              <span class="commit-hash">i7j8k9l</span>
+              <span class="commit-msg">feat(tui-dashboard): add GPU temperature monitoring panel</span>
+              <span class="commit-meta">1d ago</span>
+            </div>
+            <div class="commit-entry">
+              <span class="commit-hash">m0n1o2p</span>
+              <span class="commit-msg">chore: migrate flake-templates to nixpkgs-unstable-24.05</span>
+              <span class="commit-meta">2d ago</span>
+            </div>
+            <div class="commit-entry">
+              <span class="commit-hash">q3r4s5t</span>
+              <span class="commit-msg">refactor: extract config parsing into shared crate</span>
+              <span class="commit-meta">3d ago</span>
+            </div>
+            <div class="commit-entry">
+              <span class="commit-hash">u6v7w8x</span>
+              <span class="commit-msg">docs: add CONTRIBUTING.md with dev setup instructions</span>
+              <span class="commit-meta">5d ago</span>
+            </div>
+            <div class="commit-entry">
+              <span class="commit-hash">y9z0a1b</span>
+              <span class="commit-msg">feat: passctl — initial commit with GPG-based key store</span>
+              <span class="commit-meta">1w ago</span>
+            </div>
+            <div class="commit-entry">
+              <span class="commit-hash">c2d3e4f</span>
+              <span class="commit-msg">release v0.3.2 — security patch for inotify descriptor leak</span>
+              <span class="commit-meta">1w ago</span>
+            </div>
+            <div class="commit-entry">
+              <span class="commit-hash">g5h6i7j</span>
+              <span class="commit-msg">feat: add Svelte + TypeScript flake template</span>
+              <span class="commit-meta">2w ago</span>
+            </div>
+            <div class="commit-entry">
+              <span class="commit-hash">k8l9m0n</span>
+              <span class="commit-msg">initial commit — set up CI with Nix + Cargo actions</span>
+              <span class="commit-meta">3w ago</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Experience -->
+        <div class="panel" style="margin-top:var(--panel-gap);">
+          <div class="panel-header"><span>💼 experience.log</span></div>
+          <div class="panel-body" style="font-size:13px; line-height:2;">
+            <div style="margin-bottom:16px;">
+              <div><span style="color:var(--cyan); font-weight:600;">Full-stack Developer</span> <span style="color:var(--text-dim);">@ some cool startup (remote)</span></div>
+              <div style="color:var(--text-dim); font-size:11px; margin-bottom:4px;">2023 — present · San Francisco / Remote</div>
+              <div style="color:var(--text-dim);">Building the core platform. Rust backend, SvelteKit frontend, Nix for infra. Cut deploy times by 80%.</div>
+            </div>
+            <div style="margin-bottom:16px;">
+              <div><span style="color:var(--green); font-weight:600;">Backend Engineer</span> <span style="color:var(--text-dim);">@ another company</span></div>
+              <div style="color:var(--text-dim); font-size:11px; margin-bottom:4px;">2021 — 2023 · Berlin</div>
+              <div style="color:var(--text-dim);">Microservices, gRPC, event-driven architecture. Migrated legacy Python to Go.</div>
+            </div>
+            <div>
+              <div><span style="color:var(--yellow); font-weight:600;">OSS Contributor</span> <span style="color:var(--text-dim);">@ various projects</span></div>
+              <div style="color:var(--text-dim); font-size:11px; margin-bottom:4px;">2019 — present · Everywhere</div>
+              <div style="color:var(--text-dim);">Contributed to Nixpkgs (1,200+ commits), various Rust CLI tools, and a few Linux kernel patches.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- CONFIG / DOTFILES section -->
+      <div class="section-content" id="section-config">
+        <div class="panel">
+          <div class="panel-header">
+            <span>📄 cat ~/flake.nix</span>
+            <span style="color:var(--text-dim); font-size:10px;">read-only</span>
+          </div>
+          <div class="code-block">
+<span class="comment"># My NixOS + Home Manager flake</span>
+<span class="keyword">{</span>
+  <span class="attr">description</span> = <span class="string">"Alex's dotfiles — everything, reproduced"</span>;
+
+  <span class="attr">inputs</span> = <span class="keyword">{</span>
+    <span class="attr">nixpkgs</span>.url = <span class="string">"github:nixos/nixpkgs/nixos-unstable"</span>;
+    <span class="attr">home-manager</span> = <span class="keyword">{</span>
+      <span class="attr">url</span> = <span class="string">"github:nix-community/home-manager"</span>;
+      <span class="attr">inputs</span>.nixpkgs.follows = <span class="string">"nixpkgs"</span>;
+    <span class="keyword">};</span>
+    <span class="attr">nix-darwin</span>.url = <span class="string">"github:nix-darwin/nix-darwin/master"</span>;
+  <span class="keyword">};</span>
+
+  <span class="attr">outputs</span> = <span class="keyword">{</span> self, nixpkgs, home-manager, ... <span class="keyword">}</span> : <span class="keyword">{</span>
+    <span class="attr">nixosConfigurations</span>.<span class="function">alex-desktop</span> = 
+      nixpkgs.lib.nixosSystem<span class="keyword">{</span> ... <span class="keyword">};</span>
+    
+    <span class="attr">homeConfigurations</span>.<span class="function">alex</span> =
+      home-manager.lib.homeManagerConfiguration<span class="keyword">{</span> ... <span class="keyword">};</span>
+
+    <span class="attr">darwinConfigurations</span>.<span class="function">macbook</span> =
+      nix-darwin.lib.darwinSystem<span class="keyword">{</span> ... <span class="keyword">};</span>
+  <span class="keyword">};</span>
+<span class="keyword">}</span>
+          </div>
+        </div>
+
+        <div class="panel" style="margin-top:var(--panel-gap);">
+          <div class="panel-header">
+            <span>📄 cat ~/.config/nvim/lua/plugins.lua | head -30</span>
+          </div>
+          <div class="code-block">
+<span class="comment">-- My neovim plugin config (lazy.nvim)</span>
+<span class="keyword">require</span>(<span class="string">"lazy"</span>).setup<span class="keyword">{</span>
+  spec = <span class="keyword">{</span>
+    <span class="comment">-- LSP stuff because I like type safety</span>
+    <span class="function">{</span> <span class="string">"neovim/nvim-lspconfig"</span> <span class="keyword">},</span>
+    <span class="function">{</span> <span class="string">"hrsh7th/cmp-nvim-lsp"</span> <span class="keyword">},</span>
+    <span class="function">{</span> <span class="string">"L3MON4D3/LuaSnip"</span> <span class="keyword">},</span>
+
+    <span class="comment">-- Tree-sitter for actual syntax highlighting</span>
+    <span class="function">{</span> <span class="string">"nvim-treesitter/nvim-treesitter"</span>,
+      <span class="attr">build</span> = <span class="string">":TSUpdate"</span>,
+    <span class="keyword">},</span>
+
+    <span class="comment">-- Because life's too short for bad UI</span>
+    <span class="function">{</span> <span class="string">"nvim-telescope/telescope.nvim"</span> <span class="keyword">},</span>
+    <span class="function">{</span> <span class="string">"nvim-tree/nvim-web-devicons"</span> <span class="keyword">},</span>
+
+    <span class="comment">-- Git integration (obviously)</span>
+    <span class="function">{</span> <span class="string">"lewis6991/gitsigns.nvim"</span> <span class="keyword">},</span>
+  <span class="keyword">},</span>
+<span class="keyword">}</span>
+          </div>
+        </div>
+
+        <div class="panel" style="margin-top:var(--panel-gap);">
+          <div class="panel-header">
+            <span>📄 cat ~/.sway/config | grep -A5 'set $mod'</span>
+          </div>
+          <div class="code-block">
+<span class="comment"># Sway WM config — because tiling > stacking</span>
+<span class="keyword">set</span> <span class="attr">$mod</span> Mod4
+<span class="keyword">set</span> <span class="attr">$term</span> kitty
+
+<span class="comment"># Splitting</span>
+<span class="keyword">bindsym</span> <span class="attr">$mod+e</span> split h
+<span class="keyword">bindsym</span> <span class="attr">$mod+f</span> split v
+
+<span class="comment"># Focus</span>
+<span class="keyword">bindsym</span> <span class="attr">$mod+h</span> focus left
+<span class="keyword">bindsym</span> <span class="attr">$mod+j</span> focus down
+<span class="keyword">bindsym</span> <span class="attr">$mod+k</span> focus up
+<span class="keyword">bindsym</span> <span class="attr">$mod+l</span> focus right
+
+<span class="comment"># Yes, I use vim keys for everything. No shame.</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- CONTACT section -->
+      <div class="section-content" id="section-contact">
+        <div class="panel">
+          <div class="panel-header"><span>🔗 ssh keys &amp; links</span></div>
+          <div class="panel-body">
+            <div class="links-grid">
+              <a class="link-card" href="#">
+                <span class="link-icon" style="color:var(--text-bright);">🐙</span>
+                <span>GitHub</span>
+              </a>
+              <a class="link-card" href="#">
+                <span class="link-icon" style="color:var(--purple);">🔗</span>
+                <span>GitLab</span>
+              </a>
+              <a class="link-card" href="#">
+                <span class="link-icon" style="color:var(--cyan);">🐦</span>
+                <span>Mastodon</span>
+              </a>
+              <a class="link-card" href="#">
+                <span class="link-icon" style="color:var(--green);">💬</span>
+                <span>Discord</span>
+              </a>
+              <a class="link-card" href="#">
+                <span class="link-icon" style="color:var(--yellow);">📧</span>
+                <span>Email (PGP encrypted)</span>
+              </a>
+              <a class="link-card" href="#">
+                <span class="link-icon" style="color:var(--magenta);">🎵</span>
+                <span>Spotify (what I'm coding to)</span>
+              </a>
+              <a class="link-card" href="#">
+                <span class="link-icon" style="color:var(--orange);">📝</span>
+                <span>Blog (md2conf-powered)</span>
+              </a>
+              <a class="link-card" href="#">
+                <span class="link-icon" style="color:var(--text-dim);">🔑</span>
+                <span>PGP Key</span>
+              </a>
+              <a class="link-card" href="#">
+                <span class="link-icon" style="color:var(--red);">📡</span>
+                <span>SSH Public Key</span>
+              </a>
+              <a class="link-card" href="#">
+                <span class="link-icon" style="color:var(--cyan);">💼</span>
+                <span>Resume.pdf</span>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- ASCII art footer -->
+        <div class="panel" style="margin-top:var(--panel-gap);">
+          <div class="panel-body" style="text-align:center; padding:24px;">
+            <pre style="font-size:10px; color:var(--text-dim); line-height:1.3;">
+  ┌─────────────────────────────────────┐
+  │  "it works on my machine"          │
+  │  — not an excuse, but a flex       │
+  │   when your machine is nixos 🧊    │
+  └─────────────────────────────────────┘
+            </pre>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- end content-area -->
+
+    <!-- Right sidebar -->
+    <div class="right-sidebar">
+
+      <!-- Uptime widget -->
+      <div class="panel">
+        <div class="panel-header"><span>⏱ uptime</span></div>
+        <div class="uptime-display">
+          <div class="uptime-big" id="live-uptime">0:00:00</div>
+          <div class="uptime-label">session duration</div>
+        </div>
+      </div>
+
+      <!-- Music widget -->
+      <div class="panel">
+        <div class="panel-header"><span>🎵 cmus status</span></div>
+        <div class="music-widget">
+          <div class="music-now">▸ now playing</div>
+          <div class="music-track">Intro</div>
+          <div class="music-artist">The Smashing Pumpkins</div>
+          <div class="music-progress">
+            <div class="music-progress-bar"></div>
+          </div>
+          <div class="music-time">
+            <span>0:42</span>
+            <span>-3:18</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Processes widget -->
+      <div class="panel">
+        <div class="panel-header"><span>⚡ top -bn1 | head</span></div>
+        <div class="process-list">
+          <div class="process-row" style="color:var(--text-dim); font-size:10px; padding:4px 16px;">
+            <span>PID</span><span style="flex:1;">COMMAND</span><span style="text-align:right;width:36px;">%CPU</span><span style="text-align:right;width:36px;">MEM</span>
+          </div>
+          <div class="process-row">
+            <span class="proc-pid">4821</span>
+            <span class="proc-cmd">nvim flake.nix</span>
+            <span class="proc-cpu">3.2%</span>
+            <span class="proc-mem">1.8%</span>
+          </div>
+          <div class="process-row">
+            <span class="proc-pid">1204</span>
+            <span class="proc-cmd">sway</span>
+            <span class="proc-cpu">0.8%</span>
+            <span class="proc-mem">2.1%</span>
+          </div>
+          <div class="process-row">
+            <span class="proc-pid">5532</span>
+            <span class="proc-cmd">kitty</span>
+            <span class="proc-cpu">0.5%</span>
+            <span class="proc-mem">1.4%</span>
+          </div>
+          <div class="process-row">
+            <span class="proc-pid">3901</span>
+            <span class="proc-cmd">firefox.desktop</span>
+            <span class="proc-cpu">2.1%</span>
+            <span class="proc-mem">8.7%</span>
+          </div>
+          <div class="process-row">
+            <span class="proc-pid">1</span>
+            <span class="proc-cmd">/nix/store/...systemd</span>
+            <span class="proc-cpu">0.1%</span>
+            <span class="proc-mem">0.3%</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Nix status -->
+      <div class="panel">
+        <div class="panel-header"><span>🧊 nix stats</span></div>
+        <div class="panel-body" style="font-size:12px; line-height:2;">
+          <div style="display:flex; justify-content:space-between;">
+            <span style="color:var(--text-dim);">store size</span>
+            <span style="color:var(--cyan);">42.7 GiB</span>
+          </div>
+          <div style="display:flex; justify-content:space-between;">
+            <span style="color:var(--text-dim);">packages</span>
+            <span>1,247</span>
+          </div>
+          <div style="display:flex; justify-content:space-between;">
+            <span style="color:var(--text-dim);">builds (today)</span>
+            <span style="color:var(--green);">3</span>
+          </div>
+          <div style="display:flex; justify-content:space-between;">
+            <span style="color:var(--text-dim);">gc runs</span>
+            <span>auto (weekly)</span>
+          </div>
+          <div style="display:flex; justify-content:space-between;">
+            <span style="color:var(--text-dim);">channels</span>
+            <span style="color:var(--red);">none ✓</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Quick tip -->
+      <div class="panel" style="margin-top:auto;">
+        <div class="panel-header"><span>💡 tip of the day</span></div>
+        <div class="panel-body" style="font-size:12px; color:var(--text-dim); line-height:1.6;" id="tip-of-day">
+          Use <code style="color:var(--cyan); background:var(--bg); padding:1px 4px; border-radius:2px;">nix run</code> to try packages without installing them.
+        </div>
+      </div>
+
+    </div><!-- end right-sidebar -->
+
+  </div><!-- end main-grid -->
+
+  <!-- Footer bar -->
+  <div class="footer-bar">
+    <div style="color:var(--text-dim);">
+      <span style="color:var(--green);">●</span> all systems operational &nbsp;·&nbsp; 
+      <span style="color:var(--cyan);">flakes enabled</span> &nbsp;·&nbsp; 
+      built with <span style="color:var(--magenta);">html + css</span> (no frameworks needed)
+    </div>
+    <div class="footer-keys">
+      <span class="key-hint"><span class="key">←</span><span class="key">→</span> navigate</span>
+      <span class="key-hint"><span class="key">enter</span> open</span>
+      <span class="key-hint"><span class="key">q</span> quit</span>
+    </div>
+  </div>
+
+</div><!-- end page-wrapper -->
+
+<script>
+// ── Boot sequence ──
+const bootLines = [
+  { text: 'Connecting to dev... (ssh -A alex@localhost)', delay: 200 },
+  { text: 'Authenticating with public key...', delay: 400 },
+  { text: 'Welcome to NixOS 24.05 (Uakari)', delay: 300 },
+  { text: '', delay: 100 },
+  { text: 'System load:', delay: 150 },
+  { text: '  uptime:   ∞ (I\'m a NixOS user, we don\'t reboot)', delay: 200 },
+  { text: '  memory:   16.2 GiB total / 4.1 GiB used', delay: 200 },
+  { text: '  packages: 1,247 (all reproducible, obviously)', delay: 200 },
+  { text: '', delay: 100 },
+  { text: '$ cat ~/website/index.html', delay: 300 },
+  { text: '[ rendering page... ]', delay: 500 },
+];
+
+async function runBoot() {
+  const overlay = document.getElementById('boot-overlay');
+  const bootText = document.getElementById('boot-text');
+  
+  for (let i = 0; i < bootLines.length; i++) {
+    const line = bootLines[i];
+    await new Promise(r => setTimeout(r, line.delay));
+    
+    const div = document.createElement('div');
+    div.className = 'line';
+    
+    if (i === 2) {
+      div.style.color = 'var(--green)';
+      div.style.fontWeight = '600';
+    } else if (i === 4 || i === 9) {
+      div.style.color = 'var(--text-dim)';
+    } else {
+      div.style.color = 'var(--text)';
+    }
+    
+    div.textContent = line.text;
+    bootText.appendChild(div);
+    
+    requestAnimationFrame(() => {
+      div.classList.add('visible');
+    });
+  }
+  
+  await new Promise(r => setTimeout(r, 600));
+  overlay.classList.add('hidden');
+  
+  const mainPage = document.getElementById('main-page');
+  mainPage.style.display = 'block';
+  requestAnimationFrame(() => {
+    mainPage.classList.add('active');
+  });
+  
+  initAnimations();
+}
+
+// ── Navigation ──
+function showSection(name) {
+  // Update nav items
+  document.querySelectorAll('.nav-item').forEach(item => {
+    item.classList.toggle('active', item.dataset.section === name);
+  });
+  
+  // Update sections
+  document.querySelectorAll('.section-content').forEach(section => {
+    section.classList.remove('active');
+  });
+  
+  const target = document.getElementById('section-' + name);
+  if (target) target.classList.add('active');
+  
+  // Update header command
+  const cmds = {
+    home: 'neofetch',
+    projects: 'ls -la ~/projects/',
+    skills: 'cat ~/.skills --bars',
+    timeline: 'git log --oneline',
+    config: 'tree ~/dotfiles/',
+    contact: 'cat ~/links.md'
+  };
+  document.getElementById('header-cmd').textContent = cmds[name] || '';
+  
+  // Trigger skill bar animation if skills section
+  if (name === 'skills') {
+    setTimeout(() => {
+      document.querySelectorAll('.skill-bar').forEach(bar => {
+        bar.style.width = bar.dataset.width + '%';
+      });
+    }, 100);
+  }
+}
+
+// ── Time update ──
+function updateTime() {
+  const now = new Date();
+  const timeStr = now.toLocaleTimeString('en-US', { 
+    hour12: false, 
+    hour: '2-digit', 
+    minute: '2-digit', 
+    second: '2-digit' 
+  });
+  document.getElementById('current-time').textContent = timeStr;
+}
+
+// ── Session uptime ──
+let sessionStart = Date.now();
+function updateUptime() {
+  const elapsed = Math.floor((Date.now() - sessionStart) / 1000);
+  const hours = Math.floor(elapsed / 3600).toString().padStart(1, '0');
+  const mins = Math.floor((elapsed % 3600) / 60).toString().padStart(2, '0');
+  const secs = (elapsed % 60).toString().padStart(2, '0');
+  document.getElementById('live-uptime').textContent = `${hours}:${mins}:${secs}`;
+}
+
+// ── Matrix rain background ──
+function initMatrix() {
+  const canvas = document.getElementById('matrix-canvas');
+  const ctx = canvas.getContext('2d');
+  
+  function resize() {
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+  }
+  resize();
+  window.addEventListener('resize', resize);
+  
+  const chars = 'アイウエオカキクケコサシスセソタチツテトナニヌネノハヒフヘホマミムメモヤユヨラリルレロワヲン01';
+  const fontSize = 14;
+  const columns = Math.floor(canvas.width / fontSize);
+  const drops = Array(columns).fill(1);
+  
+  function draw() {
+    ctx.fillStyle = 'rgba(13, 17, 23, 0.05)';
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+    
+    ctx.fillStyle = '#79c0ff';
+    ctx.font = fontSize + 'px monospace';
+    
+    for (let i = 0; i < drops.length; i++) {
+      const text = chars[Math.floor(Math.random() * chars.length)];
+      ctx.fillText(text, i * fontSize, drops[i] * fontSize);
+      
+      if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) {
+        drops[i] = 0;
+      }
+      drops[i]++;
+    }
+  }
+  
+  setInterval(draw, 120);
+}
+
+// ── Header command typing ──
+const headerCommands = ['neofetch', 'ls ~/projects/', 'git status', 'nix flake show', 'cat README.md'];
+let cmdIndex = 0;
+function cycleHeaderCmd() {
+  const el = document.getElementById('header-cmd');
+  el.textContent = headerCommands[cmdIndex];
+  cmdIndex = (cmdIndex + 1) % headerCommands.length;
+}
+
+// ── Tips rotation ──
+const tips = [
+  'Use <code>nix run</code> to try packages without installing them.',
+  'Add <code>NIX_CONFIG="experimental-features = nix-command flakes"</code> to your config.',
+  '<code>home-manager switch</code> applies changes without rebuilding the whole system.',
+  'Use <code>direnv + nix-direnv</code> for per-directory environments.',
+  '<code>nix copy</code> lets you share closures between machines.',
+  '<code>NIXPKGS_ALLOW_UNFREE=1</code> — use responsibly.',
+  'Your <code>flake.lock</code> is your dependency tree. Commit it.',
+  '<code>nix-build -I nixpkgs=channel:nixos-unstable</code> for latest packages.',
+];
+
+function rotateTip() {
+  const el = document.getElementById('tip-of-day');
+  if (el) {
+    el.innerHTML = tips[Math.floor(Math.random() * tips.length)];
+  }
+}
+
+// ── Init ──
+function initAnimations() {
+  updateTime();
+  setInterval(updateTime, 1000);
+  
+  updateUptime();
+  setInterval(updateUptime, 1000);
+  
+  cycleHeaderCmd();
+  setInterval(cycleCmd, 4000);
+  
+  // Initial tip
+  if (document.getElementById('tip-of-day')) {
+    document.getElementById('tip-of-day').innerHTML = tips[0];
+  }
+  setInterval(rotateTip, 8000);
+  
+  // Animate skill bars if skills is visible
+  document.querySelectorAll('.skill-bar').forEach(bar => {
+    bar.style.width = '0%';
+  });
+}
+
+// ── Keyboard nav ──
+document.addEventListener('keydown', (e) => {
+  const sections = ['home', 'projects', 'skills', 'timeline', 'config', 'contact'];
+  const currentSection = document.querySelector('.nav-item.active')?.dataset.section;
+  let currentIndex = sections.indexOf(currentSection);
+  
+  if ((e.key === 'j' || e.key === 'ArrowDown') && currentIndex < sections.length - 1) {
+    e.preventDefault();
+    showSection(sections[currentIndex + 1]);
+  } else if ((e.key === 'k' || e.key === 'ArrowUp') && currentIndex > 0) {
+    e.preventDefault();
+    showSection(sections[currentIndex - 1]);
+  }
+});
+
+// ── Start ──
+window.addEventListener('DOMContentLoaded', () => {
+  initMatrix();
+  runBoot();
+});
+</script>
+
+</body>
+</html>

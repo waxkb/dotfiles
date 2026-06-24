@@ -1,0 +1,1177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>name.dev</title>
+    <style>
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+        :root {
+            --bg: #0a0a06;
+            --bg-secondary: #0f0f0a;
+            --bg-hover: #1a1a12;
+            --border: #2a2a1a;
+            --border-bright: #3a3a2a;
+            --text: #bfa850;
+            --text-bright: #d4c070;
+            --text-dim: #6a6030;
+            --accent: #d4a830;
+            --accent-dim: #5a4a20;
+            --amber: #d4a830;
+            --amber-bright: #e0c050;
+            --amber-dim: #7a7030;
+            --green: #a09020;
+            --yellow: #d4a830;
+            --red: #c07030;
+            --cyan: #b0a040;
+            --purple: #c0a040;
+            --font: 'JetBrains Mono', 'Fira Code', 'Cascadia Code', 'Maple Mono', 'Victor Mono', 'IBM Plex Mono', 'SF Mono', 'Commit Mono', monospace;
+            --font-size: 14px;
+            --line-height: 1.6;
+            --gutter: 24px;
+            /* prompt character — change here to update all section headers */
+            --prompt: "❯";
+        }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: var(--font);
+            font-size: var(--font-size);
+            line-height: var(--line-height);
+            color: var(--text);
+            background: var(--bg);
+            min-height: 100vh;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        /* Scrollbar */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: var(--bg); }
+        ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: var(--border-bright); }
+
+        .site {
+            max-width: 860px;
+            margin: 0 auto;
+            padding: 40px var(--gutter) 80px;
+        }
+
+        /* Header / prompt line */
+        .prompt-line {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 32px;
+            color: var(--text-dim);
+            font-size: 13px;
+        }
+        .prompt-line .user { color: var(--amber); }
+        .prompt-line .at { color: var(--text-dim); }
+        .prompt-line .host { color: var(--amber-bright); }
+        .prompt-line .path { color: var(--amber-dim); }
+        .prompt-line .dollar { color: var(--amber); }
+
+        /* Section boxes */
+        .section {
+            border: 1px solid var(--border);
+            border-radius: 4px;
+            margin-bottom: 24px;
+            background: var(--bg-secondary);
+        }
+
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 16px;
+            border-bottom: 1px solid var(--border);
+            font-size: 13px;
+            color: var(--text-dim);
+            user-select: none;
+        }
+        .section-header .prompt {
+            color: var(--accent);
+            font-size: 12px;
+            font-weight: bold;
+        }
+        .section-header .prompt::before {
+            content: var(--prompt);
+        }
+        .section-header .title { color: var(--text-bright); font-weight: 500; }
+        .section-header .badge {
+            margin-left: auto;
+            font-size: 11px;
+            padding: 2px 8px;
+            border: 1px solid var(--border);
+            border-radius: 3px;
+            color: var(--text-dim);
+        }
+
+        .section-body { padding: 16px; }
+
+        /* Hero */
+        .hero-name {
+            font-size: 28px;
+            font-weight: 700;
+            color: var(--text-bright);
+            margin-bottom: 4px;
+            letter-spacing: -0.5px;
+        }
+        .hero-tagline {
+            color: var(--text-dim);
+            margin-bottom: 16px;
+            font-size: 13px;
+        }
+        .hero-desc {
+            color: var(--text);
+            max-width: 600px;
+            margin-bottom: 20px;
+        }
+        .hero-links {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 20px;
+        }
+        .hero-link {
+            color: var(--amber);
+            font-size: 18px;
+            text-decoration: none;
+            transition: color 0.15s, transform 0.15s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 32px;
+            height: 32px;
+            border: 1px solid var(--border);
+            border-radius: 4px;
+        }
+        .hero-link:hover {
+            color: var(--amber-bright);
+            border-color: var(--amber);
+            transform: translateY(-2px);
+        }
+
+        /* Status line */
+        .status-line {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 16px;
+            padding: 12px 16px;
+            border-top: 1px solid var(--border);
+            font-size: 12px;
+            color: var(--text-dim);
+            background: var(--bg);
+            border-radius: 0 0 4px 4px;
+        }
+        .status-item { display: flex; align-items: center; gap: 6px; }
+        .status-dot {
+            width: 7px;
+            height: 7px;
+            border-radius: 50%;
+            flex-shrink: 0;
+        }
+        .status-dot.green { background: var(--amber); box-shadow: 0 0 6px var(--amber); }
+        .status-dot.yellow { background: var(--yellow); box-shadow: 0 0 6px var(--yellow); }
+        .status-dot.red { background: var(--red); box-shadow: 0 0 6px var(--red); }
+
+        /* About */
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px 24px;
+        }
+        .about-item { display: flex; gap: 8px; }
+        .about-key { color: var(--text-dim); min-width: 80px; }
+        .about-val { color: var(--text-bright); }
+
+        /* Skills */
+        .skills-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+        .skill-tag {
+            padding: 4px 10px;
+            border: 1px solid var(--border);
+            border-radius: 3px;
+            font-size: 12px;
+            color: var(--text);
+            background: var(--bg);
+            transition: border-color 0.15s, color 0.15s;
+        }
+        .skill-tag:hover { border-color: var(--accent); color: var(--accent); }
+
+        /* Projects */
+        .project {
+            padding: 14px 0;
+            border-bottom: 1px solid var(--border);
+        }
+        .project:first-child { padding-top: 0; }
+        .project:last-child { border-bottom: none; padding-bottom: 0; }
+        .project-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px;
+        }
+        .project-name {
+            font-weight: 500;
+            color: var(--text-bright);
+            text-decoration: none;
+            transition: color 0.15s;
+        }
+        .project-name:hover { color: var(--accent); }
+        .project-desc { color: var(--text); font-size: 13px; margin-top: 4px; }
+        .project-stars {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            font-size: 12px;
+            color: var(--text-dim);
+            flex-shrink: 0;
+        }
+
+        /* Timeline / Experience */
+        .timeline { position: relative; padding-left: 20px; }
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 3px;
+            top: 6px;
+            bottom: 6px;
+            width: 1px;
+            background: var(--border);
+        }
+        .timeline-item {
+            position: relative;
+            padding: 0 0 20px 12px;
+        }
+        .timeline-item:last-child { padding-bottom: 0; }
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -20px;
+            top: 6px;
+            width: 7px;
+            height: 7px;
+            border-radius: 50%;
+            background: var(--bg-secondary);
+            border: 1px solid var(--accent);
+        }
+        .timeline-item.current::before { background: var(--accent); box-shadow: 0 0 6px var(--accent); }
+        .timeline-date { font-size: 12px; color: var(--text-dim); margin-bottom: 2px; }
+        .timeline-role { color: var(--text-bright); font-weight: 500; }
+        .timeline-org { color: var(--accent); }
+        .timeline-desc { font-size: 13px; color: var(--text); margin-top: 4px; }
+
+        /* Contact / Links */
+        .links-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 8px;
+        }
+        .link-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 10px 12px;
+            border: 1px solid var(--border);
+            border-radius: 3px;
+            text-decoration: none;
+            color: var(--text);
+            font-size: 13px;
+            transition: border-color 0.15s, background 0.15s;
+        }
+        .link-item:hover { border-color: var(--accent); background: var(--bg-hover); color: var(--text-bright); }
+        .link-item .link-icon { color: var(--accent); font-size: 14px; width: 16px; text-align: center; }
+        .link-item .link-label { font-weight: 500; }
+        .link-item .link-handle { color: var(--text-dim); margin-left: auto; font-size: 12px; }
+
+        /* TUI Footer */
+        .tui-footer {
+            margin-top: 40px;
+            padding: 12px 0;
+            border-top: 1px solid var(--border);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 12px;
+            color: var(--text-dim);
+        }
+        .tui-footer .left { display: flex; gap: 16px; }
+        .tui-footer a { color: var(--accent); text-decoration: none; }
+        .tui-footer a:hover { text-decoration: underline; }
+
+        /* Command palette */
+        .cmd-bar {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: var(--bg-secondary);
+            border-top: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            padding: 0 16px;
+            height: 36px;
+            font-size: 12px;
+            z-index: 100;
+        }
+        .cmd-bar .prompt { color: var(--green); margin-right: 8px; }
+        .cmd-bar input {
+            flex: 1;
+            background: none;
+            border: none;
+            color: var(--text-bright);
+            font-family: var(--font);
+            font-size: 12px;
+            outline: none;
+        }
+        .cmd-bar input::placeholder { color: var(--text-dim); }
+        .cmd-bar .hint { color: var(--text-dim); font-size: 11px; }
+
+        /* Responsive */
+        @media (max-width: 640px) {
+            .about-grid { grid-template-columns: 1fr; }
+            .links-grid { grid-template-columns: 1fr; }
+            .site { padding: 24px 16px 80px; }
+            .hero-name { font-size: 22px; }
+        }
+
+        /* ASCII art styling */
+        .ascii-art {
+            color: var(--accent-dim);
+            font-size: 11px;
+            line-height: 1.3;
+            white-space: pre;
+            margin-bottom: 16px;
+            display: none;
+        }
+
+        /* Minimal mode toggle */
+        .section.collapsed .section-body { display: none; }
+        .section.collapsed .section-header .toggle { transform: rotate(-90deg); }
+        .toggle {
+            cursor: pointer;
+            transition: transform 0.15s;
+            font-size: 10px;
+            color: var(--text-dim);
+            user-select: none;
+        }
+
+        /* Contribution Grid */
+        .contrib-grid-container {
+            margin-bottom: 12px;
+        }
+        .contrib-grid {
+            display: flex;
+            gap: 3px;
+            overflow-x: auto;
+            padding-bottom: 8px;
+        }
+        .contrib-week {
+            display: flex;
+            flex-direction: column;
+            gap: 3px;
+        }
+        .contrib-day {
+            width: 12px;
+            height: 12px;
+            border-radius: 2px;
+            background: var(--bg-hover);
+            cursor: default;
+            position: relative;
+        }
+        .contrib-day:hover {
+            outline: 1px solid var(--border-bright);
+        }
+        .contrib-day[data-level="1"] { background: #3a3020; }
+        .contrib-day[data-level="2"] { background: #5a4830; }
+        .contrib-day[data-level="3"] { background: #8a7040; }
+        .contrib-day[data-level="4"] { background: var(--amber-dim); }
+        .contrib-day[data-level="5"] { background: var(--amber); }
+        .contrib-day[data-level="6"] { background: var(--amber-bright); box-shadow: 0 0 4px var(--amber); }
+
+        /* Contribution Stats */
+        .contrib-stats {
+            display: flex;
+            gap: 24px;
+            font-size: 12px;
+            color: var(--text-dim);
+            margin-bottom: 12px;
+        }
+        .contrib-stat { display: flex; gap: 6px; }
+        .contrib-stat .count { color: var(--text-bright); font-weight: 500; }
+
+        /* Contribution Legend */
+        .contrib-legend {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 11px;
+            color: var(--text-dim);
+            margin-top: 12px;
+        }
+        .contrib-legend .legend-grid {
+            display: flex;
+            gap: 2px;
+        }
+        .contrib-legend .legend-day {
+            width: 10px;
+            height: 10px;
+            border-radius: 1px;
+            background: var(--bg-hover);
+        }
+        .contrib-legend .legend-day[data-level="1"] { background: #3a3020; }
+        .contrib-legend .legend-day[data-level="2"] { background: #5a4830; }
+        .contrib-legend .legend-day[data-level="3"] { background: #8a7040; }
+        .contrib-legend .legend-day[data-level="4"] { background: var(--amber-dim); }
+        .contrib-legend .legend-day[data-level="5"] { background: var(--amber); }
+
+        /* Token Input */
+        .contrib-token-row {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 16px;
+        }
+        .contrib-token-row label {
+            font-size: 12px;
+            color: var(--text-dim);
+        }
+        .contrib-token-row input {
+            flex: 1;
+            max-width: 300px;
+            background: var(--bg);
+            border: 1px solid var(--border);
+            border-radius: 3px;
+            padding: 6px 10px;
+            color: var(--text-bright);
+            font-family: var(--font);
+            font-size: 12px;
+            outline: none;
+            transition: border-color 0.15s;
+        }
+        .contrib-token-row input:focus {
+            border-color: var(--accent);
+        }
+        .contrib-token-row input::placeholder {
+            color: var(--text-dim);
+        }
+        .contrib-token-row button {
+            background: var(--bg);
+            border: 1px solid var(--border);
+            border-radius: 3px;
+            padding: 6px 12px;
+            color: var(--accent);
+            font-family: var(--font);
+            font-size: 12px;
+            cursor: pointer;
+            transition: border-color 0.15s, background 0.15s;
+        }
+        .contrib-token-row button:hover {
+            border-color: var(--accent);
+            background: var(--bg-hover);
+        }
+        .contrib-token-row .hint {
+            font-size: 11px;
+            color: var(--text-dim);
+        }
+
+        /* Loading state */
+        .contrib-loading {
+            font-size: 12px;
+            color: var(--text-dim);
+            font-style: italic;
+        }
+
+        /* Tooltip */
+        .contrib-tooltip {
+            position: fixed;
+            background: var(--bg-secondary);
+            border: 1px solid var(--border);
+            border-radius: 4px;
+            padding: 6px 10px;
+            font-size: 11px;
+            color: var(--text-bright);
+            pointer-events: none;
+            z-index: 1000;
+            display: none;
+            white-space: nowrap;
+        }
+        .contrib-tooltip .date { color: var(--text-dim); margin-bottom: 2px; }
+        .contrib-tooltip .count { color: var(--amber); font-weight: 500; }
+    </style>
+</head>
+<body>
+    <div class="site">
+        <!-- Prompt line -->
+        <div class="prompt-line">
+            <span class="user">max</span>
+            <span class="at">@</span>
+            <span class="host">devbox</span>
+            <span class="path">~/name.dev</span>
+        </div>
+
+        <!-- Hero -->
+        <div class="section">
+            <div class="section-header">
+                <span class="prompt"></span>
+                <span class="title">whoami</span>
+                <span class="badge">~/name.dev</span>
+            </div>
+            <div class="section-body">
+                <div class="hero-name">Max Lastname</div>
+                <div class="hero-tagline">OSS contributor — systems · tooling · infra</div>
+                <div class="hero-desc">
+                    Developer working on open-source infrastructure and developer tools.
+                    I care about clean interfaces, correct systems, and reducing the gap between
+                    "it works" and "it's right." Currently contributing to the ecosystem
+                    and building things that make other developers' lives easier.
+                </div>
+                <div class="hero-links">
+                    <a href="https://github.com/max" class="hero-link" title="GitHub">&#10697;</a>
+                    <a href="https://twitter.com/max" class="hero-link" title="Twitter">&#120143;</a>
+                    <a href="https://linkedin.com/in/max" class="hero-link" title="LinkedIn">&#10546;</a>
+                    <a href="mailto:max@name.dev" class="hero-link" title="Email">&#9993;</a>
+                </div>
+                <div class="status-line">
+                    <div class="status-item">
+                        <span class="status-dot green"></span>
+                        <span>Available for select consulting</span>
+                    </div>
+                    <div class="status-item">
+                        <span class="status-dot yellow"></span>
+                        <span>4 active OSS projects</span>
+                    </div>
+                    <div class="status-item">
+                        <span class="status-dot green"></span>
+                        <span>Accepting new maintainer roles</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- GitHub Contributions -->
+        <div class="section">
+            <div class="section-header">
+                <span class="prompt"></span>
+                <span class="title">cat activity.log</span>
+            </div>
+            <div class="section-body">
+                <div class="contrib-token-row" id="token-row">
+                    <label>GitHub Token:</label>
+                    <input type="password" id="gh-token" placeholder="ghp_..." autocomplete="off">
+                    <button onclick="saveToken()">Save</button>
+                    <span class="hint">For higher API rate limits. Stored locally.</span>
+                </div>
+
+                <div class="contrib-stats" id="contrib-stats">
+                    <div class="contrib-stat">
+                        <span class="count" id="total-contrib">--</span>
+                        <span>contributions last year</span>
+                    </div>
+                    <div class="contrib-stat">
+                        <span class="count" id="current-streak">--</span>
+                        <span>day streak</span>
+                    </div>
+                    <div class="contrib-stat">
+                        <span class="count" id="longest-streak">--</span>
+                        <span>longest streak</span>
+                    </div>
+                </div>
+
+                <div class="contrib-grid-container">
+                    <div class="contrib-grid" id="contrib-grid"></div>
+                </div>
+
+                <div class="contrib-legend">
+                    <span>Less</span>
+                    <div class="legend-grid">
+                        <div class="legend-day" data-level="0"></div>
+                        <div class="legend-day" data-level="1"></div>
+                        <div class="legend-day" data-level="2"></div>
+                        <div class="legend-day" data-level="3"></div>
+                        <div class="legend-day" data-level="4"></div>
+                    </div>
+                    <span>More</span>
+                </div>
+
+                <div class="contrib-tooltip" id="contrib-tooltip">
+                    <div class="date"></div>
+                    <div class="count"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- About -->
+        <div class="section">
+            <div class="section-header">
+                <span class="prompt"></span>
+                <span class="title">cat ~/.config/about.toml</span>
+                <span class="badge">info</span>
+            </div>
+            <div class="section-body">
+                <div class="about-grid">
+                    <div class="about-item">
+                        <span class="about-key">location</span>
+                        <span class="about-val">earth</span>
+                    </div>
+                    <div class="about-item">
+                        <span class="about-key">timezone</span>
+                        <span class="about-val">UTC-8 (PST)</span>
+                    </div>
+                    <div class="about-item">
+                        <span class="about-key">editor</span>
+                        <span class="about-val">nvim</span>
+                    </div>
+                    <div class="about-item">
+                        <span class="about-key">shell</span>
+                        <span class="about-val">zsh + tmux</span>
+                    </div>
+                    <div class="about-item">
+                        <span class="about-key">wm</span>
+                        <span class="about-val">hyprland</span>
+                    </div>
+                    <div class="about-item">
+                        <span class="about-key">os</span>
+                        <span class="about-val">arch linux</span>
+                    </div>
+                    <div class="about-item">
+                        <span class="about-key">dotfiles</span>
+                        <span class="about-val"><a href="https://github.com/max/dotfiles" style="color:var(--accent);text-decoration:none;">github.com/max/dotfiles</a></span>
+                    </div>
+                    <div class="about-item">
+                        <span class="about-key">pronouns</span>
+                        <span class="about-val">he/him</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Skills -->
+        <div class="section">
+            <div class="section-header">
+                <span class="prompt"></span>
+                <span class="title">ls ~/skills/</span>
+                <span class="badge">tooling</span>
+            </div>
+            <div class="section-body">
+                <div class="skills-grid">
+                    <span class="skill-tag">Rust</span>
+                    <span class="skill-tag">Go</span>
+                    <span class="skill-tag">TypeScript</span>
+                    <span class="skill-tag">Python</span>
+                    <span class="skill-tag">Nix</span>
+                    <span class="skill-tag">Docker</span>
+                    <span class="skill-tag">PostgreSQL</span>
+                    <span class="skill-tag">Redis</span>
+                    <span class="skill-tag">Kubernetes</span>
+                    <span class="skill-tag">Linux</span>
+                    <span class="skill-tag">Neovim</span>
+                    <span class="skill-tag">TUI / Ratatui</span>
+                    <span class="skill-tag">CI/CD</span>
+                    <span class="skill-tag">Observability</span>
+                    <span class="skill-tag">Distributed Systems</span>
+                    <span class="skill-tag">OpenTelemetry</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Projects -->
+        <div class="section">
+            <div class="section-header">
+                <span class="prompt"></span>
+                <span class="title">ls ~/projects/</span>
+                <span class="badge">OSS</span>
+            </div>
+            <div class="section-body">
+                <div class="project">
+                    <div class="project-header">
+                        <a href="#" class="project-name">project-name</a>
+                        <span class="project-stars">&#9733; 1.2k</span>
+                    </div>
+                    <span class="project-desc">A fast, minimal CLI tool for managing development environments with zero config.</span>
+                </div>
+                <div class="project">
+                    <div class="project-header">
+                        <a href="#" class="project-name">tui-kit</a>
+                        <span class="project-stars">&#9733; 890</span>
+                    </div>
+                    <span class="project-desc">Component library for building modern terminal UIs in Rust. Ratatui-based widgets with sane defaults.</span>
+                </div>
+                <div class="project">
+                    <div class="project-header">
+                        <a href="#" class="project-name">log-river</a>
+                        <span class="project-stars">&#9733; 560</span>
+                    </div>
+                    <span class="project-desc">High-throughput log aggregation pipeline. Written in Go, designed for self-hosting.</span>
+                </div>
+                <div class="project">
+                    <div class="project-header">
+                        <a href="#" class="project-name">dot-ops</a>
+                        <span class="project-stars">&#9733; 340</span>
+                    </div>
+                    <span class="project-desc">Declarative dotfile management powered by Nix. Reproducible dev environments everywhere.</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Experience -->
+        <div class="section">
+            <div class="section-header">
+                <span class="prompt"></span>
+                <span class="title">cat ~/.work/history.log</span>
+                <span class="badge">experience</span>
+            </div>
+            <div class="section-body">
+                <div class="timeline">
+                    <div class="timeline-item current">
+                        <div class="timeline-date">2024 &mdash; present</div>
+                        <div class="timeline-role">Independent OSS Maintainer</div>
+                        <div class="timeline-desc">Maintaining and contributing to developer tooling and infrastructure projects. Focused on Rust/Go ecosystems.</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-date">2023 &mdash; 2024</div>
+                        <div class="timeline-role">Senior Backend Engineer &middot; <span class="timeline-org">Stealth Startup</span></div>
+                        <div class="timeline-desc">Built core platform services in Go and Rust. Led migration to distributed tracing with OpenTelemetry.</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-date">2021 &mdash; 2023</div>
+                        <div class="timeline-role">Software Engineer &middot; <span class="timeline-org">Mid-size Tech Co</span></div>
+                        <div class="timeline-desc">Full-stack development with TypeScript/React frontend and Go backend. Contributed to internal developer platform.</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-date">2019 &mdash; 2021</div>
+                        <div class="timeline-role">Junior Developer &middot; <span class="timeline-org">First Startup</span></div>
+                        <div class="timeline-desc">Wore many hats. Python data pipelines, React dashboards, and my first real taste of production systems.</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Links -->
+        <div class="section">
+            <div class="section-header">
+                <span class="prompt"></span>
+                <span class="title">open ~/.config/links</span>
+                <span class="badge">contact</span>
+            </div>
+            <div class="section-body">
+                <div class="links-grid">
+                    <a href="https://github.com/max" class="link-item">
+                        <span class="link-icon">&#10697;</span>
+                        <span class="link-label">GitHub</span>
+                        <span class="link-handle">@max</span>
+                    </a>
+                    <a href="https://twitter.com/max" class="link-item">
+                        <span class="link-icon">&#120143;</span>
+                        <span class="link-label">Twitter</span>
+                        <span class="link-handle">@max</span>
+                    </a>
+                    <a href="https://linkedin.com/in/max" class="link-item">
+                        <span class="link-icon">&#10546;</span>
+                        <span class="link-label">LinkedIn</span>
+                        <span class="link-handle">/in/max</span>
+                    </a>
+                    <a href="mailto:max@name.dev" class="link-item">
+                        <span class="link-icon">&#9993;</span>
+                        <span class="link-label">Email</span>
+                        <span class="link-handle">max@name.dev</span>
+                    </a>
+                    <a href="https://blog.name.dev" class="link-item">
+                        <span class="link-icon">&#9998;</span>
+                        <span class="link-label">Blog</span>
+                        <span class="link-handle">blog.name.dev</span>
+                    </a>
+                    <a href="https://keybase.io/max" class="link-item">
+                        <span class="link-icon">&#59641;</span>
+                        <span class="link-label">Keybase</span>
+                        <span class="link-handle">@max</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <div class="tui-footer">
+            <div class="left">
+                <span>name.dev</span>
+                <span>&copy; 2026</span>
+            </div>
+            <div>
+                <span id="uptime">uptime: loading...</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Command bar -->
+    <!-- <div class="cmd-bar">
+        <span class="prompt"></span>
+        <input type="text" id="cmd-input" placeholder="type a command (try: help, clear, date, echo hello)" autocomplete="off" spellcheck="false">
+        <span class="hint">[Ctrl+K]</span>
+    </div> -->
+
+    <script>
+        // --- GitHub Contributions Tracker ---
+        const GH_USERNAME = 'waxkb';
+        const TOKEN_KEY = 'gh_token';
+
+        function getToken() {
+            return localStorage.getItem(TOKEN_KEY) || '';
+        }
+
+        function saveToken() {
+            const token = document.getElementById('gh-token').value.trim();
+            if (token) {
+                localStorage.setItem(TOKEN_KEY, token);
+                document.getElementById('token-row').style.display = 'none';
+                fetchContributions();
+            }
+        }
+
+        function loadToken() {
+            const token = getToken();
+            if (token) {
+                document.getElementById('gh-token').value = token;
+                document.getElementById('token-row').style.display = 'none';
+            }
+        }
+
+        async function fetchContributions() {
+            const token = getToken();
+            document.getElementById('contrib-stats').innerHTML = '<span class="contrib-loading">Fetching contributions...</span>';
+
+            const headers = {
+                'Accept': 'application/vnd.github.v3+json'
+            };
+            if (token) headers['Authorization'] = `token ${token}`;
+
+            try {
+                const now = new Date();
+                const yearAgo = new Date(now);
+                yearAgo.setFullYear(yearAgo.getFullYear() - 1);
+
+                // Calculate date range for the year
+                const days = {};
+
+                // Initialize all days from a year ago to now
+                const startDate = new Date(yearAgo);
+                startDate.setDate(startDate.getDate() - startDate.getDay()); // Start from Sunday of that week
+
+                for (let d = new Date(startDate); d <= now; d.setDate(d.getDate() + 1)) {
+                    const key = d.toISOString().split('T')[0];
+                    days[key] = 0;
+                }
+
+                // Fetch events (unauthenticated: 60/hr, authenticated: 5000/hr)
+                const res = await fetch(`https://api.github.com/users/${GH_USERNAME}/events?per_page=100`, { headers });
+                if (res.ok) {
+                    const events = await res.json();
+                    events.forEach(event => {
+                        if (event.type === 'PushEvent' || event.type === 'CreateEvent' || event.type === 'PullRequestEvent' || event.type === 'IssuesEvent') {
+                            const date = new Date(event.created_at);
+                            const key = date.toISOString().split('T')[0];
+                            if (days[key] !== undefined) {
+                                if (event.type === 'PushEvent') {
+                                    days[key] += event.payload?.commits?.length || 1;
+                                } else {
+                                    days[key]++;
+                                }
+                            }
+                        }
+                    });
+                }
+
+                // Fetch more events for authenticated users
+                let gotData = res.ok;
+                if (token) {
+                    const res2 = await fetch(`https://api.github.com/users/${GH_USERNAME}/events?per_page=500`, { headers });
+                    if (res2.ok) {
+                        gotData = true;
+                        const events2 = await res2.json();
+                        events2.forEach(event => {
+                            if (event.type === 'PushEvent' || event.type === 'CreateEvent' || event.type === 'PullRequestEvent' || event.type === 'IssuesEvent') {
+                                const date = new Date(event.created_at);
+                                const key = date.toISOString().split('T')[0];
+                                if (days[key] !== undefined) {
+                                    if (event.type === 'PushEvent') {
+                                        days[key] += event.payload?.commits?.length || 1;
+                                    } else {
+                                        days[key]++;
+                                    }
+                                }
+                            }
+                        });
+                    }
+                }
+
+                if (!gotData) {
+                    document.getElementById('contrib-stats').innerHTML = '<span class="contrib-loading">No events found. Check username or add a token.</span>';
+                } else {
+                    renderContribGrid(days, yearAgo, now);
+                    renderContribStats(days, yearAgo, now);
+                }
+            } catch (err) {
+                console.error('GitHub contributions error:', err);
+                document.getElementById('contrib-stats').innerHTML = '<span class="contrib-loading">Failed to load contributions. Check token or try again later.</span>';
+            }
+        }
+
+        function renderContribGrid(days, yearAgo, now) {
+            const grid = document.getElementById('contrib-grid');
+            grid.innerHTML = '';
+
+            const startDate = new Date(yearAgo);
+            startDate.setDate(startDate.getDate() - startDate.getDay()); // Start from Sunday of that week
+
+            const endDate = new Date(now);
+            endDate.setDate(endDate.getDate() + (6 - endDate.getDay())); // Complete the last week
+
+            let currentDate = new Date(startDate);
+
+            while (currentDate <= endDate) {
+                const week = document.createElement('div');
+                week.className = 'contrib-week';
+
+                for (let i = 0; i < 7; i++) {
+                    const day = document.createElement('div');
+                    day.className = 'contrib-day';
+                    const key = currentDate.toISOString().split('T')[0];
+                    const count = days[key] || 0;
+
+                    if (currentDate < yearAgo || currentDate > now) {
+                        day.style.background = 'var(--bg)';
+                        day.style.cursor = 'default';
+                    } else {
+                        const level = count === 0 ? 0 : count <= 2 ? 1 : count <= 5 ? 2 : count <= 10 ? 3 : count <= 20 ? 4 : 5;
+                        day.setAttribute('data-level', level);
+                        day.setAttribute('data-date', key);
+                        day.setAttribute('data-count', count);
+
+                        day.addEventListener('mouseenter', showTooltip);
+                        day.addEventListener('mouseleave', hideTooltip);
+                    }
+
+                    week.appendChild(day);
+                    currentDate.setDate(currentDate.getDate() + 1);
+                }
+
+                grid.appendChild(week);
+            }
+        }
+
+        function showTooltip(e) {
+            const tooltip = document.getElementById('contrib-tooltip');
+            const date = e.target.getAttribute('data-date');
+            const count = e.target.getAttribute('data-count');
+
+            tooltip.querySelector('.date').textContent = date;
+            tooltip.querySelector('.count').textContent = `${count} contribution${count !== '1' ? 's' : ''}`;
+
+            const rect = e.target.getBoundingClientRect();
+            tooltip.style.left = rect.left + 'px';
+            tooltip.style.top = (rect.bottom + 4) + 'px';
+            tooltip.style.display = 'block';
+        }
+
+        function hideTooltip() {
+            document.getElementById('contrib-tooltip').style.display = 'none';
+        }
+
+        function renderContribStats(days, yearAgo, now) {
+            let total = 0;
+            Object.values(days).forEach(v => total += v);
+
+            // Calculate current streak
+            let currentStreak = 0;
+            let longestStreak = 0;
+            let tempStreak = 0;
+
+            for (let d = new Date(now); d >= yearAgo; d.setDate(d.getDate() - 1)) {
+                const key = d.toISOString().split('T')[0];
+                if ((days[key] || 0) > 0) {
+                    tempStreak++;
+                    if (d.toDateString() === now.toDateString() || isYesterday(d)) {
+                        currentStreak = tempStreak;
+                    }
+                } else {
+                    if (tempStreak > longestStreak) longestStreak = tempStreak;
+                    tempStreak = 0;
+                    if (d.toDateString() !== now.toDateString() && !isYesterday(d)) break;
+                }
+            }
+            if (tempStreak > longestStreak) longestStreak = tempStreak;
+
+            document.getElementById('total-contrib').textContent = total.toLocaleString();
+            document.getElementById('current-streak').textContent = currentStreak;
+            document.getElementById('longest-streak').textContent = longestStreak;
+        }
+
+        function isYesterday(date) {
+            const yesterday = new Date();
+            yesterday.setDate(yesterday.getDate() - 1);
+            return date.toDateString() === yesterday.toDateString();
+        }
+
+        // Initialize
+        loadToken();
+        fetchContributions();
+
+        // --- Uptime counter ---
+        const startTime = Date.now();
+        function updateUptime() {
+            const elapsed = Date.now() - startTime;
+            const s = Math.floor(elapsed / 1000) % 60;
+            const m = Math.floor(elapsed / 60000) % 60;
+            const h = Math.floor(elapsed / 3600000);
+            document.getElementById('uptime').textContent =
+                `uptime: ${h}h ${String(m).padStart(2,'0')}m ${String(s).padStart(2,'0')}s`;
+        }
+        setInterval(updateUptime, 1000);
+        updateUptime();
+
+        // --- Command palette ---
+        const cmdInput = document.getElementById('cmd-input');
+        const sections = document.querySelectorAll('.section');
+
+        if (cmdInput) {
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'k' && (e.ctrlKey || e.metaKey) && document.activeElement !== cmdInput) {
+                    e.preventDefault();
+                    cmdInput.focus();
+                }
+                if (e.key === 'Escape' && document.activeElement === cmdInput) {
+                    cmdInput.blur();
+                    cmdInput.value = '';
+                }
+            });
+
+            cmdInput.addEventListener('keydown', (e) => {
+                if (e.key === 'Enter') {
+                    const raw = cmdInput.value.trim();
+                    if (!raw) return;
+                    const [cmd, ...args] = raw.split(/\s+/);
+                    const fn = commands[cmd];
+                    if (fn) {
+                        const result = fn(...args);
+                        if (result) {
+                            console.log(`$ ${raw}\n${result}`);
+                        }
+                    } else {
+                        console.log(`$ ${raw}\nbash: ${cmd}: command not found`);
+                    }
+                    cmdInput.value = '';
+                }
+            });
+        }
+
+        const commands = {
+            help: () => {
+                return `Available commands:
+  help          - show this message
+  clear         - clear command input
+  date          - show current date/time
+  echo <msg>    - print a message
+  ls            - list all sections
+  goto <name>   - jump to a section (whoami, about, skills, projects, experience, contact)
+  theme <name>  - switch theme (default, light, amber)
+  uptime        - show site uptime
+  neofetch      - system info`;
+            },
+            date: () => new Date().toString(),
+            clear: () => { cmdInput.value = ''; return ''; },
+            ls: () => {
+                return [...sections].map(s => {
+                    const title = s.querySelector('.title').textContent;
+                    return `  ${title}`;
+                }).join('\n');
+            },
+            goto: (arg) => {
+                const map = {
+                    'whoami': 0, 'about': 1, 'skills': 2,
+                    'projects': 3, 'experience': 4, 'contact': 5
+                };
+                const idx = map[arg?.toLowerCase()];
+                if (idx !== undefined) {
+                    sections[idx].scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    return `Jumping to ${arg}...`;
+                }
+                return `Unknown section: ${arg}. Try: whoami, about, skills, projects, experience, contact`;
+            },
+            uptime: () => document.getElementById('uptime').textContent,
+            neofetch: () => {
+                return `
+ \`--\` \`--\`      max@devbox
+  \`.--.\`       -----------
+   \`-.--.\`      OS:     name.dev
+    \`---.\`     Host:   devbox
+     \`---\`     Shell:  zsh
+               Editor: nvim
+               WM:     hyprland
+               Theme:  tokyo-night-ish
+`.trim();
+            },
+            theme: (arg) => {
+                const root = document.documentElement;
+                if (arg === 'light') {
+                    root.style.setProperty('--bg', '#f5f5f5');
+                    root.style.setProperty('--bg-secondary', '#ffffff');
+                    root.style.setProperty('--bg-hover', '#e8e8e8');
+                    root.style.setProperty('--border', '#d0d0d0');
+                    root.style.setProperty('--border-bright', '#b0b0b0');
+                    root.style.setProperty('--text', '#333333');
+                    root.style.setProperty('--text-bright', '#111111');
+                    root.style.setProperty('--text-dim', '#888888');
+                    return 'Switched to light theme.';
+                } else if (arg === 'amber') {
+                    root.style.setProperty('--bg', '#0a0a06');
+                    root.style.setProperty('--bg-secondary', '#0f0f0a');
+                    root.style.setProperty('--bg-hover', '#1a1a12');
+                    root.style.setProperty('--border', '#2a2a1a');
+                    root.style.setProperty('--border-bright', '#3a3a2a');
+                    root.style.setProperty('--text', '#bfa850');
+                    root.style.setProperty('--text-bright', '#d4c070');
+                    root.style.setProperty('--text-dim', '#6a6030');
+                    root.style.setProperty('--accent', '#d4a830');
+                    root.style.setProperty('--green', '#a09020');
+                    root.style.setProperty('--yellow', '#d4a830');
+                    root.style.setProperty('--red', '#c07030');
+                    root.style.setProperty('--cyan', '#b0a040');
+                    root.style.setProperty('--purple', '#c0a040');
+                    root.style.setProperty('--accent-dim', '#5a4a20');
+                    return 'Switched to amber monochrome theme.';
+                } else {
+                    root.style.setProperty('--bg', '#0d0d17');
+                    root.style.setProperty('--bg-secondary', '#131322');
+                    root.style.setProperty('--bg-hover', '#1a1a2e');
+                    root.style.setProperty('--border', '#2a2a4a');
+                    root.style.setProperty('--border-bright', '#3a3a5a');
+                    root.style.setProperty('--text', '#c8c8d8');
+                    root.style.setProperty('--text-bright', '#e8e8f0');
+                    root.style.setProperty('--text-dim', '#6a6a8a');
+                    root.style.setProperty('--accent', '#7aa2f7');
+                    root.style.setProperty('--green', '#9ece6a');
+                    root.style.setProperty('--yellow', '#e0af68');
+                    root.style.setProperty('--red', '#f7768e');
+                    root.style.setProperty('--cyan', '#7dcfff');
+                    root.style.setProperty('--purple', '#bb9af7');
+                    root.style.setProperty('--accent-dim', '#3d5a80');
+                    return 'Switched to default theme.';
+                }
+            },
+            echo: (...args) => args.join(' ') || '(empty)',
+        };
+
+        // --- Section toggle (click header to collapse) ---
+        document.querySelectorAll('.section-header').forEach((header) => {
+            header.addEventListener('click', () => {
+                header.closest('.section').classList.toggle('collapsed');
+            });
+        });
+    </script>
+</body>
+</html>
