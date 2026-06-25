@@ -1,4 +1,4 @@
-WALLPAPER_DIR="$HOME/wall"
+WALLPAPER_DIR="$HOME/nixos/wall"
 TOFI_BIN="tofi"
 
 selection=$($TOFI_BIN --config ~/.config/tofi/config < <(find "$WALLPAPER_DIR" -type f))
