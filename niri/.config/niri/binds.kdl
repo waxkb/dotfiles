@@ -3,6 +3,8 @@ binds {
     Mod+Shift+B hotkey-overlay-title="Open System Monitor (btop)" { spawn-sh "foot btop"; }
     Mod+D hotkey-overlay-title="Close Focused Window" { close-window; }
     Mod+Shift+D hotkey-overlay-title="Quit Niri Session" { quit; }
+    Mod+I hotkey-overlay-title="Open IRC Client (Halloy)" { spawn "halloy"; }
+    Mod+M hotkey-overlay-title="Open Matrix Client (Cinny)" { spawn "cinny"; }
     Mod+Shift+M hotkey-overlay-title="Open Media Panel" {
         spawn-sh "noctalia msg panel-toggle control-center media || dms ipc call dash open media";
     }
@@ -34,8 +36,8 @@ binds {
     Mod+L { focus-column-right; }
     Mod+K { focus-window-up; }
     Mod+J { focus-window-down; }
-    Mod+U { focus-workspace-down; }
-    Mod+I { focus-workspace-up; }
+    // Mod+U { focus-workspace-down; }
+    // Mod+I { focus-workspace-up; }
     Mod+Prior { focus-column-first; }
     Mod+Next { focus-column-last; }
 
