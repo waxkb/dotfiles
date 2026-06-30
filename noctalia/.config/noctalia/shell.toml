@@ -41,7 +41,7 @@ open_near_click_wallpaper      = false  # open Wallpaper picker near the click o
 open_near_click_session        = false  # open Session panel near the click on the bar
 
 [shell.screen_corners]
-enabled = true    # overlay black rounded corners on each screen
+enabled = false    # overlay black rounded corners on each screen
 size    = 32       # corner radius in logical pixels (1–100)
 
 [shell.mpris]
