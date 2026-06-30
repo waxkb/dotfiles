@@ -1,5 +1,5 @@
 layout {
-    gaps 6
+    // gaps 8
     focus-ring {
         off
         active-color "{{colors.primary.default.hex}}"

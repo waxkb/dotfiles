@@ -1,10 +1,9 @@
 binds {
-    Mod+B hotkey-overlay-title="Open Zen Browser" { spawn "zen-beta"; }
-    Mod+Shift+B hotkey-overlay-title="Open System Monitor (btop)" { spawn-sh "foot btop"; }
-    Mod+D hotkey-overlay-title="Close Focused Window" { close-window; }
-    Mod+Shift+D hotkey-overlay-title="Quit Niri Session" { quit; }
-    Mod+I hotkey-overlay-title="Open IRC Client (Halloy)" { spawn "halloy"; }
-    Mod+M hotkey-overlay-title="Open Matrix Client (Cinny)" { spawn "cinny"; }
+    Mod+B hotkey-overlay-title="Open Glide" { spawn "glide"; }
+    Mod+Shift+B hotkey-overlay-title="Open btop" { spawn-sh "foot btop"; }
+    Mod+D hotkey-overlay-title="Close Window" { close-window; }
+    Mod+Shift+D hotkey-overlay-title="Quit Niri" { quit; }
+    Mod+I hotkey-overlay-title="Open Halloy" { spawn "halloy"; }
     Mod+Shift+M hotkey-overlay-title="Open Media Panel" {
         spawn-sh "noctalia msg panel-toggle control-center media || dms ipc call dash open media";
     }
@@ -12,25 +11,25 @@ binds {
         spawn-sh "noctalia msg panel-toggle control-center notifications || dms ipc call notifications open";
     }
     Mod+O hotkey-overlay-title="Lock Screen" { spawn "hyprlock"; }
-    Mod+P hotkey-overlay-title="Pick Color from Screen" { spawn "hyprpicker"; }
-    Mod+R hotkey-overlay-title="Switch Column Width Preset" { switch-preset-column-width; }
-    Mod+Shift+R hotkey-overlay-title="Switch Window Height Preset" { switch-preset-window-height; }
+    Mod+P hotkey-overlay-title="Pick Color" { spawn "hyprpicker"; }
+    Mod+R hotkey-overlay-title="Switch Column Width" { switch-preset-column-width; }
+    Mod+Shift+R hotkey-overlay-title="Switch Window Height" { switch-preset-window-height; }
     Mod+Ctrl+R hotkey-overlay-title="Reset Window Height" { reset-window-height; }
     Mod+S hotkey-overlay-title="Open Settings" {
         spawn-sh "noctalia msg settings-toggle || dms ipc call settings toggle";
     }
     Mod+Shift+S hotkey-overlay-title="Take Screenshot" { screenshot; }
     Mod+T hotkey-overlay-title="Toggle Floating Window" { toggle-window-floating; }
-    Mod+V hotkey-overlay-title="Toggle Window Overview" { toggle-overview; }
+    Mod+V hotkey-overlay-title="Toggle Overview" { toggle-overview; }
     Mod+W hotkey-overlay-title="Open Wallpaper Picker" { spawn "./tofiWall.sh"; }
     Mod+X hotkey-overlay-title="Open Logout Menu" {
         spawn-sh "noctalia msg panel-toggle session || dms ipc call powermenu toggle";
     }
-    Mod+Return hotkey-overlay-title="Open Terminal (foot)" { spawn "foot"; }
-    Mod+End hotkey-overlay-title="Play / Pause Media" { spawn-sh "playerctl play-pause"; }
-    Mod+Home hotkey-overlay-title="Next Media Track" { spawn-sh "playerctl next"; }
-    Mod+Delete hotkey-overlay-title="Previous Media Track" { spawn-sh "playerctl previous"; }
-    Mod+Shift+Slash hotkey-overlay-title="Show Hotkey Overlay" { show-hotkey-overlay; }
+    Mod+Return hotkey-overlay-title="Open foot" { spawn "foot"; }
+    Mod+End hotkey-overlay-title="Play / Pause" { spawn-sh "playerctl play-pause"; }
+    Mod+Home hotkey-overlay-title="Next Track" { spawn-sh "playerctl next"; }
+    Mod+Delete hotkey-overlay-title="Previous Track" { spawn-sh "playerctl previous"; }
+    Mod+Shift+Slash hotkey-overlay-title="Show Binds" { show-hotkey-overlay; }
 
     Mod+H { focus-column-left; }
     Mod+L { focus-column-right; }

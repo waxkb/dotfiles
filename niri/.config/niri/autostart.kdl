@@ -9,7 +9,7 @@
 // spawn-sh-at-startup "systemctl --user start hyprpolkitagent"
 // spawn-sh-at-startup "dms run"
 spawn-at-startup "noctalia"
-spawn-at-startup "zen-beta"
+spawn-at-startup "glide"
 spawn-at-startup "activate-linux"
 hotkey-overlay {
   skip-at-startup

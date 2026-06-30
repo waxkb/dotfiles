@@ -7,16 +7,8 @@ output_path = "/home/max/.config/btop/themes/matugen.theme"
 post_hook = "pkill -SIGUSR2 btop"
 
 [templates.zen]
-input_path = "/home/max/.config/matugen/templates/userChrome.css"
+input_path = "/home/max/.config/matugen/templates/zen-userChrome.css"
 output_path = "/home/max/.zen/98v5jad2.Default Profile/chrome/userChrome.css"
-
-[templates.zen1]
-input_path = "/home/max/.config/matugen/templates/userContent.css"
-output_path = "/home/max/.zen/98v5jad2.Default Profile/chrome/userContent.css"
-
-[templates.zen2]
-input_path = "/home/max/.config/matugen/templates/zen-logo-mocha.svg"
-output_path = "/home/max/.zen/98v5jad2.Default Profile/chrome/zen-mocha.svg"
 
 [templates.niri]
 input_path = "/home/max/.config/matugen/templates/niri-colors.kdl"
