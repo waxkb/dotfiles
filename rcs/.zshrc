@@ -5,6 +5,21 @@ export FZF_CTRL_T_OPTS="$FZF_DEFAULT_OPTS --preview 'bat --color=always --style=
 export FZF_CTRL_R_OPTS=""
 source <(fzf --zsh)
 
+autoload -Uz add-zsh-hook
+
+foot_cwd_update() {
+  [[ -n "${FOOT_CWD_TOKEN:-}" ]] || return 0
+
+  local cache_dir="${XDG_CACHE_HOME:-$HOME/.cache}/foot-cwd"
+  local cwd_file="$cache_dir/$FOOT_CWD_TOKEN"
+  mkdir -p "$cache_dir"
+  print -r -- "$PWD" >| "$cwd_file"
+}
+
+add-zsh-hook chpwd foot_cwd_update
+add-zsh-hook precmd foot_cwd_update
+foot_cwd_update
+
 # export SKIM_DEFAULT_COMMAND="fd -H"
 
 function y() {

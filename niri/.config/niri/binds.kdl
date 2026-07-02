@@ -1,6 +1,6 @@
 binds {
     Mod+B hotkey-overlay-title="Open Glide" { spawn "glide"; }
-    Mod+Shift+B hotkey-overlay-title="Open btop" { spawn-sh "foot btop"; }
+    Mod+Shift+B hotkey-overlay-title="Open btop" { spawn-sh "/home/max/.config/niri/foot-smart-launch.sh btop"; }
     Mod+D hotkey-overlay-title="Close Window" { close-window; }
     Mod+Shift+D hotkey-overlay-title="Quit Niri" { quit; }
     Mod+I hotkey-overlay-title="Open Halloy" { spawn "halloy"; }
@@ -25,7 +25,7 @@ binds {
     Mod+X hotkey-overlay-title="Open Logout Menu" {
         spawn-sh "noctalia msg panel-toggle session || dms ipc call powermenu toggle";
     }
-    Mod+Return hotkey-overlay-title="Open foot" { spawn "foot"; }
+    Mod+Return hotkey-overlay-title="Open foot here" { spawn-sh "/home/max/.config/niri/foot-smart-launch.sh"; }
     Mod+End hotkey-overlay-title="Play / Pause" { spawn-sh "playerctl play-pause"; }
     Mod+Home hotkey-overlay-title="Next Track" { spawn-sh "playerctl next"; }
     Mod+Delete hotkey-overlay-title="Previous Track" { spawn-sh "playerctl previous"; }
