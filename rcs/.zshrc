@@ -13,7 +13,7 @@ foot_cwd_update() {
   local cache_dir="${XDG_CACHE_HOME:-$HOME/.cache}/foot-cwd"
   local cwd_file="$cache_dir/$FOOT_CWD_TOKEN"
   mkdir -p "$cache_dir"
-  print -r -- "$PWD" >| "$cwd_file"
+  print -r -- "$PWD" >|"$cwd_file"
 }
 
 add-zsh-hook chpwd foot_cwd_update
@@ -88,7 +88,7 @@ mkcd() {
   if ! ssh-add -l | grep -q "github"; then
     KEY_FILE=$(mktemp)
     trap 'rm -f "$KEY_FILE"' EXIT
-    infisical secrets get --path=/ssh-keys PrivateMainsshKey --plain 2>/dev/null | sed 's/\\n/\n/g' >"$KEY_FILE"
+    infisical secrets get --path=/ssh-keys Main --plain 2>/dev/null | sed 's/\\n/\n/g' >"$KEY_FILE"
     chmod 600 "$KEY_FILE"
     ssh-add "$KEY_FILE" >/dev/null 2>&1
   fi
