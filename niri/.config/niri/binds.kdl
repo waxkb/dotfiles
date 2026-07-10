@@ -20,6 +20,7 @@ binds {
     }
     Mod+Shift+S hotkey-overlay-title="Take Screenshot" { screenshot; }
     Mod+T hotkey-overlay-title="Toggle Floating Window" { toggle-window-floating; }
+    Mod+Shift+T hotkey-overlay-title="Switch Focus Between Floating and Tiling" { switch-focus-between-floating-and-tiling; }
     Mod+V hotkey-overlay-title="Toggle Overview" { toggle-overview; }
     Mod+W hotkey-overlay-title="Open Wallpaper Picker" { spawn "./tofiWall.sh"; }
     Mod+X hotkey-overlay-title="Open Logout Menu" {
@@ -39,6 +40,8 @@ binds {
     // Mod+I { focus-workspace-up; }
     Mod+Prior { focus-column-first; }
     Mod+Next { focus-column-last; }
+
+    F11 { fullscreen-window; }
 
     Mod+Shift+H { move-column-left; }
     Mod+Shift+L { move-column-right; }
