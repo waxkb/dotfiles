@@ -54,8 +54,8 @@ end
 
 if not base46.theme_tables[theme_name] or base46.theme_tables[theme_name].type ~= vim.o.background then
   local builtin = vim.deepcopy(assert(base46.get_builtin_theme(theme_base)))
-  local harmonized = base46.theme_harmonize(builtin, "#a149d3", harmony)
-  harmonized = base46.theme_set_bg(harmonized, "#161217")
+  local harmonized = base46.theme_harmonize(builtin, "#cd631b", harmony)
+  harmonized = base46.theme_set_bg(harmonized, "#1a120d")
 
   base46.theme_tables[theme_name] = harmonized
 end
