@@ -31,7 +31,7 @@ capsule_opacity    = 1.0
 
 start  = ["workspaces"]
 # center = ["noctalia/bongocat:cat"]
-center = []
+center = [ "clock" ]
 end    = ["ram_usage", "cpu_temp", "cpu_usage"]
 
 [widget.ram_usage]
