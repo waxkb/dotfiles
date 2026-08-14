@@ -32,7 +32,7 @@ capsule_opacity    = 1.0
 start  = ["workspaces"]
 # center = ["noctalia/bongocat:cat"]
 center = [ "clock" ]
-end    = ["ram_usage", "cpu_temp", "cpu_usage"]
+end    = [ "cpu_temp", "network" ]
 
 [widget.ram_usage]
 type = "sysmon"
@@ -48,3 +48,6 @@ display = "text"
 type = "sysmon"
 stat = "cpu_usage"
 display = "text"
+
+[widget.network]
+show_label = false
