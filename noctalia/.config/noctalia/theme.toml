@@ -1,0 +1,9 @@
+[theme]
+mode              = "dark"        # dark | light | auto
+source            = "wallpaper"     # builtin | wallpaper | community | custom
+builtin           = "Noctalia"    # bundled palette name
+community_palette = "Oxocarbon"   # community palette name when source = "community"
+custom_palette    = "MyPalette"   # file name (without .json) when source = "custom"
+# wallpaper_scheme  = "m3-content"  # generator used when source = "wallpaper"
+wallpaper_scheme  = "soft"  # generator used when source = "wallpaper"
+pure_black_dark   = false         # replace dark-mode backgrounds with pure black

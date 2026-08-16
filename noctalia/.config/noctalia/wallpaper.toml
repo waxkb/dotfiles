@@ -18,7 +18,6 @@ per_monitor_directories = false
 
 [wallpaper.automation]
 enabled                      = false
-interval_minutes             = 30       # 0 = disable automation
 order                        = "random" # random | alphabetical
 recursive                    = true     # scan subdirectories when selecting random wallpapers
 

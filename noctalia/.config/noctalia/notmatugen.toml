@@ -1,20 +1,22 @@
-[config]
-version_check = false
+[theme.templates]
+enable_builtin_templates   = true
+enable_community_templates = true
+builtin_ids                = []
+community_ids              = []
 
-[templates.btop]
+[theme.templates.user.btop]
 input_path = "/home/max/.config/matugen/templates/btop.theme"
 output_path = "/home/max/.config/btop/themes/matugen.theme"
 post_hook = "pkill -SIGUSR2 btop"
 
-[templates.niri]
+[theme.templates.user.niri]
 input_path = "/home/max/.config/matugen/templates/niri-colors.kdl"
 output_path = "/home/max/.config/niri/colors.kdl"
 
-[templates.foot]
-input_path = "/home/max/.config/matugen/templates/foot-colors-start.ini"
+[theme.templates.user.foot]
+input_path = "/home/max/.config/matugen/templates/foot-colors.ini"
 output_path = "/home/max/.config/foot/foot-colors.ini"
-post_hook = "nohup ./foot-colors.sh \"{{colors.primary.default.hex}}\" &"
 
-[templates.nvim]
+[theme.templates.user.nvim]
 input_path = "/home/max/.config/matugen/templates/nvim-colors.lua"
 output_path = "/home/max/.config/nvim/colors/base46-matugen.lua"

@@ -2,7 +2,7 @@ layout {
     gaps 8
     focus-ring {
         off
-        active-color "#ffb68f"
+        active-color "#e5c8a5"
         inactive-color "#ffffff"
         width 2
     }
@@ -10,9 +10,9 @@ layout {
     border {
         on
         width 2
-        active-color "#ffb68f"
-        inactive-color "#1a120d"
-        urgent-color "#ffb4ab"
+        active-color "#e5c8a5"
+        inactive-color "#231f1a"
+        urgent-color "#fd4663"
     }
 
     shadow {
