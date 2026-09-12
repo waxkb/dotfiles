@@ -5,7 +5,7 @@ local bases = {
   light = "github_light",
 }
 local harmonies = {
-  dark = 0,
+  dark = 0.5,
   light = 0.5,
 }
 

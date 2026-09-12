@@ -5,7 +5,7 @@ local bases = {
   light = "github_light",
 }
 local harmonies = {
-  dark = 0,
+  dark = 0.5,
   light = 0.5,
 }
 
@@ -54,8 +54,8 @@ end
 
 if not base46.theme_tables[theme_name] or base46.theme_tables[theme_name].type ~= vim.o.background then
   local builtin = vim.deepcopy(assert(base46.get_builtin_theme(theme_base)))
-  local harmonized = base46.theme_harmonize(builtin, "#e6c8a4", harmony)
-  harmonized = base46.theme_set_bg(harmonized, "#231f1a")
+  local harmonized = base46.theme_harmonize(builtin, "#bd6b20", harmony)
+  harmonized = base46.theme_set_bg(harmonized, "#231e1a")
 
   base46.theme_tables[theme_name] = harmonized
 end
