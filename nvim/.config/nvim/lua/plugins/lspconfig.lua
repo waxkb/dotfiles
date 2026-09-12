@@ -14,6 +14,13 @@ return {
         },
       })
       vim.lsp.enable("jdtls")
+      -- vim.lsp.config("jls", {
+      --   cmd = {
+      --     "jls",
+      --     "--jvm-arg=-Xmx4g",
+      --   },
+      -- })
+      -- vim.lsp.enable("jls")
       vim.lsp.config("lua_ls", {
         settings = {
           Lua = {

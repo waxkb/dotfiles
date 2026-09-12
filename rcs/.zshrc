@@ -1,4 +1,3 @@
-# export FZF_DEFAULT_COMMAND="fd -H"
 export FZF_DEFAULT_OPTS="--no-scrollbar"
 # export FZF_CTRL_T_COMMAND=$FZF_DEFAULT_COMMAND
 export FZF_CTRL_T_OPTS="$FZF_DEFAULT_OPTS --preview 'bat --color=always --style=numbers --line-range=:500 {}' --preview-border none --height 40%"
@@ -72,8 +71,6 @@ path+=("/home/max/.local/bin")
 path+=("/usr/bin")
 path+=("/home/max/.cargo/bin")
 path+=("/home/max/.julia/bin")
-path+=("/home/max/python/browser/bin")
-path+=("/home/max/python/bin")
 path+=("/home/max/.npm-packages/bin")
 
 mkcd() {
@@ -100,54 +97,9 @@ alias syncdots="gita ll && gita super add . && gita super commit -m "e" && gita 
 alias ff="microfetch"
 alias cf="clear; microfetch"
 
-export NIXPKGS_ALLOW_UNFREE=1
-
 export PYTHONPATH=""
 export STABLE_GL=1
 export FORCE_X11=1
-
-export CLAUDE_CODE_USE_OPENAI=1
-export OPENAI_BASE_URL=http://localhost:8080/v1
-export OPENAI_MODEL=qwen3.6
-
-export CLAUDE_CODE_ATTRIBUTION_HEADER=0
-export CLAUDE_CODE_DISABLE_NONESSENTIAL_TRAFFIC=1
-
-export ANTHROPIC_BASE_URL="http://localhost:8080"
-export ANTHROPIC_API_KEY=""
-export ANTHROPIC_MODEL=""
-
-cclexp() {
-  export ANTHROPIC_BASE_URL="http://localhost:8080"
-  export ANTHROPIC_API_KEY=""
-  export ANTHROPIC_MODEL=""
-}
-
-ccoexp() {
-  export ANTHROPIC_BASE_URL="http://localhost:11434"
-  export ANTHROPIC_API_KEY=""
-  export ANTHROPIC_MODEL="minimax-m2.7:cloud"
-}
-
-ccrexp() {
-  export ANTHROPIC_BASE_URL="https://openrouter.ai/api"
-  export ANTHROPIC_API_KEY=$OPENROUTER_API_KEY
-  export ANTHROPIC_MODEL="deepseek/deepseek-v4-flash:free"
-}
-
-q35Serv_m() {
-  llama-server -hf unsloth/Qwen3.6-35B-A3B-GGUF:UD-IQ4_NL --host 0.0.0.0 --port 8080 -c 110000 --temp 0.6 --top_p 0.95 --top_k 20 --min_p 0.0 --presence_penalty 0.0 -ctk q4_0 -ctv q4_0 -t 6 --mmap --mlock --jinja --metrics -np 1 --fit-target 2048 --perf --chat-template-kwargs '{"preserve_thinking": true}' --image-min-tokens 1024
-}
-
-q35Serv_t_1() {
-  llama-server -hf unsloth/Qwen3.6-35B-A3B-GGUF:UD-IQ4_NL --host 0.0.0.0 --port 8080 -c 110000 --temp 0.6 --top_p 0.95 --top_k 20 --min_p 0.0 --presence_penalty 0.0 -ctk q4_0 -ctv q4_0 -t 6 --mmap --mlock --jinja --metrics -np 1 --fit-target 128 --perf --chat-template-kwargs '{"preserve_thinking": true}' --no-mmproj
-}
-
-q35Serv_mtp() {
-  llama-server -m /home/max/mtp/Qwen3.6-35B-A3B-customwow.gguf --host 0.0.0.0 --port 8080 -c 100000 --temp 0 --top_p 0.95 --top_k 20 --min_p 0.0 --presence_penalty 0.0 -ctk q4_0 -ctv q4_0 -t 6 --mmap --mlock --jinja --metrics -np 1 --fit-target 1250 --perf --chat-template-kwargs '{"preserve_thinking": true}' --no-mmproj --spec-type draft-mtp --spec-draft-n-max 3 -fa on
-}
-
-#--spec-type ngram-mod --spec-ngram-size-n 24 --draft-min 12 --draft-max 48
 
 export UV_PYTHON_PREFERENCE=only-managed
 export UV_PYTHON=3.14
