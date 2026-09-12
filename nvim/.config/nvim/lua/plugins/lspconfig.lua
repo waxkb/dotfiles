@@ -6,7 +6,12 @@ return {
     config = function()
       vim.lsp.enable("bashls")
       vim.lsp.config("jdtls", {
-        cmd = { "jdtls", "-data", vim.fn.stdpath("data") .. "/jdtls/workspace" },
+        cmd = {
+          "jdtls",
+          "-data",
+          vim.fn.stdpath("data") .. "/jdtls/workspace",
+          "--jvm-arg=-Xmx4g",
+        },
       })
       vim.lsp.enable("jdtls")
       vim.lsp.config("lua_ls", {
