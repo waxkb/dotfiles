@@ -21,6 +21,8 @@ foot_cwd_update
 
 # export SKIM_DEFAULT_COMMAND="fd -H"
 
+eval "$(direnv hook zsh)"
+
 function y() {
   local tmp="$(mktemp -t "yazi-cwd.XXXXXX")" cwd
   command yazi "$@" --cwd-file="$tmp"
@@ -119,3 +121,5 @@ HISTFILE=~/.zsh_history
 export _JAVA_AWT_WM_NONREPARENTING=1
 
 export SOBER_USE_NEW_TEXT_RENDERER=1
+
+alias mosim='podman run --rm -e WAYLAND_DISPLAY=$WAYLAND_DISPLAY -e XDG_RUNTIME_DIR=/tmp -v $XDG_RUNTIME_DIR/$WAYLAND_DISPLAY:/tmp/$WAYLAND_DISPLAY -e DISPLAY=$DISPLAY -v /tmp/.X11-unix:/tmp/.X11-unix:ro -e SDL_VIDEODRIVER=x11 --device /dev/nvidia0 --device /dev/nvidiactl --device /dev/nvidia-modeset --device /dev/nvidia-uvm --device /dev/dri -v /nix/store:/nix/store:ro -v /run/opengl-driver:/run/opengl-driver:ro -e LD_LIBRARY_PATH=/run/opengl-driver/lib -e VK_ICD_FILENAMES=/run/opengl-driver/share/vulkan/icd.d/nvidia_icd.json -e __GLX_VENDOR_LIBRARY_NAME=nvidia --security-opt label=disable -v /home/max/mosim:/mosim -v /home/max/mosim-data:/root localhost/mosim:arch /mosim/MoSimulator.x86_64'
