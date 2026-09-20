@@ -1,21 +1,16 @@
 "$schema" = 'https://starship.rs/config-schema.json'
 
 format = """
-\u256d\u2574\
 $username\
 $hostname\
 $directory\
 $git_branch\
-$git_status\
-$git_metrics\
 $git_state\
+$git_status\
 $cmd_duration\
 $line_break\
 $python\
-\u2570\u2500\
 $character"""
-
-add_newline = false
 
 [directory]
 style = "blue"
@@ -24,6 +19,25 @@ style = "blue"
 success_symbol = "[❯](purple)"
 error_symbol = "[❯](red)"
 vimcmd_symbol = "[❮](green)"
+
+[git_branch]
+format = "[$branch]($style)"
+style = "bright-black"
+
+[git_status]
+format = "[[(*$conflicted$untracked$modified$staged$renamed$deleted)](218) ($ahead_behind$stashed)]($style)"
+style = "cyan"
+conflicted = "​"
+untracked = "​"
+modified = "​"
+staged = "​"
+renamed = "​"
+deleted = "​"
+stashed = "≡"
+
+[git_state]
+format = '\([$state( $progress_current/$progress_total)]($style)\) '
+style = "bright-black"
 
 [cmd_duration]
 format = "[$duration]($style) "
@@ -34,15 +48,3 @@ format = "[$virtualenv]($style) "
 style = "bright-black"
 detect_extensions = []
 detect_files = []
-
-[git_branch]
-format = "[$branch]($style) "
-style = "bright-black"
-
-[git_status]
-ahead = "⇡${count} "
-behind = "⇣{count} "
-diverged = "⇕⇡${ahead_count}⇣${behind_count} "
-
-[git_metrics]
-disabled = false
