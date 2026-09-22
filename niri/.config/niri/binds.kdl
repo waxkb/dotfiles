@@ -14,15 +14,13 @@ binds {
     Mod+R hotkey-overlay-title="Switch Column Width" { switch-preset-column-width; }
     Mod+Shift+R hotkey-overlay-title="Switch Window Height" { switch-preset-window-height; }
     Mod+Ctrl+R hotkey-overlay-title="Reset Window Height" { reset-window-height; }
-    Mod+S hotkey-overlay-title="Open Steam" { spawn-sh "pkill -9 steam; steam"; }
-    Mod+Shift+S hotkey-overlay-title="Take Screenshot" { screenshot; }
-    Mod+Alt+S hotkey-overlay-title="Open Settings" {
+    Mod+S hotkey-overlay-title="Open Settings" {
         spawn-sh "noctalia msg settings-toggle || dms ipc call settings toggle";
     }
+    Mod+Shift+S hotkey-overlay-title="Take Screenshot" { screenshot; }
     Mod+T hotkey-overlay-title="Toggle Floating Window" { toggle-window-floating; }
     Mod+Shift+T hotkey-overlay-title="Switch Focus Between Floating and Tiling" { switch-focus-between-floating-and-tiling; }
-    Mod+V hotkey-overlay-title="Open Discord" { spawn "discordcanary"; }
-    Mod+Shift+V hotkey-overlay-title="Toggle Overview" { toggle-overview; }
+    Mod+V hotkey-overlay-title="Toggle Overview" { toggle-overview; }
     Mod+W hotkey-overlay-title="Open Wallpaper Picker" { spawn "./tofiWall.sh"; }
     Mod+X hotkey-overlay-title="Open Logout Menu" {
         spawn-sh "noctalia msg panel-toggle session || dms ipc call powermenu toggle";

@@ -1,13 +1,3 @@
-// spawn-at-startup "noctalia-shell"
-// spawn-at-startup "dms" "run" "--session"
-// spawn-at-startup "qsc" "-c" "ii"
-// spawn-sh-at-startup "~/start-waybar.sh"
-// spawn-sh-at-startup "swaync"
-// spawn-sh-at-startup "clipse -listen"
-// spawn-at-startup "swww-daemon"
-// spawn-sh-at-startup "swww restore"
-// spawn-sh-at-startup "systemctl --user start hyprpolkitagent"
-// spawn-sh-at-startup "dms run"
 spawn-sh-at-startup "foot --server"
 spawn-at-startup "noctalia"
 spawn-at-startup "glide"
@@ -15,21 +5,3 @@ spawn-at-startup "activate-linux"
 hotkey-overlay {
   skip-at-startup
 }
-
-// spawn-sh-at-startup "sleep 0.75; niri msg action focus-workspace 1"
-/*window-rule {
-  match at-startup=true app-id="zen-beta"
-  open-on-workspace "1"
-}
-
-window-rule {
-  match at-startup=true app-id="spotify"
-  open-on-workspace "2"
-  open-maximized true
-}
-
-window-rule {
-  match at-startup=true app-id="vesktop"
-  open-on-workspace "3"
-  open-maximized true
-}*/

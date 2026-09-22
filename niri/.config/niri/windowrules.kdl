@@ -16,15 +16,6 @@ window-rule {
     draw-border-with-background false
 }
 
-layer-rule {
-  match namespace="^noctalia-wallpaper"
-  place-within-backdrop true
-}
-
-layout {
-  background-color "transparent"
-}
-
 overview {
   workspace-shadow {
     off
