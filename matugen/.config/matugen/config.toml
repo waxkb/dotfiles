@@ -13,7 +13,7 @@ output_path = "/home/max/.config/niri/colors.kdl"
 [templates.foot]
 input_path = "/home/max/.config/matugen/templates/foot-colors-start.ini"
 output_path = "/home/max/.config/foot/foot-colors.ini"
-post_hook = "nohup ./foot-colors.sh \"{{colors.primary.default.hex}}\" &"
+post_hook = "nohup ./scripts/foot-colors.sh \"{{colors.primary.default.hex}}\" &"
 
 [templates.nvim]
 input_path = "/home/max/.config/matugen/templates/nvim-colors.lua"

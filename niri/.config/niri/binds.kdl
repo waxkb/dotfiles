@@ -21,7 +21,7 @@ binds {
     Mod+T hotkey-overlay-title="Toggle Floating Window" { toggle-window-floating; }
     Mod+Shift+T hotkey-overlay-title="Switch Focus Between Floating and Tiling" { switch-focus-between-floating-and-tiling; }
     Mod+V hotkey-overlay-title="Toggle Overview" { toggle-overview; }
-    Mod+W hotkey-overlay-title="Open Wallpaper Picker" { spawn "./tofiWall.sh"; }
+    Mod+W hotkey-overlay-title="Open Wallpaper Picker" { spawn "./scripts/tofiWall.sh"; }
     Mod+X hotkey-overlay-title="Open Logout Menu" {
         spawn-sh "noctalia msg panel-toggle session || dms ipc call powermenu toggle";
     }

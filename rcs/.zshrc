@@ -98,6 +98,10 @@ eval "$(starship init zsh)"
 alias syncdots="gita ll && gita super add . && gita super commit -m "e" && gita push && gita ll"
 alias ff="microfetch"
 alias cf="clear; microfetch"
+# w3m 0.5.6 sends HTTP/1.0 + Accept-Encoding: gzip but can't de-chunk
+# GitHub's `Transfer-Encoding: chunked` + `Content-Encoding: gzip` reply
+# (fails with `gzip: stdin: not in gzip format`). Force identity encoding.
+alias w3m="w3m -o accept_encoding='identity'"
 
 export PYTHONPATH=""
 export STABLE_GL=1
