@@ -26,7 +26,7 @@ return {
                 return ls.jumpable(-1) and "<Plug>luasnip-jump-prev" or "<S-Tab>"
             end, { expr = true, silent = true })
 
-            require("luasnip.loaders.from_lua").lazy_load({ paths = "~/.config/nvim/LuaSnip/" })
+            require("luasnip.loaders.from_lua").lazy_load({ paths = vim.fn.stdpath("config") .. "/LuaSnip/" })
         end,
     },
 }

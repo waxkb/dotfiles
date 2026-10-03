@@ -9,7 +9,8 @@ return {
       -- java = { "google-java-format" },
       java = { "astyle" },
       lua = { "stylua" },
-      nix = { "nixfmt" },
+      -- nixfmt only exists where Nix exists (never on Windows)
+      nix = vim.fn.has("win32") == 0 and { "nixfmt" } or {},
       python = { "ruff_format" },
       rust = { "rustfmt" },
       zsh = { "shfmt" },
@@ -22,8 +23,9 @@ return {
       lsp_format = "fallback",
     },
     formatters = {
+      -- Resolve shfmt from PATH so this works on NixOS, other
+      -- Linux distros, macOS and Windows (see windows-install.ps1).
       shfmt = {
-        command = "/run/current-system/sw/bin/shfmt",
         prepend_args = { "-i", "2" },
       },
       astyle = {

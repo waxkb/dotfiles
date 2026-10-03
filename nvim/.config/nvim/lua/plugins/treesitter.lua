@@ -31,9 +31,11 @@ return {
       -- Neovim 0.11+ already ships these; installing them via
       -- nvim-treesitter just forces a redundant cc build.
       local bundled = { c = true, lua = true, markdown = true, markdown_inline = true, query = true, vim = true, vimdoc = true }
+      -- Compiled parsers are *.so on Unix but *.dll on Windows.
+      local ext = vim.fn.has("win32") == 1 and "dll" or "so"
       local to_install = {}
       for _, lang in ipairs(langs) do
-        if not bundled[lang] and #vim.api.nvim_get_runtime_file("parser/" .. lang .. ".so", true) == 0 then
+        if not bundled[lang] and #vim.api.nvim_get_runtime_file("parser/" .. lang .. "." .. ext, true) == 0 then
           table.insert(to_install, lang)
         end
       end

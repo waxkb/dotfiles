@@ -125,15 +125,17 @@ vim.api.nvim_create_autocmd("BufWritePost", {
     local filepath = vim.fn.expand("%:p")
     local filename = vim.fn.expand("%:t")
 
-    -- Arguments for the git command
-    local args = {
-      "-c",
-      string.format("git add %q && git commit -m 'Autosave: %s' --quiet", filepath, filename),
-    }
-
-    -- Runs the job completely in the background silently
-    vim.uv.spawn("sh", { args = args }, function(code)
-      -- Optional: If you ever want to debug errors, 'code' will be non-zero
+    -- Run git directly (no shell) so this works on Windows too,
+    -- where there is no `sh`. Failures are silent by design.
+    vim.system({ "git", "add", filepath }, {}, function(add_res)
+      if add_res.code ~= 0 then
+        return
+      end
+      vim.system(
+        { "git", "commit", "-m", "Autosave: " .. filename, "--quiet" },
+        {},
+        function(_) end
+      )
     end)
   end,
 })

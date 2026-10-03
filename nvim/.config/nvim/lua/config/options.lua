@@ -33,7 +33,10 @@ opt.smartindent = true
 
 opt.undofile = true
 opt.undolevels = 10000
-opt.undodir = vim.fn.expand("~/.local/state/nvim/undo")
+-- stdpath("state") resolves to ~/.local/state/nvim on Unix and
+-- ~/AppData/Local/nvim-data on Windows.
+opt.undodir = vim.fn.stdpath("state") .. "/undo"
+vim.fn.mkdir(vim.fn.stdpath("state") .. "/undo", "p")
 
 opt.updatetime = 200
 opt.virtualedit = "block"
