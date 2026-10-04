@@ -4,6 +4,7 @@ format = """
 \u256d\u2574\
 $username\
 $hostname\
+$container\
 $directory\
 $git_branch\
 $git_status\
@@ -46,3 +47,6 @@ diverged = "⇕⇡${ahead_count}⇣${behind_count}"
 
 [git_metrics]
 disabled = false
+
+[container]
+format = "[$name]($style) "

@@ -1,3 +1,8 @@
+if [ -f /run/.containerenv ]; then
+  export JAVA_HOME=/usr/lib/jvm/temurin-21-jdk-amd64
+  export PATH=$JAVA_HOME/bin:$PATH
+fi
+
 export FZF_DEFAULT_OPTS="--no-scrollbar"
 # export FZF_CTRL_T_COMMAND=$FZF_DEFAULT_COMMAND
 export FZF_CTRL_T_OPTS="$FZF_DEFAULT_OPTS --preview 'bat --color=always --style=numbers --line-range=:500 {}' --preview-border none --height 40%"
