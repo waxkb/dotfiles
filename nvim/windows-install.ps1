@@ -118,7 +118,7 @@ Install-WingetPackage -Id "sharkdp.bat"                -Command "bat"
 Install-WingetPackage -Id "tree-sitter.tree-sitter-cli" -Command "tree-sitter"
 
 # Small general-purpose compiler fallback, always installed.
-Install-WingetPackage -Id "Zig.Zig"                    -Command "zig"
+Install-WingetPackage -Id "zig.zig"                    -Command "zig"
 
 # A patched font so statusline/tabline glyphs render correctly.
 Install-WingetPackage -Id "NerdFonts.JetBrainsMono"    -Command "" `
@@ -218,7 +218,7 @@ if ($WantRust -and (Get-Command rustup -ErrorAction SilentlyContinue) -and -not 
 
 # Point the C-compiler probe at LLVM clang when MSVC is not installed.
 # (The officially recommended setup is -WithVsBuildTools instead.)
-if (-not (Get-Command cl -ErrorAction SilentlyContinue)) -and (Get-Command clang -ErrorAction SilentlyContinue)) {
+if (-not (Get-Command cl -ErrorAction SilentlyContinue) -and (Get-Command clang -ErrorAction SilentlyContinue)) {
   [System.Environment]::SetEnvironmentVariable("CC", "clang", "User")
   $env:CC = "clang"
   Write-Host "[ok] CC=clang registered for treesitter parser builds" -ForegroundColor Green
