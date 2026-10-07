@@ -42,7 +42,7 @@ style = "bright-black"
 
 [git_status]
 ahead = "⇡${count}"
-behind = "⇣{count}"
+behind = "⇣${count}"
 diverged = "⇕⇡${ahead_count}⇣${behind_count}"
 
 [git_metrics]

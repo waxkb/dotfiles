@@ -1,6 +1,14 @@
 if [ -f /run/.containerenv ]; then
   export JAVA_HOME=/usr/lib/jvm/temurin-21-jdk-amd64
   export PATH=$JAVA_HOME/bin:$PATH
+
+  # NixOS host GPU passthrough (distrobox mounts host root at /run/host).
+  # Without this, GL/Vulkan fall back to llvmpipe CPU rendering.
+  if [ -d /run/host/run/opengl-driver ]; then
+    export LD_LIBRARY_PATH="/run/host/run/opengl-driver/lib${LD_LIBRARY_PATH:+:$LD_LIBRARY_PATH}"
+    export VK_ICD_FILENAMES=/run/host/run/opengl-driver/share/vulkan/icd.d/nvidia_icd.json
+    export __GLX_VENDOR_LIBRARY_NAME=nvidia
+  fi
 fi
 
 export FZF_DEFAULT_OPTS="--no-scrollbar"
@@ -74,11 +82,9 @@ rm() {
   fi
 }
 
-path+=("/home/max/.local/bin")
+path+=("$HOME/.local/bin")
 path+=("/usr/bin")
-path+=("/home/max/.cargo/bin")
-path+=("/home/max/.julia/bin")
-path+=("/home/max/.npm-packages/bin")
+path+=("$HOME/.npm-packages/bin")
 
 mkcd() {
   mkdir -p "$1" && cd "$1"
@@ -131,4 +137,14 @@ export _JAVA_AWT_WM_NONREPARENTING=1
 
 export SOBER_USE_NEW_TEXT_RENDERER=1
 
-alias mosim='podman run --rm -e WAYLAND_DISPLAY=$WAYLAND_DISPLAY -e XDG_RUNTIME_DIR=/tmp -v $XDG_RUNTIME_DIR/$WAYLAND_DISPLAY:/tmp/$WAYLAND_DISPLAY -e DISPLAY=$DISPLAY -v /tmp/.X11-unix:/tmp/.X11-unix:ro -e SDL_VIDEODRIVER=x11 --device /dev/nvidia0 --device /dev/nvidiactl --device /dev/nvidia-modeset --device /dev/nvidia-uvm --device /dev/dri -v /nix/store:/nix/store:ro -v /run/opengl-driver:/run/opengl-driver:ro -e LD_LIBRARY_PATH=/run/opengl-driver/lib -e VK_ICD_FILENAMES=/run/opengl-driver/share/vulkan/icd.d/nvidia_icd.json -e __GLX_VENDOR_LIBRARY_NAME=nvidia --security-opt label=disable -v /home/max/mosim:/mosim -v /home/max/mosim-data:/root localhost/mosim:arch /mosim/MoSimulator.x86_64'
+alias mosim='$HOME/mosim/MoSimulator.x86_64'
+
+alias advantageScope='$HOME/wpilib/2026/advantagescope/advantagescope-wpilib'
+
+alias frc='distrobox enter frc'
+
+alias elastic='env -u LD_LIBRARY_PATH -u NIX_LD_LIBRARY_PATH -u NIX_LD \
+  -u __EGL_VENDOR_LIBRARY_DIRS -u __EGL_VENDOR_LIBRARY_FILENAMES \
+  -u GBM_BACKENDS_PATH -u LIBGL_DRIVERS_PATH -u LIBVA_DRIVERS_PATH \
+  LIBGL_ALWAYS_SOFTWARE=1 GDK_BACKEND=x11 \
+  /home/max/wpilib/2026/elastic/elastic_dashboard'
