@@ -14,7 +14,7 @@
 .PARAMETER WithVsBuildTools
   Also install Visual Studio Build Tools (C++ workload, several GB).
   This is the officially recommended C compiler for nvim-treesitter on
-  Windows. By default a lighter LLVM clang setup is installed instead;
+  Windows. By default a lightweight GCC (WinLibs) setup is installed instead;
   only use this switch if parser compilation fails (see
   windows-install.md).
 
@@ -36,13 +36,13 @@
     python- uv, ruff, ty (Python LSP)
     lua   - StyLua + lua-language-server
     rust  - Rust toolchain (rustup) + rust-analyzer (heavy: toolchain download)
-    cpp   - LLVM (clang-format + clang, also the default C compiler for
+    cpp   - LLVM (clang-format + clang, clang also works for
             treesitter parser builds; heavy: several hundred MB)
     tex   - SumatraPDF viewer + Strawberry Perl + latexindent (heavy: Perl download;
             the TeX distro itself is always a manual install, see the .md)
     shell - shfmt + Node.js + bash-language-server
 
-  Core tools (git, Neovim, ripgrep, fd, fzf, bat, tree-sitter CLI, zig,
+  Core tools (git, Neovim, ripgrep, fd, fzf, bat, tree-sitter CLI, gcc,
   Nerd Font) are always installed.
 
 .EXAMPLE
@@ -117,8 +117,10 @@ Install-WingetPackage -Id "sharkdp.bat"                -Command "bat"
 # cpp group / -WithVsBuildTools below).
 Install-WingetPackage -Id "tree-sitter.tree-sitter-cli" -Command "tree-sitter"
 
-# Small general-purpose compiler fallback, always installed.
-Install-WingetPackage -Id "zig.zig"                    -Command "zig"
+# Small general-purpose C compiler fallback, always installed.
+# (zig was tried here before but does not work for treesitter parser
+# builds; plain GCC via WinLibs does.)
+Install-WingetPackage -Id "BrechtSanders.WinLibs.POSIX.UCRT" -Command "gcc"
 
 # A patched font so statusline/tabline glyphs render correctly.
 Install-WingetPackage -Id "NerdFonts.JetBrainsMono"    -Command "" `
@@ -147,7 +149,7 @@ if ($WantPython) {
 if ($WantCpp) {
   Write-Host "=== cpp group ===" -ForegroundColor Yellow
   Install-WingetPackage -Id "LLVM.LLVM" -Command "clang-format" `
-    -Note "(also provides clang for treesitter parser builds)"
+    -Note "(clang also works for treesitter parser builds)"
 }
 
 if ($WantJava) {
@@ -216,15 +218,19 @@ if ($WantRust -and (Get-Command rustup -ErrorAction SilentlyContinue) -and -not 
   if ($LASTEXITCODE -ne 0) { $script:Failed += "rustup toolchain install stable" }
 }
 
-# Point the C-compiler probe at LLVM clang when MSVC is not installed.
+# Point the C-compiler probe at GCC when MSVC is not installed.
 # (The officially recommended setup is -WithVsBuildTools instead.)
-if (-not (Get-Command cl -ErrorAction SilentlyContinue) -and (Get-Command clang -ErrorAction SilentlyContinue)) {
+if (-not (Get-Command cl -ErrorAction SilentlyContinue) -and (Get-Command gcc -ErrorAction SilentlyContinue)) {
+  [System.Environment]::SetEnvironmentVariable("CC", "gcc", "User")
+  $env:CC = "gcc"
+  Write-Host "[ok] CC=gcc registered for treesitter parser builds" -ForegroundColor Green
+} elseif (-not (Get-Command cl -ErrorAction SilentlyContinue) -and (Get-Command clang -ErrorAction SilentlyContinue)) {
   [System.Environment]::SetEnvironmentVariable("CC", "clang", "User")
   $env:CC = "clang"
   Write-Host "[ok] CC=clang registered for treesitter parser builds" -ForegroundColor Green
-} elseif (-not (Get-Command cl -ErrorAction SilentlyContinue) -and -not (Get-Command clang -ErrorAction SilentlyContinue)) {
-  Write-Warning "[skip] no C compiler (cl/clang) found; treesitter parser builds need one."
-  Write-Warning "       Re-run with '-Languages <groups>,cpp' or '-WithVsBuildTools' if ':TSUpdate' fails."
+} elseif (-not (Get-Command cl -ErrorAction SilentlyContinue) -and -not (Get-Command gcc -ErrorAction SilentlyContinue) -and -not (Get-Command clang -ErrorAction SilentlyContinue)) {
+  Write-Warning "[skip] no C compiler (cl/gcc/clang) found; treesitter parser builds need one."
+  Write-Warning "       Re-run this script (it installs GCC by default) or use '-WithVsBuildTools' if ':TSUpdate' fails."
 }
 
 # ------------------------------------------------------------- symlink -------
@@ -332,14 +338,14 @@ end
 # ------------------------------------------------------------ health check ---
 Write-Host ""
 Write-Host "=== tool versions ===" -ForegroundColor Yellow
-$VersionArg = @{ zig = "version" }  # `zig --version` is invalid; it's `zig version`
+$VersionArg = @{ }  # all checked tools accept `--version`
 # Binaries Mason drops into nvim-data are NOT on the terminal PATH
 # (mason.nvim prepends them inside Neovim only); probe their real path.
 $MasonBin = Join-Path $env:LOCALAPPDATA "nvim-data\mason\bin"
 $ProbePath = @{
   "rust-analyzer" = Join-Path $MasonBin "rust-analyzer.exe"
 }
-$CheckCmds = @("nvim", "git", "rg", "fd", "fzf", "bat", "tree-sitter", "zig")
+$CheckCmds = @("nvim", "git", "rg", "fd", "fzf", "bat", "tree-sitter", "gcc")
 if ($WantShell)  { $CheckCmds += @("shfmt", "node") }
 if ($WantLua)    { $CheckCmds += @("stylua", "lua-language-server") }
 if ($WantPython) { $CheckCmds += @("uv", "ty", "ruff") }
