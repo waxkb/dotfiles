@@ -5,11 +5,6 @@ paths, OS-aware viewer/formatter selection). This file covers what the
 [installer script](windows-install.ps1) cannot do fully automatically,
 plus how to verify and troubleshoot the setup.
 
-> Why `.ps1` and not `windowsInstaller.sh`? A `.sh` script cannot call
-> `winget` unless you already have Git-Bash/MSYS2. PowerShell is the
-> native Windows equivalent, so the automated installer is
-> `windows-install.ps1`.
-
 ## 0. Prerequisites
 
 - Windows 10 1809+ or Windows 11.
@@ -51,7 +46,7 @@ What it installs via winget (skipping anything already present):
 | fzf | `junegunn.fzf` | core (always) | fzf-lua backend |
 | bat | `sharkdp.bat` | core (always) | fzf-lua previews |
 | tree-sitter CLI | `tree-sitter.tree-sitter-cli` | core (always) | nvim-treesitter (`main` branch requires CLI ≥ 0.26.1) |
-| zig | `Zig.Zig` | core (always) | spare C compiler |
+| GCC (WinLibs) | `BrechtSanders.WinLibs.POSIX.UCRT` | core (always) | C compiler for treesitter parser builds |
 | JetBrainsMono Nerd Font | `NerdFonts.JetBrainsMono` | core (always) | statusline/tabline glyphs |
 | shfmt | `mvdan.shfmt` | `shell` | conform (bash/zsh) |
 | Node.js LTS | `OpenJS.NodeJS.LTS` | `shell` | `bash-language-server` (via Mason) |
@@ -59,7 +54,7 @@ What it installs via winget (skipping anything already present):
 | lua-language-server | `LuaLS.lua-language-server` | `lua` | LSP |
 | uv | `astral-sh.uv` | `python` | Python provider; installs `ty` (Python LSP) |
 | ruff | `astral-sh.ruff` | `python` | conform (python) |
-| LLVM | `LLVM.LLVM` | `cpp` | conform (`clang-format`); `clang` doubles as C compiler |
+| LLVM | `LLVM.LLVM` | `cpp` | conform (`clang-format`); `clang` also works as C compiler |
 | OpenJDK 21 | `Microsoft.OpenJDK.21` | `java` | `jdtls` (Java LSP) |
 | Rustup | `Rustlang.Rustup` | `rust` | cargo/rustfmt + stable toolchain |
 | SumatraPDF | `SumatraPDF.SumatraPDF` | `tex` | vimtex viewer on Windows |
@@ -69,7 +64,7 @@ It also (all idempotent, all best-effort):
 
 1. Installs `ty` via `uv tool install ty` and adds `%USERPROFILE%\.local\bin` to your user `PATH` (`python` group only).
 2. Installs the stable Rust toolchain via `rustup` if `cargo` is missing (`rust` group only).
-3. Sets user env `CC=clang` when MSVC is absent but LLVM was installed, so treesitter parser builds find a compiler (warns if no compiler at all — add the `cpp` group or `-WithVsBuildTools`).
+3. Sets user env `CC=gcc` when MSVC is absent but GCC was installed (falls back to `CC=clang` if only LLVM is present), so treesitter parser builds find a compiler (warns if no compiler at all — re-run the script, which installs GCC by default, or use `-WithVsBuildTools`).
 4. Symlinks this repo's `.config/nvim` to `%LOCALAPPDATA%\nvim`.
 5. Runs headless plugin sync + `:MasonInstall` for the servers of the selected groups only (`bash-language-server`, `jdtls`, `rust-analyzer`, `latexindent`).
 6. Prints a version table covering the selected groups; anything `MISSING` is retried below.
@@ -150,7 +145,7 @@ nvim
 
 | Symptom | Cause / fix |
 |---|---|
-| `:TSUpdate` / parser install fails with “C compiler” error | Install the official compiler: re-run the script with `-WithVsBuildTools` (downloads several GB), restart the terminal, then `:TSUpdate` again. |
+| `:TSUpdate` / parser install fails with “C compiler” error | Make sure `gcc` is on PATH (`gcc --version`), restart the terminal, then `:TSUpdate` again. Re-run the installer (it installs GCC via WinLibs by default); only if that still fails, install the official compiler with `-WithVsBuildTools` (downloads several GB). |
 | `tree-sitter` version < 0.26.1 | `winget upgrade --id tree-sitter.tree-sitter-cli --exact`; nvim-treesitter `main` requires ≥ 0.26.1. |
 | `<leader>i` live-grep does nothing | `rg` not on PATH — new terminal, else `winget install BurntSushi.ripgrep.MSVC`. |
 | Boxes instead of icons | Terminal font isn't the Nerd Font (§2.2). |
