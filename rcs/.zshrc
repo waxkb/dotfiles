@@ -58,6 +58,19 @@ function br {
   fi
 }
 
+gw() {
+  local dir="$PWD"
+  while [[ "$dir" != "/" ]]; do
+    if [[ -x "$dir/gradlew" ]]; then
+      "$dir/gradlew" -p "$dir" "$@"
+      return
+    fi
+    dir="$(dirname "$dir")"
+  done
+  echo "gradlew not found in any parent directory" >&2
+  return 1
+}
+
 rm() {
   if [[ "$*" == *"-rf"* || "$*" == *"-fr"* ]]; then
     echo "⚠️  You are about to run: rm $*"
