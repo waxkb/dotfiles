@@ -9,5 +9,6 @@
 [commit]
   gpgsign = true
 
+# Tags include releases
 [tag]
   gpgSign = true
