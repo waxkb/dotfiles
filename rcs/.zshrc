@@ -103,17 +103,23 @@ mkcd() {
   mkdir -p "$1" && cd "$1"
 }
 
-(
-  if ! pgrep -u "$USER" ssh-agent >/dev/null; then
-    eval "$(ssh-agent -s)" >/dev/null 2>&1
-  fi
+# gcr provides an agent in graphical sessions; fall back to one on a fixed
+# socket so TTY/SSH logins work too and the agent survives the shell.
+if [[ -z "$SSH_AUTH_SOCK" && -n "$XDG_RUNTIME_DIR" ]]; then
+  export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/ssh-agent.sock"
+  ssh-add -l >/dev/null 2>&1
+  (( $? <= 1 )) || { rm -f "$SSH_AUTH_SOCK"; ssh-agent -a "$SSH_AUTH_SOCK" >/dev/null; } # rc 0/1 = agent alive, 2 = dead socket
+fi
 
-  if ! ssh-add -l | grep -q "github"; then
+# Load the SSH key from Infisical, unless the agent already has it.
+(
+  if ! ssh-add -l 2>/dev/null | grep -qF 'maxwellr2028@gmail.com'; then
     KEY_FILE=$(mktemp)
     trap 'rm -f "$KEY_FILE"' EXIT
-    infisical secrets get --path=/ssh-keys Main --plain 2>/dev/null | sed 's/\\n/\n/g' >"$KEY_FILE"
-    chmod 600 "$KEY_FILE"
-    ssh-add "$KEY_FILE" >/dev/null 2>&1
+    if infisical secrets get --path=/ssh-keys Main --silent --plain </dev/null 2>/dev/null |
+        sed 's/\\n/\n/g' >"$KEY_FILE" && [[ -s "$KEY_FILE" ]]; then
+      ssh-add "$KEY_FILE" >/dev/null 2>&1
+    fi
   fi
 ) >/dev/null 2>&1 &|
 
@@ -138,9 +144,9 @@ export MOZ_ENABLE_WAYLAND=1
 export MOZ_WEBRENDER_COMPOSITOR=auto
 export __GLX_VENDOR_LIBRARY_NAME=nvidia
 
-# Ignoring specific Infisical CLI commands
-DEFAULT_HISTIGNORE=
-export HISTIGNORE="*infisical secrets set*:*infisical secrets get*:"
+# Keep infisical secret commands out of history (zsh uses HISTORY_IGNORE;
+# bash's HISTIGNORE does nothing here)
+export HISTORY_IGNORE='*infisical secrets set*:*infisical secrets get*'
 
 HISTSIZE=20000
 SAVEHIST=20000
