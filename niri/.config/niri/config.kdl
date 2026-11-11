@@ -8,5 +8,5 @@ include "animations.kdl"
 
 cursor {
   xcursor-theme "Bibata-Modern-Ice"
-  hide-after-inactive-ms 1500
+  // hide-after-inactive-ms 1500
 }
