@@ -13,7 +13,7 @@ post_hook = "pkill -SIGUSR2 btop"
 input_path = "/home/max/.config/matugen/templates/niri-colors.kdl"
 output_path = "/home/max/.config/niri/colors.kdl"
 
-[templates.umbriel]
+[theme.templates.user.umbriel]
 input_path = "/home/max/.config/matugen/templates/umbriel-colors.toml"
 output_path = "/home/max/.config/umbriel/colors.toml"
 
