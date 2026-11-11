@@ -1,0 +1,16 @@
+[input.keyboard]
+layout = "us"
+repeat_delay = 300
+repeat_rate = 45
+numlock_toggle = true
+
+[input.touchpad]
+tap = true
+natural_scroll = true
+
+[input.mouse]
+accel_profile = "adaptive"
+sensitivity = -0.7
+
+[input.cursor]
+theme = "Bibata-Modern-Ice"

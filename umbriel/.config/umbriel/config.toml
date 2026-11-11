@@ -1,0 +1,13 @@
+[include]
+files = [
+  "input.toml",
+  "lookandfeel.toml",
+  "colors.toml",
+  "windowrules.toml",
+  "binds.toml",
+  "animations.toml",
+]
+
+[general]
+autostart = ["foot --server", "noctalia", "glide", "activate-linux"]
+show_cheatsheet = false

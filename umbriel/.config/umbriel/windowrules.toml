@@ -1,0 +1,19 @@
+[[workspace]]
+name = "1"
+
+[[workspace]]
+name = "2"
+
+[[workspace]]
+name = "3"
+
+[[window_rule]]
+match.is_focused = true
+opacity = 0.95
+
+[[window_rule]]
+match.is_focused = false
+opacity = 0.85
+
+[[window_rule]]
+blur = true

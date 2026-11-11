@@ -1,0 +1,21 @@
+[appearance]
+prefer_no_csd = true
+border_width = 2
+corner_radius = 0
+
+[appearance.blur]
+enabled = true
+
+[appearance.shadow]
+enabled = false
+softness = 30
+offset_x = 0
+offset_y = 5
+
+[layout]
+mode = "scrolling"
+gap = 8
+
+[layout.scrolling]
+default_extent_fraction = 0.5
+center_underfull_strip = true

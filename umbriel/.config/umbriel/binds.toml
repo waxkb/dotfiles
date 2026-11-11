@@ -1,0 +1,75 @@
+[keybinds]
+"Mod+B" = { action = "spawn glide", repeat = false }
+"Mod+Shift+B" = { action = "spawn ~/scripts/foot-smart-launch-umbriel.sh btop", repeat = false }
+"Mod+D" = { action = "window-close", repeat = false }
+"Mod+Shift+D" = { action = "session-quit skip-confirmation", repeat = false }
+"Mod+Shift+M" = { action = "spawn noctalia msg panel-toggle control-center media || dms ipc call dash open media", repeat = false }
+"Mod+N" = { action = "spawn noctalia msg panel-toggle control-center notifications || dms ipc call notifications open", repeat = false }
+"Mod+O" = { action = "spawn hyprlock", repeat = false }
+"Mod+P" = { action = "spawn hyprpicker", repeat = false }
+"Mod+R" = "window-cycle-primary-extent"
+"Mod+Shift+R" = "window-cycle-secondary-extent"
+"Mod+Ctrl+R" = "window-set-secondary-extent 1.0"
+"Mod+S" = { action = "spawn noctalia msg settings-toggle || dms ipc call settings toggle", repeat = false }
+"Mod+Shift+S" = { action = "spawn noctalia msg screenshot-region", repeat = false }
+"Mod+T" = { action = "window-toggle-floating", repeat = false }
+"Mod+Shift+T" = { action = "window-focus-switch-floating", repeat = false }
+"Mod+V" = { action = "overview-toggle", repeat = false }
+"Mod+W" = { action = "spawn skwd-wall-v2", repeat = false }
+"Mod+X" = { action = "spawn noctalia msg panel-toggle session || dms ipc call powermenu toggle", repeat = false }
+"Mod+Return" = { action = "spawn ~/scripts/foot-smart-launch-umbriel.sh", repeat = false }
+"Mod+End" = { action = "spawn playerctl play-pause", repeat = false }
+"Mod+Home" = { action = "spawn playerctl next", repeat = false }
+"Mod+Delete" = { action = "spawn playerctl previous", repeat = false }
+"Mod+Shift+Slash" = { action = "cheatsheet-toggle", repeat = false }
+
+"Mod+H" = "window-focus-left"
+"Mod+L" = "window-focus-right"
+"Mod+K" = "window-focus-up"
+"Mod+J" = "window-focus-down"
+"Mod+Page_Up" = "column-focus-first"
+"Mod+Page_Down" = "column-focus-last"
+
+"F11" = { action = "window-toggle-fullscreen", repeat = false }
+
+"Mod+Shift+H" = "column-move-left"
+"Mod+Shift+L" = "column-move-right"
+"Mod+Shift+K" = "window-move-up"
+"Mod+Shift+J" = "window-move-down"
+"Mod+Shift+U" = "column-move-to-workspace-next"
+"Mod+Shift+I" = "column-move-to-workspace-previous"
+"Mod+Shift+Page_Up" = "column-move-to-first"
+"Mod+Shift+Page_Down" = "column-move-to-last"
+
+"Mod+BracketLeft" = "window-consume-or-expel-left"
+"Mod+BracketRight" = "window-consume-or-expel-right"
+"Mod+Comma" = "window-consume-from-right"
+"Mod+Period" = "window-consume-or-expel-right"
+
+"Mod+F" = { action = "window-toggle-maximize", repeat = false }
+"Mod+Shift+F" = { action = "window-set-primary-extent 1.0", repeat = false }
+
+"Mod+1" = "workspace-switch 1"
+"Mod+2" = "workspace-switch 2"
+"Mod+3" = "workspace-switch 3"
+"Mod+4" = "workspace-switch 4"
+"Mod+5" = "workspace-switch 5"
+"Mod+6" = "workspace-switch 6"
+"Mod+7" = "workspace-switch 7"
+"Mod+8" = "workspace-switch 8"
+"Mod+9" = "workspace-switch 9"
+
+"Mod+Shift+1" = "column-move-to-workspace 1"
+"Mod+Shift+2" = "column-move-to-workspace 2"
+"Mod+Shift+3" = "column-move-to-workspace 3"
+"Mod+Shift+4" = "column-move-to-workspace 4"
+"Mod+Shift+5" = "column-move-to-workspace 5"
+"Mod+Shift+6" = "column-move-to-workspace 6"
+"Mod+Shift+7" = "column-move-to-workspace 7"
+"Mod+Shift+8" = "column-move-to-workspace 8"
+"Mod+Shift+9" = "column-move-to-workspace 9"
+
+"Mod+Minus" = "window-modify-primary-extent -0.05"
+"Mod+Equal" = "window-modify-primary-extent +0.05"
+"Mod+Shift+Minus" = "window-modify-secondary-extent -0.05"
+"Mod+Shift+Equal" = "window-modify-secondary-extent +0.05"

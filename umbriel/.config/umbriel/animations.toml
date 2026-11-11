@@ -1,0 +1,32 @@
+# [animation.windows_in]
+# enabled = true
+# duration_ms = 250
+# curve = "0.19,1.0,0.22,1.0"
+# style = "fade"
+# 
+# [animation.windows_out]
+# enabled = true
+# duration_ms = 240
+# curve = "0.4,0.0,0.4,1.0"
+# style = "fade"
+# 
+# [animation.windows_move]
+# enabled = true
+# duration_ms = 160
+# curve = "0.25,0.1,0.25,1.0"
+# 
+# [animation.windows_resize]
+# enabled = true
+# duration_ms = 160
+# curve = "0.25,0.1,0.25,1.0"
+# 
+# [animation.workspaces]
+# enabled = true
+# duration_ms = 150
+# curve = "0.25,0.1,0.25,1.0"
+# style = "slide"
+# 
+# [animation.overview]
+# enabled = true
+# duration_ms = 200
+# curve = "0.22,0.9,0.36,1.0"

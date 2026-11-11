@@ -1,0 +1,6 @@
+[colors]
+shadow = "#00000077"
+
+[colors.border]
+focused = "{{colors.primary.default.hex}}"
+unfocused = "{{colors.background.default.hex}}"

@@ -10,6 +10,10 @@ post_hook = "pkill -SIGUSR2 btop"
 input_path = "/home/max/.config/matugen/templates/niri-colors.kdl"
 output_path = "/home/max/.config/niri/colors.kdl"
 
+[templates.umbriel]
+input_path = "/home/max/.config/matugen/templates/umbriel-colors.toml"
+output_path = "/home/max/.config/umbriel/colors.toml"
+
 [templates.foot]
 input_path = "/home/max/.config/matugen/templates/foot-colors-start.ini"
 output_path = "/home/max/.config/foot/foot-colors.ini"
