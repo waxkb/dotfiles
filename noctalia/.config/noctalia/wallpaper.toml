@@ -1,5 +1,5 @@
 [wallpaper]
-enabled             = true
+enabled             = false
 fill_mode           = "crop"    # center | crop | fit | stretch | repeat
 fill_color          = "#111111" # optional fallback/fill color; image wallpapers take priority
 transition          = ["fade", "wipe", "disc", "stripes", "zoom", "honeycomb"]

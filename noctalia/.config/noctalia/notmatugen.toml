@@ -1,26 +1,26 @@
-[theme.templates]
-enable_builtin_templates   = true
-enable_community_templates = true
-builtin_ids                = []
-community_ids              = []
-
-[theme.templates.user.btop]
-input_path = "/home/max/.config/matugen/templates/btop.theme"
-output_path = "/home/max/.config/btop/themes/matugen.theme"
-post_hook = "pkill -SIGUSR2 btop"
-
-[theme.templates.user.niri]
-input_path = "/home/max/.config/matugen/templates/niri-colors.kdl"
-output_path = "/home/max/.config/niri/colors.kdl"
-
-[theme.templates.user.umbriel]
-input_path = "/home/max/.config/matugen/templates/umbriel-colors.toml"
-output_path = "/home/max/.config/umbriel/colors.toml"
-
-[theme.templates.user.foot]
-input_path = "/home/max/.config/matugen/templates/foot-colors.ini"
-output_path = "/home/max/.config/foot/foot-colors.ini"
-
-[theme.templates.user.nvim]
-input_path = "/home/max/.config/matugen/templates/nvim-colors.lua"
-output_path = "/home/max/.config/nvim/colors/base46-matugen.lua"
+# [theme.templates]
+# enable_builtin_templates   = true
+# enable_community_templates = true
+# builtin_ids                = []
+# community_ids              = []
+# 
+# [theme.templates.user.btop]
+# input_path = "/home/max/.config/matugen/templates/btop.theme"
+# output_path = "/home/max/.config/btop/themes/matugen.theme"
+# post_hook = "pkill -SIGUSR2 btop"
+# 
+# [theme.templates.user.niri]
+# input_path = "/home/max/.config/matugen/templates/niri-colors.kdl"
+# output_path = "/home/max/.config/niri/colors.kdl"
+# 
+# [theme.templates.user.umbriel]
+# input_path = "/home/max/.config/matugen/templates/umbriel-colors.toml"
+# output_path = "/home/max/.config/umbriel/colors.toml"
+# 
+# [theme.templates.user.foot]
+# input_path = "/home/max/.config/matugen/templates/foot-colors.ini"
+# output_path = "/home/max/.config/foot/foot-colors.ini"
+# 
+# [theme.templates.user.nvim]
+# input_path = "/home/max/.config/matugen/templates/nvim-colors.lua"
+# output_path = "/home/max/.config/nvim/colors/base46-matugen.lua"
