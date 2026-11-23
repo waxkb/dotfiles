@@ -4,7 +4,7 @@
 [user]
 	email = "maxwellr2028@gmail.com"
 	name = "waxkb"
-  signingkey = "~/.ssh/id_ed25519_sk.pub"
+  signingkey = "~/.ssh/id_ed25519.pub"
 
 [gpg]
   format = ssh
