@@ -15,7 +15,8 @@
 "Mod+T" = { action = "window-toggle-floating", repeat = false }
 "Mod+Shift+T" = { action = "window-focus-switch-floating", repeat = false }
 "Mod+V" = { action = "overview-toggle", repeat = false }
-"Mod+W" = { action = "spawn skwd-wall-v2", repeat = false }
+# "Mod+W" = { action = "spawn skwd-wall-v2", repeat = false }
+"Mod+W" = { action = "spawn ~/scripts/tofiWall.sh", repeat = false }
 "Mod+X" = { action = "spawn noctalia msg panel-toggle session || dms ipc call powermenu toggle", repeat = false }
 "Mod+Return" = { action = "spawn ~/scripts/foot-smart-launch-umbriel.sh", repeat = false }
 "Mod+End" = { action = "spawn playerctl play-pause", repeat = false }
