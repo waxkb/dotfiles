@@ -129,5 +129,7 @@ alias elastic='env -u LD_LIBRARY_PATH -u NIX_LD_LIBRARY_PATH -u NIX_LD \
   LIBGL_ALWAYS_SOFTWARE=1 GDK_BACKEND=x11 \
   /home/max/wpilib/2026/elastic/elastic_dashboard'
 
+alias ai="infisical sm run --path OpenRouter --"
+
 # ninfer / tailscale sidecar helpers
 source "${${(%):-%x}:A:h}/ninfer.zsh"

@@ -2,5 +2,5 @@
 shadow = "#00000077"
 
 [colors.border]
-focused = "#b08bc1"
-unfocused = "#201a23"
+focused = "#d7a475"
+unfocused = "#231e1a"
