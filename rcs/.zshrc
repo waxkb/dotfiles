@@ -32,8 +32,6 @@ add-zsh-hook chpwd foot_cwd_update
 add-zsh-hook precmd foot_cwd_update
 foot_cwd_update
 
-# export SKIM_DEFAULT_COMMAND="fd -H"
-
 eval "$(direnv hook zsh)"
 
 function y() {
@@ -71,30 +69,6 @@ gw() {
   return 1
 }
 
-rm() {
-  if [[ "$*" == *"-rf"* || "$*" == *"-fr"* ]]; then
-    echo "⚠️  You are about to run: rm $*"
-    read "reply1?Are you absolutely sure? (yes/no) "
-    [[ "$reply1" == "yes" ]] || {
-      echo "Aborted."
-      return 1
-    }
-    read "reply2?Really proceed? This is irreversible. (yes/no) "
-    [[ "$reply2" == "yes" ]] || {
-      echo "Aborted."
-      return 1
-    }
-    read "reply3?Final confirmation — type EXACTLY: I understand: "
-    [[ "$reply3" == "I understand" ]] || {
-      echo "Aborted."
-      return 1
-    }
-    command rm "$@"
-  else
-    command rm "$@"
-  fi
-}
-
 path+=("$HOME/.local/bin")
 path+=("/usr/bin")
 path+=("$HOME/.npm-packages/bin")
@@ -108,7 +82,10 @@ mkcd() {
 if [[ -z "$SSH_AUTH_SOCK" && -n "$XDG_RUNTIME_DIR" ]]; then
   export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/ssh-agent.sock"
   ssh-add -l >/dev/null 2>&1
-  (( $? <= 1 )) || { rm -f "$SSH_AUTH_SOCK"; ssh-agent -a "$SSH_AUTH_SOCK" >/dev/null; } # rc 0/1 = agent alive, 2 = dead socket
+  (($? <= 1)) || {
+    rm -f "$SSH_AUTH_SOCK"
+    ssh-agent -a "$SSH_AUTH_SOCK" >/dev/null
+  } # rc 0/1 = agent alive, 2 = dead socket
 fi
 
 # Load the SSH key from Infisical, unless the agent already has it.
@@ -117,7 +94,7 @@ fi
     KEY_FILE=$(mktemp)
     trap 'rm -f "$KEY_FILE"' EXIT
     if infisical secrets get --path=/ssh-keys Main --silent --plain </dev/null 2>/dev/null |
-        sed 's/\\n/\n/g' >"$KEY_FILE" && [[ -s "$KEY_FILE" ]]; then
+      sed 's/\\n/\n/g' >"$KEY_FILE" && [[ -s "$KEY_FILE" ]]; then
       ssh-add "$KEY_FILE" >/dev/null 2>&1
     fi
   fi
@@ -128,10 +105,6 @@ eval "$(starship init zsh)"
 alias syncdots="gita ll && gita super add . && gita super commit -m "e" && gita push && gita ll"
 alias ff="microfetch"
 alias cf="clear; microfetch"
-# w3m 0.5.6 sends HTTP/1.0 + Accept-Encoding: gzip but can't de-chunk
-# GitHub's `Transfer-Encoding: chunked` + `Content-Encoding: gzip` reply
-# (fails with `gzip: stdin: not in gzip format`). Force identity encoding.
-alias w3m="w3m -o accept_encoding='identity'"
 
 export PYTHONPATH=""
 export STABLE_GL=1
@@ -168,138 +141,5 @@ alias elastic='env -u LD_LIBRARY_PATH -u NIX_LD_LIBRARY_PATH -u NIX_LD \
   LIBGL_ALWAYS_SOFTWARE=1 GDK_BACKEND=x11 \
   /home/max/wpilib/2026/elastic/elastic_dashboard'
 
-# --- ninfer / tailscale sidecar -------------------------------------------------
-# Each service runs as its own tailnet node via a Tailscale sidecar container.
-# Auth key: fetched from Infisical into ~/.config/ninfer/ts-authkey
-# Models:   ~/models (override with NINFER_MODELS=/path/to/models)
-
-: "${NINFER_MODELS:=$HOME/models}"
-
-: "${NINFER_INFISICAL_PROJECT:=8a9a5706-fdda-4cfb-bd90-44c14c3fec83}"
-: "${NINFER_INFISICAL_ENV:=dev}"
-: "${NINFER_INFISICAL_PATH:=/tailscale}"
-: "${NINFER_INFISICAL_SECRET:=Containers}"
-
-# Fetch the tailscale auth key from Infisical and cache it in ts-authkey.
-# Refreshes the cached key on every call, but falls back to it if Infisical
-# is unreachable so the commands still work offline.
-_ninfer_fetch_tsauthkey() {
-  local cfg=${XDG_CONFIG_HOME:-$HOME/.config}/ninfer
-  local keyfile=$cfg/ts-authkey
-  local key tmp
-
-  if command -v infisical >/dev/null 2>&1 \
-    && key=$(infisical secrets get "$NINFER_INFISICAL_SECRET" \
-      --projectId "$NINFER_INFISICAL_PROJECT" \
-      --env "$NINFER_INFISICAL_ENV" \
-      --path "$NINFER_INFISICAL_PATH" \
-      --plain --silent 2>/dev/null) \
-    && [[ -n $key ]]; then
-    mkdir -p -- "$cfg" || return 1
-    tmp=$(mktemp "$cfg/.ts-authkey.XXXXXX") || return 1
-    if print -r -- "$key" >|"$tmp" && chmod 600 "$tmp"; then
-      mv -f -- "$tmp" "$keyfile"
-      return 0
-    fi
-    rm -f -- "$tmp"
-    return 1
-  fi
-
-  if [[ -s $keyfile ]]; then
-    print -u2 "ninfer: could not fetch auth key from Infisical; using cached $keyfile"
-    return 0
-  fi
-
-  print -u2 "ninfer: could not fetch '$NINFER_INFISICAL_SECRET' from Infisical ($NINFER_INFISICAL_PATH, env $NINFER_INFISICAL_ENV)"
-  print -u2 "ninfer: run 'infisical login' or write the key to $keyfile"
-  return 1
-}
-
-ninfer() {
-  local sidecar=ninfer-ts app=ninfer
-  local cfg=${XDG_CONFIG_HOME:-$HOME/.config}/ninfer
-  local models=${NINFER_MODELS:-$HOME/models}
-  local -a serve_args=()
-
-  _ninfer_fetch_tsauthkey || return 1
-  if [[ ! -d $models ]]; then
-    print -u2 "ninfer: models dir not found: $models (set NINFER_MODELS)"
-    return 1
-  fi
-
-  if [[ -r $cfg/serve/serve.json ]]; then
-    serve_args+=(
-      -e TS_SERVE_CONFIG=/config/serve.json
-      -v "$cfg/serve:/config:ro"
-    )
-  fi
-
-  if ! podman container exists "$sidecar" 2>/dev/null; then
-    podman volume create "${sidecar}-state" >/dev/null || return 1
-    podman run -d --name "$sidecar" --hostname ninfer --network bridge \
-      --cap-add NET_ADMIN --cap-add NET_RAW --device /dev/net/tun:rw \
-      -e TS_HOSTNAME=ninfer \
-      -e TS_STATE_DIR=/var/lib/tailscale \
-      -e TS_USERSPACE=false \
-      -e TS_AUTHKEY=file:/run/ts-authkey \
-      -v "${sidecar}-state:/var/lib/tailscale" \
-      -v "$cfg/ts-authkey:/run/ts-authkey:ro" \
-      "${serve_args[@]}" \
-      ghcr.io/tailscale/tailscale:latest >/dev/null || return 1
-  else
-    podman start "$sidecar" >/dev/null 2>&1 || true
-  fi
-
-  # Foreground: when this exits (or Ctrl-C), stop the sidecar so the
-  # tailnet node goes offline with the LLM.
-  podman run --rm --name "$app" \
-    --network "container:$sidecar" \
-    --gpus all \
-    --ulimit memlock=-1 -w / \
-    -v "$models:/models" \
-    -v ninfer-cache:/cache \
-    ghcr.io/iamwavecut/ninfer-all:cuda13.4 \
-    serve --config models/inkling/inkling2-mini-host.ini --host 0.0.0.0
-  local rc=$?
-
-  podman stop "$sidecar" >/dev/null 2>&1
-  return $rc
-}
-
-ninfer-down() {
-  podman stop ninfer ninfer-ts >/dev/null 2>&1
-  podman rm   ninfer ninfer-ts >/dev/null 2>&1
-}
-
-ninfer-status() {
-  podman exec ninfer-ts tailscale status
-}
-
-ninfer-logs() {
-  podman logs -f ninfer-ts
-}
-
-# Generic sidecar helper: ts-sidecar <name> <hostname>
-# Then start the app with --network container:<name>-ts
-ts-sidecar() {
-  local name=$1 host=$2
-  local cfg=${XDG_CONFIG_HOME:-$HOME/.config}/ninfer
-
-  if [[ -z $name || -z $host ]]; then
-    print -u2 "usage: ts-sidecar <name> <hostname>"
-    return 1
-  fi
-  _ninfer_fetch_tsauthkey || return 1
-
-  podman volume create "${name}-ts-state" >/dev/null
-  podman run -d --name "${name}-ts" --hostname "$host" --network bridge \
-    --cap-add NET_ADMIN --cap-add NET_RAW --device /dev/net/tun:rw \
-    -e TS_HOSTNAME="$host" \
-    -e TS_STATE_DIR=/var/lib/tailscale \
-    -e TS_USERSPACE=false \
-    -e TS_AUTHKEY=file:/run/ts-authkey \
-    -v "${name}-ts-state:/var/lib/tailscale" \
-    -v "$cfg/ts-authkey:/run/ts-authkey:ro" \
-    ghcr.io/tailscale/tailscale:latest
-}
-# --- end ninfer / tailscale sidecar ---------------------------------------------
+# ninfer / tailscale sidecar helpers
+source "${${(%):-%x}:A:h}/ninfer.zsh"
