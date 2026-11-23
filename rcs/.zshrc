@@ -88,18 +88,6 @@ if [[ -z "$SSH_AUTH_SOCK" && -n "$XDG_RUNTIME_DIR" ]]; then
   } # rc 0/1 = agent alive, 2 = dead socket
 fi
 
-# Load the SSH key from Infisical, unless the agent already has it.
-(
-  if ! ssh-add -l 2>/dev/null | grep -qF 'maxwellr2028@gmail.com'; then
-    KEY_FILE=$(mktemp)
-    trap 'rm -f "$KEY_FILE"' EXIT
-    if infisical secrets get --path=/ssh-keys Main --silent --plain </dev/null 2>/dev/null |
-      sed 's/\\n/\n/g' >"$KEY_FILE" && [[ -s "$KEY_FILE" ]]; then
-      ssh-add "$KEY_FILE" >/dev/null 2>&1
-    fi
-  fi
-) >/dev/null 2>&1 &|
-
 eval "$(starship init zsh)"
 
 alias syncdots="gita ll && gita super add . && gita super commit -m "e" && gita push && gita ll"
