@@ -4,13 +4,13 @@
 [user]
 	email = "maxwellr2028@gmail.com"
 	name = "waxkb"
-  ; signingkey = "0D3EACE8E565AC05640B810A5740C280836152CE"
+  signingkey = "~/.ssh/id_ed25519_sk.pub"
 
-; [gpg]
-;   format = ssh
-; 
-; [commit]
-;   gpgsign = true
-; 
-; [tag]
-;   gpgSign = true
+[gpg]
+  format = ssh
+
+[commit]
+  gpgsign = true
+
+[tag]
+  gpgSign = true
