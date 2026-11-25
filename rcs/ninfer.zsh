@@ -8,7 +8,7 @@
 
 : "${NINFER_INFISICAL_PROJECT:=8a9a5706-fdda-4cfb-bd90-44c14c3fec83}"
 : "${NINFER_INFISICAL_ENV:=dev}"
-: "${NINFER_INFISICAL_PATH:=/tailscale}"
+: "${NINFER_INFISICAL_PATH:=/Tailscale}"
 : "${NINFER_INFISICAL_SECRET:=Containers}"
 
 # Fetch the tailscale auth key from Infisical and cache it in ts-authkey.
