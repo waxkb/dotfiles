@@ -131,5 +131,9 @@ alias elastic='env -u LD_LIBRARY_PATH -u NIX_LD_LIBRARY_PATH -u NIX_LD \
 
 alias ai="infisical sm run --path OpenRouter --"
 
-# ninfer / tailscale sidecar helpers
-source "${${(%):-%x}:A:h}/ninfer.zsh"
+function ninfer() {
+  docker run --rm --gpus all -p 8080:8080 --ulimit memlock=-1 -w / \
+    -v "$PWD/models:/models" -v ninfer-cache:/cache \
+    ghcr.io/iamwavecut/ninfer-all:cuda13.4 serve --config models/inkling/inkling2-mini-host.ini \
+    --host 0.0.0.0
+}
