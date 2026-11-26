@@ -29,8 +29,7 @@
       "compat": {
         "supportsDeveloperRole": false
       }
-    }
-  },
+    },
     "ninfer-remote": {
       "name": "ninfer (remote)",
       "baseUrl": "http://100.72.125.9:8080/v1",
