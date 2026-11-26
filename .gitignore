@@ -23,3 +23,10 @@
 # OS junk
 .DS_Store
 Thumbs.db
+
+.pi/agent/bin/
+.pi/agent/npm/
+.pi/agent/sessions/
+.pi/agent/auth.json
+.pi/agent/models-store.json
+.pi/agent/trust.json
