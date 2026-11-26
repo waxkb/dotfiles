@@ -1,0 +1,17 @@
+{
+  "lastChangelogVersion": "1.6.0",
+  "theme": "dark",
+  "defaultProvider": "ninfer",
+  "defaultModel": "inkling-2-mini",
+  "defaultThinkingLevel": "high",
+  "packages": [
+    "npm:@juicesharp/rpiv-ask-user-question",
+    "npm:pi-context-usage"
+  ],
+  "enabledModels": [],
+  "extensionChangelogVersions": {
+    "{\"source\":\"npm:pi-lens\",\"scope\":\"user\"}": "4.5.2",
+    "{\"source\":\"npm:pi-blackhole\",\"scope\":\"user\"}": "0.5.19"
+  },
+  "hideThinkingBlock": false
+}

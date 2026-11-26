@@ -1,0 +1,34 @@
+{
+  "providers": {
+    "ninfer": {
+      "name": "ninfer (local)",
+      "baseUrl": "http://127.0.0.1:8080/v1",
+      "api": "openai-completions",
+      "apiKey": "not-needed",
+      "models": [
+        {
+          "id": "inkling-2-mini",
+          "name": "Inkling 2 Mini",
+          "reasoning": true,
+          "input": [
+            "text"
+          ],
+          "contextWindow": 131072,
+          "maxTokens": 131072,
+          "thinkingLevelMap": {
+            "off": "none",
+            "minimal": "minimal",
+            "low": "low",
+            "medium": "medium",
+            "high": "high",
+            "xhigh": "xhigh",
+            "max": "max"
+          }
+        }
+      ],
+      "compat": {
+        "supportsDeveloperRole": false
+      }
+    }
+  }
+}
