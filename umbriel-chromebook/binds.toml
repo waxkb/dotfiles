@@ -1,0 +1,25 @@
+# Chromebook keybinds. The top row has no Home/End/Delete/PageUp/PageDown
+# keys, so navigation uses chords on keys that exist. Volume and brightness
+# use the top-row XF86 keys, and the top-row fullscreen/overview keys map to
+# F11 (already in the shared binds) and F5 (here).
+[keybinds]
+# Media controls
+"Mod+Alt+Left" = { action = "spawn playerctl previous", repeat = false }
+"Mod+Alt+Right" = { action = "spawn playerctl next", repeat = false }
+"Mod+Alt+Space" = { action = "spawn playerctl play-pause", repeat = false }
+
+# Top-row volume and brightness keys
+"XF86AudioLowerVolume" = { action = "spawn noctalia msg volume-down || dms ipc call audio decrement 5", allow_when_locked = true }
+"XF86AudioRaiseVolume" = { action = "spawn noctalia msg volume-up || dms ipc call audio increment 5", allow_when_locked = true }
+"XF86AudioMute" = { action = "spawn noctalia msg volume-mute || dms ipc call audio mute", allow_when_locked = true, repeat = false }
+"XF86MonBrightnessDown" = { action = "spawn noctalia msg brightness-down || dms ipc call brightness decrement 5", allow_when_locked = true }
+"XF86MonBrightnessUp" = { action = "spawn noctalia msg brightness-up || dms ipc call brightness increment 5", allow_when_locked = true }
+
+# The overview key on the top row maps to F5.
+"F5" = { action = "overview-toggle", repeat = false }
+
+# Column navigation without PageUp/PageDown keys
+"Mod+Ctrl+Left" = "column-focus-first"
+"Mod+Ctrl+Right" = "column-focus-last"
+"Mod+Ctrl+Shift+Left" = "column-move-to-first"
+"Mod+Ctrl+Shift+Right" = "column-move-to-last"

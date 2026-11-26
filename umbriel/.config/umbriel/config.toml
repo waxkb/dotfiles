@@ -8,6 +8,16 @@ files = [
   "animations.toml",
 ]
 
+# Host-specific overrides. Only potato (the chromebook) provides these files;
+# on other machines they are absent and silently ignored. Umbriel watches
+# optional includes, so creating/removing them reloads the config at runtime.
+[include.optional]
+files = [
+  "~/.config/umbriel-chromebook/general.toml",
+  "~/.config/umbriel-chromebook/input.toml",
+  "~/.config/umbriel-chromebook/binds.toml",
+]
+
 [general]
 autostart = ["foot --server", "noctalia", "glide", "activate-linux"]
 show_cheatsheet = false

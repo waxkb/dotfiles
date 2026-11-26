@@ -1,0 +1,6 @@
+# Chromebook built-in keyboard. The "chromebook" xkb model maps the top row to
+# browser/media/brightness keys and puts Home/End/PageUp/PageDown on AltGr +
+# arrows. Per-device so an external keyboard's F-keys are not remapped.
+[[input.device]]
+name = "AT Translated Set 2 keyboard"
+model = "chromebook"
