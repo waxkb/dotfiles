@@ -1,0 +1,26 @@
+// Chromebook keybinds. The top row has no Home/End/Delete/PageUp/PageDown
+// keys, so navigation uses chords on keys that exist. Volume and brightness
+// use the top-row XF86 keys, and the top-row fullscreen/overview keys map to
+// F11 (already in the shared binds) and F5 (here).
+binds {
+    // Media controls
+    Mod+Alt+Left repeat=false hotkey-overlay-title="Previous Track" { spawn "playerctl" "previous"; }
+    Mod+Alt+Right repeat=false hotkey-overlay-title="Next Track" { spawn "playerctl" "next"; }
+    Mod+Alt+Space repeat=false hotkey-overlay-title="Play / Pause" { spawn "playerctl" "play-pause"; }
+
+    // Top-row volume and brightness keys
+    XF86AudioLowerVolume allow-when-locked=true hotkey-overlay-title="Volume Down" { spawn-sh "noctalia msg volume-down || dms ipc call audio decrement 5"; }
+    XF86AudioRaiseVolume allow-when-locked=true hotkey-overlay-title="Volume Up" { spawn-sh "noctalia msg volume-up || dms ipc call audio increment 5"; }
+    XF86AudioMute repeat=false allow-when-locked=true hotkey-overlay-title="Mute" { spawn-sh "noctalia msg volume-mute || dms ipc call audio mute"; }
+    XF86MonBrightnessDown allow-when-locked=true hotkey-overlay-title="Brightness Down" { spawn-sh "noctalia msg brightness-down || dms ipc call brightness decrement 5"; }
+    XF86MonBrightnessUp allow-when-locked=true hotkey-overlay-title="Brightness Up" { spawn-sh "noctalia msg brightness-up || dms ipc call brightness increment 5"; }
+
+    // The overview key on the top row maps to F5.
+    F5 repeat=false hotkey-overlay-title="Overview" { toggle-overview; }
+
+    // Column navigation without PageUp/PageDown keys
+    Mod+Ctrl+Left hotkey-overlay-title="First Column" { focus-column-first; }
+    Mod+Ctrl+Right hotkey-overlay-title="Last Column" { focus-column-last; }
+    Mod+Ctrl+Shift+Left hotkey-overlay-title="Move Column to First" { move-column-to-first; }
+    Mod+Ctrl+Shift+Right hotkey-overlay-title="Move Column to Last" { move-column-to-last; }
+}

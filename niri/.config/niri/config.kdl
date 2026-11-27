@@ -6,6 +6,13 @@ include "colors.kdl"
 include "windowrules.kdl"
 include "animations.kdl"
 
+// Host-specific overrides. Only potato (the chromebook) provides these files;
+// elsewhere they are absent and silently ignored. Niri watches optional
+// includes, so creating/removing them reloads the config at runtime.
+include "~/.config/niri-chromebook/general.kdl" optional=true
+include "~/.config/niri-chromebook/input.kdl" optional=true
+include "~/.config/niri-chromebook/binds.kdl" optional=true
+
 cursor {
   xcursor-theme "Bibata-Modern-Ice"
   // hide-after-inactive-ms 1500
