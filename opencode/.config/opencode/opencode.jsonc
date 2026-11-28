@@ -49,20 +49,5 @@
         }
       }
     }
-  },
-  "model": "openrouter/tencent/hy4-flash",
-  "provider": {
-    "openrouter": {
-      "models": {
-        "tencent/hy4-flash": {
-          "options": {
-            "provider": {
-              "only": ["tencent"],
-              "allow_fallbacks": false
-            }
-          }
-        }
-      }
-    }
   }
 }
