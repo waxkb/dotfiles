@@ -1,0 +1,5 @@
+// Chromebook (potato): the Search key in the Caps Lock position reports as
+// Super/Logo. "Mod" in the shared keybinds therefore resolves to Search here.
+input {
+    mod-key "Super"
+}

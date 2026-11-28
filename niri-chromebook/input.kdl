@@ -1,0 +1,12 @@
+// Chromebook built-in keyboard. The "chromebook" xkb model maps the top row
+// to browser/media/brightness keys and puts Home/End/PageUp/PageDown on
+// AltGr + arrows. Niri has no per-device input matching, so this applies to
+// all keyboards on potato (an external keyboard would also inherit the
+// chromebook model).
+input {
+    keyboard {
+        xkb {
+            model "chromebook"
+        }
+    }
+}
